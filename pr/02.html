@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\sin 30^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p>По таблице значений: <span data-katex="\sin 30^\circ = \dfrac{1}{2}"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="\dfrac{1}{2}"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\cos 60^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p>По таблице значений: <span data-katex="\cos 60^\circ = \dfrac{1}{2}"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="\dfrac{1}{2}"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\tg 45^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p><span data-katex="\tg 45^\circ = \dfrac{\sin 45^\circ}{\cos 45^\circ} = \dfrac{\frac{\sqrt{2}}{2}}{\frac{\sqrt{2}}{2}} = 1"></span>.</p>
+            <p class="answer">Ответ: 1.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\sin 90^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p>На единичной окружности точка 90° имеет координаты (0; 1). <span data-katex="\sin 90^\circ = y = 1"></span>.</p>
+            <p class="answer">Ответ: 1.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\sin 120^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p>120° = 180° – 60°. Это II четверть, sin > 0.</p>
+            <p><span data-katex="\sin(180^\circ - 60^\circ) = \sin 60^\circ = \dfrac{\sqrt{3}}{2}"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="\dfrac{\sqrt{3}}{2}"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\cos 150^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p>150° = 180° – 30°. Это II четверть, cos < 0.</p>
+            <p><span data-katex="\cos(180^\circ - 30^\circ) = -\cos 30^\circ = -\dfrac{\sqrt{3}}{2}"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="-\dfrac{\sqrt{3}}{2}"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\tg 135^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p>135° = 180° – 45°. II четверть, tg < 0.</p>
+            <p><span data-katex="\tg(180^\circ - 45^\circ) = -\tg 45^\circ = -1"></span>.</p>
+            <p class="answer">Ответ: –1.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла)</h5>
+        <p>Вычислите без калькулятора: <span class="formula" data-katex="\sin 150^\circ + \cos 120^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><span data-katex="\sin 150^\circ = \sin(180^\circ - 30^\circ) = \sin 30^\circ = \dfrac{1}{2}"></span>.</p>
+            <p><span data-katex="\cos 120^\circ = \cos(180^\circ - 60^\circ) = -\cos 60^\circ = -\dfrac{1}{2}"></span>.</p>
+            <p>Сумма: <span data-katex="\dfrac{1}{2} + \left(-\dfrac{1}{2}\right) = 0"></span>.</p>
+            <p class="answer">Ответ: 0.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла)</h5>
+        <p>Определите знак выражения: <span class="formula" data-katex="\sin 200^\circ \cdot \cos 100^\circ"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p>200° — III четверть: sin < 0.</p>
+            <p>100° — II четверть: cos < 0.</p>
+            <p>Произведение двух отрицательных чисел положительно.</p>
+            <p class="answer">Ответ: плюс (+).</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Кровля имеет уклон 30°. Длина ската (гипотенуза) = 10 м. Найдите высоту подъёма кровли.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Формула:</strong> <span data-katex="\sin \alpha = \dfrac{h}{L}"></span>, где h — высота, L — длина ската.</p>
+            <p><span data-katex="\sin 30^\circ = \dfrac{h}{10} \ \Rightarrow \ \dfrac{1}{2} = \dfrac{h}{10}"></span>.</p>
+            <p><span data-katex="h = 10 \times \dfrac{1}{2} = 5"></span> м.</p>
+            <p class="answer">Ответ: высота подъёма = 5 м.</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

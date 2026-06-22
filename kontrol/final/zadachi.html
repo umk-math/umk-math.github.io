@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типовые задачи к экзамену | УМК</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .btn-group { display: flex; gap: 8px; }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 4px; height: 32px; display: inline-flex; align-items: center; }
+        .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
+        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 2rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 0.95rem; margin-bottom: 30px; }
+        .task-card { background: var(--bg-card); border: 1px solid var(--border); padding: 22px; margin-bottom: 20px; page-break-inside: avoid; }
+        .task-num { color: var(--gold); font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+        .task-condition { color: #fff; font-size: 14px; margin-bottom: 10px; }
+        .btn-show { border: 1px solid rgba(212,160,23,0.4); color: rgba(212,160,23,0.7); background: transparent; padding: 5px 14px; font-size: 11px; cursor: pointer; transition: all 0.3s; border-radius: 6px; }
+        .btn-show:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,160,23,0.08); }
+        .solution { display: none; margin-top: 10px; }
+        .solution.open { display: block; }
+        .solution-content { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.15); padding: 14px 18px; border-radius: 8px; color: var(--text); font-size: 13px; }
+        .answer-block { color: var(--gold); font-weight: 600; margin-top: 8px; }
+        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+        @media (max-width: 600px) { body { padding: 10px; } .task-card { padding: 16px; } .page-title { font-size: 1.5rem; } }
+        @media print {
+            body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+            .top-bar, .nav-bottom, .btn-show { display: none !important; }
+            .task-card { background: #fff; border: 1px solid #ccc; margin-bottom: 12px; padding: 12px; }
+            .task-num, .page-title { color: #000; }
+            .task-condition { color: #000; }
+            .solution { display: block !important; }
+            .solution-content { background: #f9f9f9; border-color: #ddd; color: #333; }
+            .answer-block { color: #000; font-weight: 700; }
+            .page-title { border-bottom-color: #000; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="top-bar">
+    <div class="breadcrumb"><a href="index.html">← Итоговая аттестация</a> / Типовые задачи</div>
+    <div class="btn-group">
+        <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
+        <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
+    </div>
+</div>
+
+<h1 class="page-title">📝 Типовые задачи к экзамену</h1>
+<p class="page-subtitle">24 типа задач с решениями · Алгебра · Геометрия · Строительные</p>
+
+<!-- 1-8: АЛГЕБРА 1 КУРС -->
+<div class="task-card"><div class="task-num">1. Перевод градусов в радианы</div><div class="task-condition">Переведите <span data-katex="150^\circ"></span> в радианы.</div><button class="btn-show no-print" onclick="toggleSol('t1')">Показать решение</button><div class="solution" id="t1"><div class="solution-content"><p><span data-katex="150^\circ \cdot \frac{\pi}{180^\circ} = \frac{5\pi}{6}"></span></p><p class="answer-block">Ответ: <span data-katex="\frac{5\pi}{6}"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">2. Значения тригонометрических функций</div><div class="task-condition">Вычислите: <span data-katex="\sin\frac{\pi}{3} + \cos\frac{\pi}{6}"></span></div><button class="btn-show no-print" onclick="toggleSol('t2')">Показать решение</button><div class="solution" id="t2"><div class="solution-content"><p><span data-katex="\frac{\sqrt{3}}{2} + \frac{\sqrt{3}}{2} = \sqrt{3}"></span></p><p class="answer-block">Ответ: <span data-katex="\sqrt{3}"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">3. Основное тригонометрическое тождество</div><div class="task-condition">Найдите <span data-katex="\cos\alpha"></span>, если <span data-katex="\sin\alpha = 0{,}6"></span>, <span data-katex="0^\circ < \alpha < 90^\circ"></span>.</div><button class="btn-show no-print" onclick="toggleSol('t3')">Показать решение</button><div class="solution" id="t3"><div class="solution-content"><p><span data-katex="\cos\alpha = \sqrt{1 - 0{,}36} = 0{,}8"></span></p><p class="answer-block">Ответ: <span data-katex="0{,}8"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">4. Решение тригонометрического уравнения</div><div class="task-condition">Решите: <span data-katex="\sin x = \frac{1}{2}"></span> (общее решение).</div><button class="btn-show no-print" onclick="toggleSol('t4')">Показать решение</button><div class="solution" id="t4"><div class="solution-content"><p><span data-katex="x = (-1)^{n}\frac{\pi}{6} + \pi n,\ n \in \mathbb{Z}"></span></p><p class="answer-block">Ответ: <span data-katex="x = (-1)^{n}\frac{\pi}{6} + \pi n"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">5. Свойства корней</div><div class="task-condition">Упростите: <span data-katex="\sqrt{72}"></span></div><button class="btn-show no-print" onclick="toggleSol('t5')">Показать решение</button><div class="solution" id="t5"><div class="solution-content"><p><span data-katex="\sqrt{72} = \sqrt{36 \cdot 2} = 6\sqrt{2}"></span></p><p class="answer-block">Ответ: <span data-katex="6\sqrt{2}"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">6. Иррациональное уравнение с посторонним корнем</div><div class="task-condition">Решите: <span data-katex="\sqrt{2x + 3} = x"></span></div><button class="btn-show no-print" onclick="toggleSol('t6')">Показать решение</button><div class="solution" id="t6"><div class="solution-content"><p><span data-katex="2x+3 = x^{2} \ \Rightarrow \ x^{2}-2x-3=0 \ \Rightarrow \ x=3;\ x=-1"></span></p><p>Проверка: x=3 ✓; x=–1 ✗</p><p class="answer-block">Ответ: <span data-katex="x = 3"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">7. Производная</div><div class="task-condition">Найдите <span data-katex="f'(x)"></span> для <span data-katex="f(x) = x^{4} - 3x^{2} + 5"></span>.</div><button class="btn-show no-print" onclick="toggleSol('t7')">Показать решение</button><div class="solution" id="t7"><div class="solution-content"><p><span data-katex="f'(x) = 4x^{3} - 6x"></span></p><p class="answer-block">Ответ: <span data-katex="f'(x) = 4x^{3} - 6x"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">8. Уравнение касательной</div><div class="task-condition">Составьте уравнение касательной к <span data-katex="f(x) = x^{2}"></span> в точке <span data-katex="x_{0} = 3"></span>.</div><button class="btn-show no-print" onclick="toggleSol('t8')">Показать решение</button><div class="solution" id="t8"><div class="solution-content"><p><span data-katex="f(3)=9,\ f'(3)=6"></span>. <span data-katex="y = 9 + 6(x-3) = 6x - 9"></span></p><p class="answer-block">Ответ: <span data-katex="y = 6x - 9"></span></p></div></div></div>
+
+<!-- 9-16: АЛГЕБРА 2 КУРС -->
+<div class="task-card"><div class="task-num">9. Степень с рациональным показателем</div><div class="task-condition">Вычислите: <span data-katex="27^{\frac{2}{3}} - 16^{\frac{1}{4}}"></span></div><button class="btn-show no-print" onclick="toggleSol('t9')">Показать решение</button><div class="solution" id="t9"><div class="solution-content"><p><span data-katex="27^{\frac{2}{3}} = 9"></span>, <span data-katex="16^{\frac{1}{4}} = 2"></span></p><p><span data-katex="9 - 2 = 7"></span></p><p class="answer-block">Ответ: <span data-katex="7"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">10. Показательное уравнение</div><div class="task-condition">Решите: <span data-katex="3^{x+2} + 3^{x} = 90"></span></div><button class="btn-show no-print" onclick="toggleSol('t10')">Показать решение</button><div class="solution" id="t10"><div class="solution-content"><p><span data-katex="9 \cdot 3^{x} + 3^{x} = 90 \ \Rightarrow \ 10 \cdot 3^{x} = 90 \ \Rightarrow \ 3^{x} = 9 \ \Rightarrow \ x = 2"></span></p><p class="answer-block">Ответ: <span data-katex="x = 2"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">11. Свойства логарифмов</div><div class="task-condition">Вычислите: <span data-katex="\log_{2}48 - \log_{2}3"></span></div><button class="btn-show no-print" onclick="toggleSol('t11')">Показать решение</button><div class="solution" id="t11"><div class="solution-content"><p><span data-katex="\log_{2}\frac{48}{3} = \log_{2}16 = 4"></span></p><p class="answer-block">Ответ: <span data-katex="4"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">12. Логарифмическое уравнение</div><div class="task-condition">Решите: <span data-katex="\log_{3}(2x - 1) = 2"></span></div><button class="btn-show no-print" onclick="toggleSol('t12')">Показать решение</button><div class="solution" id="t12"><div class="solution-content"><p>ОДЗ: <span data-katex="x > 0{,}5"></span>. <span data-katex="2x-1 = 9 \ \Rightarrow \ x = 5"></span></p><p class="answer-block">Ответ: <span data-katex="x = 5"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">13. Показательное неравенство</div><div class="task-condition">Решите: <span data-katex="2^{x} > 32"></span></div><button class="btn-show no-print" onclick="toggleSol('t13')">Показать решение</button><div class="solution" id="t13"><div class="solution-content"><p><span data-katex="2^{x} > 2^{5} \ \Rightarrow \ x > 5"></span></p><p class="answer-block">Ответ: <span data-katex="x \in (5; +\infty)"></span></p></div></div></div>
+
+<div class="task-card"><div class="task-num">14. Логарифмическое неравенство</div><div class="task-condition">Решите: <span data-katex="\log_{2}x \ge 3"></span></div><button class="btn-show no-print" onclick="toggleSol('t14')">Показать решение</button><div class="solution" id="t14"><div class="solution-content"><p>ОДЗ: <span data-katex="x > 0"></span>. <span data-katex="x \ge 8"></span></p><p class="answer-block">Ответ: <span data-katex="x \in [8; +\infty)"></span></p></div></div></div>
+
+<!-- 15-20: ГЕОМЕТРИЯ -->
+<div class="task-card"><div class="task-num">15. Объём призмы</div><div class="task-condition">Прямая призма: основание — квадрат со стороной 4 см, высота 10 см. Найдите объём.</div><button class="btn-show no-print" onclick="toggleSol('t15')">Показать решение</button><div class="solution" id="t15"><div class="solution-content"><p><span data-katex="V = 16 \cdot 10 = 160"></span> см³</p><p class="answer-block">Ответ: <span data-katex="160"></span> см³</p></div></div></div>
+
+<div class="task-card"><div class="task-num">16. Объём параллелепипеда</div><div class="task-condition">Измерения: 3 см, 4 см, 5 см. Найдите объём.</div><button class="btn-show no-print" onclick="toggleSol('t16')">Показать решение</button><div class="solution" id="t16"><div class="solution-content"><p><span data-katex="V = 3 \cdot 4 \cdot 5 = 60"></span> см³</p><p class="answer-block">Ответ: <span data-katex="60"></span> см³</p></div></div></div>
+
+<div class="task-card"><div class="task-num">17. Объём пирамиды</div><div class="task-condition">Основание — квадрат 6×6 м, высота 9 м. Найдите объём.</div><button class="btn-show no-print" onclick="toggleSol('t17')">Показать решение</button><div class="solution" id="t17"><div class="solution-content"><p><span data-katex="V = \frac{1}{3} \cdot 36 \cdot 9 = 108"></span> м³</p><p class="answer-block">Ответ: <span data-katex="108"></span> м³</p></div></div></div>
+
+<div class="task-card"><div class="task-num">18. Площадь поверхности шара</div><div class="task-condition">Радиус 5 см. Найдите площадь поверхности.</div><button class="btn-show no-print" onclick="toggleSol('t18')">Показать решение</button><div class="solution" id="t18"><div class="solution-content"><p><span data-katex="S = 4\pi \cdot 25 = 100\pi"></span> см²</p><p class="answer-block">Ответ: <span data-katex="100\pi"></span> см²</p></div></div></div>
+
+<div class="task-card"><div class="task-num">19. Объём цилиндра</div><div class="task-condition">R = 5 см, H = 8 см. Найдите объём.</div><button class="btn-show no-print" onclick="toggleSol('t19')">Показать решение</button><div class="solution" id="t19"><div class="solution-content"><p><span data-katex="V = \pi \cdot 25 \cdot 8 = 200\pi"></span> см³</p><p class="answer-block">Ответ: <span data-katex="200\pi"></span> см³</p></div></div></div>
+
+<div class="task-card"><div class="task-num">20. Объём конуса</div><div class="task-condition">R = 4 см, H = 3 см. Найдите объём.</div><button class="btn-show no-print" onclick="toggleSol('t20')">Показать решение</button><div class="solution" id="t20"><div class="solution-content"><p><span data-katex="V = \frac{1}{3}\pi \cdot 16 \cdot 3 = 16\pi"></span> см³</p><p class="answer-block">Ответ: <span data-katex="16\pi"></span> см³</p></div></div></div>
+
+<!-- 21-24: СТРОИТЕЛЬНЫЕ -->
+<div class="task-card"><div class="task-num">21. 🏗️ Площадь квадратного участка</div><div class="task-condition">Площадь 144 м². Найдите сторону.</div><button class="btn-show no-print" onclick="toggleSol('t21')">Показать решение</button><div class="solution" id="t21"><div class="solution-content"><p><span data-katex="a = \sqrt{144} = 12"></span> м</p><p class="answer-block">Ответ: <span data-katex="12"></span> м</p></div></div></div>
+
+<div class="task-card"><div class="task-num">22. 🏗️ Объём бетона для фундамента</div><div class="task-condition">Ленточный фундамент: 30×0,6×1,2 м. Найдите объём.</div><button class="btn-show no-print" onclick="toggleSol('t22')">Показать решение</button><div class="solution" id="t22"><div class="solution-content"><p><span data-katex="V = 30 \cdot 0{,}6 \cdot 1{,}2 = 21{,}6"></span> м³</p><p class="answer-block">Ответ: <span data-katex="21{,}6"></span> м³</p></div></div></div>
+
+<div class="task-card"><div class="task-num">23. 🏗️ Длина троса (теорема Пифагора)</div><div class="task-condition">Мачта 12 м, трос на расстоянии 5 м от основания. Найдите длину троса.</div><button class="btn-show no-print" onclick="toggleSol('t23')">Показать решение</button><div class="solution" id="t23"><div class="solution-content"><p><span data-katex="l = \sqrt{12^{2} + 5^{2}} = \sqrt{169} = 13"></span> м</p><p class="answer-block">Ответ: <span data-katex="13"></span> м</p></div></div></div>
+
+<div class="task-card"><div class="task-num">24. 🏗️ Оптимизация площадки</div><div class="task-condition">Площадка у стены: <span data-katex="S(x) = 60x - 2x^{2}"></span>. Найдите максимальную площадь.</div><button class="btn-show no-print" onclick="toggleSol('t24')">Показать решение</button><div class="solution" id="t24"><div class="solution-content"><p><span data-katex="S'(x) = 60 - 4x = 0 \ \Rightarrow \ x = 15"></span></p><p><span data-katex="S(15) = 450"></span> м²</p><p class="answer-block">Ответ: <span data-katex="450"></span> м²</p></div></div></div>
+
+<div class="nav-bottom">
+    <a href="index.html" class="btn-sm-gold">← К итоговой аттестации</a>
+    <span style="color: var(--text-muted); font-size: 13px;">24 типа задач</span>
+</div>
+
+</div>
+  
+<script>
+    document.querySelectorAll('[data-katex]').forEach(el => { katex.render(el.dataset.katex, el, { throwOnError: false }); });
+    function toggleSol(id) { document.getElementById(id).classList.toggle('open'); }
+    function downloadHTML() {
+        const html = document.documentElement.outerHTML;
+        const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+        a.download = 'zadachi-ekzamen.html'; a.click(); URL.revokeObjectURL(a.href);
+    }
+</script>
+</body>
+</html>

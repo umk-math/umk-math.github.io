@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СР №7 — Логарифмы | УМК</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .btn-group { display: flex; gap: 8px; }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 4px; height: 32px; display: inline-flex; align-items: center; }
+        .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
+        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.8rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 0.95rem; margin-bottom: 8px; }
+        .page-info { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
+        .variant-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 25px; margin-bottom: 30px; page-break-inside: avoid; }
+        .variant-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.2rem; margin-bottom: 20px; }
+        .task { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .task:last-child { border-bottom: none; margin-bottom: 0; }
+        .task-num { color: var(--gold); font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+        .task-condition { color: #fff; font-size: 14px; margin-bottom: 10px; }
+        .btn-show { border: 1px solid rgba(212,160,23,0.4); color: rgba(212,160,23,0.7); background: transparent; padding: 5px 14px; font-size: 11px; cursor: pointer; transition: all 0.3s; border-radius: 6px; }
+        .btn-show:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,160,23,0.08); }
+        .solution { display: none; margin-top: 10px; }
+        .solution.open { display: block; }
+        .solution-content { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.15); padding: 14px 18px; border-radius: 8px; color: var(--text); font-size: 13px; }
+        .answer-block { color: var(--gold); font-weight: 600; margin-top: 8px; }
+        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+        @media (max-width: 600px) { body { padding: 10px; } .variant-card { padding: 18px; } .page-title { font-size: 1.4rem; } }
+        @media print {
+            body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+            .top-bar, .nav-bottom, .btn-show { display: none !important; }
+            .variant-card { background: #fff; border: 1px solid #ccc; border-left: 4px solid #000; margin-bottom: 15px; padding: 15px; box-shadow: none; page-break-before: always; }
+            .variant-card:first-of-type { page-break-before: avoid; }
+            .variant-title, .page-title, .page-subtitle, .page-info { color: #000; }
+            .task-condition { color: #000; }
+            .task-num { color: #000; font-weight: 700; }
+            .task { border-bottom-color: #ddd; }
+            .solution { display: block !important; }
+            .solution-content { background: #f9f9f9; border-color: #ddd; color: #333; }
+            .answer-block { color: #000; font-weight: 700; }
+            .page-title { border-bottom-color: #000; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="top-bar">
+            <div class="breadcrumb"><a href="index.html">← Текущий контроль</a> / Логарифмы</div>
+            <div class="btn-group">
+                <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
+                <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
+            </div>
+        </div>
+
+        <h1 class="page-title">📊 Самостоятельная работа №7</h1>
+        <p class="page-subtitle">Логарифмы · Свойства · Уравнения · Неравенства</p>
+        <p class="page-info">5 заданий · 2 варианта · 10–15 минут · Максимум 30 баллов</p>
+
+        <!-- Вариант 1 -->
+        <div class="variant-card">
+            <div class="variant-title">Вариант 1</div>
+
+            <div class="task">
+                <div class="task-num">Задание 1 (2 балла) · Узнавание</div>
+                <div class="task-condition">Вычислите: <span data-katex="\log_{2} 8"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol1')">Показать решение</button>
+                <div class="solution" id="sol1">
+                    <div class="solution-content">
+                        <p><span data-katex="\log_{2} 8 = 3"></span>, так как <span data-katex="2^{3} = 8"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="3"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 2 (4 балла) · Различение</div>
+                <div class="task-condition">Вычислите: <span data-katex="\log_{3} 27 + \log_{2} 16"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol2')">Показать решение</button>
+                <div class="solution" id="sol2">
+                    <div class="solution-content">
+                        <p><span data-katex="\log_{3} 27 = 3"></span>, <span data-katex="\log_{2} 16 = 4"></span></p>
+                        <p><span data-katex="3 + 4 = 7"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="7"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 3 (6 баллов) · Воспроизведение</div>
+                <div class="task-condition">Решите уравнение: <span data-katex="\log_{5} (x + 1) = 2"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol3')">Показать решение</button>
+                <div class="solution" id="sol3">
+                    <div class="solution-content">
+                        <p>ОДЗ: <span data-katex="x + 1 > 0 \ \Rightarrow \ x > -1"></span></p>
+                        <p><span data-katex="x + 1 = 5^{2} = 25 \ \Rightarrow \ x = 24"></span></p>
+                        <p>Проверка: <span data-katex="24 > -1"></span> — подходит.</p>
+                        <p class="answer-block">Ответ: <span data-katex="x = 24"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 4 (8 баллов) · Применение</div>
+                <div class="task-condition">Решите неравенство: <span data-katex="\log_{2} x \ge 3"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol4')">Показать решение</button>
+                <div class="solution" id="sol4">
+                    <div class="solution-content">
+                        <p>ОДЗ: <span data-katex="x > 0"></span></p>
+                        <p><span data-katex="\log_{2} x \ge \log_{2} 8 \ \Rightarrow \ x \ge 8"></span> (основание 2 > 1, знак сохраняется)</p>
+                        <p class="answer-block">Ответ: <span data-katex="x \in [8; +\infty)"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 5 (10 баллов) · Перенос</div>
+                <div class="task-condition">🏗️ Уровень шума измеряется по формуле <span data-katex="L = 10 \cdot \lg\left(\frac{I}{I_{0}}\right)"></span>. Во сколько раз выросла интенсивность звука, если уровень увеличился на 20 дБ?</div>
+                <button class="btn-show no-print" onclick="toggleSol('sol5')">Показать решение</button>
+                <div class="solution" id="sol5">
+                    <div class="solution-content">
+                        <p><span data-katex="\Delta L = 10 \cdot \lg\left(\frac{I_{2}}{I_{1}}\right) = 20"></span></p>
+                        <p><span data-katex="\lg\left(\frac{I_{2}}{I_{1}}\right) = 2 \ \Rightarrow \ \frac{I_{2}}{I_{1}} = 10^{2} = 100"></span></p>
+                        <p class="answer-block">Ответ: в <span data-katex="100"></span> раз</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вариант 2 -->
+        <div class="variant-card">
+            <div class="variant-title">Вариант 2</div>
+
+            <div class="task">
+                <div class="task-num">Задание 1 (2 балла) · Узнавание</div>
+                <div class="task-condition">Вычислите: <span data-katex="\log_{5} 25"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol6')">Показать решение</button>
+                <div class="solution" id="sol6">
+                    <div class="solution-content">
+                        <p><span data-katex="\log_{5} 25 = 2"></span>, так как <span data-katex="5^{2} = 25"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="2"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 2 (4 балла) · Различение</div>
+                <div class="task-condition">Вычислите: <span data-katex="\log_{2} 32 - \log_{3} 9"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol7')">Показать решение</button>
+                <div class="solution" id="sol7">
+                    <div class="solution-content">
+                        <p><span data-katex="\log_{2} 32 = 5"></span>, <span data-katex="\log_{3} 9 = 2"></span></p>
+                        <p><span data-katex="5 - 2 = 3"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="3"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 3 (6 баллов) · Воспроизведение</div>
+                <div class="task-condition">Решите уравнение: <span data-katex="\log_{3} (2x - 1) = 2"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol8')">Показать решение</button>
+                <div class="solution" id="sol8">
+                    <div class="solution-content">
+                        <p>ОДЗ: <span data-katex="2x - 1 > 0 \ \Rightarrow \ x > 0{,}5"></span></p>
+                        <p><span data-katex="2x - 1 = 3^{2} = 9 \ \Rightarrow \ 2x = 10 \ \Rightarrow \ x = 5"></span></p>
+                        <p>Проверка: <span data-katex="5 > 0{,}5"></span> — подходит.</p>
+                        <p class="answer-block">Ответ: <span data-katex="x = 5"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 4 (8 баллов) · Применение</div>
+                <div class="task-condition">Решите неравенство: <span data-katex="\log_{0{,}5} x < 2"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol9')">Показать решение</button>
+                <div class="solution" id="sol9">
+                    <div class="solution-content">
+                        <p>ОДЗ: <span data-katex="x > 0"></span></p>
+                        <p><span data-katex="\log_{0{,}5} x < \log_{0{,}5} 0{,}25 \ \Rightarrow \ x > 0{,}25"></span> (основание < 1, знак меняется)</p>
+                        <p class="answer-block">Ответ: <span data-katex="x \in (0{,}25; +\infty)"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 5 (10 баллов) · Перенос</div>
+                <div class="task-condition">🏗️ Время набора прочности бетона: <span data-katex="t = 5 \cdot \log_{2}\left(\frac{100}{100 - P}\right)"></span>. Через сколько суток прочность достигнет 75%?</div>
+                <button class="btn-show no-print" onclick="toggleSol('sol10')">Показать решение</button>
+                <div class="solution" id="sol10">
+                    <div class="solution-content">
+                        <p><span data-katex="t = 5 \cdot \log_{2}\left(\frac{100}{100 - 75}\right) = 5 \cdot \log_{2}\left(\frac{100}{25}\right)"></span></p>
+                        <p><span data-katex="t = 5 \cdot \log_{2} 4 = 5 \cdot 2 = 10"></span> суток</p>
+                        <p class="answer-block">Ответ: <span data-katex="10"></span> суток</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-bottom">
+            <a href="index.html" class="btn-sm-gold">← К списку</a>
+            <span style="color: var(--text-muted); font-size: 13px;">СР №7 · Логарифмы</span>
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => { katex.render(el.dataset.katex, el, { throwOnError: false }); });
+        function toggleSol(id) { document.getElementById(id).classList.toggle('open'); }
+        function downloadHTML() {
+            const html = document.documentElement.outerHTML;
+            const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+            a.download = 'sam-07-logarifmy.html'; a.click(); URL.revokeObjectURL(a.href);
+        }
+    </script>
+</body>
+</html>

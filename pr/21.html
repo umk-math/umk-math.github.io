@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа 21 — Пирамида. Площадь поверхности и объём</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>В правильной треугольной пирамиде сторона основания <span class="formula" data-katex="6"></span> см, высота <span class="formula" data-katex="10"></span> см. Найдите объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь основания: <span data-katex="S_{\text{осн}} = \frac{\sqrt{3}}{4} \cdot a^2 = \frac{\sqrt{3}}{4} \cdot 36 = 9\sqrt{3}"></span> см².</p>
+            <p><strong>Шаг 2.</strong> Объём пирамиды: <span data-katex="V = \frac{1}{3} S_{\text{осн}} \cdot h"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="V = \frac{1}{3} \cdot 9\sqrt{3} \cdot 10 = 30\sqrt{3}"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="30\sqrt{3}"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Объём пирамиды <span class="formula" data-katex="48"></span> см³, площадь основания <span class="formula" data-katex="12"></span> см². Найдите высоту.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p><strong>Шаг 1.</strong> Из формулы <span data-katex="V = \frac{1}{3} S_{\text{осн}} \cdot h"></span> выражаем высоту.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="h = \frac{3V}{S_{\text{осн}}} = \frac{3 \cdot 48}{12} = \frac{144}{12} = 12"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="12"></span> см</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>В правильной четырёхугольной пирамиде сторона основания <span class="formula" data-katex="4"></span> см, апофема <span class="formula" data-katex="5"></span> см. Найдите площадь боковой поверхности.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь боковой поверхности правильной пирамиды: <span data-katex="S_{\text{бок}} = \frac{1}{2} P_{\text{осн}} \cdot l"></span>, где <span data-katex="l"></span> — апофема.</p>
+            <p><strong>Шаг 2.</strong> Периметр основания: <span data-katex="P = 4 \cdot 4 = 16"></span> см.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="S_{\text{бок}} = \frac{1}{2} \cdot 16 \cdot 5 = 40"></span> см².</p>
+            <p class="answer">Ответ: <span data-katex="40"></span> см²</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Основание пирамиды — квадрат со стороной <span class="formula" data-katex="6"></span> см. Высота пирамиды <span class="formula" data-katex="9"></span> см. Найдите объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь основания: <span data-katex="S_{\text{осн}} = 6^2 = 36"></span> см².</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="V = \frac{1}{3} \cdot 36 \cdot 9 = 108"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="108"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>В правильной треугольной пирамиде сторона основания <span class="formula" data-katex="4"></span> см. Боковое ребро наклонено к плоскости основания под углом <span class="formula" data-katex="60^\circ"></span>. Найдите объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> Радиус описанной окружности основания: <span data-katex="R = \frac{a}{\sqrt{3}} = \frac{4}{\sqrt{3}}"></span> см.</p>
+            <p><strong>Шаг 2.</strong> В прямоугольном треугольнике (высота, боковое ребро, радиус): <span data-katex="\operatorname{tg} 60^\circ = \frac{h}{R} \ \Rightarrow \ \sqrt{3} = \frac{h}{\frac{4}{\sqrt{3}}}"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="h = \sqrt{3} \cdot \frac{4}{\sqrt{3}} = 4"></span> см.</p>
+            <p><strong>Шаг 4.</strong> <span data-katex="S_{\text{осн}} = \frac{\sqrt{3}}{4} \cdot 16 = 4\sqrt{3}"></span> см².</p>
+            <p><strong>Шаг 5.</strong> <span data-katex="V = \frac{1}{3} \cdot 4\sqrt{3} \cdot 4 = \frac{16\sqrt{3}}{3}"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="\frac{16\sqrt{3}}{3}"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>В правильной четырёхугольной пирамиде высота <span class="formula" data-katex="8"></span> см, сторона основания <span class="formula" data-katex="12"></span> см. Найдите площадь полной поверхности.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><strong>Шаг 1.</strong> Апофема: <span data-katex="l = \sqrt{h^2 + \left(\frac{a}{2}\right)^2} = \sqrt{64 + 36} = \sqrt{100} = 10"></span> см.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="S_{\text{осн}} = 12^2 = 144"></span> см².</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="S_{\text{бок}} = \frac{1}{2} \cdot (4 \cdot 12) \cdot 10 = 240"></span> см².</p>
+            <p><strong>Шаг 4.</strong> <span data-katex="S_{\text{полн}} = 144 + 240 = 384"></span> см².</p>
+            <p class="answer">Ответ: <span data-katex="384"></span> см²</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Основание пирамиды — ромб с диагоналями <span class="formula" data-katex="6"></span> см и <span class="formula" data-katex="8"></span> см. Высота пирамиды <span class="formula" data-katex="5"></span> см. Найдите объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь ромба: <span data-katex="S_{\text{осн}} = \frac{d_1 \cdot d_2}{2} = \frac{6 \cdot 8}{2} = 24"></span> см².</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="V = \frac{1}{3} \cdot 24 \cdot 5 = 40"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="40"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла) 🏗️</h5>
+        <p>Крыша башни имеет форму правильной четырёхугольной пирамиды. Сторона основания <span class="formula" data-katex="8"></span> м, высота <span class="formula" data-katex="3"></span> м. Сколько листов кровельного материала потребуется, если один лист покрывает <span class="formula" data-katex="2"></span> м²? (Найдите площадь боковой поверхности с запасом <span class="formula" data-katex="10\%"></span>).</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1.</strong> Апофема: <span data-katex="l = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = 5"></span> м.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="S_{\text{бок}} = \frac{1}{2} \cdot (4 \cdot 8) \cdot 5 = 80"></span> м².</p>
+            <p><strong>Шаг 3.</strong> С запасом 10%: <span data-katex="S = 80 \cdot 1{,}1 = 88"></span> м².</p>
+            <p><strong>Шаг 4.</strong> Количество листов: <span data-katex="\frac{88}{2} = 44"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="44"></span> листа</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла) 🏗️</h5>
+        <p>Пирамида имеет форму правильной четырёхугольной пирамиды со стороной основания <span class="formula" data-katex="300"></span> м и высотой <span class="formula" data-katex="150"></span> м. Найдите её объём в м³.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь основания: <span data-katex="S_{\text{осн}} = 300^2 = 90000"></span> м².</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="V = \frac{1}{3} \cdot 90000 \cdot 150 = 90000 \cdot 50 = 4500000"></span> м³.</p>
+            <p class="answer">Ответ: <span data-katex="4500000"></span> м³ (<span data-katex="4{,}5"></span> млн м³)</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Памятник состоит из куба со стороной <span class="formula" data-katex="2"></span> м и правильной четырёхугольной пирамиды, поставленной сверху. Сторона основания пирамиды <span class="formula" data-katex="2"></span> м, высота <span class="formula" data-katex="1{,}5"></span> м. Найдите общий объём памятника.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём куба: <span data-katex="V_{\text{куб}} = 2^3 = 8"></span> м³.</p>
+            <p><strong>Шаг 2.</strong> Площадь основания пирамиды: <span data-katex="S_{\text{осн}} = 2^2 = 4"></span> м².</p>
+            <p><strong>Шаг 3.</strong> Объём пирамиды: <span data-katex="V_{\text{пир}} = \frac{1}{3} \cdot 4 \cdot 1{,}5 = 2"></span> м³.</p>
+            <p><strong>Шаг 4.</strong> Общий объём: <span data-katex="V = 8 + 2 = 10"></span> м³.</p>
+            <p class="answer">Ответ: <span data-katex="10"></span> м³</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

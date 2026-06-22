@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\sqrt{49}"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p><span data-katex="\sqrt{49} = 7"></span>, так как <span data-katex="7^2 = 49"></span>.</p>
+            <p class="answer">Ответ: 7.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\sqrt[3]{27}"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p><span data-katex="\sqrt[3]{27} = 3"></span>, так как <span data-katex="3^3 = 27"></span>.</p>
+            <p class="answer">Ответ: 3.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\sqrt{36 \cdot 25}"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p>По свойству корня: <span data-katex="\sqrt{36 \cdot 25} = \sqrt{36} \cdot \sqrt{25} = 6 \cdot 5 = 30"></span>.</p>
+            <p class="answer">Ответ: 30.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\sqrt{\dfrac{81}{9}}"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p><span data-katex="\sqrt{\dfrac{81}{9}} = \sqrt{9} = 3"></span>. Или: <span data-katex="\dfrac{\sqrt{81}}{\sqrt{9}} = \dfrac{9}{3} = 3"></span>.</p>
+            <p class="answer">Ответ: 3.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Вынесите множитель из-под знака корня: <span class="formula" data-katex="\sqrt{50}"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><span data-katex="\sqrt{50} = \sqrt{25 \cdot 2} = \sqrt{25} \cdot \sqrt{2} = 5\sqrt{2}"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="5\sqrt{2}"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Упростите: <span class="formula" data-katex="\sqrt{27} - \sqrt{12}"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><span data-katex="\sqrt{27} = \sqrt{9 \cdot 3} = 3\sqrt{3}"></span>.</p>
+            <p><span data-katex="\sqrt{12} = \sqrt{4 \cdot 3} = 2\sqrt{3}"></span>.</p>
+            <p><span data-katex="3\sqrt{3} - 2\sqrt{3} = \sqrt{3}"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="\sqrt{3}"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Вычислите: <span class="formula" data-katex="\sqrt[3]{-8} + \sqrt[3]{64}"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><span data-katex="\sqrt[3]{-8} = -2"></span> (так как <span data-katex="(-2)^3 = -8"></span>).</p>
+            <p><span data-katex="\sqrt[3]{64} = 4"></span> (так как <span data-katex="4^3 = 64"></span>).</p>
+            <p>Сумма: –2 + 4 = 2.</p>
+            <p class="answer">Ответ: 2.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла)</h5>
+        <p>Упростите выражение: <span class="formula" data-katex="\sqrt{x^4}"></span>, если <span data-katex="x < 0"></span>.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><span data-katex="\sqrt{x^4} = |x^2| = x^2"></span> (квадрат всегда неотрицателен).</p>
+            <p>Даже при <span data-katex="x < 0"></span>: <span data-katex="x^2 > 0"></span>, поэтому ответ тот же.</p>
+            <p class="answer">Ответ: <span data-katex="x^2"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла)</h5>
+        <p>Упростите: <span class="formula" data-katex="(\sqrt{5} + \sqrt{3})(\sqrt{5} - \sqrt{3})"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p>Формула разности квадратов: <span data-katex="(a + b)(a - b) = a^2 - b^2"></span>.</p>
+            <p><span data-katex="(\sqrt{5})^2 - (\sqrt{3})^2 = 5 - 3 = 2"></span>.</p>
+            <p class="answer">Ответ: 2.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Площадь квадратного участка земли равна 144 м². Найдите длину стороны участка.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p>Площадь квадрата: <span data-katex="S = a^2"></span>.</p>
+            <p><span data-katex="144 = a^2 \ \Rightarrow \ a = \sqrt{144} = 12"></span> м.</p>
+            <p class="answer">Ответ: сторона участка = 12 м.</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КР №2 — Производная. Вариант 1 | УМК</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .btn-group { display: flex; gap: 8px; align-items: center; }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 4px; height: 32px; display: inline-flex; align-items: center; }
+        .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
+        .variant-active { color: var(--gold); font-weight: 600; font-size: 13px; }
+        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.8rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 0.95rem; margin-bottom: 8px; }
+        .page-info { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
+        .variant-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 25px; margin-bottom: 30px; page-break-inside: avoid; }
+        .variant-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.2rem; margin-bottom: 20px; }
+        .task { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .task:last-child { border-bottom: none; margin-bottom: 0; }
+        .task-num { color: var(--gold); font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+        .task-condition { color: #fff; font-size: 14px; margin-bottom: 10px; }
+        .btn-show { border: 1px solid rgba(212,160,23,0.4); color: rgba(212,160,23,0.7); background: transparent; padding: 5px 14px; font-size: 11px; cursor: pointer; transition: all 0.3s; border-radius: 6px; }
+        .btn-show:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,160,23,0.08); }
+        .solution { display: none; margin-top: 10px; }
+        .solution.open { display: block; }
+        .solution-content { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.15); padding: 14px 18px; border-radius: 8px; color: var(--text); font-size: 13px; }
+        .answer-block { color: var(--gold); font-weight: 600; margin-top: 8px; }
+        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+        @media (max-width: 600px) { body { padding: 10px; } .variant-card { padding: 18px; } .page-title { font-size: 1.4rem; } }
+        @media print {
+            body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+            .top-bar, .nav-bottom, .btn-show { display: none !important; }
+            .variant-card { background: #fff; border: 1px solid #ccc; border-left: 4px solid #000; margin-bottom: 15px; padding: 15px; box-shadow: none; page-break-before: always; }
+            .variant-title, .page-title, .page-subtitle, .page-info { color: #000; }
+            .task-condition { color: #000; }
+            .task-num { color: #000; font-weight: 700; }
+            .task { border-bottom-color: #ddd; }
+            .solution { display: block !important; }
+            .solution-content { background: #f9f9f9; border-color: #ddd; color: #333; }
+            .answer-block { color: #000; font-weight: 700; }
+            .page-title { border-bottom-color: #000; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="top-bar">
+    <div class="breadcrumb"><a href="../index.html">← Тематические контрольные</a> / КР №2</div>
+    <div class="btn-group">
+        <span class="variant-active">Вариант 1</span>
+        <a href="variant-2.html" class="btn-sm-gold">Вариант 2 →</a>
+        <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
+        <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
+    </div>
+</div>
+
+<h1 class="page-title">∫ Контрольная работа №2</h1>
+<p class="page-subtitle">Производная · Вариант 1</p>
+<p class="page-info">5 заданий · 45 минут · Максимум 30 баллов</p>
+
+<div class="variant-card">
+<div class="variant-title">Вариант 1</div>
+
+<div class="task">
+    <div class="task-num">Задание 1 (2 балла) · Узнавание</div>
+    <div class="task-condition">Найдите производную: <span data-katex="f(x) = x^{5}"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('s1')">Показать решение</button>
+    <div class="solution" id="s1"><div class="solution-content"><p class="answer-block">Ответ: <span data-katex="f'(x) = 5x^{4}"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-num">Задание 2 (4 балла) · Различение</div>
+    <div class="task-condition">Найдите производную: <span data-katex="f(x) = 4x^{3} - 2x^{2} + 7x - 1"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('s2')">Показать решение</button>
+    <div class="solution" id="s2"><div class="solution-content"><p><span data-katex="f'(x) = 12x^{2} - 4x + 7"></span></p><p class="answer-block">Ответ: <span data-katex="f'(x) = 12x^{2} - 4x + 7"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-num">Задание 3 (6 баллов) · Воспроизведение</div>
+    <div class="task-condition">Составьте уравнение касательной к графику <span data-katex="f(x) = x^{2} + 2x"></span> в точке <span data-katex="x_{0} = 1"></span>.</div>
+    <button class="btn-show no-print" onclick="toggleSol('s3')">Показать решение</button>
+    <div class="solution" id="s3"><div class="solution-content">
+        <p><span data-katex="f(1) = 1 + 2 = 3"></span></p>
+        <p><span data-katex="f'(x) = 2x + 2"></span>, <span data-katex="f'(1) = 4"></span></p>
+        <p><span data-katex="y = 3 + 4(x - 1) = 4x - 1"></span></p>
+        <p class="answer-block">Ответ: <span data-katex="y = 4x - 1"></span></p>
+    </div></div>
+</div>
+
+<div class="task">
+    <div class="task-num">Задание 4 (8 баллов) · Применение</div>
+    <div class="task-condition">Найдите точки экстремума: <span data-katex="f(x) = x^{3} - 6x^{2} + 9x + 1"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('s4')">Показать решение</button>
+    <div class="solution" id="s4"><div class="solution-content">
+        <p><span data-katex="f'(x) = 3x^{2} - 12x + 9 = 3(x-1)(x-3)"></span></p>
+        <p>Критические точки: <span data-katex="x = 1,\ x = 3"></span></p>
+        <p>Знаки: <span data-katex="x < 1"></span>: ↗; <span data-katex="1 < x < 3"></span>: ↘; <span data-katex="x > 3"></span>: ↗</p>
+        <p>Максимум: <span data-katex="x = 1"></span>, <span data-katex="f(1) = 5"></span>. Минимум: <span data-katex="x = 3"></span>, <span data-katex="f(3) = 1"></span></p>
+        <p class="answer-block">Ответ: <span data-katex="x_{\max} = 1"></span>, <span data-katex="x_{\min} = 3"></span></p>
+    </div></div>
+</div>
+
+<div class="task">
+    <div class="task-num">Задание 5 (10 баллов) · Перенос</div>
+    <div class="task-condition">🏗️ Площадь площадки у стены: <span data-katex="S(x) = 80x - 2x^{2}"></span>. Найдите x, при котором площадь максимальна, и саму максимальную площадь.</div>
+    <button class="btn-show no-print" onclick="toggleSol('s5')">Показать решение</button>
+    <div class="solution" id="s5"><div class="solution-content">
+        <p><span data-katex="S'(x) = 80 - 4x = 0 \ \Rightarrow \ x = 20"></span></p>
+        <p><span data-katex="S(20) = 80 \cdot 20 - 2 \cdot 400 = 1600 - 800 = 800"></span> м²</p>
+        <p class="answer-block">Ответ: <span data-katex="x = 20"></span> м, <span data-katex="S_{\max} = 800"></span> м²</p>
+    </div></div>
+</div>
+</div>
+
+<div class="nav-bottom">
+    <a href="../index.html" class="btn-sm-gold">← К списку КР</a>
+    <span style="color: var(--text-muted); font-size: 13px;">КР №2 · Вариант 1 · 30 баллов</span>
+</div>
+
+</div>
+
+<script>
+    document.querySelectorAll('[data-katex]').forEach(el => { katex.render(el.dataset.katex, el, { throwOnError: false }); });
+    function toggleSol(id) { document.getElementById(id).classList.toggle('open'); }
+    function downloadHTML() {
+        const html = document.documentElement.outerHTML;
+        const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+        a.download = 'kr-02-proizvodnaya-v1.html'; a.click(); URL.revokeObjectURL(a.href);
+    }
+</script>
+</body>
+</html>

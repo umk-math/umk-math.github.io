@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Найдите значение производной в точке <span data-katex="x_0"></span>: <span class="formula" data-katex="f(x) = x^2,\ x_0 = 3"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p><span data-katex="f'(x) = 2x"></span>. <span data-katex="f'(3) = 2 \cdot 3 = 6"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="f'(3) = 6"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Найдите <span data-katex="f(x_0)"></span>: <span class="formula" data-katex="f(x) = x^2,\ x_0 = 3"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p><span data-katex="f(3) = 3^2 = 9"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="f(3) = 9"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Запишите общий вид уравнения касательной к графику функции <span data-katex="f(x)"></span> в точке <span data-katex="x_0"></span>.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p>Уравнение касательной: <span data-katex="y = f(x_0) + f'(x_0)(x - x_0)"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="y = f(x_0) + f'(x_0)(x - x_0)"></span>.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Составьте уравнение касательной: <span class="formula" data-katex="f(x) = x^2,\ x_0 = 3"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="f(x_0) = f(3) = 9"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="f'(x) = 2x,\ f'(3) = 6"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="y = 9 + 6(x - 3) = 9 + 6x - 18 = 6x - 9"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="y = 6x - 9"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Составьте уравнение касательной: <span class="formula" data-katex="f(x) = x^2 - 4x,\ x_0 = 1"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="f(1) = 1^2 - 4 \cdot 1 = -3"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="f'(x) = 2x - 4,\ f'(1) = 2 \cdot 1 - 4 = -2"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="y = -3 + (-2)(x - 1) = -3 - 2x + 2 = -2x - 1"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="y = -2x - 1"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Составьте уравнение касательной: <span class="formula" data-katex="f(x) = x^3,\ x_0 = -1"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="f(-1) = (-1)^3 = -1"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="f'(x) = 3x^2,\ f'(-1) = 3 \cdot (-1)^2 = 3"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="y = -1 + 3(x - (-1)) = -1 + 3(x + 1) = -1 + 3x + 3 = 3x + 2"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="y = 3x + 2"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Составьте уравнение касательной: <span class="formula" data-katex="f(x) = 2x^2 - 3x + 1,\ x_0 = 2"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="f(2) = 2 \cdot 4 - 3 \cdot 2 + 1 = 8 - 6 + 1 = 3"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="f'(x) = 4x - 3,\ f'(2) = 4 \cdot 2 - 3 = 5"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="y = 3 + 5(x - 2) = 3 + 5x - 10 = 5x - 7"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="y = 5x - 7"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла)</h5>
+        <p>Найдите точку на графике <span data-katex="f(x) = x^2"></span>, в которой касательная параллельна прямой <span data-katex="y = 4x - 1"></span>.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Условие параллельности:</strong> угловые коэффициенты равны. У прямой <span data-katex="y = 4x - 1"></span> коэффициент <span data-katex="k = 4"></span>.</p>
+            <p>У касательной <span data-katex="k = f'(x_0)"></span>. Значит, <span data-katex="f'(x_0) = 4"></span>.</p>
+            <p><span data-katex="f'(x) = 2x.\ 2x_0 = 4 \ \Rightarrow \ x_0 = 2"></span>.</p>
+            <p><span data-katex="f(2) = 4"></span>. Точка касания: (2; 4).</p>
+            <p class="answer">Ответ: точка <span data-katex="(2;\ 4)"></span>.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла)</h5>
+        <p>Составьте уравнение касательной к графику <span data-katex="f(x) = x^2 + 2x"></span> в точке с абсциссой <span data-katex="x_0 = -3"></span>.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="f(-3) = (-3)^2 + 2 \cdot (-3) = 9 - 6 = 3"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="f'(x) = 2x + 2,\ f'(-3) = 2 \cdot (-3) + 2 = -6 + 2 = -4"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="y = 3 + (-4)(x - (-3)) = 3 - 4(x + 3) = 3 - 4x - 12 = -4x - 9"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="y = -4x - 9"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Уклон дорожного покрытия описывается функцией <span data-katex="f(x) = -0{,}5x^2 + 3x"></span>, где x — расстояние от начала участка (м). Найдите уравнение касательной в точке <span data-katex="x_0 = 2"></span> (это уклон в данной точке).</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="f(2) = -0{,}5 \cdot 4 + 3 \cdot 2 = -2 + 6 = 4"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="f'(x) = -x + 3,\ f'(2) = -2 + 3 = 1"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="y = 4 + 1 \cdot (x - 2) = 4 + x - 2 = x + 2"></span>.</p>
+            <p>Это означает, что в точке x = 2 м уклон составляет 1 (подъём 1 м на 1 м длины).</p>
+            <p class="answer">Ответ: <span data-katex="y = x + 2"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СР №4 — Производная | УМК</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .btn-group { display: flex; gap: 8px; }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 4px; height: 32px; display: inline-flex; align-items: center; }
+        .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
+        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.8rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 0.95rem; margin-bottom: 8px; }
+        .page-info { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
+        .variant-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 25px; margin-bottom: 30px; page-break-inside: avoid; }
+        .variant-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.2rem; margin-bottom: 20px; }
+        .task { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .task:last-child { border-bottom: none; margin-bottom: 0; }
+        .task-num { color: var(--gold); font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+        .task-condition { color: #fff; font-size: 14px; margin-bottom: 10px; }
+        .btn-show { border: 1px solid rgba(212,160,23,0.4); color: rgba(212,160,23,0.7); background: transparent; padding: 5px 14px; font-size: 11px; cursor: pointer; transition: all 0.3s; border-radius: 6px; }
+        .btn-show:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,160,23,0.08); }
+        .solution { display: none; margin-top: 10px; }
+        .solution.open { display: block; }
+        .solution-content { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.15); padding: 14px 18px; border-radius: 8px; color: var(--text); font-size: 13px; }
+        .answer-block { color: var(--gold); font-weight: 600; margin-top: 8px; }
+        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+        @media (max-width: 600px) { body { padding: 10px; } .variant-card { padding: 18px; } .page-title { font-size: 1.4rem; } }
+        @media print {
+            body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+            .top-bar, .nav-bottom, .btn-show { display: none !important; }
+            .variant-card { background: #fff; border: 1px solid #ccc; border-left: 4px solid #000; margin-bottom: 15px; padding: 15px; box-shadow: none; page-break-before: always; }
+            .variant-card:first-of-type { page-break-before: avoid; }
+            .variant-title, .page-title, .page-subtitle, .page-info { color: #000; }
+            .task-condition { color: #000; }
+            .task-num { color: #000; font-weight: 700; }
+            .task { border-bottom-color: #ddd; }
+            .solution { display: block !important; }
+            .solution-content { background: #f9f9f9; border-color: #ddd; color: #333; }
+            .answer-block { color: #000; font-weight: 700; }
+            .page-title { border-bottom-color: #000; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="top-bar">
+            <div class="breadcrumb"><a href="index.html">← Текущий контроль</a> / Производная</div>
+            <div class="btn-group">
+                <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
+                <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
+            </div>
+        </div>
+
+        <h1 class="page-title">∫ Самостоятельная работа №4</h1>
+        <p class="page-subtitle">Производная · Вычисление · Касательная · Экстремумы</p>
+        <p class="page-info">5 заданий · 2 варианта · 10–15 минут · Максимум 30 баллов</p>
+
+        <!-- Вариант 1 -->
+        <div class="variant-card">
+            <div class="variant-title">Вариант 1</div>
+
+            <div class="task">
+                <div class="task-num">Задание 1 (2 балла) · Узнавание</div>
+                <div class="task-condition">Найдите производную функции: <span data-katex="f(x) = x^{4}"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol1')">Показать решение</button>
+                <div class="solution" id="sol1">
+                    <div class="solution-content">
+                        <p><span data-katex="f'(x) = 4x^{3}"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="f'(x) = 4x^{3}"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 2 (4 балла) · Различение</div>
+                <div class="task-condition">Найдите производную функции: <span data-katex="f(x) = 3x^{2} - 5x + 7"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol2')">Показать решение</button>
+                <div class="solution" id="sol2">
+                    <div class="solution-content">
+                        <p><span data-katex="f'(x) = 3 \cdot 2x - 5 + 0 = 6x - 5"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="f'(x) = 6x - 5"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 3 (6 баллов) · Воспроизведение</div>
+                <div class="task-condition">Составьте уравнение касательной к графику функции <span data-katex="f(x) = x^{2}"></span> в точке <span data-katex="x_{0} = 2"></span>.</div>
+                <button class="btn-show no-print" onclick="toggleSol('sol3')">Показать решение</button>
+                <div class="solution" id="sol3">
+                    <div class="solution-content">
+                        <p><span data-katex="f(2) = 4"></span></p>
+                        <p><span data-katex="f'(x) = 2x"></span>, <span data-katex="f'(2) = 4"></span></p>
+                        <p>Уравнение касательной: <span data-katex="y = f(x_{0}) + f'(x_{0})(x - x_{0})"></span></p>
+                        <p><span data-katex="y = 4 + 4(x - 2) = 4 + 4x - 8 = 4x - 4"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="y = 4x - 4"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 4 (8 баллов) · Применение</div>
+                <div class="task-condition">Найдите точки экстремума функции: <span data-katex="f(x) = x^{3} - 3x^{2}"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol4')">Показать решение</button>
+                <div class="solution" id="sol4">
+                    <div class="solution-content">
+                        <p><span data-katex="f'(x) = 3x^{2} - 6x = 3x(x - 2)"></span></p>
+                        <p><span data-katex="f'(x) = 0"></span> при <span data-katex="x = 0"></span> и <span data-katex="x = 2"></span></p>
+                        <p>Знаки: <span data-katex="x < 0"></span>: ↗; <span data-katex="0 < x < 2"></span>: ↘; <span data-katex="x > 2"></span>: ↗</p>
+                        <p><span data-katex="x = 0"></span> — максимум, <span data-katex="x = 2"></span> — минимум</p>
+                        <p class="answer-block">Ответ: <span data-katex="x_{\max} = 0"></span>, <span data-katex="x_{\min} = 2"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 5 (10 баллов) · Перенос</div>
+                <div class="task-condition">🏗️ Зависимость прочности бетона от времени: <span data-katex="P(t) = 200t - 5t^{2}"></span>, где t — дни. Через сколько дней прочность будет максимальной?</div>
+                <button class="btn-show no-print" onclick="toggleSol('sol5')">Показать решение</button>
+                <div class="solution" id="sol5">
+                    <div class="solution-content">
+                        <p><span data-katex="P'(t) = 200 - 10t = 0 \ \Rightarrow \ t = 20"></span></p>
+                        <p>При <span data-katex="t < 20"></span>: <span data-katex="P' > 0"></span> ↗, при <span data-katex="t > 20"></span>: <span data-katex="P' < 0"></span> ↘</p>
+                        <p><span data-katex="t = 20"></span> — точка максимума</p>
+                        <p class="answer-block">Ответ: через <span data-katex="20"></span> дней</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вариант 2 -->
+        <div class="variant-card">
+            <div class="variant-title">Вариант 2</div>
+
+            <div class="task">
+                <div class="task-num">Задание 1 (2 балла) · Узнавание</div>
+                <div class="task-condition">Найдите производную функции: <span data-katex="f(x) = x^{5}"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol6')">Показать решение</button>
+                <div class="solution" id="sol6">
+                    <div class="solution-content">
+                        <p><span data-katex="f'(x) = 5x^{4}"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="f'(x) = 5x^{4}"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 2 (4 балла) · Различение</div>
+                <div class="task-condition">Найдите производную функции: <span data-katex="f(x) = 4x^{3} - 2x^{2} + 8"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol7')">Показать решение</button>
+                <div class="solution" id="sol7">
+                    <div class="solution-content">
+                        <p><span data-katex="f'(x) = 4 \cdot 3x^{2} - 2 \cdot 2x + 0 = 12x^{2} - 4x"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="f'(x) = 12x^{2} - 4x"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 3 (6 баллов) · Воспроизведение</div>
+                <div class="task-condition">Составьте уравнение касательной к графику функции <span data-katex="f(x) = x^{2} + 2"></span> в точке <span data-katex="x_{0} = 1"></span>.</div>
+                <button class="btn-show no-print" onclick="toggleSol('sol8')">Показать решение</button>
+                <div class="solution" id="sol8">
+                    <div class="solution-content">
+                        <p><span data-katex="f(1) = 3"></span></p>
+                        <p><span data-katex="f'(x) = 2x"></span>, <span data-katex="f'(1) = 2"></span></p>
+                        <p><span data-katex="y = 3 + 2(x - 1) = 3 + 2x - 2 = 2x + 1"></span></p>
+                        <p class="answer-block">Ответ: <span data-katex="y = 2x + 1"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 4 (8 баллов) · Применение</div>
+                <div class="task-condition">Найдите точки экстремума функции: <span data-katex="f(x) = x^{3} - 12x"></span></div>
+                <button class="btn-show no-print" onclick="toggleSol('sol9')">Показать решение</button>
+                <div class="solution" id="sol9">
+                    <div class="solution-content">
+                        <p><span data-katex="f'(x) = 3x^{2} - 12 = 3(x^{2} - 4) = 3(x - 2)(x + 2)"></span></p>
+                        <p><span data-katex="f'(x) = 0"></span> при <span data-katex="x = -2"></span> и <span data-katex="x = 2"></span></p>
+                        <p>Знаки: <span data-katex="x < -2"></span>: ↗; <span data-katex="-2 < x < 2"></span>: ↘; <span data-katex="x > 2"></span>: ↗</p>
+                        <p><span data-katex="x = -2"></span> — максимум, <span data-katex="x = 2"></span> — минимум</p>
+                        <p class="answer-block">Ответ: <span data-katex="x_{\max} = -2"></span>, <span data-katex="x_{\min} = 2"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task">
+                <div class="task-num">Задание 5 (10 баллов) · Перенос</div>
+                <div class="task-condition">🏗️ Площадь прямоугольной площадки, примыкающей к стене: <span data-katex="S(x) = 60x - 2x^{2}"></span>. Найдите x, при котором площадь максимальна.</div>
+                <button class="btn-show no-print" onclick="toggleSol('sol10')">Показать решение</button>
+                <div class="solution" id="sol10">
+                    <div class="solution-content">
+                        <p><span data-katex="S'(x) = 60 - 4x = 0 \ \Rightarrow \ x = 15"></span></p>
+                        <p>При <span data-katex="x < 15"></span>: <span data-katex="S' > 0"></span> ↗, при <span data-katex="x > 15"></span>: <span data-katex="S' < 0"></span> ↘</p>
+                        <p><span data-katex="x = 15"></span> — максимум. Размеры: 15 × 30 м, площадь 450 м²</p>
+                        <p class="answer-block">Ответ: <span data-katex="x = 15"></span> м, <span data-katex="S_{\max} = 450"></span> м²</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-bottom">
+            <a href="index.html" class="btn-sm-gold">← К списку</a>
+            <span style="color: var(--text-muted); font-size: 13px;">СР №4 · Производная</span>
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => { katex.render(el.dataset.katex, el, { throwOnError: false }); });
+        function toggleSol(id) { document.getElementById(id).classList.toggle('open'); }
+        function downloadHTML() {
+            const html = document.documentElement.outerHTML;
+            const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+            a.download = 'sam-04-proizvodnaya.html'; a.click(); URL.revokeObjectURL(a.href);
+        }
+    </script>
+</body>
+</html>

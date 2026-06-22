@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа 26 — Сфера и шар</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Радиус шара <span class="formula" data-katex="5"></span> см. Найдите площадь его поверхности.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь поверхности шара: <span data-katex="S = 4\pi R^2"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="S = 4\pi \cdot 5^2 = 4\pi \cdot 25 = 100\pi"></span> см².</p>
+            <p class="answer">Ответ: <span data-katex="100\pi"></span> см²</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Радиус шара <span class="formula" data-katex="3"></span> см. Найдите его объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём шара: <span data-katex="V = \frac{4}{3}\pi R^3"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="V = \frac{4}{3}\pi \cdot 3^3 = \frac{4}{3}\pi \cdot 27 = 36\pi"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="36\pi"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Площадь поверхности шара <span class="formula" data-katex="64\pi"></span> см². Найдите радиус.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p><strong>Шаг 1.</strong> Из формулы <span data-katex="S = 4\pi R^2"></span> выражаем <span data-katex="R"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="4\pi R^2 = 64\pi \ \Rightarrow \ R^2 = 16 \ \Rightarrow \ R = 4"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="4"></span> см</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Объём шара <span class="formula" data-katex="288\pi"></span> см³. Найдите радиус.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="V = \frac{4}{3}\pi R^3 = 288\pi"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="\frac{4}{3}R^3 = 288 \ \Rightarrow \ R^3 = 288 \cdot \frac{3}{4} = 216"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="R = \sqrt[3]{216} = 6"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="6"></span> см</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Сечение шара плоскостью, удалённой от центра на <span class="formula" data-katex="8"></span> см, имеет площадь <span class="formula" data-katex="36\pi"></span> см². Найдите радиус шара.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь сечения (круга): <span data-katex="\pi r^2 = 36\pi \ \Rightarrow \ r = 6"></span> см.</p>
+            <p><strong>Шаг 2.</strong> По теореме Пифагора: <span data-katex="R^2 = r^2 + d^2"></span>, где <span data-katex="d = 8"></span> см — расстояние от центра до сечения.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="R^2 = 36 + 64 = 100 \ \Rightarrow \ R = 10"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="10"></span> см</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Радиус шара <span class="formula" data-katex="13"></span> см. Сечение находится на расстоянии <span class="formula" data-katex="5"></span> см от центра. Найдите площадь сечения.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><strong>Шаг 1.</strong> Радиус сечения: <span data-katex="r = \sqrt{R^2 - d^2} = \sqrt{169 - 25} = \sqrt{144} = 12"></span> см.</p>
+            <p><strong>Шаг 2.</strong> Площадь сечения: <span data-katex="S = \pi r^2 = \pi \cdot 144 = 144\pi"></span> см².</p>
+            <p class="answer">Ответ: <span data-katex="144\pi"></span> см²</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Два шара имеют радиусы <span class="formula" data-katex="3"></span> см и <span class="formula" data-katex="6"></span> см. Во сколько раз объём большего шара больше объёма меньшего?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объёмы: <span data-katex="V_1 = \frac{4}{3}\pi \cdot 3^3 = 36\pi"></span>, <span data-katex="V_2 = \frac{4}{3}\pi \cdot 6^3 = 288\pi"></span>.</p>
+            <p><strong>Шаг 2.</strong> Отношение: <span data-katex="\frac{V_2}{V_1} = \frac{288\pi}{36\pi} = 8"></span>.</p>
+            <p><strong>Шаг 3.</strong> Или по формуле: <span data-katex="\frac{V_2}{V_1} = \left(\frac{R_2}{R_1}\right)^3 = 2^3 = 8"></span>.</p>
+            <p class="answer">Ответ: в <span data-katex="8"></span> раз</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла) 🏗️</h5>
+        <p>Резервуар имеет форму шара радиусом <span class="formula" data-katex="5"></span> м. Сколько краски потребуется для покраски его поверхности, если расход краски <span class="formula" data-katex="0{,}2"></span> кг на 1 м²?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь поверхности шара: <span data-katex="S = 4\pi \cdot 5^2 = 4\pi \cdot 25 = 100\pi"></span> м².</p>
+            <p><strong>Шаг 2.</strong> Количество краски: <span data-katex="m = 100\pi \cdot 0{,}2 = 20\pi"></span> кг.</p>
+            <p class="answer">Ответ: <span data-katex="20\pi"></span> кг <span data-katex="\approx 62{,}8"></span> кг</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла) 🏗️</h5>
+        <p>Купол здания имеет форму полусферы радиусом <span class="formula" data-katex="10"></span> м. Сколько краски потребуется для покраски внешней поверхности купола, если расход краски <span class="formula" data-katex="0{,}2"></span> кг на 1 м²?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь поверхности шара: <span data-katex="S_{\text{шара}} = 4\pi \cdot 10^2 = 400\pi"></span> м².</p>
+            <p><strong>Шаг 2.</strong> Площадь полусферы: <span data-katex="S = \frac{400\pi}{2} = 200\pi"></span> м².</p>
+            <p><strong>Шаг 3.</strong> Количество краски: <span data-katex="m = 200\pi \cdot 0{,}2 = 40\pi \approx 125{,}6"></span> кг.</p>
+            <p class="answer">Ответ: <span data-katex="40\pi"></span> кг <span data-katex="\approx 125{,}6"></span> кг</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Шар радиусом <span class="formula" data-katex="15"></span> см переплавлен в цилиндр, радиус основания которого равен радиусу шара. Найдите высоту цилиндра.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём шара: <span data-katex="V = \frac{4}{3}\pi \cdot 15^3 = \frac{4}{3}\pi \cdot 3375 = 4500\pi"></span> см³.</p>
+            <p><strong>Шаг 2.</strong> Объём цилиндра: <span data-katex="V = \pi R^2 h = \pi \cdot 225 \cdot h"></span>.</p>
+            <p><strong>Шаг 3.</strong> Приравниваем: <span data-katex="225\pi h = 4500\pi \ \Rightarrow \ h = \frac{4500}{225} = 20"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="20"></span> см</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

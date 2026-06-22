@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Многогранники — Опорный конспект | УМК</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .btn-group { display: flex; gap: 8px; align-items: center; }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 4px; line-height: 1.4; height: 32px; display: inline-flex; align-items: center; }
+        .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
+        .pdf-hint { font-size: 11px; color: var(--text-muted); }
+        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 2rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 0.95rem; margin-bottom: 10px; }
+        .page-info { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
+        .page-info a { color: var(--gold); text-decoration: none; }
+        .page-info a:hover { text-decoration: underline; }
+        .konspekt-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 25px; margin-bottom: 25px; page-break-inside: avoid; }
+        .konspekt-num { color: var(--gold); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .konspekt-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.3rem; margin-bottom: 15px; }
+        .block { margin-bottom: 18px; }
+        .block-label { color: var(--gold); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: block; }
+        .block p, .block li { color: var(--text-muted); font-size: 14px; margin-bottom: 5px; }
+        .block ul, .block ol { padding-left: 22px; }
+        .formula-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        .formula-table td { padding: 10px 14px; font-size: 14px; border: 1px solid var(--border); vertical-align: top; }
+        .formula-table td:first-child { color: #fff; text-align: center; width: 45%; background: rgba(255,255,255,0.02); font-weight: 500; }
+        .formula-table td:last-child { color: var(--text-muted); }
+        .example-box { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin: 12px 0; }
+        .example-label { color: var(--gold); font-size: 12px; font-weight: 600; display: block; margin-bottom: 6px; }
+        .important-badge { display: inline-block; background: #4c1a1a; color: #ff6b6b; font-size: 10px; font-weight: 700; padding: 2px 8px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .exam-badge { display: inline-block; background: #1e3a5f; color: #60a5fa; font-size: 10px; font-weight: 700; padding: 2px 8px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .prof-block { background: rgba(212,160,23,0.06); border: 1px solid rgba(212,160,23,0.25); padding: 18px 20px; margin-top: 30px; }
+        .prof-block strong { color: var(--gold); display: block; margin-bottom: 6px; }
+        .prof-block p { color: var(--text-muted); font-size: 14px; margin: 0; }
+        .img-placeholder { background: rgba(255,255,255,0.02); border: 1px dashed var(--border); padding: 30px; text-align: center; color: var(--text-muted); font-size: 13px; margin: 15px 0; }
+        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+        @media (max-width: 600px) { body { padding: 10px; } .konspekt-card { padding: 18px; } .page-title { font-size: 1.5rem; } }
+        @media print {
+            body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+            .top-bar, .no-print, .nav-bottom { display: none !important; }
+            .konspekt-card { background: #fff; border: 1px solid #ccc; border-left: 4px solid #000; box-shadow: none; margin-bottom: 15px; padding: 15px; }
+            .konspekt-title, .page-title, .page-subtitle, .page-info { color: #000; }
+            .block-label, .konspekt-num, .example-label, .prof-block strong { color: #000; }
+            .block p, .block li, .formula-table td:last-child, .prof-block p { color: #333; }
+            .formula-table td { border-color: #ccc; }
+            .formula-table td:first-child { background: #f5f5f5; color: #000; }
+            .example-box { background: #f9f9f9; border-color: #ddd; }
+            .prof-block { background: #f9f9f9; border-color: #ddd; }
+            .img-placeholder { border-color: #ccc; color: #666; }
+            .page-title { border-bottom-color: #000; }
+            .important-badge, .exam-badge { border: 1px solid #000; color: #000; background: #eee; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="top-bar">
+            <div class="breadcrumb"><a href="../teoreticheskij.html">← Теоретический раздел</a> / Многогранники</div>
+            <div class="btn-group">
+                <span class="pdf-hint no-print">PDF: Печать → Сохранить</span>
+                <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
+                <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
+            </div>
+        </div>
+
+        <h1 class="page-title">📦 Многогранники</h1>
+        <p class="page-subtitle">Опорный конспект для подготовки к занятиям, контрольным и экзамену</p>
+        <p class="page-info">Практические работы: <a href="../pr/19.html">№19 — Призма</a> · <a href="../pr/20.html">№20 — Параллелепипед</a> · <a href="../pr/21.html">№21 — Пирамида</a> · <a href="../pr/22.html">№22 — Усечённая пирамида</a></p>
+
+        <!-- Конспект 1 -->
+        <div class="konspekt-card">
+            <div class="konspekt-num">Конспект 1</div>
+            <div class="konspekt-title">Призма и параллелепипед <span class="exam-badge">Экзамен</span></div>
+            <div class="block">
+                <span class="block-label">📖 Определения</span>
+                <ul>
+                    <li><strong>Призма</strong> — многогранник с двумя равными основаниями в параллельных плоскостях и боковыми гранями-параллелограммами.</li>
+                    <li><strong>Прямая призма</strong> — боковые рёбра перпендикулярны основанию.</li>
+                    <li><strong>Параллелепипед</strong> — призма, основание которой — параллелограмм.</li>
+                </ul>
+            </div>
+            <div class="img-placeholder">[Рис. 1 — Призма и её элементы]</div>
+            <div class="block">
+                <span class="block-label">📋 Формулы для прямой призмы <span class="important-badge">Выучить!</span></span>
+                <table class="formula-table">
+                    <tr><td>Площадь боковой поверхности</td><td><span data-katex="S_{\text{бок}} = P_{\text{осн}} \cdot H"></span></td></tr>
+                    <tr><td>Площадь полной поверхности</td><td><span data-katex="S_{\text{полн}} = S_{\text{бок}} + 2S_{\text{осн}}"></span></td></tr>
+                    <tr><td>Объём</td><td><span data-katex="V = S_{\text{осн}} \cdot H"></span></td></tr>
+                </table>
+            </div>
+            <div class="block">
+                <span class="block-label">✏️ Прямоугольный параллелепипед</span>
+                <p>Частный случай призмы. Объём: <span data-katex="V = a \cdot b \cdot c"></span>. Площадь полной поверхности: <span data-katex="S = 2(ab + bc + ac)"></span>.</p>
+            </div>
+            <div class="example-box">
+                <span class="example-label">💡 Пример</span>
+                <p>Прямая призма, основание — квадрат со стороной 4 м, высота 10 м.</p>
+                <p><span data-katex="V = 16 \cdot 10 = 160"></span> м³. &nbsp; <span data-katex="S_{\text{бок}} = 16 \cdot 10 = 160"></span> м².</p>
+            </div>
+            <div class="example-box">
+                <span class="example-label">🏗️ Пример из строительства</span>
+                <p><strong>Задача:</strong> Ленточный фундамент: длина 30 м, ширина 0,6 м, глубина 1,2 м. Найти объём бетона.</p>
+                <p><strong>Решение:</strong> <span data-katex="V = 30 \cdot 0{,}6 \cdot 1{,}2 = 21{,}6"></span> м³.</p>
+            </div>
+        </div>
+
+        <!-- Конспект 2 -->
+        <div class="konspekt-card">
+            <div class="konspekt-num">Конспект 2</div>
+            <div class="konspekt-title">Объём и площадь поверхности призмы</div>
+            <div class="block">
+                <span class="block-label">📋 Для правильной треугольной призмы</span>
+                <p>Основание — равносторонний треугольник: <span data-katex="S_{\text{осн}} = \frac{\sqrt{3}}{4}a^{2}"></span>, периметр: <span data-katex="P = 3a"></span>.</p>
+            </div>
+            <div class="block">
+                <span class="block-label">📋 Для правильной шестиугольной призмы</span>
+                <p>Основание — правильный шестиугольник: <span data-katex="S_{\text{осн}} = \frac{3\sqrt{3}}{2}a^{2}"></span>, периметр: <span data-katex="P = 6a"></span>.</p>
+            </div>
+            <div class="example-box">
+                <span class="example-label">💡 Пример (будет в контрольной)</span>
+                <p>Правильная треугольная призма: сторона 4 см, высота 10 см.</p>
+                <p><span data-katex="S_{\text{осн}} = \frac{\sqrt{3}}{4} \cdot 16 = 4\sqrt{3}"></span> см². &nbsp; <span data-katex="V = 4\sqrt{3} \cdot 10 = 40\sqrt{3}"></span> см³.</p>
+            </div>
+        </div>
+
+        <!-- Конспект 3 -->
+        <div class="konspekt-card">
+            <div class="konspekt-num">Конспект 3</div>
+            <div class="konspekt-title">Пирамида. Усечённая пирамида <span class="exam-badge">Экзамен</span></div>
+            <div class="block">
+                <span class="block-label">📖 Определения</span>
+                <ul>
+                    <li><strong>Пирамида</strong> — многогранник с многоугольником в основании и треугольными боковыми гранями, сходящимися в вершине.</li>
+                    <li><strong>Правильная пирамида</strong> — основание — правильный многоугольник, вершина проецируется в центр основания.</li>
+                    <li><strong>Апофема</strong> — высота боковой грани правильной пирамиды.</li>
+                </ul>
+            </div>
+            <div class="img-placeholder">[Рис. 2 — Пирамида и её элементы]</div>
+            <div class="block">
+                <span class="block-label">📋 Формулы <span class="important-badge">Выучить!</span></span>
+                <table class="formula-table">
+                    <tr><td>Объём пирамиды</td><td><span data-katex="V = \frac{1}{3} S_{\text{осн}} \cdot h"></span></td></tr>
+                    <tr><td>Боковая поверхность (прав.)</td><td><span data-katex="S_{\text{бок}} = \frac{1}{2} P_{\text{осн}} \cdot l"></span>, где l — апофема</td></tr>
+                    <tr><td>Объём усечённой пирамиды</td><td><span data-katex="V = \frac{h}{3}(S_{1} + S_{2} + \sqrt{S_{1}S_{2}})"></span></td></tr>
+                </table>
+            </div>
+            <div class="example-box">
+                <span class="example-label">💡 Пример</span>
+                <p>Правильная четырёхугольная пирамида: сторона основания 6 м, высота 9 м.</p>
+                <p><span data-katex="V = \frac{1}{3} \cdot 36 \cdot 9 = 108"></span> м³.</p>
+            </div>
+            <div class="example-box">
+                <span class="example-label">🏗️ Пример из строительства (котлован)</span>
+                <p><strong>Задача:</strong> Котлован — усечённая пирамида. Дно 4×3 м, верх 6×5 м, глубина 2 м. Найти объём грунта.</p>
+                <p><span data-katex="S_{1} = 12"></span> м², <span data-katex="S_{2} = 30"></span> м². &nbsp; <span data-katex="V = \frac{2}{3}(12 + 30 + \sqrt{360}) \approx 40{,}6"></span> м³.</p>
+            </div>
+        </div>
+
+        <div class="prof-block">
+            <strong>🔧 Где пригодится строителю</strong>
+            <p>Расчёт объёмов земляных работ (котлован, траншея), расчёт бетона для фундаментов, расчёт материалов для облицовки стен и фасадов. См. практические работы №19–22.</p>
+        </div>
+
+        <div class="nav-bottom no-print">
+            <a href="../teoreticheskij.html" class="btn-sm-gold">← К списку конспектов</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function downloadHTML() {
+            const html = document.documentElement.outerHTML;
+            const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'mnogogranniki-konspekt.html';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        }
+    </script>
+</body>
+</html>

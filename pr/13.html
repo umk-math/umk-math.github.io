@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Сформулируйте прямую теорему о трёх перпендикулярах.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p>Если прямая, проведённая на плоскости через основание наклонной, перпендикулярна её проекции, то она перпендикулярна и самой наклонной.</p>
+            <p class="answer">Ответ: прямая теорема.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Сформулируйте обратную теорему о трёх перпендикулярах.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p>Если прямая, проведённая на плоскости через основание наклонной, перпендикулярна самой наклонной, то она перпендикулярна и её проекции.</p>
+            <p class="answer">Ответ: обратная теорема.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Из точки A к плоскости α проведены перпендикуляр AB и наклонная AC. Что является проекцией наклонной AC на плоскость α?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p>Проекцией наклонной AC является отрезок BC, соединяющий основание перпендикуляра B с основанием наклонной C.</p>
+            <p class="answer">Ответ: отрезок BC.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>В треугольнике ABC угол C прямой. Отрезок CD — перпендикуляр к плоскости ABC. Назовите проекцию наклонной AD на плоскость ABC.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p>Основание перпендикуляра — точка C. Наклонная — AD. Её проекция — отрезок AC (соединяет основание перпендикуляра C с основанием наклонной A).</p>
+            <p class="answer">Ответ: отрезок AC.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Из точки M к плоскости α проведён перпендикуляр MO = 8 см и наклонная MA = 17 см. Проекция наклонной OA = 15 см. Перпендикулярна ли прямая a, проведённая в плоскости через точку A к OA, наклонной MA?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> Проверим, что OA — действительно проекция: <span data-katex="OA = \sqrt{MA^2 - MO^2} = \sqrt{17^2 - 8^2} = \sqrt{289 - 64} = \sqrt{225} = 15"></span> — верно.</p>
+            <p><strong>Шаг 2.</strong> По прямой теореме: если <span data-katex="a \perp OA"></span>, то <span data-katex="a \perp MA"></span>.</p>
+            <p class="answer">Ответ: да, перпендикулярна.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>В кубе <span data-katex="ABCDA_1B_1C_1D_1"></span> докажите, что прямая BD перпендикулярна прямой AC₁.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><strong>Шаг 1.</strong> CC₁ ⟂ (ABCD) ⇒ CC₁ ⟂ BD.</p>
+            <p><strong>Шаг 2.</strong> В квадрате ABCD диагонали перпендикулярны: AC ⟂ BD.</p>
+            <p><strong>Шаг 3.</strong> AC — проекция AC₁ на плоскость ABCD. Так как BD ⟂ AC (проекции), то по теореме о трёх перпендикулярах BD ⟂ AC₁.</p>
+            <p class="answer">Ответ: BD ⟂ AC₁.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Из точки A к плоскости проведён перпендикуляр AB = 9 см и наклонная AC = 15 см. В плоскости через точку C проведена прямая, перпендикулярная BC. Найдите расстояние от A до этой прямой.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="BC = \sqrt{AC^2 - AB^2} = \sqrt{225 - 81} = \sqrt{144} = 12"></span> см.</p>
+            <p><strong>Шаг 2.</strong> По теореме о трёх перпендикулярах: прямая в плоскости ⟂ BC (проекции) ⇒ прямая ⟂ AC (наклонной).</p>
+            <p><strong>Шаг 3.</strong> Расстояние от A до этой прямой равно длине перпендикуляра из A к прямой. Так как AC ⟂ прямой, то искомое расстояние = AC = 15 см.</p>
+            <p class="answer">Ответ: 15 см.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла)</h5>
+        <p>Из вершины A квадрата ABCD проведён перпендикуляр AK к плоскости квадрата. Сторона квадрата = 6 см, AK = 8 см. Найдите расстояние от точки K до прямой BD.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1.</strong> AC — диагональ квадрата: <span data-katex="AC = 6\sqrt{2}"></span> см. Расстояние от A до BD равно половине диагонали: <span data-katex="AO = 3\sqrt{2}"></span> см (O — центр).</p>
+            <p><strong>Шаг 2.</strong> KO — наклонная, AO — её проекция. BD ⟂ AO (диагонали квадрата). По теореме о трёх перпендикулярах: BD ⟂ KO.</p>
+            <p><strong>Шаг 3.</strong> Из треугольника AKO: <span data-katex="KO = \sqrt{AK^2 + AO^2} = \sqrt{64 + 18} = \sqrt{82}"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="\sqrt{82}"></span> см.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла)</h5>
+        <p>Из точки M к плоскости α проведены перпендикуляр MO и две наклонные MA и MB. Известно, что MA = 10 см, MB = 17 см, а их проекции относятся как 6:15. Найдите расстояние от M до плоскости.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p><strong>Шаг 1.</strong> Пусть MO = h. Проекции: <span data-katex="OA = \sqrt{100 - h^2}"></span>, <span data-katex="OB = \sqrt{289 - h^2}"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="\dfrac{OA}{OB} = \dfrac{6}{15} = \dfrac{2}{5}"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="\dfrac{\sqrt{100 - h^2}}{\sqrt{289 - h^2}} = \dfrac{2}{5} \ \Rightarrow \ \dfrac{100 - h^2}{289 - h^2} = \dfrac{4}{25}"></span>.</p>
+            <p><strong>Шаг 4.</strong> <span data-katex="25(100 - h^2) = 4(289 - h^2) \ \Rightarrow \ 2500 - 25h^2 = 1156 - 4h^2"></span>.</p>
+            <p><strong>Шаг 5.</strong> <span data-katex="21h^2 = 1344 \ \Rightarrow \ h^2 = 64 \ \Rightarrow \ h = 8"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="MO = 8"></span> см.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Строительная мачта высотой 12 м укреплена тросом, закреплённым на земле на расстоянии 5 м от основания мачты. Перпендикулярна ли линия крепления троса к земле самой мачте, если трос натянут под прямым углом к линии на земле, соединяющей основание мачты с точкой крепления?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> Мачта — перпендикуляр к земле. Трос — наклонная. Линия на земле от основания до крепления — проекция троса.</p>
+            <p><strong>Шаг 2.</strong> По условию, линия крепления перпендикулярна проекции. По теореме о трёх перпендикулярах: линия крепления ⟂ тросу.</p>
+            <p><strong>Шаг 3.</strong> Вопрос: перпендикулярна ли линия крепления мачте? Мачта — это перпендикуляр, а не наклонная. Теорема здесь неприменима. Линия на земле и мачта обе перпендикулярны земле? Нет, мачта перпендикулярна земле, линия лежит в земле. Они перпендикулярны по определению.</p>
+            <p class="answer">Ответ: да, перпендикулярна (мачта ⟂ земле, линия ⊂ земле).</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

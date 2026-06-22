@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Критерии оценки — УМК «Математика»</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .btn-group { display: flex; gap: 8px; align-items: center; }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 4px; line-height: 1.4; height: 32px; display: inline-flex; align-items: center; }
+        .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
+
+        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 2rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 0.95rem; margin-bottom: 30px; }
+
+        .section-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 25px; margin-bottom: 25px; page-break-inside: avoid; }
+        .section-card h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.2rem; margin-bottom: 15px; }
+        .section-card p, .section-card li { color: var(--text-muted); font-size: 14px; margin-bottom: 6px; }
+        .section-card ul, .section-card ol { padding-left: 22px; }
+
+        .error-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+        .error-table th, .error-table td { padding: 10px 14px; border: 1px solid var(--border); vertical-align: top; }
+        .error-table th { background: rgba(212,160,23,0.08); color: var(--gold); font-weight: 600; text-align: left; }
+        .error-table td { color: var(--text-muted); }
+        .error-table .bad { color: #ef4444; font-weight: 600; }
+        .error-table .ok { color: #4ade80; font-weight: 600; }
+
+        .example-box { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin: 10px 0; }
+        .example-box p { font-size: 13px; margin-bottom: 4px; }
+
+        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .section-card { padding: 18px; }
+            .page-title { font-size: 1.5rem; }
+        }
+        @media print {
+            body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+            .top-bar, .nav-bottom { display: none !important; }
+            .section-card { background: #fff; border: 1px solid #ccc; border-left: 4px solid #000; margin-bottom: 15px; padding: 15px; }
+            .section-card h3, .page-title { color: #000; }
+            .section-card p, .section-card li, .error-table td { color: #333; }
+            .error-table th { background: #f5f5f5; color: #000; }
+            .error-table td { border-color: #ccc; }
+            .error-table .bad { color: #c00; }
+            .error-table .ok { color: #060; }
+            .example-box { background: #f9f9f9; border-color: #ddd; }
+            .page-title { border-bottom-color: #000; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="top-bar">
+            <div class="breadcrumb"><a href="../kontrol.html">← Раздел контроля знаний</a> / Критерии оценки</div>
+            <div class="btn-group">
+    <a href="pdf/kriterii.pdf" class="btn-sm-gold" download>📥 Скачать PDF</a>
+    <a href="javascript:window.print()" class="btn-sm-gold">🖨️ Печать</a>
+</div>
+        </div>
+
+        <h1 class="page-title">📋 Критерии оценки</h1>
+        <p class="page-subtitle">Существенные и несущественные ошибки · Шкалы перевода · Требования к оформлению</p>
+
+        <!-- Существенные ошибки -->
+        <div class="section-card">
+            <h3>❌ Существенные (грубые) ошибки</h3>
+            <p>Задание <strong>считается невыполненным</strong> (0 баллов), если допущена существенная ошибка.</p>
+            <p style="color: var(--gold); font-weight: 600; margin-top: 12px;">К существенным ошибкам относятся:</p>
+            <ul>
+                <li>Незнание определений основных математических понятий, формулировок теорем, формул, предусмотренных программой.</li>
+                <li>Незнание сущности математических понятий и величин.</li>
+                <li>Неумение решать простейшие задания.</li>
+                <li>Неумение строить графики элементарных функций.</li>
+                <li>Неправильное применение методов, способов, приёмов решения.</li>
+            </ul>
+            <p style="color: var(--gold); font-weight: 600; margin-top: 12px;">Примеры существенных ошибок:</p>
+            <div class="example-box">
+                <p>1) <span data-katex="\sqrt{a^{2} + b^{2}} = a + b"></span> — неверное извлечение корня</p>
+                <p>2) <span data-katex="x^{2} = 9 \ \Rightarrow \ x = 3"></span> — потеря корня <span data-katex="x = -3"></span></p>
+                <p>3) <span data-katex="\sin 2\alpha = 2\sin\alpha"></span> — неверная формула</p>
+                <p>4) <span data-katex="\sin(-30^\circ) = -\sin 30^\circ"></span> — ошибка в знаке (на самом деле верно: sin(-x) = -sin x. Пример: <span data-katex="\sin(-30^\circ) = \sin 30^\circ"></span> — ошибка)</p>
+                <p>5) <span data-katex="\lg(x - y) = \lg x - \lg y"></span> — неверное свойство логарифма</p>
+            </div>
+        </div>
+
+        <!-- Несущественные ошибки -->
+        <div class="section-card">
+            <h3>⚠️ Несущественные (негрубые) ошибки</h3>
+            <p>При наличии несущественной ошибки <strong>балл за задание снижается на 10%</strong>.</p>
+            <p style="color: var(--gold); font-weight: 600; margin-top: 12px;">К несущественным ошибкам относятся:</p>
+            <ul>
+                <li>Неточность определений, формулировок, теорем, формул.</li>
+                <li>Недостаточное обоснование утверждений в решении.</li>
+                <li>Исключение без объяснения одного из корней уравнения.</li>
+                <li>Построение графика линейной функции по трём точкам (вместо двух).</li>
+                <li>В ответе не избавились от иррациональности в знаменателе.</li>
+                <li>Запись ответа в виде сократимой дроби.</li>
+                <li>Небрежность и неаккуратность записей, рисунков, чертежей.</li>
+                <li>Стилистические, пунктуационные и орфографические ошибки.</li>
+                <li>Разорвана черта дроби при переносе.</li>
+                <li>Различные единичные отрезки на осях координат.</li>
+                <li>Невидимые линии в сечении изображены сплошной линией.</li>
+            </ul>
+        </div>
+
+        <!-- Шкалы -->
+        <div class="section-card">
+            <h3>📈 Шкалы перевода баллов в отметку</h3>
+            <p style="margin-bottom: 15px;">Используются в соответствии с Нормами оценки результатов учебной деятельности учащихся (МО РБ).</p>
+
+            <h4 style="color: var(--gold); font-size: 1rem; margin: 20px 0 10px;">Для 5 заданий (максимум 30 баллов)</h4>
+            <table class="error-table">
+                <thead><tr><th>Баллы</th><th>1</th><th>2</th><th>3–5</th><th>6–8</th><th>9–11</th><th>12–14</th><th>15–18</th><th>19–23</th><th>24–28</th><th>29–30</th></tr></thead>
+                <tbody><tr><td><strong>Отметка</strong></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr></tbody>
+            </table>
+
+            <h4 style="color: var(--gold); font-size: 1rem; margin: 20px 0 10px;">Для 10 заданий (максимум 55 баллов)</h4>
+            <table class="error-table">
+                <thead><tr><th>Баллы</th><th>1</th><th>2–4</th><th>5–7</th><th>8–12</th><th>13–18</th><th>19–25</th><th>26–33</th><th>34–42</th><th>43–52</th><th>53–55</th></tr></thead>
+                <tbody><tr><td><strong>Отметка</strong></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr></tbody>
+            </table>
+
+            <h4 style="color: var(--gold); font-size: 1rem; margin: 20px 0 10px;">Баллы за задания (контрольная работа)</h4>
+            <table class="error-table">
+                <thead><tr><th>Уровень</th><th>Задание</th><th>Баллы</th></tr></thead>
+                <tbody>
+                    <tr><td>1 — Узнавание</td><td>№1</td><td>2</td></tr>
+                    <tr><td>2 — Различение</td><td>№2</td><td>4</td></tr>
+                    <tr><td>3 — Воспроизведение</td><td>№3</td><td>6</td></tr>
+                    <tr><td>4 — Применение</td><td>№4</td><td>8</td></tr>
+                    <tr><td>5 — Перенос</td><td>№5</td><td>10</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Требования к оформлению -->
+        <div class="section-card">
+            <h3>✏️ Требования к оформлению</h3>
+            <ul>
+                <li>Записи ведутся аккуратно, разборчивым почерком, шариковой ручкой с пастой синего или фиолетового цвета.</li>
+                <li>Не допускается использование фломастеров, наклеек, цветных стержней (кроме карандаша для чертежей).</li>
+                <li>Между номером задания, решением и ответом пропускается одна клетка вниз.</li>
+                <li>Построение геометрических фигур, графиков — карандашом, с помощью линейки и циркуля.</li>
+                <li>Краткое условие геометрической задачи отделяется от решения.</li>
+                <li>В конце решения — обязательно ответ. В задачах на доказательство — вывод.</li>
+                <li>Слова «следовательно», «значит», «треугольник», «параллельно» не заменяются математическими знаками.</li>
+            </ul>
+        </div>
+
+        <!-- Проверка -->
+        <div class="section-card">
+            <h3>🔍 Требования к проверке</h3>
+            <ul>
+                <li>Проверка осуществляется <strong>красной пастой</strong>.</li>
+                <li>Напротив каждого задания — количество баллов.</li>
+                <li>На полях после последнего задания — сумма баллов и отметка.</li>
+                <li>Все ошибки зачёркиваются и подчёркиваются.</li>
+                <li>Орфографические, пунктуационные и грамматические ошибки исправляются (надписывается правильный вариант).</li>
+                <li>Ошибки в содержании подчёркиваются волнистой линией.</li>
+                <li>Итоговая отметка — с учётом годовой и экзаменационной (по решению комиссии).</li>
+            </ul>
+        </div>
+
+        <div class="nav-bottom">
+            <a href="../kontrol.html" class="btn-sm-gold">← К разделу контроля</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function downloadHTML() {
+            const html = document.documentElement.outerHTML;
+            const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'kriterii-ocenki.html';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        }
+    </script>
+</body>
+</html>

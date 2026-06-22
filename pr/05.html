@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Сформулируйте аксиому 1 стереометрии.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p>Через любые три точки, не лежащие на одной прямой, проходит плоскость, и притом только одна.</p>
+            <p class="answer">Ответ: аксиома 1.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Сформулируйте аксиому 2 стереометрии.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p>Если две точки прямой лежат в плоскости, то и вся прямая лежит в этой плоскости.</p>
+            <p class="answer">Ответ: аксиома 2.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Сформулируйте аксиому 3 стереометрии.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p>Если две плоскости имеют общую точку, то они пересекаются по прямой, проходящей через эту точку.</p>
+            <p class="answer">Ответ: аксиома 3.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Сколько плоскостей можно провести через две пересекающиеся прямые?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p>Следствие из аксиом: через две пересекающиеся прямые проходит плоскость, и притом только одна.</p>
+            <p class="answer">Ответ: одну.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Могут ли три точки одновременно принадлежать двум разным плоскостям?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p>Если три точки не лежат на одной прямой, то через них проходит единственная плоскость. Значит, две разные плоскости не могут содержать одни и те же три точки, не лежащие на одной прямой.</p>
+            <p>Если же три точки лежат на одной прямой, то через них можно провести бесконечно много плоскостей.</p>
+            <p class="answer">Ответ: да, если точки лежат на одной прямой; нет, если не лежат.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Даны четыре точки, не лежащие в одной плоскости. Сколько различных плоскостей можно провести через различные тройки этих точек?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p>Четыре точки образуют тетраэдр. Количество способов выбрать 3 точки из 4: <span data-katex="C_4^3 = 4"></span>.</p>
+            <p>Каждая тройка задаёт одну плоскость. Всего — 4 плоскости (грани тетраэдра).</p>
+            <p class="answer">Ответ: 4 плоскости.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Что такое сечение многогранника? Какие многоугольники могут быть сечениями куба?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Сечение</strong> — многоугольник, полученный при пересечении многогранника плоскостью.</p>
+            <p>Сечениями куба могут быть: треугольник, четырёхугольник (в т.ч. квадрат, прямоугольник, трапеция), пятиугольник, шестиугольник.</p>
+            <p class="answer">Ответ: треугольник, четырёхугольник, пятиугольник, шестиугольник.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла)</h5>
+        <p>Постройте сечение куба <span data-katex="ABCDA_1B_1C_1D_1"></span> плоскостью, проходящей через середины рёбер <span data-katex="AB"></span>, <span data-katex="BC"></span> и вершину <span data-katex="D_1"></span>. Какой многоугольник получится?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1.</strong> Обозначим середины: M — середина AB, N — середина BC.</p>
+            <p><strong>Шаг 2.</strong> Точки M и N лежат в грани ABCD — соединяем их, это сторона сечения в нижней грани.</p>
+            <p><strong>Шаг 3.</strong> Точки N и D₁ лежат в грани BCC₁B₁? Нет. Но через N и D₁ можно провести прямую пересечения с продолжением ребра.</p>
+            <p>Продолжая построение методом следов, получим пятиугольник.</p>
+            <p class="answer">Ответ: пятиугольник.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла)</h5>
+        <p>Какие многоугольники могут быть сечениями тетраэдра?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p>Тетраэдр имеет 4 грани. Секущая плоскость пересекает грани по отрезкам. Максимальное количество сторон сечения — 4 (когда плоскость пересекает все 4 грани).</p>
+            <p>Возможные сечения: треугольник (пересекает 3 грани) и четырёхугольник (пересекает 4 грани).</p>
+            <p class="answer">Ответ: треугольник и четырёхугольник.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Строительный блок имеет форму прямоугольного параллелепипеда. Его распилили плоскостью, проходящей через диагонали двух противоположных граней. Какая фигура получилась в сечении?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> Сечение проходит через диагонали двух противоположных граней. Эти диагонали параллельны и равны.</p>
+            <p><strong>Шаг 2.</strong> Секущая плоскость пересекает 4 грани параллелепипеда, образуя четырёхугольник.</p>
+            <p><strong>Шаг 3.</strong> Противоположные стороны четырёхугольника параллельны (так как лежат в параллельных гранях). Такой четырёхугольник — параллелограмм. А так как диагонали равны — это прямоугольник.</p>
+            <p class="answer">Ответ: прямоугольник.</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

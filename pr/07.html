@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt{x} = 3"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p><strong>Шаг 1.</strong> Возводим обе части в квадрат: <span data-katex="(\sqrt{x})^2 = 3^2 \ \Rightarrow \ x = 9"></span>.</p>
+            <p><strong>Шаг 2. Проверка:</strong> <span data-katex="\sqrt{9} = 3"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="x = 9"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt{x + 1} = 2"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p><strong>Шаг 1.</strong> Возводим в квадрат: <span data-katex="x + 1 = 4 \ \Rightarrow \ x = 3"></span>.</p>
+            <p><strong>Шаг 2. Проверка:</strong> <span data-katex="\sqrt{3 + 1} = \sqrt{4} = 2"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="x = 3"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt{2x} = 6"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p><strong>Шаг 1.</strong> Возводим в квадрат: <span data-katex="2x = 36 \ \Rightarrow \ x = 18"></span>.</p>
+            <p><strong>Шаг 2. Проверка:</strong> <span data-katex="\sqrt{2 \cdot 18} = \sqrt{36} = 6"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="x = 18"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt{x - 5} = 0"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p><strong>Шаг 1.</strong> Возводим в квадрат: <span data-katex="x - 5 = 0 \ \Rightarrow \ x = 5"></span>.</p>
+            <p><strong>Шаг 2. Проверка:</strong> <span data-katex="\sqrt{5 - 5} = \sqrt{0} = 0"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="x = 5"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt{3x + 4} = 5"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> Возводим в квадрат: <span data-katex="3x + 4 = 25"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="3x = 21 \ \Rightarrow \ x = 7"></span>.</p>
+            <p><strong>Шаг 3. Проверка:</strong> <span data-katex="\sqrt{3 \cdot 7 + 4} = \sqrt{25} = 5"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="x = 7"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt{x^2} = 4"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="\sqrt{x^2} = |x|"></span> (не забываем модуль!).</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="|x| = 4 \ \Rightarrow \ x = 4"></span> или <span data-katex="x = -4"></span>.</p>
+            <p><strong>Шаг 3. Проверка:</strong> <span data-katex="\sqrt{4^2} = 4,\ \sqrt{(-4)^2} = 4"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="x = -4;\ x = 4"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt{x + 6} = x"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1. ОДЗ.</strong> <span data-katex="x + 6 \ge 0 \ \Rightarrow \ x \ge -6"></span>. Правая часть: корень ≥ 0 ⇒ <span data-katex="x \ge 0"></span>. Итого: <span data-katex="x \ge 0"></span>.</p>
+            <p><strong>Шаг 2.</strong> Возводим в квадрат: <span data-katex="x + 6 = x^2 \ \Rightarrow \ x^2 - x - 6 = 0"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="D = 1 + 24 = 25,\ x_1 = 3,\ x_2 = -2"></span>.</p>
+            <p><strong>Шаг 4.</strong> <span data-katex="x = 3 \in"></span> ОДЗ, <span data-katex="x = -2 \notin"></span> ОДЗ.</p>
+            <p class="answer">Ответ: <span data-katex="x = 3"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt{x + 5} - \sqrt{x} = 1"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1. ОДЗ:</strong> <span data-katex="x + 5 \ge 0"></span> и <span data-katex="x \ge 0 \ \Rightarrow \ x \ge 0"></span>.</p>
+            <p><strong>Шаг 2.</strong> Переносим: <span data-katex="\sqrt{x + 5} = 1 + \sqrt{x}"></span>.</p>
+            <p><strong>Шаг 3.</strong> Возводим в квадрат: <span data-katex="x + 5 = 1 + 2\sqrt{x} + x"></span>.</p>
+            <p><strong>Шаг 4.</strong> Сокращаем: <span data-katex="5 = 1 + 2\sqrt{x} \ \Rightarrow \ 2\sqrt{x} = 4 \ \Rightarrow \ \sqrt{x} = 2 \ \Rightarrow \ x = 4"></span>.</p>
+            <p><strong>Шаг 5. Проверка:</strong> <span data-katex="\sqrt{4+5} - \sqrt{4} = 3 - 2 = 1"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="x = 4"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла)</h5>
+        <p>Решите уравнение: <span class="formula" data-katex="\sqrt[3]{x + 7} = 2"></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p><strong>Шаг 1.</strong> Возводим в куб: <span data-katex="x + 7 = 8 \ \Rightarrow \ x = 1"></span>.</p>
+            <p><strong>Шаг 2. Проверка:</strong> <span data-katex="\sqrt[3]{1 + 7} = \sqrt[3]{8} = 2"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="x = 1"></span></p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Диагональ квадратного фундамента: <span data-katex="d = \sqrt{2S}"></span>, где S — площадь. Найдите S, если <span data-katex="d = 10"></span> м.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="10 = \sqrt{2S}"></span>.</p>
+            <p><strong>Шаг 2.</strong> Возводим в квадрат: <span data-katex="100 = 2S \ \Rightarrow \ S = 50"></span>.</p>
+            <p><strong>Шаг 3. Проверка:</strong> <span data-katex="\sqrt{2 \cdot 50} = \sqrt{100} = 10"></span> — верно.</p>
+            <p class="answer">Ответ: <span data-katex="S = 50"></span> м².</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

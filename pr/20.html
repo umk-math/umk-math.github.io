@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа 20 — Параллелепипед. Объём</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Измерения прямоугольного параллелепипеда: <span class="formula" data-katex="3"></span> см, <span class="formula" data-katex="4"></span> см, <span class="formula" data-katex="5"></span> см. Найдите его объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём прямоугольного параллелепипеда: <span data-katex="V = a \cdot b \cdot c"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="V = 3 \cdot 4 \cdot 5 = 60"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="60"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Объём прямоугольного параллелепипеда равен <span class="formula" data-katex="120"></span> см³. Два измерения равны <span class="formula" data-katex="4"></span> см и <span class="formula" data-katex="5"></span> см. Найдите третье измерение.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p><strong>Шаг 1.</strong> Из формулы <span data-katex="V = a \cdot b \cdot c"></span> выражаем: <span data-katex="c = \frac{V}{a \cdot b}"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="c = \frac{120}{4 \cdot 5} = \frac{120}{20} = 6"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="6"></span> см</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Куб имеет ребро <span class="formula" data-katex="4"></span> см. Найдите его объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём куба: <span data-katex="V = a^3"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="V = 4^3 = 64"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="64"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Площадь основания прямоугольного параллелепипеда <span class="formula" data-katex="15"></span> см², высота <span class="formula" data-katex="7"></span> см. Найдите объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём параллелепипеда: <span data-katex="V = S_{\text{осн}} \cdot h"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="V = 15 \cdot 7 = 105"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="105"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Диагональ прямоугольного параллелепипеда равна <span class="formula" data-katex="13"></span> см. Измерения основания <span class="formula" data-katex="3"></span> см и <span class="formula" data-katex="4"></span> см. Найдите объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> Квадрат диагонали: <span data-katex="d^2 = a^2 + b^2 + c^2"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="13^2 = 3^2 + 4^2 + c^2 \ \Rightarrow \ 169 = 9 + 16 + c^2"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="c^2 = 169 - 25 = 144 \ \Rightarrow \ c = 12"></span> см.</p>
+            <p><strong>Шаг 4.</strong> <span data-katex="V = 3 \cdot 4 \cdot 12 = 144"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="144"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Объём куба равен <span class="formula" data-katex="125"></span> см³. Найдите площадь его полной поверхности.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><strong>Шаг 1.</strong> Из <span data-katex="V = a^3 = 125"></span> находим ребро: <span data-katex="a = \sqrt[3]{125} = 5"></span> см.</p>
+            <p><strong>Шаг 2.</strong> Площадь полной поверхности куба: <span data-katex="S = 6a^2 = 6 \cdot 25 = 150"></span> см².</p>
+            <p class="answer">Ответ: <span data-katex="150"></span> см²</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>В прямоугольном параллелепипеде стороны основания <span class="formula" data-katex="6"></span> см и <span class="formula" data-katex="8"></span> см. Диагональ параллелепипеда наклонена к плоскости основания под углом <span class="formula" data-katex="45^\circ"></span>. Найдите объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1.</strong> Диагональ основания: <span data-katex="d_{\text{осн}} = \sqrt{6^2 + 8^2} = \sqrt{36 + 64} = \sqrt{100} = 10"></span> см.</p>
+            <p><strong>Шаг 2.</strong> Из прямоугольного треугольника (диагональ параллелепипеда, диагональ основания, высота) с углом <span data-katex="45^\circ"></span>:</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="\operatorname{tg} 45^\circ = \frac{h}{d_{\text{осн}}} \ \Rightarrow \ 1 = \frac{h}{10} \ \Rightarrow \ h = 10"></span> см.</p>
+            <p><strong>Шаг 4.</strong> <span data-katex="V = 6 \cdot 8 \cdot 10 = 480"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="480"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла) 🏗️</h5>
+        <p>Фундамент здания — прямоугольный параллелепипед с размерами <span class="formula" data-katex="12"></span> м × <span class="formula" data-katex="8"></span> м × <span class="formula" data-katex="1{,}5"></span> м. Внутри вырезан прямоугольный проём для подвала размером <span class="formula" data-katex="6"></span> м × <span class="formula" data-katex="4"></span> м на всю высоту фундамента. Найдите объём бетона.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём всего фундамента: <span data-katex="V_{\text{общ}} = 12 \cdot 8 \cdot 1{,}5 = 144"></span> м³.</p>
+            <p><strong>Шаг 2.</strong> Объём проёма: <span data-katex="V_{\text{проём}} = 6 \cdot 4 \cdot 1{,}5 = 36"></span> м³.</p>
+            <p><strong>Шаг 3.</strong> Объём бетона: <span data-katex="V = 144 - 36 = 108"></span> м³.</p>
+            <p class="answer">Ответ: <span data-katex="108"></span> м³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла) 🏗️</h5>
+        <p>Бак для воды имеет форму прямоугольного параллелепипеда с квадратным основанием. Объём бака <span class="formula" data-katex="1000"></span> литров, высота <span class="formula" data-katex="1"></span> м. Найдите сторону основания в метрах. (1 м³ = 1000 л)</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="1000"></span> л = <span data-katex="1"></span> м³. Значит, <span data-katex="V = 1"></span> м³.</p>
+            <p><strong>Шаг 2.</strong> Пусть сторона основания <span data-katex="a"></span> м. Тогда <span data-katex="V = a^2 \cdot h = a^2 \cdot 1 = 1"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="a^2 = 1 \ \Rightarrow \ a = 1"></span> м.</p>
+            <p class="answer">Ответ: <span data-katex="1"></span> м</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Комната имеет форму прямоугольного параллелепипеда. Площадь пола <span class="formula" data-katex="20"></span> м², площадь одной стены <span class="formula" data-katex="15"></span> м², площадь смежной стены <span class="formula" data-katex="12"></span> м². Найдите объём комнаты.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> Пусть длина <span data-katex="a"></span>, ширина <span data-katex="b"></span>, высота <span data-katex="c"></span>.</p>
+            <p><strong>Шаг 2.</strong> Площадь пола: <span data-katex="a \cdot b = 20"></span>.</p>
+            <p><strong>Шаг 3.</strong> Площадь стены: <span data-katex="a \cdot c = 15"></span>.</p>
+            <p><strong>Шаг 4.</strong> Площадь смежной стены: <span data-katex="b \cdot c = 12"></span>.</p>
+            <p><strong>Шаг 5.</strong> Перемножаем: <span data-katex="(ab) \cdot (ac) \cdot (bc) = 20 \cdot 15 \cdot 12 \ \Rightarrow \ a^2 b^2 c^2 = 3600"></span>.</p>
+            <p><strong>Шаг 6.</strong> <span data-katex="(abc)^2 = 3600 \ \Rightarrow \ abc = 60"></span>. Это и есть объём <span data-katex="V = 60"></span> м³.</p>
+            <p class="answer">Ответ: <span data-katex="60"></span> м³</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

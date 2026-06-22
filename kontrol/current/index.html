@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Текущий контроль — УМК «Математика»</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --gold-hover: #e6b422;
+            --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d;
+            --course-1: #4a9eff; --course-2: #f0a500;
+            --progress-bg: #1a2332; --progress-fill: #D4A017;
+            --star-inactive: #3a4050; --star-active: #fbbf24;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .page-header {
+            background: linear-gradient(180deg, #1a212f 0%, #0d1117 100%);
+            border-bottom: 4px solid var(--gold);
+            padding: 70px 0 45px; text-align: center;
+        }
+        .page-header h1 { color: #fff; font-size: clamp(28px, 4.5vw, 44px); margin-bottom: 8px; }
+        .page-header .subtitle { color: var(--gold); font-size: 1.1rem; }
+        .page-header .stats { color: var(--text-muted); font-size: 0.9rem; margin-top: 8px; }
+        .page-header .stats span { color: var(--gold); font-weight: 600; }
+
+        .progress-section { background: var(--progress-bg); border: 1px solid var(--border); border-radius: 16px; padding: 24px 28px; margin: 30px 0; }
+        .progress-section h3 { color: #fff; font-size: 1rem; margin: 0; }
+        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        #resetProgress { background: transparent; border: 1px solid #5a3030; color: #ff6b6b; padding: 5px 14px; border-radius: 8px; font-size: 11px; cursor: pointer; transition: all 0.3s; font-weight: 500; }
+        #resetProgress:hover { background: rgba(255,107,107,0.1); border-color: #ff6b6b; }
+        .progress-bar-wrap { background: rgba(255,255,255,0.05); border-radius: 10px; height: 14px; overflow: hidden; }
+        .progress-bar-fill { background: linear-gradient(90deg, var(--gold), #f0c040); height: 100%; border-radius: 10px; transition: width 0.6s ease; width: 0%; }
+        .progress-info { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+        .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+        .filter-btn { border: 1px solid var(--border); background: transparent; color: var(--text-muted); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.3s; }
+        .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(212,160,23,0.08); }
+        .filter-btn.active { background: rgba(212,160,23,0.15); font-weight: 700; }
+
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .sam-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+            padding: 26px 22px; transition: all 0.4s ease; position: relative; overflow: hidden;
+            cursor: pointer; display: flex; flex-direction: column; text-decoration: none; color: inherit;
+        }
+        .sam-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: transparent; transition: background 0.4s ease; }
+        .sam-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 45px rgba(212,160,23,0.1); }
+        .sam-card:hover::before { background: var(--gold); }
+        .sam-card.course-1 { border-left: 3px solid var(--course-1); }
+        .sam-card.course-2 { border-left: 3px solid var(--course-2); }
+        .sam-card.completed { opacity: 0.65; }
+        .sam-card.completed::after { content: '✅'; position: absolute; top: 14px; right: 14px; font-size: 18px; z-index: 2; }
+
+        .card-icon { font-size: 32px; margin-bottom: 14px; transition: transform 0.3s ease; pointer-events: none; }
+        .sam-card:hover .card-icon { transform: scale(1.2); }
+        .card-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; pointer-events: none; }
+        .badge { display: inline-flex; align-items: center; padding: 3px 10px; font-size: 10px; font-weight: 700; border-radius: 12px; white-space: nowrap; letter-spacing: 0.3px; }
+        .badge-course { background: rgba(74,158,255,0.15); color: #60a5fa; }
+        .badge-build { background: rgba(212,160,23,0.15); color: var(--gold); }
+        .badge-star { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .badge-new { background: rgba(74,222,128,0.15); color: #4ade80; }
+
+        .card-title { font-size: 16px; color: #fff; margin-bottom: 6px; font-weight: 600; pointer-events: none; }
+        .card-theme { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; pointer-events: none; }
+        .card-preview { font-size: 11px; color: var(--text-muted); opacity: 0; max-height: 0; overflow: hidden; transition: all 0.3s ease; pointer-events: none; }
+        .sam-card:hover .card-preview { opacity: 1; max-height: 50px; margin-bottom: 10px; }
+        .card-stars { margin-bottom: 10px; pointer-events: none; }
+        .star { color: var(--star-inactive); font-size: 14px; }
+        .star.active { color: var(--star-active); }
+
+        .card-btn { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: 6px 16px; border-radius: 6px; font-size: 12px; text-align: center; transition: all 0.3s; margin-top: auto; text-decoration: none; position: relative; z-index: 3; }
+        .card-btn:hover { background: var(--gold); color: var(--bg); }
+
+        .teacher-block { background: rgba(212,160,23,0.04); border: 1px dashed var(--gold); padding: 26px 28px; border-radius: 12px; margin-top: 30px; display: flex; gap: 30px; flex-wrap: wrap; align-items: center; }
+        .teacher-block h4 { color: var(--gold); margin-bottom: 8px; }
+        .teacher-block p { color: var(--text-muted); font-size: 14px; }
+        .btn-zip { display: inline-block; background: var(--gold); color: var(--bg); padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 14px; transition: all 0.3s; white-space: nowrap; }
+        .btn-zip:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212,160,23,0.3); }
+
+        footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--text-muted); font-size: 13px; margin-top: 40px; }
+        footer a { color: var(--gold); text-decoration: none; }
+
+        @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(212,160,23,0.4); } 50% { box-shadow: 0 0 0 12px rgba(212,160,23,0); } }
+        .pulse { animation: pulse 2s infinite; }
+
+        @media (max-width: 600px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .page-header { padding: 45px 0 30px; }
+            .teacher-block { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--bg-card); border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html" style="font-family: 'Playfair Display', serif; color: var(--gold);">УМК «Математика»</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../normativnyj.html">Нормативный</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../teoreticheskij.html">Теория</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../prakticheskij.html">Практика</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../kontrol.html">Контроль</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../vspomogatelnyj.html">Вспомогательный</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../interaktiv.html">Интерактив</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>📋 Текущий контроль</h1>
+            <p class="subtitle">9 самостоятельных работ для оперативной проверки знаний</p>
+            <p class="stats"><span>5 заданий</span> · <span>2 варианта</span> · <span>10–15 минут</span> · <span>30 баллов</span></p>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 30px;">
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <h3>📊 Прогресс прохождения</h3>
+                <button id="resetProgress">↺ Сбросить</button>
+            </div>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-info">
+                <span>Пройдено: <strong style="color: var(--gold);" id="completedCount">0</strong> из 9</span>
+                <span>Осталось: <strong style="color: var(--text);" id="remainingCount">9</strong></span>
+            </div>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterCards('all', this)">Все</button>
+            <button class="filter-btn" onclick="filterCards('course-1', this)">🔵 1 курс</button>
+            <button class="filter-btn" onclick="filterCards('course-2', this)">🟡 2 курс</button>
+            <button class="filter-btn" onclick="filterCards('build', this)">🏗️ Строительные</button>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid">
+
+            <a href="sam-01-trigonometriya.html" class="sam-card course-1" data-id="1" data-courses="course-1" data-build="true">
+                <div class="card-icon">📐</div>
+                <div class="card-badges">
+                    <span class="badge badge-course">1 курс</span>
+                    <span class="badge badge-build">🏗️</span>
+                    <span class="badge badge-star">⭐ Рекомендована</span>
+                </div>
+                <div class="card-title">СР №1. Тригонометрия</div>
+                <div class="card-theme">Радианная мера · Значения функций · Уравнения</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star active">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">2/5</span></div>
+                <div class="card-preview">Задание 1: Переведите 60° в радианы...</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+            <a href="sam-02-koren.html" class="sam-card course-1" data-id="2" data-courses="course-1" data-build="false">
+                <div class="card-icon">√</div>
+                <div class="card-badges"><span class="badge badge-course">1 курс</span></div>
+                <div class="card-title">СР №2. Корень n-й степени</div>
+                <div class="card-theme">Свойства корней · Иррациональные уравнения</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">1/5</span></div>
+                <div class="card-preview">Задание 1: Вычислите √81...</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+            <a href="sam-03-parallel.html" class="sam-card course-1" data-id="3" data-courses="course-1" data-build="true">
+                <div class="card-icon">⟂</div>
+                <div class="card-badges"><span class="badge badge-course">1 курс</span><span class="badge badge-build">🏗️</span></div>
+                <div class="card-title">СР №3. Параллельность и перпендикулярность</div>
+                <div class="card-theme">Прямые и плоскости · Теорема о трёх перпендикулярах</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star">★</span><span class="star">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">3/5</span></div>
+                <div class="card-preview">Задание 1: Сколько плоскостей можно провести через три точки?</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+            <a href="sam-04-proizvodnaya.html" class="sam-card course-1" data-id="4" data-courses="course-1" data-build="false">
+                <div class="card-icon">∫</div>
+                <div class="card-badges"><span class="badge badge-course">1 курс</span></div>
+                <div class="card-title">СР №4. Производная</div>
+                <div class="card-theme">Вычисление · Касательная · Экстремумы</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">4/5</span></div>
+                <div class="card-preview">Задание 1: Найдите f'(x) для f(x)=x³–3x...</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+            <a href="sam-05-stepeni.html" class="sam-card course-2" data-id="5" data-courses="course-2" data-build="false">
+                <div class="card-icon">x²</div>
+                <div class="card-badges"><span class="badge badge-course">2 курс</span><span class="badge badge-new">🆕</span></div>
+                <div class="card-title">СР №5. Степени и функции</div>
+                <div class="card-theme">Рациональный показатель · Показательные уравнения</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star">★</span><span class="star">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">3/5</span></div>
+                <div class="card-preview">Задание 1: Вычислите 8^(1/3)...</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+            <a href="sam-06-mnogogranniki.html" class="sam-card course-2" data-id="6" data-courses="course-2" data-build="true">
+                <div class="card-icon">📦</div>
+                <div class="card-badges"><span class="badge badge-course">2 курс</span><span class="badge badge-build">🏗️</span></div>
+                <div class="card-title">СР №6. Многогранники</div>
+                <div class="card-theme">Призма · Параллелепипед · Пирамида</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">4/5</span></div>
+                <div class="card-preview">Задание 1: Объём куба 64 см³. Найдите ребро...</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+            <a href="sam-07-logarifmy.html" class="sam-card course-2" data-id="7" data-courses="course-2" data-build="false">
+                <div class="card-icon">📊</div>
+                <div class="card-badges"><span class="badge badge-course">2 курс</span></div>
+                <div class="card-title">СР №7. Логарифмы</div>
+                <div class="card-theme">Свойства · Уравнения · Неравенства</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star">★</span><span class="star">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">3/5</span></div>
+                <div class="card-preview">Задание 1: Вычислите log₂8 + log₃27...</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+            <a href="sam-08-tela-vrashcheniya.html" class="sam-card course-2" data-id="8" data-courses="course-2" data-build="true">
+                <div class="card-icon">⚪</div>
+                <div class="card-badges"><span class="badge badge-course">2 курс</span><span class="badge badge-build">🏗️</span></div>
+                <div class="card-title">СР №8. Тела вращения</div>
+                <div class="card-theme">Сфера · Цилиндр · Конус</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">5/5</span></div>
+                <div class="card-preview">Задание 1: Объём шара 36π см³. Найдите радиус...</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+            <a href="sam-09-povtorenie.html" class="sam-card course-2" data-id="9" data-courses="course-2" data-build="false">
+                <div class="card-icon">🔄</div>
+                <div class="card-badges"><span class="badge badge-course">2 курс</span><span class="badge badge-new">🆕</span></div>
+                <div class="card-title">СР №9. Итоговое повторение</div>
+                <div class="card-theme">Комплексная работа за 2 курса</div>
+                <div class="card-stars"><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span><span class="star active">★</span> <span style="font-size:11px;color:var(--text-muted);margin-left:6px;">5/5</span></div>
+                <div class="card-preview">Задание 1: Решите уравнение 2ˣ = 16...</div>
+                <span class="card-btn">Открыть →</span>
+            </a>
+
+        </div>
+
+        <div class="teacher-block">
+            <div style="flex: 1;">
+                <h4>📌 Для преподавателя</h4>
+                <p>Самостоятельные работы — быстрая проверка усвоения темы. 5 заданий, 10–15 минут. Проверка к следующему занятию. Скачайте все работы одним архивом:</p>
+            </div>
+            <a href="../pdf/current-all.zip" class="btn-zip pulse" download>📦 Скачать все 9 работ (ZIP)</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">© 2026 Станулевич А.В., Гродно, Беларусь · <a href="../../index.html">На главную</a></div>
+    </footer>
+
+    <script>
+        const TOTAL = 9;
+
+        function getCompletedCount() {
+            let count = 0;
+            for (let i = 1; i <= TOTAL; i++) {
+                if (localStorage.getItem('sam-completed-' + i) === 'true') count++;
+            }
+            return count;
+        }
+
+        function updateProgress() {
+            const count = getCompletedCount();
+            const percent = (count / TOTAL) * 100;
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('completedCount').textContent = count;
+            document.getElementById('remainingCount').textContent = TOTAL - count;
+        }
+
+        document.querySelectorAll('.sam-card').forEach(card => {
+            const id = card.dataset.id;
+            if (id && localStorage.getItem('sam-completed-' + id) === 'true') {
+                card.classList.add('completed');
+            }
+        });
+
+        document.querySelectorAll('.card-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const card = this.closest('.sam-card');
+                const id = card.dataset.id;
+                if (!id) return;
+                localStorage.setItem('sam-completed-' + id, 'true');
+                card.classList.add('completed');
+                updateProgress();
+            });
+        });
+
+        document.querySelectorAll('.sam-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.card-btn')) return;
+                const id = this.dataset.id;
+                if (!id) return;
+                const isCompleted = localStorage.getItem('sam-completed-' + id) === 'true';
+                if (isCompleted) {
+                    localStorage.removeItem('sam-completed-' + id);
+                    this.classList.remove('completed');
+                } else {
+                    localStorage.setItem('sam-completed-' + id, 'true');
+                    this.classList.add('completed');
+                }
+                updateProgress();
+                e.preventDefault();
+            });
+        });
+
+        document.getElementById('resetProgress').addEventListener('click', function() {
+            if (confirm('Сбросить весь прогресс? Это действие нельзя отменить.')) {
+                for (let i = 1; i <= TOTAL; i++) {
+                    localStorage.removeItem('sam-completed-' + i);
+                }
+                document.querySelectorAll('.sam-card').forEach(c => c.classList.remove('completed'));
+                updateProgress();
+            }
+        });
+
+        function filterCards(type, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.sam-card').forEach(card => {
+                if (type === 'all') { card.style.display = 'flex'; }
+                else if (type === 'build') { card.style.display = card.dataset.build === 'true' ? 'flex' : 'none'; }
+                else { card.style.display = card.dataset.courses === type ? 'flex' : 'none'; }
+            });
+        }
+
+        window.filterCards = filterCards;
+        updateProgress();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

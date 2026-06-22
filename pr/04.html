@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; }
+        .solution-block p, .solution-block li { color: var(--text); font-size: 14px; }
+        .solution-block strong { color: var(--gold); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .formula { font-family: 'Courier New', monospace; color: var(--gold); font-weight: 500; font-size: 15px; letter-spacing: 1px; }
+        .frac { display: inline-block; text-align: center; vertical-align: middle; margin: 0 3px; }
+        .frac > span { display: block; padding: 0 6px; }
+        .frac .num { border-bottom: 2px solid var(--gold); color: var(--gold); font-family: 'Courier New', monospace; font-size: 14px; }
+        .frac .den { color: var(--gold); font-family: 'Courier New', monospace; font-size: 14px; }
+        .sqrt { font-family: 'Courier New', monospace; color: var(--gold); font-weight: 500; font-size: 15px; }
+        .sqrt .radicand { text-decoration: overline; color: var(--gold); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Решите уравнение: <span class="formula">sin x = 0</span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p>sin x = 0 в точках пересечения единичной окружности с осью Ox.</p>
+            <p>Общая формула: <span class="formula">x = πk, k ∈ Z</span>.</p>
+            <p class="answer">Ответ: x = πk, k ∈ Z.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Решите уравнение: <span class="formula">cos x = 1</span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p>cos x = 1 при x = 0 и каждом полном обороте (2π).</p>
+            <p>Общая формула: <span class="formula">x = 2πk, k ∈ Z</span>.</p>
+            <p class="answer">Ответ: x = 2πk, k ∈ Z.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Решите уравнение: <span class="formula">sin x = </span><span class="frac"><span class="num">1</span><span class="den">2</span></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p>sin x = <span class="frac"><span class="num">1</span><span class="den">2</span></span>. Базовый угол: <span class="frac"><span class="num">π</span><span class="den">6</span></span>.</p>
+            <p>Формула корней: <span class="formula">x = (–1)<sup>k</sup> · </span><span class="frac"><span class="num">π</span><span class="den">6</span></span> + <span class="formula">πk, k ∈ Z</span>.</p>
+            <p class="answer">Ответ: x = (–1)<sup>k</sup> · <span class="frac"><span class="num">π</span><span class="den">6</span></span> + πk, k ∈ Z.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Решите уравнение: <span class="formula">cos x = </span><span class="frac"><span class="num">√2</span><span class="den">2</span></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p>cos x = <span class="frac"><span class="num">√2</span><span class="den">2</span></span>. Базовый угол: <span class="frac"><span class="num">π</span><span class="den">4</span></span>.</p>
+            <p>Формула корней: <span class="formula">x = ± </span><span class="frac"><span class="num">π</span><span class="den">4</span></span> + <span class="formula">2πk, k ∈ Z</span>.</p>
+            <p class="answer">Ответ: x = ± <span class="frac"><span class="num">π</span><span class="den">4</span></span> + 2πk, k ∈ Z.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Решите уравнение: <span class="formula">2 sin x – 1 = 0</span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span class="formula">2 sin x = 1 ⇒ sin x = </span><span class="frac"><span class="num">1</span><span class="den">2</span></span></p>
+            <p><strong>Шаг 2.</strong> <span class="formula">x = (–1)<sup>k</sup> · </span><span class="frac"><span class="num">π</span><span class="den">6</span></span> + <span class="formula">πk, k ∈ Z</span>.</p>
+            <p class="answer">Ответ: x = (–1)<sup>k</sup> · <span class="frac"><span class="num">π</span><span class="den">6</span></span> + πk, k ∈ Z.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Решите уравнение: <span class="formula">cos x + 1 = 0</span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span class="formula">cos x = –1</span>.</p>
+            <p>cos x = –1 в точке x = π. Период косинуса — 2π.</p>
+            <p><strong>Шаг 2.</strong> <span class="formula">x = π + 2πk, k ∈ Z</span>.</p>
+            <p class="answer">Ответ: x = π + 2πk, k ∈ Z.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Решите уравнение: <span class="formula">tg x – 1 = 0</span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span class="formula">tg x = 1</span>.</p>
+            <p>tg x = 1 при x = <span class="frac"><span class="num">π</span><span class="den">4</span></span>. Период тангенса — π.</p>
+            <p><strong>Шаг 2.</strong> <span class="formula">x = </span><span class="frac"><span class="num">π</span><span class="den">4</span></span> + <span class="formula">πk, k ∈ Z</span>.</p>
+            <p class="answer">Ответ: x = <span class="frac"><span class="num">π</span><span class="den">4</span></span> + πk, k ∈ Z.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла)</h5>
+        <p>Решите уравнение: <span class="formula">2 cos² x – 1 = 0</span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span class="formula">2 cos² x = 1 ⇒ cos² x = </span><span class="frac"><span class="num">1</span><span class="den">2</span></span></p>
+            <p><strong>Шаг 2.</strong> <span class="formula">cos x = ± </span><span class="sqrt">√<span class="radicand">1/2</span></span> = <span class="formula">± </span><span class="frac"><span class="num">√2</span><span class="den">2</span></span></p>
+            <p><strong>Шаг 3.</strong> <span class="formula">cos x = </span><span class="frac"><span class="num">√2</span><span class="den">2</span></span> ⇒ <span class="formula">x = ± </span><span class="frac"><span class="num">π</span><span class="den">4</span></span> + <span class="formula">2πk</span>.</p>
+            <p><span class="formula">cos x = –</span><span class="frac"><span class="num">√2</span><span class="den">2</span></span> ⇒ <span class="formula">x = ± </span><span class="frac"><span class="num">3π</span><span class="den">4</span></span> + <span class="formula">2πk</span>.</p>
+            <p>Объединяем: <span class="formula">x = </span><span class="frac"><span class="num">π</span><span class="den">4</span></span> + <span class="frac"><span class="num">πk</span><span class="den">2</span></span>, <span class="formula">k ∈ Z</span>.</p>
+            <p class="answer">Ответ: x = <span class="frac"><span class="num">π</span><span class="den">4</span></span> + <span class="frac"><span class="num">πk</span><span class="den">2</span></span>, k ∈ Z.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла)</h5>
+        <p>Решите уравнение на [0; 2π]: <span class="formula">sin x = –</span><span class="frac"><span class="num">1</span><span class="den">2</span></span></p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p>sin x = –<span class="frac"><span class="num">1</span><span class="den">2</span></span>. Базовый угол: <span class="frac"><span class="num">π</span><span class="den">6</span></span>. Синус отрицателен в III и IV четвертях.</p>
+            <p>III четверть: <span class="formula">x = π + </span><span class="frac"><span class="num">π</span><span class="den">6</span></span> = <span class="frac"><span class="num">7π</span><span class="den">6</span></span>.</p>
+            <p>IV четверть: <span class="formula">x = 2π – </span><span class="frac"><span class="num">π</span><span class="den">6</span></span> = <span class="frac"><span class="num">11π</span><span class="den">6</span></span>.</p>
+            <p>Оба значения ∈ [0; 2π].</p>
+            <p class="answer">Ответ: <span class="frac"><span class="num">7π</span><span class="den">6</span></span>; <span class="frac"><span class="num">11π</span><span class="den">6</span></span>.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Угол наклона кровли α удовлетворяет уравнению <span class="formula">tg α = 0,5</span>. Найдите α в градусах (округлите до целых).</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p>tg α = 0,5 — не табличное значение.</p>
+            <p><span class="formula">α = arctg(0,5) ≈ 26,57°</span>.</p>
+            <p>Округляем до целых: ≈ 27°.</p>
+            <p class="answer">Ответ: α ≈ 27°.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

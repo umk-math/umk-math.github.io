@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Сформулируйте определение перпендикулярности прямой и плоскости.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p>Прямая называется перпендикулярной плоскости, если она перпендикулярна любой прямой, лежащей в этой плоскости.</p>
+            <p class="answer">Ответ: определение перпендикулярности.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Сформулируйте признак перпендикулярности прямой и плоскости.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p>Если прямая перпендикулярна двум пересекающимся прямым, лежащим в плоскости, то она перпендикулярна самой плоскости.</p>
+            <p class="answer">Ответ: признак перпендикулярности.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Что такое перпендикуляр, опущенный из точки на плоскость?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p>Перпендикуляр — отрезок, соединяющий точку с плоскостью, лежащий на прямой, перпендикулярной плоскости. Это кратчайшее расстояние от точки до плоскости.</p>
+            <p class="answer">Ответ: кратчайшее расстояние от точки до плоскости.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Что такое наклонная к плоскости? Что такое проекция наклонной?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p><strong>Наклонная</strong> — любой отрезок, соединяющий точку с плоскостью, не являющийся перпендикуляром.</p>
+            <p><strong>Проекция наклонной</strong> — отрезок, соединяющий основание перпендикуляра с основанием наклонной.</p>
+            <p class="answer">Ответ: наклонная длиннее перпендикуляра; проекция лежит в плоскости.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Из точки A к плоскости α проведены перпендикуляр AB = 6 см и наклонная AC = 10 см. Найдите длину проекции наклонной BC.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> Треугольник ABC — прямоугольный (AB ⟂ BC).</p>
+            <p><strong>Шаг 2.</strong> По теореме Пифагора: <span data-katex="BC = \sqrt{AC^2 - AB^2} = \sqrt{10^2 - 6^2} = \sqrt{100 - 36} = \sqrt{64} = 8"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="BC = 8"></span> см.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Прямая a перпендикулярна плоскости α. Что можно сказать о взаимном расположении прямой a и любой прямой, лежащей в плоскости α?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p>По определению: если прямая перпендикулярна плоскости, то она перпендикулярна любой прямой, лежащей в этой плоскости.</p>
+            <p class="answer">Ответ: прямая a перпендикулярна любой прямой в плоскости α.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>В кубе <span data-katex="ABCDA_1B_1C_1D_1"></span> докажите, что ребро AA₁ перпендикулярно плоскости ABCD.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1.</strong> AA₁ ⟂ AB и AA₁ ⟂ AD (по свойству куба).</p>
+            <p><strong>Шаг 2.</strong> AB и AD — пересекающиеся прямые в плоскости ABCD.</p>
+            <p><strong>Шаг 3.</strong> По признаку: если прямая перпендикулярна двум пересекающимся прямым плоскости, то она перпендикулярна плоскости.</p>
+            <p class="answer">Ответ: AA₁ ⟂ (ABCD).</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла)</h5>
+        <p>Из точки M к плоскости проведены две наклонные MA = 13 см и MB = 15 см. Их проекции относятся как 5:9. Найдите расстояние от точки M до плоскости.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1.</strong> Пусть MO = h — искомое расстояние. Проекции: <span data-katex="OA = \sqrt{13^2 - h^2}"></span>, <span data-katex="OB = \sqrt{15^2 - h^2}"></span>.</p>
+            <p><strong>Шаг 2.</strong> По условию: <span data-katex="\dfrac{\sqrt{169 - h^2}}{\sqrt{225 - h^2}} = \dfrac{5}{9}"></span>.</p>
+            <p><strong>Шаг 3.</strong> Возводим в квадрат: <span data-katex="\dfrac{169 - h^2}{225 - h^2} = \dfrac{25}{81}"></span>.</p>
+            <p><strong>Шаг 4.</strong> <span data-katex="81(169 - h^2) = 25(225 - h^2) \ \Rightarrow \ 13689 - 81h^2 = 5625 - 25h^2"></span>.</p>
+            <p><strong>Шаг 5.</strong> <span data-katex="56h^2 = 8064 \ \Rightarrow \ h^2 = 144 \ \Rightarrow \ h = 12"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="MO = 12"></span> см.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла)</h5>
+        <p>Через вершину A прямоугольника ABCD проведён перпендикуляр AK к плоскости прямоугольника. Найдите расстояние от точки K до вершины C, если AB = 6 см, AD = 8 см, AK = 12 см.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p><strong>Шаг 1.</strong> AC — диагональ прямоугольника: <span data-katex="AC = \sqrt{AB^2 + AD^2} = \sqrt{36 + 64} = \sqrt{100} = 10"></span> см.</p>
+            <p><strong>Шаг 2.</strong> Треугольник AKC: AK ⟂ AC (так как AK ⟂ плоскости ABCD).</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="KC = \sqrt{AK^2 + AC^2} = \sqrt{144 + 100} = \sqrt{244} = 2\sqrt{61}"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="KC = 2\sqrt{61}"></span> см.</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Строительный отвес длиной 2 м отклонили от вертикали так, что его верхний конец сместился на 30 см от стены. На каком расстоянии от стены находится нижний конец отвеса?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> Отвес — прямая, перпендикулярная полу (плоскости). Стена — вертикальная плоскость.</p>
+            <p><strong>Шаг 2.</strong> Верхний конец на расстоянии 30 см от стены. Отвес вертикален, значит, все его точки находятся на том же расстоянии от стены, что и верхний конец.</p>
+            <p class="answer">Ответ: 30 см.</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

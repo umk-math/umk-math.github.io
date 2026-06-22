@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастер-класс — Как привязать математику к профессии | УМК</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .top-bar { margin-bottom: 20px; }
+        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 2rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 1.1rem; margin-bottom: 8px; }
+        .page-info { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
+        .section-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 12px; padding: 25px; margin-bottom: 24px; }
+        .section-card h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.3rem; margin-bottom: 14px; }
+        .section-card p, .section-card li { color: var(--text-muted); font-size: 14px; line-height: 1.8; }
+        .section-card ul, .section-card ol { padding-left: 20px; }
+        .stage-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 12px; }
+        .stage-card h5 { color: var(--gold); font-size: 14px; margin-bottom: 6px; }
+        .stage-card p, .stage-card li { font-size: 13px; margin: 0; }
+        .download-block { text-align: center; margin: 30px 0; }
+        .btn-pdf { display: inline-block; background: var(--gold); color: var(--bg); padding: 14px 32px; text-decoration: none; font-weight: 700; font-size: 15px; transition: all 0.3s; border-radius: 10px; }
+        .btn-pdf:hover { background: #e6b422; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212,160,23,0.3); }
+        .nav-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 8px 18px; text-decoration: none; border-radius: 6px; font-size: 13px; transition: all 0.3s; display: inline-flex; align-items: center; }
+        .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
+        footer { text-align: center; padding: 24px 0; color: var(--text-muted); font-size: 13px; margin-top: 40px; border-top: 1px solid var(--border); }
+        footer a { color: var(--gold); text-decoration: none; }
+        @media (max-width: 600px) { body { padding: 10px; } .section-card { padding: 18px; } .page-title { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="top-bar">
+            <div class="breadcrumb"><a href="../index.html">← На главную</a> / Мастер-класс</div>
+        </div>
+
+        <h1 class="page-title">🎓 Мастер-класс для преподавателей</h1>
+        <p class="page-subtitle">«Как привязать математику к профессии»</p>
+        <p class="page-info">Целевая аудитория: Преподаватели математики и специальных дисциплин СПО и ПТО</p>
+
+        <div class="section-card">
+            <h3>🎯 Цели и задачи</h3>
+            <p><strong style="color: var(--gold);">Цель:</strong> Трансляция опыта реализации практико-ориентированного подхода в преподавании математики.</p>
+            <p style="margin-top: 10px;"><strong style="color: var(--gold);">Задачи:</strong></p>
+            <ul>
+                <li>Продемонстрировать приёмы привязки математических тем к профессиональным задачам.</li>
+                <li>Показать структуру методического паспорта профилизации.</li>
+                <li>Обучить алгоритму создания практико-ориентированных задач трёх уровней.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3>📋 Ход мастер-класса</h3>
+            <div class="stage-card"><h5>1. Вступительная часть (5 мин)</h5><p>Актуальность темы. Ответ на вечный вопрос учащегося: «Зачем мне эта математика?». Демонстрация методического паспорта профилизации.</p></div>
+            <div class="stage-card"><h5>2. Теоретический блок (10 мин)</h5><p>Алгоритм создания задачи: от темы КТП до трёхуровневой задачи. Пример: «Объём цилиндра» → расчёт расширительного бака.</p></div>
+            <div class="stage-card"><h5>3. Практический блок (20 мин)</h5><p>Работа в группах — создание трёхуровневых задач:</p>
+                <ul>
+                    <li><strong>Группа 1:</strong> «Теорема Пифагора» — разметка отверстий под трубы.</li>
+                    <li><strong>Группа 2:</strong> «Объём цилиндра» — расчёт кабельного барабана.</li>
+                    <li><strong>Группа 3:</strong> «Тригонометрия» — угол прокладки кабеля.</li>
+                </ul>
+            </div>
+            <div class="stage-card"><h5>4. Презентация результатов (7 мин)</h5><p>Выступления делегатов от групп. Обсуждение.</p></div>
+            <div class="stage-card"><h5>5. Рефлексия (3 мин)</h5><p>Раздача памяток с алгоритмом создания задач и шаблоном паспорта.</p></div>
+        </div>
+
+        <div class="section-card">
+            <h3>📝 Памятка для преподавателя</h3>
+            <p style="margin-bottom: 10px;"><strong style="color: var(--gold);">Алгоритм создания практико-ориентированной задачи:</strong></p>
+            <ol>
+                <li>Выберите тему из КТП.</li>
+                <li>Найдите реальную профессиональную ситуацию.</li>
+                <li>Сформулируйте условие на языке профессии.</li>
+                <li>Проверьте реалистичность цифр.</li>
+                <li>Разработайте три уровня: Фундамент (1–4), Стены (5–7), Кровля (8–10).</li>
+            </ol>
+        </div>
+
+        <div class="download-block">
+            <a href="master-klass-privyazka.pdf" class="btn-pdf" download>📥 Скачать полную версию (PDF)</a>
+        </div>
+
+        <div class="nav-bottom">
+            <a href="../index.html" class="btn-sm-gold">← На главную</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">© 2026 Станулевич А.В., Гродно, Беларусь · <a href="../index.html">На главную</a></div>
+    </footer>
+
+</body>
+</html>

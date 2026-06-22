@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экзаменационные билеты | УМК</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+        .btn-group { display: flex; gap: 8px; align-items: center; }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 4px; height: 32px; display: inline-flex; align-items: center; }
+        .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
+        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 2rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 0.95rem; margin-bottom: 10px; }
+        .page-info { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
+        .variant-card { background: var(--bg-card); border: 1px solid var(--border); padding: 28px; margin-bottom: 35px; page-break-before: always; }
+        .variant-card:first-of-type { page-break-before: avoid; }
+        .variant-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.3rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .task { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .task:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .task-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .task-num { color: var(--gold); font-weight: 700; font-size: 14px; }
+        .task-level { font-size: 11px; color: var(--text-muted); background: rgba(255,255,255,0.03); padding: 2px 10px; border-radius: 10px; }
+        .task-condition { color: #fff; font-size: 14px; margin-bottom: 8px; }
+        .btn-show { border: 1px solid rgba(212,160,23,0.4); color: rgba(212,160,23,0.7); background: transparent; padding: 4px 12px; font-size: 11px; cursor: pointer; transition: all 0.3s; border-radius: 6px; }
+        .btn-show:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,160,23,0.08); }
+        .solution { display: none; margin-top: 8px; }
+        .solution.open { display: block; }
+        .solution-content { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.15); padding: 12px 16px; border-radius: 8px; color: var(--text); font-size: 13px; }
+        .answer-block { color: var(--gold); font-weight: 600; margin-top: 6px; }
+        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+        @media (max-width: 600px) { body { padding: 10px; } .variant-card { padding: 18px; } .page-title { font-size: 1.5rem; } }
+        @media print {
+            body { background: #fff; color: #000; padding: 0; font-size: 12px; }
+            .top-bar, .nav-bottom, .btn-show { display: none !important; }
+            .variant-card { background: #fff; border: 1px solid #ccc; margin-bottom: 20px; padding: 18px; box-shadow: none; }
+            .variant-title, .page-title, .page-subtitle, .page-info { color: #000; }
+            .task-condition { color: #000; }
+            .task-num { color: #000; font-weight: 700; }
+            .task-level { color: #555; background: #eee; }
+            .task { border-bottom-color: #ddd; }
+            .variant-title { border-bottom-color: #ddd; }
+            .solution { display: block !important; }
+            .solution-content { background: #f9f9f9; border-color: #ddd; color: #333; }
+            .answer-block { color: #000; font-weight: 700; }
+            .page-title { border-bottom-color: #000; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="top-bar">
+    <div class="breadcrumb"><a href="index.html">← Итоговая аттестация</a> / Экзаменационные билеты</div>
+    <div class="btn-group">
+        <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
+        <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
+    </div>
+</div>
+
+<h1 class="page-title">🎫 Экзаменационные билеты</h1>
+<p class="page-subtitle">Выпускной экзамен по математике · 2 варианта</p>
+<p class="page-info">10 заданий · 5 уровней · 55 баллов · 5 астрономических часов · В соответствии со сборником заданий</p>
+
+<!-- ==================== ВАРИАНТ 1 ==================== -->
+<div class="variant-card">
+<div class="variant-title">Вариант 1</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">1 (1 балл)</span><span class="task-level">Уровень 1</span></div>
+    <div class="task-condition">Вычислите: <span data-katex="\sqrt{144} - \sqrt[3]{8}"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('a1')">Показать</button>
+    <div class="solution" id="a1"><div class="solution-content"><p><span data-katex="12 - 2 = 10"></span></p><p class="answer-block">Ответ: <span data-katex="10"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">2 (1 балл)</span><span class="task-level">Уровень 1</span></div>
+    <div class="task-condition">Переведите <span data-katex="120^\circ"></span> в радианы.</div>
+    <button class="btn-show no-print" onclick="toggleSol('a2')">Показать</button>
+    <div class="solution" id="a2"><div class="solution-content"><p><span data-katex="120^\circ \cdot \frac{\pi}{180^\circ} = \frac{2\pi}{3}"></span></p><p class="answer-block">Ответ: <span data-katex="\frac{2\pi}{3}"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">3 (2 балла)</span><span class="task-level">Уровень 2</span></div>
+    <div class="task-condition">Вычислите: <span data-katex="27^{\frac{2}{3}} \cdot 9^{-\frac{1}{2}}"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('a3')">Показать</button>
+    <div class="solution" id="a3"><div class="solution-content"><p><span data-katex="27^{\frac{2}{3}} = 9"></span>, <span data-katex="9^{-\frac{1}{2}} = \frac{1}{3}"></span></p><p><span data-katex="9 \cdot \frac{1}{3} = 3"></span></p><p class="answer-block">Ответ: <span data-katex="3"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">4 (2 балла)</span><span class="task-level">Уровень 2</span></div>
+    <div class="task-condition">Найдите площадь поверхности шара радиусом <span data-katex="5"></span> см.</div>
+    <button class="btn-show no-print" onclick="toggleSol('a4')">Показать</button>
+    <div class="solution" id="a4"><div class="solution-content"><p><span data-katex="S = 4\pi R^{2} = 4\pi \cdot 25 = 100\pi"></span> см²</p><p class="answer-block">Ответ: <span data-katex="100\pi"></span> см²</p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">5 (3 балла)</span><span class="task-level">Уровень 3</span></div>
+    <div class="task-condition">Решите уравнение: <span data-katex="\sqrt{2x + 3} = x"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('a5')">Показать</button>
+    <div class="solution" id="a5"><div class="solution-content"><p><span data-katex="2x+3 = x^{2} \ \Rightarrow \ x^{2}-2x-3=0 \ \Rightarrow \ x=3;\ x=-1"></span></p><p>Проверка: <span data-katex="x=3"></span> ✓; <span data-katex="x=-1"></span> ✗</p><p class="answer-block">Ответ: <span data-katex="x = 3"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">6 (3 балла)</span><span class="task-level">Уровень 3</span></div>
+    <div class="task-condition">Найдите производную функции: <span data-katex="f(x) = \frac{x^{3}}{3} - 4x"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('a6')">Показать</button>
+    <div class="solution" id="a6"><div class="solution-content"><p><span data-katex="f'(x) = x^{2} - 4"></span></p><p class="answer-block">Ответ: <span data-katex="f'(x) = x^{2} - 4"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">7 (4 балла)</span><span class="task-level">Уровень 4</span></div>
+    <div class="task-condition">В правильной четырёхугольной пирамиде сторона основания <span data-katex="6"></span> см, высота <span data-katex="4"></span> см. Найдите объём.</div>
+    <button class="btn-show no-print" onclick="toggleSol('a7')">Показать</button>
+    <div class="solution" id="a7"><div class="solution-content"><p><span data-katex="S_{\text{осн}} = 36"></span> см²</p><p><span data-katex="V = \frac{1}{3} \cdot 36 \cdot 4 = 48"></span> см³</p><p class="answer-block">Ответ: <span data-katex="48"></span> см³</p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">8 (4 балла)</span><span class="task-level">Уровень 4</span></div>
+    <div class="task-condition">Решите уравнение: <span data-katex="\log_{2}(x + 3) + \log_{2}(x - 3) = 4"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('a8')">Показать</button>
+    <div class="solution" id="a8"><div class="solution-content"><p>ОДЗ: <span data-katex="x > 3"></span></p><p><span data-katex="x^{2} - 9 = 16 \ \Rightarrow \ x^{2} = 25 \ \Rightarrow \ x = \pm 5"></span></p><p>С учётом ОДЗ: <span data-katex="x = 5"></span></p><p class="answer-block">Ответ: <span data-katex="x = 5"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">9 (5 баллов)</span><span class="task-level">Уровень 5</span></div>
+    <div class="task-condition">Решите неравенство: <span data-katex="4^{x} - 6 \cdot 2^{x} + 8 \le 0"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('a9')">Показать</button>
+    <div class="solution" id="a9"><div class="solution-content"><p>Замена: <span data-katex="t = 2^{x} > 0"></span></p><p><span data-katex="t^{2} - 6t + 8 \le 0 \ \Rightarrow \ 2 \le t \le 4"></span></p><p><span data-katex="2 \le 2^{x} \le 4 \ \Rightarrow \ 1 \le x \le 2"></span></p><p class="answer-block">Ответ: <span data-katex="x \in [1; 2]"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">10 (5 баллов)</span><span class="task-level">Уровень 5</span></div>
+    <div class="task-condition">🏗️ Нужно огородить прямоугольную площадку, примыкающую к стене. Есть <span data-katex="60"></span> м забора. Найдите максимальную площадь.</div>
+    <button class="btn-show no-print" onclick="toggleSol('a10')">Показать</button>
+    <div class="solution" id="a10"><div class="solution-content"><p>Ширина <span data-katex="x"></span>, длина <span data-katex="60 - 2x"></span></p><p><span data-katex="S(x) = x(60 - 2x) = 60x - 2x^{2}"></span></p><p><span data-katex="S'(x) = 60 - 4x = 0 \ \Rightarrow \ x = 15"></span></p><p>Размеры: <span data-katex="15 \times 30"></span> м, <span data-katex="S_{\max} = 450"></span> м²</p><p class="answer-block">Ответ: <span data-katex="450"></span> м²</p></div></div>
+</div>
+</div>
+
+<!-- ==================== ВАРИАНТ 2 ==================== -->
+<div class="variant-card">
+<div class="variant-title">Вариант 2</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">1 (1 балл)</span><span class="task-level">Уровень 1</span></div>
+    <div class="task-condition">Вычислите: <span data-katex="\sqrt{81} + \sqrt[3]{27}"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('b1')">Показать</button>
+    <div class="solution" id="b1"><div class="solution-content"><p><span data-katex="9 + 3 = 12"></span></p><p class="answer-block">Ответ: <span data-katex="12"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">2 (1 балл)</span><span class="task-level">Уровень 1</span></div>
+    <div class="task-condition">Переведите <span data-katex="210^\circ"></span> в радианы.</div>
+    <button class="btn-show no-print" onclick="toggleSol('b2')">Показать</button>
+    <div class="solution" id="b2"><div class="solution-content"><p><span data-katex="210^\circ \cdot \frac{\pi}{180^\circ} = \frac{7\pi}{6}"></span></p><p class="answer-block">Ответ: <span data-katex="\frac{7\pi}{6}"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">3 (2 балла)</span><span class="task-level">Уровень 2</span></div>
+    <div class="task-condition">Вычислите: <span data-katex="16^{\frac{3}{4}} \cdot 8^{-\frac{1}{3}}"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('b3')">Показать</button>
+    <div class="solution" id="b3"><div class="solution-content"><p><span data-katex="16^{\frac{3}{4}} = 8"></span>, <span data-katex="8^{-\frac{1}{3}} = \frac{1}{2}"></span></p><p><span data-katex="8 \cdot \frac{1}{2} = 4"></span></p><p class="answer-block">Ответ: <span data-katex="4"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">4 (2 балла)</span><span class="task-level">Уровень 2</span></div>
+    <div class="task-condition">Найдите объём цилиндра: радиус <span data-katex="4"></span> см, высота <span data-katex="5"></span> см.</div>
+    <button class="btn-show no-print" onclick="toggleSol('b4')">Показать</button>
+    <div class="solution" id="b4"><div class="solution-content"><p><span data-katex="V = \pi \cdot 16 \cdot 5 = 80\pi"></span> см³</p><p class="answer-block">Ответ: <span data-katex="80\pi"></span> см³</p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">5 (3 балла)</span><span class="task-level">Уровень 3</span></div>
+    <div class="task-condition">Решите уравнение: <span data-katex="\sqrt{3x + 1} = x - 1"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('b5')">Показать</button>
+    <div class="solution" id="b5"><div class="solution-content"><p><span data-katex="3x+1 = x^{2}-2x+1 \ \Rightarrow \ x^{2}-5x=0 \ \Rightarrow \ x=0;\ x=5"></span></p><p>Проверка: <span data-katex="x=0"></span> ✗; <span data-katex="x=5"></span> ✓</p><p class="answer-block">Ответ: <span data-katex="x = 5"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">6 (3 балла)</span><span class="task-level">Уровень 3</span></div>
+    <div class="task-condition">Найдите производную функции: <span data-katex="f(x) = 2x^{3} - \frac{x^{2}}{2} + 5"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('b6')">Показать</button>
+    <div class="solution" id="b6"><div class="solution-content"><p><span data-katex="f'(x) = 6x^{2} - x"></span></p><p class="answer-block">Ответ: <span data-katex="f'(x) = 6x^{2} - x"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">7 (4 балла)</span><span class="task-level">Уровень 4</span></div>
+    <div class="task-condition">В правильной треугольной пирамиде сторона основания <span data-katex="4"></span> см, высота <span data-katex="6"></span> см. Найдите объём.</div>
+    <button class="btn-show no-print" onclick="toggleSol('b7')">Показать</button>
+    <div class="solution" id="b7"><div class="solution-content"><p><span data-katex="S_{\text{осн}} = \frac{\sqrt{3}}{4} \cdot 16 = 4\sqrt{3}"></span> см²</p><p><span data-katex="V = \frac{1}{3} \cdot 4\sqrt{3} \cdot 6 = 8\sqrt{3}"></span> см³</p><p class="answer-block">Ответ: <span data-katex="8\sqrt{3}"></span> см³</p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">8 (4 балла)</span><span class="task-level">Уровень 4</span></div>
+    <div class="task-condition">Решите уравнение: <span data-katex="\log_{3}(x + 2) + \log_{3}(x - 2) = 2"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('b8')">Показать</button>
+    <div class="solution" id="b8"><div class="solution-content"><p>ОДЗ: <span data-katex="x > 2"></span></p><p><span data-katex="x^{2} - 4 = 9 \ \Rightarrow \ x^{2} = 13 \ \Rightarrow \ x = \pm \sqrt{13}"></span></p><p>С учётом ОДЗ: <span data-katex="x = \sqrt{13}"></span></p><p class="answer-block">Ответ: <span data-katex="x = \sqrt{13}"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">9 (5 баллов)</span><span class="task-level">Уровень 5</span></div>
+    <div class="task-condition">Решите неравенство: <span data-katex="9^{x} - 10 \cdot 3^{x} + 9 \le 0"></span></div>
+    <button class="btn-show no-print" onclick="toggleSol('b9')">Показать</button>
+    <div class="solution" id="b9"><div class="solution-content"><p>Замена: <span data-katex="t = 3^{x} > 0"></span></p><p><span data-katex="t^{2} - 10t + 9 \le 0 \ \Rightarrow \ 1 \le t \le 9"></span></p><p><span data-katex="1 \le 3^{x} \le 9 \ \Rightarrow \ 0 \le x \le 2"></span></p><p class="answer-block">Ответ: <span data-katex="x \in [0; 2]"></span></p></div></div>
+</div>
+
+<div class="task">
+    <div class="task-header"><span class="task-num">10 (5 баллов)</span><span class="task-level">Уровень 5</span></div>
+    <div class="task-condition">🏗️ Расход топлива: <span data-katex="Q(v) = \frac{v^{2}}{40} - 2v + 100"></span>. Найдите скорость <span data-katex="v"></span>, при которой расход минимален.</div>
+    <button class="btn-show no-print" onclick="toggleSol('b10')">Показать</button>
+    <div class="solution" id="b10"><div class="solution-content"><p><span data-katex="Q'(v) = \frac{v}{20} - 2 = 0 \ \Rightarrow \ v = 40"></span></p><p>При <span data-katex="v < 40"></span>: ↘; при <span data-katex="v > 40"></span>: ↗. <span data-katex="v = 40"></span> — минимум.</p><p class="answer-block">Ответ: <span data-katex="v = 40"></span></p></div></div>
+</div>
+</div>
+
+<div class="nav-bottom">
+    <a href="index.html" class="btn-sm-gold">← К итоговой аттестации</a>
+    <span style="color: var(--text-muted); font-size: 13px;">2 варианта · 55 баллов · По сборнику заданий</span>
+</div>
+
+</div>
+
+<script>
+    document.querySelectorAll('[data-katex]').forEach(el => { katex.render(el.dataset.katex, el, { throwOnError: false }); });
+    function toggleSol(id) { document.getElementById(id).classList.toggle('open'); }
+    function downloadHTML() {
+        const html = document.documentElement.outerHTML;
+        const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+        a.download = 'ekzamenacionnye-bilety.html'; a.click(); URL.revokeObjectURL(a.href);
+    }
+</script>
+</body>
+</html>

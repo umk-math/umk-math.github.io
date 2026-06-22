@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практическая работа 27 — Цилиндр. Площадь поверхности и объём</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <style>
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.75; }
+        h5 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 10px; }
+        .doc-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px; margin-bottom: 15px; border-left: 4px solid var(--gold); }
+        .doc-card > p { color: #fff; }
+        .level { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 600; }
+        .level-f { background: #0e3a1f; color: #4ade80; }
+        .level-w { background: #1e3a5f; color: #60a5fa; }
+        .level-r { background: #4c3a1f; color: #fbbf24; }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
+        .solution-block { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin-top: 10px; color: var(--text) !important; }
+        .solution-block p, .solution-block li { font-size: 14px; margin-bottom: 8px; }
+        .solution-block strong { font-weight: 600; }
+        .solution-block .katex { color: var(--text); }
+        .answer { display: block; background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.25); border-left: 4px solid var(--gold); padding: 12px 18px; margin-top: 12px; color: var(--gold) !important; font-weight: 500; font-size: 15px; }
+        .answer .katex { color: var(--gold); }
+        .formula { color: var(--gold); }
+        .solution-block .formula { color: var(--text); }
+    </style>
+</head>
+<body>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 1 (1 балл)</h5>
+        <p>Радиус основания цилиндра <span class="formula" data-katex="4"></span> см, высота <span class="formula" data-katex="10"></span> см. Найдите площадь боковой поверхности.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol1')">Показать решение</button>
+        <div class="solution-block" id="sol1" style="display:none;">
+            <p><strong>Шаг 1.</strong> Площадь боковой поверхности цилиндра: <span data-katex="S_{\text{бок}} = 2\pi R h"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="S_{\text{бок}} = 2\pi \cdot 4 \cdot 10 = 80\pi"></span> см².</p>
+            <p class="answer">Ответ: <span data-katex="80\pi"></span> см²</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 2 (1 балл)</h5>
+        <p>Радиус основания цилиндра <span class="formula" data-katex="5"></span> см, высота <span class="formula" data-katex="8"></span> см. Найдите объём.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol2')">Показать решение</button>
+        <div class="solution-block" id="sol2" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём цилиндра: <span data-katex="V = \pi R^2 h"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="V = \pi \cdot 5^2 \cdot 8 = \pi \cdot 25 \cdot 8 = 200\pi"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="200\pi"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 3 (1 балл)</h5>
+        <p>Площадь боковой поверхности цилиндра <span class="formula" data-katex="60\pi"></span> см², высота <span class="formula" data-katex="6"></span> см. Найдите радиус основания.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol3')">Показать решение</button>
+        <div class="solution-block" id="sol3" style="display:none;">
+            <p><strong>Шаг 1.</strong> Из формулы <span data-katex="S_{\text{бок}} = 2\pi R h"></span>: <span data-katex="2\pi R \cdot 6 = 60\pi"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="12\pi R = 60\pi \ \Rightarrow \ R = 5"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="5"></span> см</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-f">Фундамент</span> Задача 4 (1 балл)</h5>
+        <p>Объём цилиндра <span class="formula" data-katex="100\pi"></span> см³, радиус основания <span class="formula" data-katex="5"></span> см. Найдите высоту.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol4')">Показать решение</button>
+        <div class="solution-block" id="sol4" style="display:none;">
+            <p><strong>Шаг 1.</strong> Из формулы <span data-katex="V = \pi R^2 h"></span>: <span data-katex="\pi \cdot 25 \cdot h = 100\pi"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="h = \frac{100\pi}{25\pi} = 4"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="4"></span> см</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 5 (2 балла)</h5>
+        <p>Осевое сечение цилиндра — квадрат со стороной <span class="formula" data-katex="12"></span> см. Найдите площадь полной поверхности цилиндра.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol5')">Показать решение</button>
+        <div class="solution-block" id="sol5" style="display:none;">
+            <p><strong>Шаг 1.</strong> Сторона квадрата: диаметр основания <span data-katex="2R = 12"></span> см, высота <span data-katex="h = 12"></span> см. Значит, <span data-katex="R = 6"></span> см.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="S_{\text{бок}} = 2\pi \cdot 6 \cdot 12 = 144\pi"></span> см².</p>
+            <p><strong>Шаг 3.</strong> Площадь двух оснований: <span data-katex="2S_{\text{осн}} = 2 \cdot \pi \cdot 36 = 72\pi"></span> см².</p>
+            <p><strong>Шаг 4.</strong> <span data-katex="S_{\text{полн}} = 144\pi + 72\pi = 216\pi"></span> см².</p>
+            <p class="answer">Ответ: <span data-katex="216\pi"></span> см²</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 6 (2 балла)</h5>
+        <p>Диагональ осевого сечения цилиндра равна <span class="formula" data-katex="10"></span> см, а диаметр основания <span class="formula" data-katex="8"></span> см. Найдите объём цилиндра.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol6')">Показать решение</button>
+        <div class="solution-block" id="sol6" style="display:none;">
+            <p><strong>Шаг 1.</strong> Радиус основания: <span data-katex="R = 4"></span> см.</p>
+            <p><strong>Шаг 2.</strong> В осевом сечении прямоугольник с диагональю <span data-katex="10"></span> см и шириной <span data-katex="8"></span> см. Высота: <span data-katex="h = \sqrt{10^2 - 8^2} = \sqrt{100 - 64} = \sqrt{36} = 6"></span> см.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="V = \pi \cdot 4^2 \cdot 6 = \pi \cdot 16 \cdot 6 = 96\pi"></span> см³.</p>
+            <p class="answer">Ответ: <span data-katex="96\pi"></span> см³</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-w">Стены</span> Задача 7 (2 балла)</h5>
+        <p>Площадь полной поверхности цилиндра <span class="formula" data-katex="132\pi"></span> см², радиус основания <span class="formula" data-katex="6"></span> см. Найдите высоту.</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol7')">Показать решение</button>
+        <div class="solution-block" id="sol7" style="display:none;">
+            <p><strong>Шаг 1.</strong> <span data-katex="S_{\text{полн}} = 2\pi R h + 2\pi R^2 = 2\pi R(h + R)"></span>.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="132\pi = 2\pi \cdot 6 \cdot (h + 6) \ \Rightarrow \ 132\pi = 12\pi(h + 6)"></span>.</p>
+            <p><strong>Шаг 3.</strong> <span data-katex="h + 6 = 11 \ \Rightarrow \ h = 5"></span> см.</p>
+            <p class="answer">Ответ: <span data-katex="5"></span> см</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 8 (3 балла) 🏗️</h5>
+        <p>Труба имеет форму цилиндра длиной <span class="formula" data-katex="6"></span> м и диаметром <span class="formula" data-katex="0{,}5"></span> м. Сколько краски нужно для покраски боковой поверхности <span class="formula" data-katex="20"></span> таких труб, если расход <span class="formula" data-katex="0{,}3"></span> кг/м²?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol8')">Показать решение</button>
+        <div class="solution-block" id="sol8" style="display:none;">
+            <p><strong>Шаг 1.</strong> Радиус: <span data-katex="R = 0{,}25"></span> м.</p>
+            <p><strong>Шаг 2.</strong> Боковая поверхность одной трубы: <span data-katex="S_1 = 2\pi \cdot 0{,}25 \cdot 6 = 3\pi"></span> м².</p>
+            <p><strong>Шаг 3.</strong> Площадь 20 труб: <span data-katex="S = 20 \cdot 3\pi = 60\pi"></span> м².</p>
+            <p><strong>Шаг 4.</strong> Масса краски: <span data-katex="m = 60\pi \cdot 0{,}3 = 18\pi"></span> кг.</p>
+            <p class="answer">Ответ: <span data-katex="18\pi"></span> кг <span data-katex="\approx 56{,}5"></span> кг</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 9 (3 балла) 🏗️</h5>
+        <p>Бак для воды имеет форму цилиндра радиусом <span class="formula" data-katex="2"></span> м и высотой <span class="formula" data-katex="5"></span> м. Сколько литров воды в нём помещается? (1 м³ = 1000 л)</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol9')">Показать решение</button>
+        <div class="solution-block" id="sol9" style="display:none;">
+            <p><strong>Шаг 1.</strong> Объём: <span data-katex="V = \pi \cdot 2^2 \cdot 5 = \pi \cdot 4 \cdot 5 = 20\pi"></span> м³.</p>
+            <p><strong>Шаг 2.</strong> В литрах: <span data-katex="V = 20\pi \cdot 1000 = 20000\pi"></span> л.</p>
+            <p class="answer">Ответ: <span data-katex="20000\pi"></span> л <span data-katex="\approx 62800"></span> л</p>
+        </div>
+    </div>
+
+    <div class="doc-card">
+        <h5><span class="level level-r">Кровля</span> Задача 10 (3 балла) 🏗️</h5>
+        <p>Колодец — цилиндр диаметром <span class="formula" data-katex="1"></span> м и глубиной <span class="formula" data-katex="10"></span> м. Стенки колодца выкладывают кирпичом. Сколько кирпичей нужно, если один кирпич закрывает <span class="formula" data-katex="0{,}1\pi"></span> м²?</p>
+        <button class="btn-outline-gold mt-2" onclick="toggle('sol10')">Показать решение</button>
+        <div class="solution-block" id="sol10" style="display:none;">
+            <p><strong>Шаг 1.</strong> Радиус: <span data-katex="R = 0{,}5"></span> м.</p>
+            <p><strong>Шаг 2.</strong> <span data-katex="S_{\text{бок}} = 2\pi \cdot 0{,}5 \cdot 10 = 10\pi"></span> м².</p>
+            <p><strong>Шаг 3.</strong> Количество кирпичей: <span data-katex="n = \frac{10\pi}{0{,}1\pi} = 100"></span>.</p>
+            <p class="answer">Ответ: <span data-katex="100"></span> шт.</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-katex]').forEach(el => {
+            katex.render(el.dataset.katex, el, { throwOnError: false });
+        });
+        function toggle(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

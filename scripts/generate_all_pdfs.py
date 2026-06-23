@@ -14,50 +14,32 @@ def escape_latex(text):
     if not text or not isinstance(text, str):
         return ''
     
-    text = text.replace('&', '\\&')
-    text = text.replace('%', '\\%')
-    text = text.replace('#', '\\#')
-    text = text.replace('_', '\\_')
-    text = text.replace('°', '$^\\circ$')
-    text = text.replace('…', '...')
-    text = text.replace('≈', '$\\approx$')
-    text = text.replace('±', '$\\pm$')
-    text = text.replace('≤', '$\\leq$')
-    text = text.replace('≥', '$\\geq$')
-    text = text.replace('≠', '$\\neq$')
-    text = text.replace('×', '$\\times$')
-    text = text.replace('÷', '$\\div$')
-    text = text.replace('√', '$\\sqrt{}$')
-    text = text.replace('π', r'$\pi$')
-    text = text.replace('∈', r'$\in$')
-    text = text.replace('α', r'$\alpha$')
-    text = text.replace('β', r'$\beta$')
-    text = text.replace('γ', r'$\gamma$')
-    text = text.replace('Δ', r'$\Delta$')
-    text = text.replace('θ', r'$\theta$')
-    text = text.replace('λ', r'$\lambda$')
-    text = text.replace('μ', r'$\mu$')
-    text = text.replace('σ', r'$\sigma$')
-    text = text.replace('φ', r'$\varphi$')
-    text = text.replace('ω', r'$\omega$')
-    text = text.replace('∠', r'$\angle$')
-    text = text.replace('⊥', r'$\perp$')
-    text = text.replace('∥', r'$\parallel$')
-    text = text.replace('△', r'$\triangle$')
-    text = text.replace('∞', r'$\infty$')
-    text = text.replace('⋅', r'$\cdot$')
-    text = text.replace('₁', r'$_1$')
-    text = text.replace('₂', r'$_2$')
-    text = text.replace('₃', r'$_3$')
-    text = text.replace('₄', r'$_4$')
-    text = text.replace('₅', r'$_5$')
-    text = text.replace('₆', r'$_6$')
-    text = text.replace('₇', r'$_7$')
-    text = text.replace('₈', r'$_8$')
-    text = text.replace('₉', r'$_9$')
-    text = text.replace('₀', r'$_0$')
-    text = text.replace('⟂', r'$\perp$')
-    text = text.replace('⊂', r'$\subset$')
+    text = str(text)
+    
+    replacements = {
+        '&': r'\&', '%': r'\%', '#': r'\#', '_': r'\_',
+        '{': r'\{', '}': r'\}', '$': r'\$', '^': r'\^{}', 
+        '~': r'\~{}', '°': r'$^\circ$', '…': '...',
+        '≈': r'$\approx$', '±': r'$\pm$', '≤': r'$\leq$',
+        '≥': r'$\geq$', '≠': r'$\neq$', '×': r'$\times$',
+        '÷': r'$\div$', 'π': r'$\pi$', '∈': r'$\in$',
+        'α': r'$\alpha$', 'β': r'$\beta$', 'γ': r'$\gamma$',
+        'Δ': r'$\Delta$', 'θ': r'$\theta$', 'λ': r'$\lambda$',
+        'μ': r'$\mu$', 'σ': r'$\sigma$', 'φ': r'$\varphi$',
+        'ω': r'$\omega$', '∠': r'$\angle$', '⊥': r'$\perp$',
+        '∥': r'$\parallel$', '△': r'$\triangle$', '∞': r'$\infty$',
+        '⋅': r'$\cdot$', '⟂': r'$\perp$', '⊂': r'$\subset$',
+        '₁': r'$_1$', '₂': r'$_2$', '₃': r'$_3$', '₄': r'$_4$',
+        '₅': r'$_5$', '₆': r'$_6$', '₇': r'$_7$', '₈': r'$_8$',
+        '₉': r'$_9$', '₀': r'$_0$',
+    }
+    
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    
+    text = re.sub(r'√(\d+)', r'$\sqrt{\1}$', text)
+    text = re.sub(r'√', r'$\sqrt{}$', text)
+    text = re.sub(r'<span[^>]*data-katex="([^"]*)"[^>]*></span>', r'$\1$', text, flags=re.IGNORECASE)
     text = re.sub(r'<[^>]+>', ' ', text)
     text = re.sub(r'\s+', ' ', text).strip()
     
@@ -95,33 +77,40 @@ def extract_from_html(filepath, container_class='doc-card'):
     return tasks
 
 def generate_latex_document(title, subtitle='', tasks=None, is_theory=False):
-    subtitle = subtitle or ''
+    title = escape_latex(title or "Практическая работа")
+    subtitle = escape_latex(subtitle or "")
+    author = "Станулевич А.В."
     
     latex = r'\documentclass{umk-matematika}' + '\n'
-    latex += r'\begin{document}' + '\n'
+    latex += r'\begin{document}' + '\n\n'
     latex += r'\maketitlepage' + '\n'
-    latex += r'    {' + escape_latex(title) + '}' + '\n'
-    latex += r'    {' + escape_latex(subtitle) + '}' + '\n'
-    latex += r'    {}' + '\n\n'
+    latex += r'    {' + title + '}' + '\n'
+    latex += r'    {' + subtitle + '}' + '\n'
+    latex += r'    {' + author + '}' + '\n\n'
 
     if is_theory:
         latex += r'\begin{center}' + '\n'
-        latex += r'\vspace{1.5cm}' + '\n'
-        latex += r'\textit{Полный конспект на сайте:}' + '\n\n'
+        latex += r'\vspace{1.2cm}' + '\n'
+        latex += r'\textit{Полный конспект на сайте:}\\' + '\n'
         latex += r'\texttt{https://umk-matematika.netlify.app}' + '\n'
         latex += r'\end{center}' + '\n'
-    elif tasks:
+    elif tasks and len(tasks) > 0:
         for i, t in enumerate(tasks, 1):
-            latex += r'\textbf{Задача ' + str(i) + r'.} ' + t['condition'] + r'\par\vspace{8pt}' + '\n'
+            condition = t['condition'].strip()
+            if condition:
+                latex += r'\textbf{Задача ' + str(i) + r'.} ' + condition + r'\par\vspace{10pt}' + '\n'
         
-        if any(t['answer'] for t in tasks):
+        if any(t.get('answer') for t in tasks):
             latex += r'\newpage' + '\n'
             latex += r'\section*{Ответы}' + '\n\n'
             latex += r'\begin{enumerate}' + '\n'
             for t in tasks:
-                ans = t['answer'] if t['answer'] else '---'
+                ans = t.get('answer', '').strip() or '---'
                 latex += r'  \item ' + ans + '\n'
             latex += r'\end{enumerate}' + '\n'
+    else:
+        latex += r'\vspace{2cm}' + '\n'
+        latex += r'\begin{center}\Large Нет задач\end{center}' + '\n'
 
     latex += r'\end{document}' + '\n'
     return latex

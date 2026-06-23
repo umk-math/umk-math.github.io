@@ -4,152 +4,403 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Стереометрия — Опорный конспект | УМК</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📦</text></svg>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <style>
-        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; --red: #ff6b6b; --blue: #60a5fa; --green: #4ade80; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; }
-        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
-        .breadcrumb { color: var(--text-muted); font-size: 14px; }
+        body { font-family: 'Roboto', -apple-system, sans-serif; background: var(--bg); color: var(--text); padding: 30px; line-height: 1.8; scroll-behavior: smooth; font-size: 16px; }
+        .container { max-width: 960px; margin: 0 auto; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+        .breadcrumb { color: var(--text-muted); font-size: 15px; }
         .breadcrumb a { color: var(--gold); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .btn-group { display: flex; gap: 8px; }
-        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 4px; line-height: 1.4; height: 32px; display: inline-flex; align-items: center; }
+        .btn-group { display: flex; gap: 10px; }
+        .btn-sm-gold { border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 8px 16px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; border-radius: 6px; line-height: 1.4; height: 38px; display: inline-flex; align-items: center; }
         .btn-sm-gold:hover { background: var(--gold); color: var(--bg); }
-        .page-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 2rem; margin-bottom: 5px; padding-bottom: 15px; border-bottom: 2px solid var(--gold); }
-        .page-subtitle { color: var(--gold); font-size: 0.95rem; margin-bottom: 10px; }
-        .page-info { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
+
+        .page-title { font-family: 'Playfair Display', Georgia, serif; color: #fff; font-size: 2.2rem; margin-bottom: 6px; padding-bottom: 16px; border-bottom: 2px solid var(--gold); }
+        .page-subtitle { color: var(--gold); font-size: 1.05rem; margin-bottom: 12px; }
+        .page-info { color: var(--text-muted); font-size: 14px; margin-bottom: 30px; }
         .page-info a { color: var(--gold); text-decoration: none; }
-        .page-info a:hover { text-decoration: underline; }
-        .konspekt-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 25px; margin-bottom: 25px; page-break-inside: avoid; }
-        .konspekt-num { color: var(--gold); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-        .konspekt-title { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.3rem; margin-bottom: 15px; }
-        .block { margin-bottom: 18px; }
-        .block-label { color: var(--gold); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: block; }
-        .block p, .block li { color: var(--text-muted); font-size: 14px; margin-bottom: 5px; }
-        .block ul, .block ol { padding-left: 22px; }
-        .formula-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-        .formula-table td { padding: 10px 14px; font-size: 14px; border: 1px solid var(--border); vertical-align: top; }
-        .formula-table td:first-child { color: #fff; text-align: center; width: 35%; background: rgba(255,255,255,0.02); font-weight: 500; }
+
+        .critical { background: rgba(212,160,23,0.08); border: 1.5px solid var(--gold); padding: 22px 28px; margin-bottom: 35px; border-radius: 10px; }
+        .critical h2 { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .critical-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+        .critical-grid div { color: #fff; font-size: 1rem; }
+
+        .toc { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 20px 26px; margin-bottom: 35px; border-radius: 8px; }
+        .toc h2 { color: #fff; font-size: 1rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .toc ol { padding-left: 22px; color: var(--text-muted); font-size: 0.95rem; line-height: 2.2; }
+        .toc a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .toc a:hover { color: var(--gold); }
+
+        .konspekt-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 5px solid var(--gold); padding: 28px; margin-bottom: 28px; page-break-inside: avoid; scroll-margin-top: 20px; border-radius: 4px; }
+        .konspekt-num { color: var(--gold); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .konspekt-title { font-family: 'Playfair Display', Georgia, serif; color: #fff; font-size: 1.4rem; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .konspekt-title .card-icon { font-size: 1.6rem; }
+        .block { margin-bottom: 20px; }
+        .block-label { color: var(--gold); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: block; }
+        .block p, .block li { color: var(--text-muted); font-size: 15px; margin-bottom: 6px; }
+        .block ul, .block ol { padding-left: 24px; }
+        .block ul li, .block ol li { margin-bottom: 5px; }
+
+        .formula-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        .formula-table td { padding: 11px 16px; font-size: 15px; border: 1px solid var(--border); vertical-align: top; }
+        .formula-table td:first-child { color: #fff; text-align: center; background: rgba(255,255,255,0.02); font-weight: 500; width: 30%; }
         .formula-table td:last-child { color: var(--text-muted); }
-        .example-box { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 15px 20px; margin: 12px 0; }
-        .example-label { color: var(--gold); font-size: 12px; font-weight: 600; display: block; margin-bottom: 6px; }
-        .exam-badge { display: inline-block; background: #1e3a5f; color: #60a5fa; font-size: 10px; font-weight: 700; padding: 2px 8px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .prof-block { background: rgba(212,160,23,0.06); border: 1px solid rgba(212,160,23,0.25); padding: 18px 20px; margin-top: 30px; }
-        .prof-block strong { color: var(--gold); display: block; margin-bottom: 6px; }
-        .prof-block p { color: var(--text-muted); font-size: 14px; margin: 0; }
-        .img-placeholder { background: rgba(255,255,255,0.02); border: 1px dashed var(--border); padding: 30px; text-align: center; color: var(--text-muted); font-size: 13px; margin: 15px 0; }
-        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
-        @media (max-width: 600px) { body { padding: 10px; } .konspekt-card { padding: 18px; } .page-title { font-size: 1.5rem; } }
+
+        .example-box { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 16px 22px; margin: 14px 0; border-radius: 6px; }
+        .example-box p { font-size: 15px; margin-bottom: 6px; }
+        .example-label { color: var(--gold); font-size: 14px; font-weight: 600; display: block; margin-bottom: 8px; }
+
+        .mistake-box { background: rgba(255,107,107,0.06); border: 1px solid rgba(255,107,107,0.25); padding: 16px 20px; margin: 14px 0; border-radius: 6px; }
+        .mistake-box .example-label { color: var(--red); font-size: 14px; }
+        .mistake-box p { color: #fca5a5; font-size: 14px; }
+
+        .important-badge { display: inline-block; background: #4c1a1a; color: #ff6b6b; font-size: 12px; font-weight: 700; padding: 3px 10px; margin-left: 8px; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 3px; }
+        .exam-badge { display: inline-block; background: #1e3a5f; color: #60a5fa; font-size: 12px; font-weight: 700; padding: 3px 10px; margin-left: 8px; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 3px; }
+
+        .prof-block { background: rgba(212,160,23,0.06); border: 1px solid rgba(212,160,23,0.25); padding: 20px 24px; margin-top: 35px; border-radius: 6px; }
+        .prof-block strong { color: var(--gold); display: block; margin-bottom: 8px; font-size: 1.05rem; }
+        .prof-block p { color: var(--text-muted); font-size: 15px; margin: 0; }
+
+        .img-placeholder { background: rgba(255,255,255,0.02); border: 1px dashed var(--border); padding: 40px; text-align: center; color: var(--text-muted); font-size: 14px; margin: 20px 0; border-radius: 6px; }
+
+        .cheatsheet { background: rgba(255,255,255,0.02); border: 1px solid var(--gold); padding: 28px; margin-top: 40px; border-radius: 10px; }
+        .cheatsheet h2 { color: var(--gold); font-size: 1.2rem; text-align: center; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
+        .cheatsheet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; }
+        .cheatsheet-grid .col-full { grid-column: 1 / -1; }
+        .cheatsheet h4 { color: #fff; font-size: 0.95rem; margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+        .cheatsheet ul { padding-left: 18px; }
+        .cheatsheet li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; }
+
+        .nav-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 45px; padding-top: 22px; border-top: 1px solid var(--border); }
+
+        @media (max-width: 600px) { body { padding: 15px; font-size: 14px; } .konspekt-card { padding: 20px; } .page-title { font-size: 1.6rem; } .critical-grid { grid-template-columns: 1fr; } .cheatsheet-grid { grid-template-columns: 1fr; } }
         @media print {
             body { background: #fff; color: #000; padding: 0; font-size: 12px; }
             .top-bar, .no-print, .nav-bottom { display: none !important; }
-            .konspekt-card { background: #fff; border: 1px solid #ccc; border-left: 4px solid #000; box-shadow: none; margin-bottom: 15px; padding: 15px; }
+            .konspekt-card { background: #fff; border: 1px solid #ccc; border-left: 4px solid #000; box-shadow: none; margin-bottom: 15px; padding: 18px; }
             .konspekt-title, .page-title, .page-subtitle, .page-info { color: #000; }
             .block-label, .konspekt-num, .example-label, .prof-block strong { color: #000; }
             .block p, .block li, .formula-table td:last-child, .prof-block p { color: #333; }
             .formula-table td { border-color: #ccc; }
             .formula-table td:first-child { background: #f5f5f5; color: #000; }
             .example-box { background: #f9f9f9; border-color: #ddd; }
+            .mistake-box { background: #f9f9f9; border-color: #ddd; }
+            .mistake-box p { color: #600; }
             .prof-block { background: #f9f9f9; border-color: #ddd; }
             .img-placeholder { border-color: #ccc; color: #666; }
             .page-title { border-bottom-color: #000; }
-            .exam-badge { border: 1px solid #000; color: #000; background: #eee; }
+            .important-badge, .exam-badge { border: 1px solid #000; color: #000; background: #eee; }
+            .critical { border-color: #000; background: #f9f9f9; }
+            .critical h2, .cheatsheet h2 { color: #000; }
+            .critical-grid div { color: #000; }
+            .cheatsheet, .toc { background: #f9f9f9; border-color: #000; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
 
-        <div class="top-bar">
-            <div class="breadcrumb"><a href="../teoreticheskij.html">← Теоретический раздел</a> / Стереометрия</div>
-            <div class="btn-group">
-                <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
-                <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
-            </div>
-        </div>
+<div class="top-bar">
+    <div class="breadcrumb"><a href="../teoreticheskij.html">← Теоретический раздел</a> / Стереометрия</div>
+    <div class="btn-group">
+        <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
+        <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
+    </div>
+</div>
 
-        <h1 class="page-title">📦 Введение в стереометрию</h1>
-        <p class="page-subtitle">Опорный конспект для подготовки к занятиям, контрольным и экзамену</p>
-        <p class="page-info">Практическая работа: <a href="../pr/05.html">№5 — Аксиомы стереометрии. Сечения</a></p>
+<h1 class="page-title">📦 Введение в стереометрию</h1>
+<p class="page-subtitle">Опорный конспект для подготовки к занятиям, контрольным и экзамену</p>
+<p class="page-info">Практическая работа: <a href="../pr/05.html">№5 — Аксиомы стереометрии. Сечения</a></p>
 
-        <div class="konspekt-card">
-            <div class="konspekt-num">Конспект</div>
-            <div class="konspekt-title">Аксиомы стереометрии. Сечения многогранников <span class="exam-badge">Экзамен</span></div>
+<!-- КРИТИЧЕСКИЙ МИНИМУМ -->
+<div class="critical">
+    <h2>⚡ Критический минимум для экзамена</h2>
+    <div class="critical-grid">
+        <div>📌 Три точки (не на одной прямой) → единственная плоскость</div>
+        <div>📌 Две точки прямой в плоскости → вся прямая в плоскости</div>
+        <div>📌 Две плоскости пересекаются → по прямой</div>
+        <div>📌 Сечение — многоугольник, стороны которого лежат на гранях</div>
+    </div>
+</div>
 
-            <div class="block">
-                <span class="block-label">📖 Что такое стереометрия</span>
-                <p>Стереометрия — раздел геометрии, изучающий фигуры в пространстве (трёхмерном). В отличие от планиметрии, где все точки лежат на плоскости, здесь у фигур есть длина, ширина и высота.</p>
-            </div>
+<!-- ОГЛАВЛЕНИЕ -->
+<div class="toc">
+    <h2>📑 Содержание</h2>
+    <ol>
+        <li><a href="#s1">🏛️ Предмет стереометрии. Основные понятия</a></li>
+        <li><a href="#s2">📜 Три аксиомы стереометрии</a></li>
+        <li><a href="#s3">📐 Следствия из аксиом</a></li>
+        <li><a href="#s4">✂️ Сечения многогранников</a></li>
+        <li><a href="#s5">🔢 Метод следов</a></li>
+        <li><a href="#cheatsheet">📋 Шпаргалка</a></li>
+    </ol>
+</div>
 
-            <div class="block">
-                <span class="block-label">📋 Три основные аксиомы</span>
-                <table class="formula-table">
-                    <tr><td><strong>Аксиома 1</strong></td><td>Через любые три точки, не лежащие на одной прямой, проходит плоскость, и притом только одна.</td></tr>
-                    <tr><td><strong>Аксиома 2</strong></td><td>Если две точки прямой лежат в плоскости, то и вся прямая лежит в этой плоскости.</td></tr>
-                    <tr><td><strong>Аксиома 3</strong></td><td>Если две плоскости имеют общую точку, то они пересекаются по прямой, проходящей через эту точку.</td></tr>
-                </table>
-            </div>
-            <div class="img-placeholder">[Рис. 1 — Иллюстрация трёх аксиом стереометрии]</div>
+<!-- 1: ОСНОВНЫЕ ПОНЯТИЯ -->
+<div class="konspekt-card" id="s1">
+    <div class="konspekt-num">Раздел 1</div>
+    <div class="konspekt-title"><span class="card-icon">🏛️</span> Предмет стереометрии. Основные понятия</div>
 
-            <div class="block">
-                <span class="block-label">✏️ Следствия из аксиом</span>
-                <ul>
-                    <li>Через прямую и не лежащую на ней точку проходит плоскость, и только одна.</li>
-                    <li>Через две пересекающиеся прямые проходит плоскость, и только одна.</li>
-                    <li>Через две параллельные прямые проходит плоскость, и только одна.</li>
-                </ul>
-            </div>
-
-            <div class="block">
-                <span class="block-label">📐 Что такое сечение многогранника</span>
-                <p><strong>Сечение</strong> — многоугольник, который получается при пересечении многогранника плоскостью. Стороны сечения лежат на гранях, вершины — на рёбрах многогранника.</p>
-            </div>
-            <div class="img-placeholder">[Рис. 2 — Сечение куба плоскостью]</div>
-
-            <div class="block">
-                <span class="block-label">🔢 Метод следов (как строить сечение)</span>
-                <ol>
-                    <li>Выбрать три точки на рёбрах, через которые пройдёт секущая плоскость.</li>
-                    <li>Соединить точки, лежащие в одной грани — получить стороны сечения.</li>
-                    <li>Для точек в разных гранях — найти пересечение секущей плоскости с продолжениями рёбер.</li>
-                    <li>Полученный многоугольник и есть сечение.</li>
-                </ol>
-            </div>
-
-            <div class="example-box">
-                <span class="example-label">🏗️ Пример из строительства</span>
-                <p><strong>Задача:</strong> Нужно распилить деревянный брус (прямоугольный параллелепипед) под углом. Как будет выглядеть срез?</p>
-                <p><strong>Ответ:</strong> Если пилить параллельно основанию — срез будет прямоугольником. Если под углом к основанию — параллелограммом. Если срезать угол — треугольником.</p>
-            </div>
-        </div>
-
-        <div class="prof-block">
-            <strong>🔧 Где пригодится строителю</strong>
-            <p>Чтение рабочих чертежей, понимание разрезов зданий на планах, пространственная разметка, раскрой материалов, проектирование нестандартных конструкций. См. практическую работу №5.</p>
-        </div>
-
-        <div class="nav-bottom no-print">
-            <a href="../teoreticheskij.html" class="btn-sm-gold">← К списку конспектов</a>
-        </div>
-
+    <div class="block">
+        <span class="block-label">📖 Чем стереометрия отличается от планиметрии</span>
+        <p><strong>Планиметрия</strong> изучает фигуры на плоскости — у них только длина и ширина. <strong>Стереометрия</strong> изучает фигуры в пространстве — добавляется третье измерение: высота. Поэтому стереометрические фигуры нельзя полностью изобразить на листе бумаги без искажений — мы рисуем их проекции.</p>
     </div>
 
-    <script>
-        document.querySelectorAll('[data-katex]').forEach(el => {
-            katex.render(el.dataset.katex, el, { throwOnError: false });
-        });
-        function downloadHTML() {
-            const html = document.documentElement.outerHTML;
-            const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'stereometriya-konspekt.html';
-            a.click();
-            URL.revokeObjectURL(a.href);
-        }
-    </script>
+    <div class="block">
+        <span class="block-label">🔤 Основные (неопределяемые) понятия</span>
+        <p>В стереометрии три неопределяемых понятия — им не дают строгого определения, их смысл раскрывается через аксиомы:</p>
+        <ul>
+            <li><strong>Точка</strong> — нульмерный объект. Обозначается заглавными латинскими буквами: A, B, C... В пространстве точка задаётся тремя координатами: (x; y; z).</li>
+            <li><strong>Прямая</strong> — одномерный объект. Бесконечна в обе стороны. Обозначается либо двумя точками (AB), либо строчной латинской буквой (a, b, l...).</li>
+            <li><strong>Плоскость</strong> — двумерный объект. Бесконечна во все стороны. Обозначается греческими буквами: α, β, γ... или тремя точками: (ABC).</li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <span class="block-label">📋 Четыре способа задать плоскость <span class="important-badge">Выучить!</span></span>
+        <p>Плоскость однозначно определяется в каждом из четырёх случаев:</p>
+        <table class="formula-table">
+            <tr><td><strong>1. Три точки</strong></td><td>Через три точки, не лежащие на одной прямой, проходит единственная плоскость. Это следует из аксиомы 1.</td></tr>
+            <tr><td><strong>2. Прямая и точка</strong></td><td>Через прямую и точку, не лежащую на ней, проходит единственная плоскость. Берём две точки на прямой — вместе с внешней точкой получаем три точки, не лежащие на одной прямой.</td></tr>
+            <tr><td><strong>3. Две пересекающиеся прямые</strong></td><td>Через две пересекающиеся прямые проходит единственная плоскость. Берём точку пересечения и по одной точке на каждой прямой.</td></tr>
+            <tr><td><strong>4. Две параллельные прямые</strong></td><td>Через две параллельные прямые проходит единственная плоскость. По определению параллельные прямые лежат в одной плоскости.</td></tr>
+        </table>
+        <p><strong>Важно:</strong> через две <strong>скрещивающиеся</strong> прямые плоскость провести <strong>нельзя</strong>. Скрещивающиеся прямые не параллельны и не пересекаются — они лежат в разных плоскостях. Это единственная комбинация двух прямых, через которую нельзя провести плоскость.</p>
+    </div>
+    <div class="img-placeholder">[Рис. 1 — Четыре способа задания плоскости: 3 точки; прямая и точка; две пересекающиеся прямые; две параллельные прямые]</div>
+</div>
+
+<!-- 2: АКСИОМЫ -->
+<div class="konspekt-card" id="s2">
+    <div class="konspekt-num">Раздел 2</div>
+    <div class="konspekt-title"><span class="card-icon">📜</span> Три аксиомы стереометрии <span class="exam-badge">Экзамен</span></div>
+
+    <div class="block">
+        <span class="block-label">📖 Что такое аксиома и зачем они нужны</span>
+        <p><strong>Аксиома</strong> — утверждение, принимаемое без доказательства. Это фундамент геометрии: как правила игры. Их не доказывают — на них строят доказательства всех остальных утверждений (теорем). В стереометрии к аксиомам планиметрии добавляются три новые аксиомы, описывающие взаимное расположение точек, прямых и плоскостей в пространстве.</p>
+    </div>
+
+    <div class="block">
+        <span class="block-label">📜 Аксиома 1 (о плоскости через три точки)</span>
+        <p><strong>Через любые три точки, не лежащие на одной прямой, проходит плоскость, и притом только одна.</strong></p>
+        <p><strong>Бытовой пример:</strong> табуретка на трёх ножках всегда стоит устойчиво — концы трёх ножек задают единственную плоскость пола. А табуретка на четырёх ножках может качаться: четыре точки не обязаны лежать в одной плоскости.</p>
+        <p><strong>Обозначение плоскости:</strong> если плоскость проходит через точки A, B и C, её обозначают (ABC).</p>
+    </div>
+
+    <div class="block">
+        <span class="block-label">📜 Аксиома 2 (о прямой и плоскости)</span>
+        <p><strong>Если две точки прямой лежат в плоскости, то все точки этой прямой лежат в данной плоскости.</strong></p>
+        <p><strong>Бытовой пример:</strong> если прижать линейку к столу в двух местах — вся линейка плотно прилегает к столу. Прямая не может «торчать» из плоскости, если две её точки уже там.</p>
+        <p><strong>Обозначение:</strong> если точки A и B прямой лежат в плоскости α, то пишут: AB ⊂ α.</p>
+    </div>
+
+    <div class="block">
+        <span class="block-label">📜 Аксиома 3 (о пересечении плоскостей)</span>
+        <p><strong>Если две различные плоскости имеют общую точку, то они пересекаются по прямой, проходящей через эту точку.</strong></p>
+        <p><strong>Бытовой пример:</strong> две стены комнаты соприкасаются — линия их пересечения идёт строго вертикально от пола до потолка. Это прямая, общая для обеих плоскостей.</p>
+        <p><strong>Важное следствие:</strong> две плоскости не могут пересекаться в одной точке. Либо не пересекаются вовсе (параллельны), либо пересекаются по целой прямой.</p>
+    </div>
+
+    <div class="img-placeholder">[Рис. 2 — Иллюстрация трёх аксиом: плоскость через 3 точки, прямая в плоскости, пересечение двух плоскостей по прямой]</div>
+
+    <div class="mistake-box">
+        <span class="example-label">⚠️ Частая ошибка</span>
+        <p>В аксиоме 1 важно: точки должны <strong>не лежать на одной прямой</strong>. Если три точки лежат на одной прямой — через них проходит бесконечно много плоскостей (как листы раскрытой книги проходят через корешок). В этом случае плоскость НЕ определена однозначно.</p>
+    </div>
+</div>
+
+<!-- 3: СЛЕДСТВИЯ -->
+<div class="konspekt-card" id="s3">
+    <div class="konspekt-num">Раздел 3</div>
+    <div class="konspekt-title"><span class="card-icon">📐</span> Следствия из аксиом</div>
+
+    <div class="block">
+        <span class="block-label">📖 Что такое следствие</span>
+        <p><strong>Следствие (теорема)</strong> — утверждение, которое логически выводится из аксиом. В отличие от аксиом, следствия нужно <strong>доказывать</strong>. На экзамене могут попросить не только сформулировать следствие, но и доказать его.</p>
+    </div>
+
+    <div class="block">
+        <span class="block-label">✏️ Три основных следствия <span class="important-badge">Знать с доказательством!</span></span>
+        <table class="formula-table">
+            <tr><td><strong>Следствие 1</strong></td><td>Через прямую и не лежащую на ней точку проходит плоскость, и только одна.</td></tr>
+            <tr><td><strong>Следствие 2</strong></td><td>Через две пересекающиеся прямые проходит плоскость, и только одна.</td></tr>
+            <tr><td><strong>Следствие 3</strong></td><td>Через две параллельные прямые проходит плоскость, и только одна.</td></tr>
+        </table>
+    </div>
+
+    <div class="block">
+        <span class="block-label">🔗 Идея доказательства следствия 1</span>
+        <p><strong>Дано:</strong> прямая a и точка B, не лежащая на a.</p>
+        <p><strong>Доказать:</strong> существует единственная плоскость, проходящая через a и B.</p>
+        <p><strong>Доказательство:</strong></p>
+        <ol>
+            <li>Возьмём на прямой a две произвольные точки — A и C.</li>
+            <li>Точки A, B, C не лежат на одной прямой (B не лежит на a).</li>
+            <li>По аксиоме 1 через A, B, C проходит единственная плоскость α.</li>
+            <li>Точки A и C прямой a лежат в плоскости α, значит по аксиоме 2 вся прямая a лежит в α.</li>
+            <li>Итак, плоскость α содержит и прямую a, и точку B. Единственность следует из аксиомы 1.</li>
+        </ol>
+    </div>
+
+    <div class="mistake-box">
+        <span class="example-label">⚠️ Частая ошибка на экзамене</span>
+        <p>Не путайте следствия со способами задания плоскости. Следствия 1–3 — это <strong>теоремы</strong>, их формулировки нужно знать вместе с доказательствами. А четыре способа задания плоскости — это практические приёмы.</p>
+    </div>
+</div>
+
+<!-- 4: СЕЧЕНИЯ -->
+<div class="konspekt-card" id="s4">
+    <div class="konspekt-num">Раздел 4</div>
+    <div class="konspekt-title"><span class="card-icon">✂️</span> Сечения многогранников <span class="exam-badge">Экзамен</span></div>
+
+    <div class="block">
+        <span class="block-label">📖 Определение сечения</span>
+        <p><strong>Сечение многогранника</strong> — это многоугольник, который получается при пересечении многогранника плоскостью.</p>
+        <p><strong>Главное правило:</strong></p>
+        <ul>
+            <li><strong>Вершины сечения</strong> всегда лежат на <strong>рёбрах</strong> многогранника.</li>
+            <li><strong>Стороны сечения</strong> всегда лежат на <strong>гранях</strong> многогранника.</li>
+        </ul>
+        <p>Плоскость как бы «разрезает» многогранник. Многоугольник, по которому прошёл разрез — это и есть сечение. Если многогранник выпуклый, то сечение — выпуклый многоугольник.</p>
+    </div>
+
+    <div class="img-placeholder">[Рис. 3 — Куб, рассечённый плоскостью: показаны сечения в виде треугольника, прямоугольника, пятиугольника и шестиугольника]</div>
+
+    <div class="block">
+        <span class="block-label">📐 Какие многоугольники могут быть сечением куба</span>
+        <p>Куб ограничен шестью гранями. Секущая плоскость пересекает не более шести граней, поэтому в сечении куба может получиться:</p>
+        <table class="formula-table">
+            <tr><td><strong>Треугольник</strong></td><td>Плоскость пересекает три ребра, выходящие из одной вершины. Сечение — правильный треугольник, если секущая плоскость равноудалена от вершины.</td></tr>
+            <tr><td><strong>Четырёхугольник</strong></td><td>Плоскость пересекает четыре ребра. Может быть прямоугольником, квадратом, трапецией. Если плоскость параллельна ребру — получается параллелограмм.</td></tr>
+            <tr><td><strong>Пятиугольник</strong></td><td>Плоскость пересекает пять граней. Стороны сечения не параллельны друг другу.</td></tr>
+            <tr><td><strong>Шестиугольник</strong></td><td>Плоскость пересекает все шесть граней. Если плоскость перпендикулярна диагонали куба и проходит через его центр — сечение является <strong>правильным шестиугольником</strong>.</td></tr>
+        </table>
+        <p><strong>Семиугольник</strong> в сечении куба получиться <strong>не может</strong>, так как у куба только шесть граней, а каждая сторона сечения лежит на своей грани.</p>
+    </div>
+
+    <div class="example-box">
+        <span class="example-label">🏗️ Пример из строительства</span>
+        <p><strong>Задача.</strong> Деревянный брус имеет форму прямоугольного параллелепипеда. Его нужно распилить под углом. Какой формы будет спил?</p>
+        <p><strong>Ответ.</strong> Плоскость распила — это секущая плоскость. Если пилить параллельно основанию — спил имеет форму прямоугольника. Если под углом к основанию — параллелограмма. Если срезать угол — треугольника. Конкретная форма зависит от угла наклона пилы.</p>
+    </div>
+</div>
+
+<!-- 5: МЕТОД СЛЕДОВ -->
+<div class="konspekt-card" id="s5">
+    <div class="konspekt-num">Раздел 5</div>
+    <div class="konspekt-title"><span class="card-icon">🔢</span> Метод следов для построения сечений <span class="exam-badge">Экзамен</span></div>
+
+    <div class="block">
+        <span class="block-label">📖 В чём суть метода</span>
+        <p><strong>Метод следов</strong> — это алгоритм построения сечения многогранника по трём точкам, заданным на его поверхности (обычно на рёбрах). Идея: последовательно найти линии пересечения секущей плоскости с каждой гранью многогранника. Эти линии и будут сторонами сечения.</p>
+    </div>
+
+    <div class="block">
+        <span class="block-label">🔢 Пошаговый алгоритм <span class="important-badge">Выучить!</span></span>
+        <table class="formula-table">
+            <tr><td><strong>Шаг 1</strong></td><td>Отметить на чертеже три точки, через которые должна пройти секущая плоскость. Обычно они даны в условии задачи и лежат на рёбрах многогранника.</td></tr>
+            <tr><td><strong>Шаг 2</strong></td><td>Найти точки, лежащие в <strong>одной грани</strong>, и соединить их отрезком. Это сторона сечения. Если все три точки лежат в одной грани — сечение строится сразу.</td></tr>
+            <tr><td><strong>Шаг 3</strong></td><td>Для построения сторон в других гранях используют <strong>след</strong> — прямую пересечения секущей плоскости с плоскостью грани. Для этого продлевают уже построенную сторону сечения и ребро грани до их пересечения.</td></tr>
+            <tr><td><strong>Шаг 4</strong></td><td>Продолжать построение от грани к грани, пока многоугольник сечения не замкнётся.</td></tr>
+        </table>
+    </div>
+
+    <div class="block">
+        <span class="block-label">📐 Важное свойство (помогает проверить построение)</span>
+        <p>Если секущая плоскость пересекает <strong>параллельные грани</strong> многогранника, то линии пересечения (стороны сечения) <strong>параллельны</strong> друг другу. Это следует из теоремы: если две параллельные плоскости пересечены третьей, то линии пересечения параллельны.</p>
+    </div>
+
+    <div class="example-box">
+        <span class="example-label">💡 Пример рассуждения</span>
+        <p><strong>Задача.</strong> В треугольной призме ABCA₁B₁C₁ точки M, N и P лежат на рёбрах AA₁, BB₁ и CC₁ соответственно. Построить сечение плоскостью (MNP).</p>
+        <p><strong>Решение.</strong></p>
+        <ol>
+            <li>Точки M и N лежат в одной грани AA₁B₁B — соединяем их отрезком MN.</li>
+            <li>Точки N и P лежат в грани BB₁C₁C — соединяем отрезком NP.</li>
+            <li>Проверяем, лежат ли M и P в одной грани. Если да (грань AA₁C₁C) — соединяем отрезком MP. Если нет — ищем след.</li>
+            <li>Сечение построено — это треугольник MNP.</li>
+        </ol>
+    </div>
+
+    <div class="mistake-box">
+        <span class="example-label">⚠️ Типичные ошибки при построении сечений</span>
+        <p>1. <strong>Соединяют точки, лежащие в разных гранях.</strong> Отрезок, соединяющий такие точки, не лежит на поверхности многогранника и не является стороной сечения.</p>
+        <p>2. <strong>Забывают продлить рёбра.</strong> Часто для нахождения следа нужно продлить ребро грани — мысленно выйти за пределы многогранника.</p>
+        <p>3. <strong>Не используют свойство параллельных граней.</strong> Если боковые грани параллельны, линии сечения в них параллельны — это сокращает построение.</p>
+    </div>
+    <div class="img-placeholder">[Рис. 4 — Пошаговое построение сечения призмы методом следов]</div>
+</div>
+
+<!-- ПРОФБЛОК -->
+<div class="prof-block">
+    <strong>🔧 Где пригодится строителю</strong>
+    <p>Чтение рабочих чертежей и разрезов зданий, пространственная разметка на стройплощадке, раскрой материалов под углом, понимание формы спила, проектирование нестандартных кровельных конструкций. См. практическую работу №5.</p>
+</div>
+
+<!-- ШПАРГАЛКА -->
+<div class="cheatsheet" id="cheatsheet">
+    <h2>📋 Шпаргалка</h2>
+    <div class="cheatsheet-grid">
+        <div>
+            <h4>📜 Три аксиомы</h4>
+            <ul>
+                <li>Через 3 точки (не на одной прямой) → единственная плоскость</li>
+                <li>2 точки прямой в плоскости → вся прямая в плоскости</li>
+                <li>2 плоскости пересекаются → по прямой</li>
+            </ul>
+        </div>
+        <div>
+            <h4>📐 Задание плоскости</h4>
+            <ul>
+                <li>3 точки не на одной прямой</li>
+                <li>Прямая + точка вне её</li>
+                <li>2 пересекающиеся прямые</li>
+                <li>2 параллельные прямые</li>
+            </ul>
+        </div>
+        <div>
+            <h4>✂️ Сечение</h4>
+            <ul>
+                <li>Вершины сечения — на рёбрах</li>
+                <li>Стороны сечения — на гранях</li>
+                <li>Соединять точки в одной грани</li>
+                <li>Параллельные грани → параллельные стороны сечения</li>
+            </ul>
+        </div>
+        <div>
+            <h4>⚠️ Нельзя</h4>
+            <ul>
+                <li>Через 2 скрещивающиеся прямые провести плоскость</li>
+                <li>Соединять точки из разных граней без построения следа</li>
+                <li>Получить 7-угольник в сечении куба</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="nav-bottom no-print">
+    <a href="../teoreticheskij.html" class="btn-sm-gold">← К списку конспектов</a>
+</div>
+
+</div>
+
+<script>
+    document.querySelectorAll('[data-katex]').forEach(el => {
+        katex.render(el.dataset.katex, el, { throwOnError: false });
+    });
+    function downloadHTML() {
+        const html = document.documentElement.outerHTML;
+        const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'stereometriya-konspekt.html';
+        a.click();
+        URL.revokeObjectURL(a.href);
+    }
+</script>
 </body>
 </html>

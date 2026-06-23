@@ -83,14 +83,13 @@ def generate_latex_document(title, subtitle='', tasks=None, is_theory=False):
     latex += r'\begin{center}' + '\n'
     latex += r'{\Large\bfseries ' + title + '}' + '\n'
     if subtitle:
-    latex += r'\\[0.3cm]{\large ' + subtitle + '}' + '\n'
+        latex += r'\\[0.3cm]{\large ' + subtitle + '}' + '\n'
     latex += r'\end{center}' + '\n'
     latex += r'\vspace{0.5cm}' + '\n\n'
 
     if is_theory:
         latex += r'\begin{center}' + '\n'
-        latex += r'\vspace{1.5cm}' + '\n'
-        latex += r'\textit{Полный конспект на сайте:}\\' + '\n'
+        latex += r'\textit{Полный конспект на сайте:}' + '\\' + '\n'
         latex += r'\texttt{https://umk-matematika.netlify.app}' + '\n'
         latex += r'\end{center}' + '\n'
     elif tasks and len(tasks) > 0:

@@ -132,9 +132,9 @@
 <div class="toc">
     <h2>📑 Содержание</h2>
     <ol>
-        <li><a href="#s1">📐 Определение и правила дифференцирования</a></li>
+        <li><a href="#s1">📐 Определение и правила нахождения производной</a></li>
         <li><a href="#s2">📏 Геометрический смысл. Уравнение касательной</a></li>
-        <li><a href="#s3">📈 Экстремумы функции</a></li>
+        <li><a href="#s3">📈 Экстремумы функции (максимум и минимум)</a></li>
         <li><a href="#cheatsheet">📋 Шпаргалка</a></li>
     </ol>
 </div>
@@ -142,48 +142,66 @@
 <!-- 1: ОПРЕДЕЛЕНИЕ И ПРАВИЛА -->
 <div class="konspekt-card" id="s1">
     <div class="konspekt-num">Раздел 1</div>
-    <div class="konspekt-title"><span class="card-icon">📐</span> Определение и правила дифференцирования <span class="exam-badge">Экзамен</span></div>
+    <div class="konspekt-title"><span class="card-icon">📐</span> Определение и правила нахождения производной <span class="exam-badge">Экзамен</span></div>
 
     <div class="block">
         <span class="block-label">📖 Что такое производная (простыми словами)</span>
         <p>Производная функции в точке — это <strong>скорость изменения</strong> функции в этой точке. Она отвечает на вопрос: «Насколько быстро меняется y, когда x чуть-чуть увеличивается?»</p>
         <p>Обозначение: <span data-katex="f'(x)"></span> — «эф штрих от икс». Также используют <span data-katex="y'"></span>.</p>
-        <p><strong>Главное:</strong> производная постоянной равна нулю (величина не меняется). Производная x равна 1 (растёт равномерно). Производная x² равна 2x (растёт с ускорением).</p>
+        <p><strong>Главное правило:</strong> производная постоянного числа равна нулю (величина не меняется). Производная x равна 1 (растёт равномерно). Производная x² равна 2x (растёт с ускорением).</p>
     </div>
 
     <div class="block">
         <span class="block-label">📋 Таблица производных <span class="important-badge">Выучить!</span></span>
         <table class="formula-table">
-            <tr><td><span data-katex="(C)' = 0"></span></td><td>Производная любого числа — ноль</td></tr>
-            <tr><td><span data-katex="(x)' = 1"></span></td><td></td></tr>
-            <tr><td><span data-katex="(x^{2})' = 2x"></span></td><td>Степень выносится вперёд, а у x уменьшается на 1</td></tr>
-            <tr><td><span data-katex="(x^{3})' = 3x^{2}"></span></td><td></td></tr>
-            <tr><td><span data-katex="(x^{n})' = n \cdot x^{n-1}"></span></td><td>Общее правило: n «падает» вперёд, степень становится n−1</td></tr>
+            <tr><td><span data-katex="(C)' = 0"></span></td><td>Производная любого числа равна нулю. Пример: <span data-katex="(5)' = 0,\ (100)' = 0"></span></td></tr>
+            <tr><td><span data-katex="(x)' = 1"></span></td><td>Производная от x равна 1</td></tr>
+            <tr><td><span data-katex="(x^{2})' = 2x"></span></td><td>Двойка «падает» вперёд, степень x уменьшается на 1</td></tr>
+            <tr><td><span data-katex="(x^{3})' = 3x^{2}"></span></td><td>Тройка «падает» вперёд, степень становится 2</td></tr>
+            <tr><td><span data-katex="(x^{n})' = n \cdot x^{n-1}"></span></td><td>Общее правило: число n «падает» вперёд, а степень x уменьшается на 1</td></tr>
         </table>
     </div>
 
     <div class="block">
-        <span class="block-label">✏️ Правила дифференцирования</span>
-        <p>Когда функция состоит из нескольких частей, работают правила:</p>
+        <span class="block-label">✏️ Правила нахождения производной</span>
+        <p>Когда функция состоит из нескольких частей (слагаемых или множителей), работают правила:</p>
         <table class="formula-table">
-            <tr><td><span data-katex="(u + v)' = u' + v'"></span></td><td>Производная суммы = сумме производных</td></tr>
-            <tr><td><span data-katex="(u - v)' = u' - v'"></span></td><td>Производная разности = разности производных</td></tr>
-            <tr><td><span data-katex="(C \cdot u)' = C \cdot u'"></span></td><td>Постоянный множитель выносится за знак производной</td></tr>
-            <tr><td><span data-katex="(u \cdot v)' = u'v + uv'"></span></td><td>Производная произведения (не произведение производных!)</td></tr>
-            <tr><td><span data-katex="\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}"></span></td><td>Производная частного (v ≠ 0)</td></tr>
+            <tr><td><span data-katex="(u + v)' = u' + v'"></span></td><td>Производная суммы равна сумме производных. Пример: <span data-katex="(x + x^{2})' = 1 + 2x"></span></td></tr>
+            <tr><td><span data-katex="(u - v)' = u' - v'"></span></td><td>Производная разности равна разности производных</td></tr>
+            <tr><td><span data-katex="(C \cdot u)' = C \cdot u'"></span></td><td>Постоянный множитель выносится. Пример: <span data-katex="(5x^{2})' = 5 \cdot 2x = 10x"></span></td></tr>
+            <tr><td><span data-katex="(u \cdot v)' = u'v + uv'"></span></td><td>Производная произведения: «производная первой на вторую плюс первая на производную второй»</td></tr>
+            <tr><td><span data-katex="\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}"></span></td><td>Производная дроби (v ≠ 0). Сначала производная числителя, потом числитель без производной</td></tr>
         </table>
+    </div>
+
+    <div class="block">
+        <span class="block-label">🔗 Производная сложной функции <span class="important-badge">Выучить!</span></span>
+        <p>Если внутри функции стоит не просто x, а выражение <span data-katex="(kx + b)"></span>, то нужно <strong>умножить на коэффициент при x</strong>:</p>
+        <table class="formula-table">
+            <tr><td><span data-katex="((kx + b)^{n})' = n \cdot k \cdot (kx + b)^{n-1}"></span></td></tr>
+        </table>
+        <p><strong>Примеры:</strong></p>
+        <ul>
+            <li><span data-katex="((2x - 3)^{2})' = 2 \cdot 2 \cdot (2x - 3)^{1} = 4(2x - 3)"></span></li>
+            <li><span data-katex="((5x + 1)^{3})' = 3 \cdot 5 \cdot (5x + 1)^{2} = 15(5x + 1)^{2}"></span></li>
+            <li><span data-katex="\left(\frac{1}{3x - 7}\right)' = ((3x - 7)^{-1})' = -1 \cdot 3 \cdot (3x - 7)^{-2} = -\frac{3}{(3x - 7)^{2}}"></span></li>
+        </ul>
+        <p><strong>Правило:</strong> сначала берём производную от степени (n «падает»), потом умножаем на коэффициент при x (k), и степень уменьшаем на 1.</p>
     </div>
 
     <div class="example-box">
         <span class="example-label">💡 Примеры</span>
-        <p><strong>1.</strong> <span data-katex="f(x) = 5x^{3} \ \Rightarrow \ f'(x) = 5 \cdot 3x^{2} = 15x^{2}"></span> (число 5 вынесли, степень x³ стала 3x²)</p>
-        <p><strong>2.</strong> <span data-katex="f(x) = x^{2} + 4x - 7 \ \Rightarrow \ f'(x) = 2x + 4"></span> (производная от −7 равна 0)</p>
-        <p><strong>3.</strong> <span data-katex="f(x) = 10 \ \Rightarrow \ f'(x) = 0"></span> (константа не меняется)</p>
+        <p><strong>1.</strong> <span data-katex="f(x) = 5x^{3} \ \Rightarrow \ f'(x) = 5 \cdot 3x^{2} = 15x^{2}"></span> (число 5 вынесли, от x³ взяли производную 3x²)</p>
+        <p><strong>2.</strong> <span data-katex="f(x) = x^{2} + 4x - 7 \ \Rightarrow \ f'(x) = 2x + 4"></span> (от x² → 2x, от 4x → 4, от −7 → 0)</p>
+        <p><strong>3.</strong> <span data-katex="f(x) = (3x - 1)^{2} \ \Rightarrow \ f'(x) = 2 \cdot 3 \cdot (3x - 1) = 6(3x - 1)"></span> (сложная функция!)</p>
+        <p><strong>4.</strong> <span data-katex="f(x) = 10 \ \Rightarrow \ f'(x) = 0"></span> (константа не меняется)</p>
     </div>
 
     <div class="mistake-box">
-        <span class="example-label">⚠️ Частая ошибка</span>
-        <p>Не путайте: <span data-katex="(x^{3})' = 3x^{2}"></span> (правильно), а не <span data-katex="3x^{3}"></span>. Степень уменьшается на единицу, а не остаётся прежней. И <span data-katex="(5x)' = 5"></span>, а не 0 — постоянный множитель сохраняется.</p>
+        <span class="example-label">⚠️ Частые ошибки</span>
+        <p>1. <span data-katex="(x^{3})' = 3x^{2}"></span>, а не <span data-katex="3x^{3}"></span>. Степень уменьшается на единицу.</p>
+        <p>2. <span data-katex="(5x)' = 5"></span>, а не 0 — постоянный множитель сохраняется.</p>
+        <p>3. При нахождении производной от <span data-katex="(3x - 1)^{2}"></span> нельзя забыть умножить на коэффициент 3. Правильно: <span data-katex="2(3x - 1) \cdot 3 = 6(3x - 1)"></span>.</p>
     </div>
 </div>
 
@@ -196,7 +214,7 @@
         <span class="block-label">📐 Что показывает производная на графике</span>
         <p>Значение производной в точке <span data-katex="x_{0}"></span> численно равно <strong>тангенсу угла наклона</strong> касательной к графику в этой точке:</p>
         <p style="text-align:center;"><span data-katex="f'(x_{0}) = \operatorname{tg}\alpha"></span></p>
-        <p>где α — угол между касательной и положительным направлением оси x. Если производная положительна — функция растёт. Отрицательна — убывает. Равна нулю — касательная горизонтальна.</p>
+        <p>где α — угол между касательной и положительным направлением оси x. Если производная положительна — функция растёт ↗. Отрицательна — убывает ↘. Равна нулю — касательная горизонтальна →.</p>
     </div>
     <div class="img-placeholder">
         <div class="fig-label">Рис. 1 — Касательная к графику функции</div>
@@ -210,10 +228,10 @@
     </div>
 
     <div class="block">
-        <span class="block-label">🔢 Алгоритм составления уравнения касательной</span>
+        <span class="block-label">🔢 Алгоритм (4 шага)</span>
         <table class="formula-table">
             <tr><td><strong>Шаг 1</strong></td><td>Найти <span data-katex="f(x_{0})"></span> — подставить x₀ в исходную функцию.</td></tr>
-            <tr><td><strong>Шаг 2</strong></td><td>Найти <span data-katex="f'(x)"></span> — продифференцировать функцию.</td></tr>
+            <tr><td><strong>Шаг 2</strong></td><td>Найти <span data-katex="f'(x)"></span> — найти производную функции.</td></tr>
             <tr><td><strong>Шаг 3</strong></td><td>Найти <span data-katex="f'(x_{0})"></span> — подставить x₀ в производную.</td></tr>
             <tr><td><strong>Шаг 4</strong></td><td>Подставить все три числа в формулу: <span data-katex="y = f(x_{0}) + f'(x_{0})(x - x_{0})"></span> и упростить.</td></tr>
         </table>
@@ -237,12 +255,12 @@
 
     <div class="block">
         <span class="block-label">📖 Что такое экстремумы</span>
-        <p><strong>Экстремумы</strong> — это точки, в которых функция меняет характер своего поведения:</p>
+        <p><strong>Экстремумы</strong> — это точки, в которых функция меняет направление:</p>
         <ul>
-            <li><strong>Точка максимума</strong> — функция перестаёт расти и начинает убывать (↗ → ↘). В этой точке функция имеет наибольшее значение в окрестности.</li>
-            <li><strong>Точка минимума</strong> — функция перестаёт убывать и начинает расти (↘ → ↗). Наименьшее значение в окрестности.</li>
+            <li><strong>Точка максимума</strong> — функция перестаёт расти и начинает убывать (↗ → ↘). В ней функция имеет наибольшее значение среди соседних.</li>
+            <li><strong>Точка минимума</strong> — функция перестаёт убывать и начинает расти (↘ → ↗). Наименьшее значение среди соседних.</li>
         </ul>
-        <p>В точках экстремума производная либо равна нулю, либо не существует. Такие точки называются <strong>критическими</strong>.</p>
+        <p>Точки, в которых производная равна нулю, называются <strong>критическими</strong>. Но <strong>не каждая</strong> критическая точка — экстремум.</p>
     </div>
     <div class="img-placeholder">
         <div class="fig-label">Рис. 2 — График функции с максимумом и минимумом</div>
@@ -276,7 +294,7 @@
 
     <div class="mistake-box">
         <span class="example-label">⚠️ Частая ошибка</span>
-        <p>Не каждая точка, где производная равна нулю, является экстремумом. Пример: <span data-katex="f(x) = x^{3}"></span>. <span data-katex="f'(0) = 0"></span>, но в нуле функция не имеет ни максимума, ни минимума — она просто «замедляется». Нужна проверка смены знака!</p>
+        <p>Не каждая точка, где производная равна нулю, является экстремумом. Пример: <span data-katex="f(x) = x^{3}"></span>. Её производная: <span data-katex="f'(x) = 3x^{2}"></span>. В точке x = 0 производная равна нулю: <span data-katex="f'(0) = 0"></span>. Но функция <span data-katex="x^{3}"></span> при x = 0 не имеет ни максимума, ни минимума — она просто «замедляется» (рост, задержка, снова рост). Знак производной не меняется: он всюду +. Поэтому <strong>всегда проверяйте смену знака</strong>.</p>
     </div>
 </div>
 
@@ -291,19 +309,23 @@
     <h2>📋 Шпаргалка</h2>
     <div class="cheatsheet-grid">
         <div>
-            <h4>📐 Производные</h4>
+            <h4>📐 Нахождение производной</h4>
             <ul>
-                <li><span data-katex="(C)' = 0"></span></li>
-                <li><span data-katex="(x^{n})' = nx^{n-1}"></span></li>
-                <li><span data-katex="(u+v)' = u'+v'"></span></li>
-                <li><span data-katex="(Cu)' = C \cdot u'"></span></li>
+                <li><span data-katex="(C)' = 0"></span> — число даёт ноль</li>
+                <li><span data-katex="(x^{n})' = n \cdot x^{n-1}"></span> — степень падает вперёд</li>
+                <li><span data-katex="(u + v)' = u' + v'"></span> — сумма</li>
+                <li><span data-katex="(u - v)' = u' - v'"></span> — разность</li>
+                <li><span data-katex="(C \cdot u)' = C \cdot u'"></span> — число выносится</li>
+                <li><span data-katex="(u \cdot v)' = u'v + uv'"></span> — произведение</li>
+                <li><span data-katex="\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^{2}}"></span> — дробь</li>
+                <li><span data-katex="((kx + b)^{n})' = n \cdot k \cdot (kx + b)^{n-1}"></span> — сложная функция</li>
             </ul>
         </div>
         <div>
             <h4>📏 Касательная</h4>
             <ul>
                 <li><span data-katex="f'(x_{0}) = \operatorname{tg}\alpha"></span></li>
-                <li><span data-katex="y = f(x_{0}) + f'(x_{0})(x - x_{0})"></span></li>
+                <li>Формула: <span data-katex="y = f(x_{0}) + f'(x_{0})(x - x_{0})"></span></li>
                 <li>1. Найти f(x₀)</li>
                 <li>2. Найти f'(x)</li>
                 <li>3. Найти f'(x₀)</li>
@@ -318,14 +340,16 @@
                 <li>f'(x) < 0 → убывает ↘</li>
                 <li>Смена +→− = максимум</li>
                 <li>Смена −→+ = минимум</li>
+                <li>Нет смены знака = нет экстремума</li>
             </ul>
         </div>
         <div>
             <h4>⚠️ Важно</h4>
             <ul>
-                <li>f'(x)=0 — не всегда экстремум</li>
-                <li>Нужна проверка смены знака</li>
-                <li>Пример: x³ — производная 0, но экстремума нет</li>
+                <li>f'(x)=0 — не всегда экстремум!</li>
+                <li>Пример: f(x)=x³, f'(0)=0, но экстремума нет</li>
+                <li>Всегда проверяйте смену знака</li>
+                <li>Сложная функция: умножить на коэффициент при x!</li>
             </ul>
         </div>
     </div>

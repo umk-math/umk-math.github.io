@@ -22,6 +22,12 @@ jobs:
       run: |
         sudo apt-get update -qq
         sudo apt-get install -y -qq texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-lang-cyrillic cm-super
+    - name: Clean old files
+      run: |
+        rm -rf tex_all
+        rm -rf pr/tex
+        rm -rf pr/pdf
+        mkdir -p tex_all
     - name: Generate LaTeX
       run: python scripts/generate_all_pdfs.py
     - name: Compile PDFs

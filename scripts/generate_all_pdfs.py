@@ -10,9 +10,11 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.join(SCRIPT_DIR, '..')
 TEX_DIR = os.path.join(ROOT_DIR, 'tex_all')
 
+
 def escape_latex(text):
     if not text or not isinstance(text, str):
         return ''
+    
     text = str(text)
     
     replacements = {
@@ -22,14 +24,21 @@ def escape_latex(text):
         '±': r'$\pm$', '≤': r'$\leq$', '≥': r'$\geq$', '≠': r'$\neq$',
         '×': r'$\times$', '÷': r'$\div$',
     }
+    
     for old, new in replacements.items():
         text = text.replace(old, new)
     
+    # Корни — исправленный вариант
     text = re.sub(r'√(\d+)', r'$\sqrt{\1}$', text)
     text = re.sub(r'√', r'$\sqrt{}$', text)
+    
+    # KaTeX → LaTeX
     text = re.sub(r'<span[^>]*data-katex="([^"]*)"[^>]*></span>', r'$\1$', text, flags=re.IGNORECASE)
+    
+    # Удаляем HTML-теги
     text = re.sub(r'<[^>]+>', ' ', text)
     text = re.sub(r'\s+', ' ', text).strip()
+    
     return text
 
 
@@ -58,7 +67,7 @@ def generate_latex_document(title, subtitle='', tasks=None, is_theory=False):
         for i, t in enumerate(tasks, 1):
             cond = t.get('condition', '').strip()
             if cond:
-                latex += rf'\textbf{{Задача {i}.}} {cond}\par\vspace{{0.8em}}' + '\n'
+                latex += rf'\textbf{{Задача {i}.}} {cond}\par\vspace{{0.9em}}' + '\n'
         
         if any(t.get('answer') for t in tasks):
             latex += r'\newpage\section*{Ответы}' + '\n\n'
@@ -73,7 +82,6 @@ def generate_latex_document(title, subtitle='', tasks=None, is_theory=False):
 
 
 def main():
-    # Создаём папку
     if os.path.exists(TEX_DIR):
         shutil.rmtree(TEX_DIR)
     os.makedirs(TEX_DIR, exist_ok=True)
@@ -91,8 +99,7 @@ def main():
         for f in sorted(os.listdir(pr_dir)):
             if f.endswith('.html'):
                 filepath = os.path.join(pr_dir, f)
-                # Здесь нужно добавить ваш extract_from_html
-                # Пока просто создаём пустой файл, чтобы проверить
+                # Пока используем заглушку, чтобы проверить генерацию
                 name = f.replace('.html', '')
                 title = f'Практическая работа {name}'
                 latex = generate_latex_document(title, '', [])
@@ -101,8 +108,8 @@ def main():
                     fout.write(latex)
                 print(f'[OK] Создан pr_{name}.tex')
 
-    print(f'\nГотово! Файлы сохранены в: {TEX_DIR}')
-    print(f'Количество файлов: {len(os.listdir(TEX_DIR))}')
+    print(f'\nГотово! .tex файлы сохранены в: {TEX_DIR}')
+    print(f'Всего файлов: {len(os.listdir(TEX_DIR)) if os.path.exists(TEX_DIR) else 0}')
 
 
 if __name__ == '__main__':

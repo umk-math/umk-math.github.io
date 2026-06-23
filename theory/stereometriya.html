@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Стереометрия — Опорный конспект | УМК</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📦</text></svg>">
+    <title>Степени и показательные функции — Опорный конспект | УМК</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>x²</text></svg>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <style>
@@ -47,7 +47,7 @@
 
         .formula-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
         .formula-table td { padding: 11px 16px; font-size: 15px; border: 1px solid var(--border); vertical-align: top; }
-        .formula-table td:first-child { color: #fff; text-align: center; background: rgba(255,255,255,0.02); font-weight: 500; width: 30%; }
+        .formula-table td:first-child { color: #fff; text-align: center; background: rgba(255,255,255,0.02); font-weight: 500; width: 45%; }
         .formula-table td:last-child { color: var(--text-muted); }
 
         .example-box { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 16px 22px; margin: 14px 0; border-radius: 6px; }
@@ -106,25 +106,25 @@
 <div class="container">
 
 <div class="top-bar">
-    <div class="breadcrumb"><a href="../teoreticheskij.html">← Теоретический раздел</a> / Стереометрия</div>
+    <div class="breadcrumb"><a href="../teoreticheskij.html">← Теоретический раздел</a> / Степени и показательные функции</div>
     <div class="btn-group">
         <button onclick="downloadHTML()" class="btn-sm-gold no-print">📥 Скачать</button>
         <a href="javascript:window.print()" class="btn-sm-gold no-print">🖨️ Печать</a>
     </div>
 </div>
 
-<h1 class="page-title">📦 Введение в стереометрию</h1>
+<h1 class="page-title">x² Степени и показательные функции</h1>
 <p class="page-subtitle">Опорный конспект для подготовки к занятиям, контрольным и экзамену</p>
-<p class="page-info">Практическая работа: <a href="../pr/05.html">№5 — Аксиомы стереометрии. Сечения</a></p>
+<p class="page-info">Практические работы: <a href="../pr/16.html">№16 — Степень с рациональным показателем</a> · <a href="../pr/17.html">№17 — Показательные уравнения</a> · <a href="../pr/18.html">№18 — Показательные неравенства</a></p>
 
 <!-- КРИТИЧЕСКИЙ МИНИМУМ -->
 <div class="critical">
     <h2>⚡ Критический минимум для экзамена</h2>
     <div class="critical-grid">
-        <div>📌 Три точки (не на одной прямой) → единственная плоскость</div>
-        <div>📌 Две точки прямой в плоскости → вся прямая в плоскости</div>
-        <div>📌 Две плоскости пересекаются → по прямой</div>
-        <div>📌 Сечение — многоугольник, стороны которого лежат на гранях</div>
+        <div>📌 <span data-katex="a^{m} \cdot a^{n} = a^{m+n}"></span> — умножение степеней</div>
+        <div>📌 <span data-katex="(a^{m})^{n} = a^{mn}"></span> — степень степени</div>
+        <div>📌 <span data-katex="a^{\frac{m}{n}} = \sqrt[n]{a^{m}}"></span> — дробный показатель</div>
+        <div>📌 При a > 1 знак неравенства сохраняется, при 0 < a < 1 — меняется</div>
     </div>
 </div>
 
@@ -132,242 +132,143 @@
 <div class="toc">
     <h2>📑 Содержание</h2>
     <ol>
-        <li><a href="#s1">🏛️ Предмет стереометрии. Основные понятия</a></li>
-        <li><a href="#s2">📜 Три аксиомы стереометрии</a></li>
-        <li><a href="#s3">📐 Следствия из аксиом</a></li>
-        <li><a href="#s4">✂️ Сечения многогранников</a></li>
-        <li><a href="#s5">🔢 Метод следов</a></li>
+        <li><a href="#s1">🔢 Степень с рациональным показателем</a></li>
+        <li><a href="#s2">📈 Показательная функция и уравнения</a></li>
+        <li><a href="#s3">⚖️ Показательные неравенства</a></li>
         <li><a href="#cheatsheet">📋 Шпаргалка</a></li>
     </ol>
 </div>
 
-<!-- 1: ОСНОВНЫЕ ПОНЯТИЯ -->
+<!-- 1: СТЕПЕНЬ С РАЦИОНАЛЬНЫМ ПОКАЗАТЕЛЕМ -->
 <div class="konspekt-card" id="s1">
     <div class="konspekt-num">Раздел 1</div>
-    <div class="konspekt-title"><span class="card-icon">🏛️</span> Предмет стереометрии. Основные понятия</div>
+    <div class="konspekt-title"><span class="card-icon">🔢</span> Степень с рациональным показателем <span class="exam-badge">Экзамен</span></div>
 
     <div class="block">
-        <span class="block-label">📖 Чем стереометрия отличается от планиметрии</span>
-        <p><strong>Планиметрия</strong> изучает фигуры на плоскости — у них только длина и ширина. <strong>Стереометрия</strong> изучает фигуры в пространстве — добавляется третье измерение: высота. Поэтому стереометрические фигуры нельзя полностью изобразить на листе бумаги без искажений — мы рисуем их проекции.</p>
+        <span class="block-label">📖 Что такое степень с дробным показателем</span>
+        <p>Если показатель степени — дробь, то это равносильно корню:</p>
+        <p style="text-align:center;"><strong><span data-katex="a^{\frac{m}{n}} = \sqrt[n]{a^{m}}"></span></strong>, где <span data-katex="a > 0"></span></p>
+        <p>Например: <span data-katex="8^{\frac{1}{3}} = \sqrt[3]{8} = 2"></span> — кубический корень из 8. А <span data-katex="16^{\frac{3}{4}} = (\sqrt[4]{16})^{3} = 2^{3} = 8"></span> — извлекли корень 4-й степени, потом возвели в куб.</p>
     </div>
 
     <div class="block">
-        <span class="block-label">🔤 Основные (неопределяемые) понятия</span>
-        <p>В стереометрии три неопределяемых понятия — им не дают строгого определения, их смысл раскрывается через аксиомы:</p>
-        <ul>
-            <li><strong>Точка</strong> — нульмерный объект. Обозначается заглавными латинскими буквами: A, B, C... В пространстве точка задаётся тремя координатами: (x; y; z).</li>
-            <li><strong>Прямая</strong> — одномерный объект. Бесконечна в обе стороны. Обозначается либо двумя точками (AB), либо строчной латинской буквой (a, b, l...).</li>
-            <li><strong>Плоскость</strong> — двумерный объект. Бесконечна во все стороны. Обозначается греческими буквами: α, β, γ... или тремя точками: (ABC).</li>
-        </ul>
-    </div>
-
-    <div class="block">
-        <span class="block-label">📋 Четыре способа задать плоскость <span class="important-badge">Выучить!</span></span>
-        <p>Плоскость однозначно определяется в каждом из четырёх случаев:</p>
+        <span class="block-label">📋 Пять свойств степеней <span class="important-badge">Выучить!</span></span>
+        <p>Все свойства работают для любых показателей — целых, дробных, отрицательных.</p>
         <table class="formula-table">
-            <tr><td><strong>1. Три точки</strong></td><td>Через три точки, не лежащие на одной прямой, проходит единственная плоскость. Это следует из аксиомы 1.</td></tr>
-            <tr><td><strong>2. Прямая и точка</strong></td><td>Через прямую и точку, не лежащую на ней, проходит единственная плоскость. Берём две точки на прямой — вместе с внешней точкой получаем три точки, не лежащие на одной прямой.</td></tr>
-            <tr><td><strong>3. Две пересекающиеся прямые</strong></td><td>Через две пересекающиеся прямые проходит единственная плоскость. Берём точку пересечения и по одной точке на каждой прямой.</td></tr>
-            <tr><td><strong>4. Две параллельные прямые</strong></td><td>Через две параллельные прямые проходит единственная плоскость. По определению параллельные прямые лежат в одной плоскости.</td></tr>
+            <tr><td><strong>1.</strong> <span data-katex="a^{m} \cdot a^{n} = a^{m+n}"></span></td><td>При умножении — показатели складываются</td></tr>
+            <tr><td><strong>2.</strong> <span data-katex="\frac{a^{m}}{a^{n}} = a^{m-n}"></span></td><td>При делении — показатели вычитаются (a ≠ 0)</td></tr>
+            <tr><td><strong>3.</strong> <span data-katex="(a^{m})^{n} = a^{m \cdot n}"></span></td><td>При возведении степени в степень — показатели перемножаются</td></tr>
+            <tr><td><strong>4.</strong> <span data-katex="a^{0} = 1"></span></td><td>Любое число (кроме нуля) в нулевой степени равно 1</td></tr>
+            <tr><td><strong>5.</strong> <span data-katex="a^{-n} = \frac{1}{a^{n}}"></span></td><td>Отрицательный показатель «переворачивает» число</td></tr>
         </table>
-        <p><strong>Важно:</strong> через две <strong>скрещивающиеся</strong> прямые плоскость провести <strong>нельзя</strong>. Скрещивающиеся прямые не параллельны и не пересекаются — они лежат в разных плоскостях. Это единственная комбинация двух прямых, через которую нельзя провести плоскость.</p>
-    </div>
-    <div class="img-placeholder">
-        <div class="fig-label">Рис. 1 — Четыре способа задания плоскости</div>
-        [3 точки; прямая + точка; 2 пересекающиеся прямые; 2 параллельные прямые]
-    </div>
-</div>
-
-<!-- 2: АКСИОМЫ -->
-<div class="konspekt-card" id="s2">
-    <div class="konspekt-num">Раздел 2</div>
-    <div class="konspekt-title"><span class="card-icon">📜</span> Три аксиомы стереометрии <span class="exam-badge">Экзамен</span></div>
-
-    <div class="block">
-        <span class="block-label">📖 Что такое аксиома и зачем они нужны</span>
-        <p><strong>Аксиома</strong> — утверждение, принимаемое без доказательства. Это фундамент геометрии: как правила игры. Их не доказывают — на них строят доказательства всех остальных утверждений (теорем). В стереометрии к аксиомам планиметрии добавляются три новые аксиомы, описывающие взаимное расположение точек, прямых и плоскостей в пространстве.</p>
     </div>
 
-    <div class="block">
-        <span class="block-label">📜 Аксиома 1 (о плоскости через три точки)</span>
-        <p><strong>Через любые три точки, не лежащие на одной прямой, проходит плоскость, и притом только одна.</strong></p>
-        <p><strong>Бытовой пример:</strong> табуретка на трёх ножках всегда стоит устойчиво — концы трёх ножек задают единственную плоскость пола. А табуретка на четырёх ножках может качаться: четыре точки не обязаны лежать в одной плоскости.</p>
-        <p><strong>Обозначение плоскости:</strong> если плоскость проходит через точки A, B и C, её обозначают (ABC).</p>
-    </div>
-    <div class="img-placeholder">
-        <div class="fig-label">Рис. 2 — Аксиома 1</div>
-        [Три точки A, B, C (не на одной прямой) → единственная плоскость. Контрпример: три точки на прямой → веер плоскостей]
-    </div>
-
-    <div class="block">
-        <span class="block-label">📜 Аксиома 2 (о прямой и плоскости)</span>
-        <p><strong>Если две точки прямой лежат в плоскости, то все точки этой прямой лежат в данной плоскости.</strong></p>
-        <p><strong>Бытовой пример:</strong> если прижать линейку к столу в двух местах — вся линейка плотно прилегает к столу. Прямая не может «торчать» из плоскости, если две её точки уже там.</p>
-        <p><strong>Обозначение:</strong> если точки A и B прямой лежат в плоскости α, то пишут: AB ⊂ α.</p>
-    </div>
-    <div class="img-placeholder">
-        <div class="fig-label">Рис. 3 — Аксиома 2</div>
-        [Плоскость α, на ней две точки A и B, через них прямая — вся прямая лежит в плоскости]
-    </div>
-
-    <div class="block">
-        <span class="block-label">📜 Аксиома 3 (о пересечении плоскостей)</span>
-        <p><strong>Если две различные плоскости имеют общую точку, то они пересекаются по прямой, проходящей через эту точку.</strong></p>
-        <p><strong>Бытовой пример:</strong> две стены комнаты соприкасаются — линия их пересечения идёт строго вертикально от пола до потолка. Это прямая, общая для обеих плоскостей.</p>
-        <p><strong>Важное следствие:</strong> две плоскости не могут пересекаться в одной точке. Либо не пересекаются вовсе (параллельны), либо пересекаются по целой прямой.</p>
-    </div>
-    <div class="img-placeholder">
-        <div class="fig-label">Рис. 4 — Аксиома 3</div>
-        [Две плоскости α и β пересекаются, линия пересечения — прямая]
+    <div class="example-box">
+        <span class="example-label">💡 Примеры</span>
+        <p><strong>1.</strong> <span data-katex="2^{3} \cdot 2^{4} = 2^{3+4} = 2^{7} = 128"></span></p>
+        <p><strong>2.</strong> <span data-katex="\frac{5^{6}}{5^{2}} = 5^{6-2} = 5^{4} = 625"></span></p>
+        <p><strong>3.</strong> <span data-katex="(3^{2})^{3} = 3^{2 \cdot 3} = 3^{6} = 729"></span></p>
+        <p><strong>4.</strong> <span data-katex="10^{-2} = \frac{1}{10^{2}} = \frac{1}{100} = 0{,}01"></span></p>
+        <p><strong>5.</strong> <span data-katex="8^{\frac{1}{3}} = \sqrt[3]{8} = 2"></span></p>
+        <p><strong>6.</strong> <span data-katex="16^{\frac{3}{4}} = (\sqrt[4]{16})^{3} = 2^{3} = 8"></span></p>
     </div>
 
     <div class="mistake-box">
         <span class="example-label">⚠️ Частая ошибка</span>
-        <p>В аксиоме 1 важно: точки должны <strong>не лежать на одной прямой</strong>. Если три точки лежат на одной прямой — через них проходит бесконечно много плоскостей (как листы раскрытой книги проходят через корешок). В этом случае плоскость НЕ определена однозначно.</p>
+        <p>Основания не перемножаются! <span data-katex="2^{3} \cdot 2^{4} \neq 4^{7}"></span>. Правильно: <span data-katex="2^{3} \cdot 2^{4} = 2^{3+4} = 2^{7} = 128"></span>. Основание остаётся тем же, меняется только показатель.</p>
     </div>
 </div>
 
-<!-- 3: СЛЕДСТВИЯ -->
-<div class="konspekt-card" id="s3">
-    <div class="konspekt-num">Раздел 3</div>
-    <div class="konspekt-title"><span class="card-icon">📐</span> Следствия из аксиом</div>
+<!-- 2: ПОКАЗАТЕЛЬНАЯ ФУНКЦИЯ И УРАВНЕНИЯ -->
+<div class="konspekt-card" id="s2">
+    <div class="konspekt-num">Раздел 2</div>
+    <div class="konspekt-title"><span class="card-icon">📈</span> Показательная функция и уравнения <span class="exam-badge">Экзамен</span></div>
 
     <div class="block">
-        <span class="block-label">📖 Что такое следствие</span>
-        <p><strong>Следствие (теорема)</strong> — утверждение, которое логически выводится из аксиом. В отличие от аксиом, следствия нужно <strong>доказывать</strong>. На экзамене могут попросить не только сформулировать следствие, но и доказать его.</p>
+        <span class="block-label">📖 Показательная функция</span>
+        <p>Функция вида <span data-katex="y = a^{x}"></span>, где <span data-katex="a > 0,\ a \neq 1"></span>. Переменная x стоит в показателе степени.</p>
+        <ul>
+            <li>Если <strong>a > 1</strong> — функция <strong>растёт</strong>. Чем больше x, тем больше y.</li>
+            <li>Если <strong>0 < a < 1</strong> — функция <strong>убывает</strong>. Чем больше x, тем меньше y.</li>
+            <li>График <strong>всегда</strong> проходит через точку (0; 1), потому что <span data-katex="a^{0} = 1"></span>.</li>
+            <li>График никогда не пересекает ось x — значения y всегда положительны.</li>
+        </ul>
+    </div>
+    <div class="img-placeholder">
+        <div class="fig-label">Рис. 1 — Графики показательной функции</div>
+        [Два графика: y = 2ˣ (возрастает) и y = (1/2)ˣ (убывает)]
     </div>
 
     <div class="block">
-        <span class="block-label">✏️ Три основных следствия <span class="important-badge">Знать с доказательством!</span></span>
-        <table class="formula-table">
-            <tr><td><strong>Следствие 1</strong></td><td>Через прямую и не лежащую на ней точку проходит плоскость, и только одна.</td></tr>
-            <tr><td><strong>Следствие 2</strong></td><td>Через две пересекающиеся прямые проходит плоскость, и только одна.</td></tr>
-            <tr><td><strong>Следствие 3</strong></td><td>Через две параллельные прямые проходит плоскость, и только одна.</td></tr>
-        </table>
-    </div>
-
-    <div class="block">
-        <span class="block-label">🔗 Идея доказательства следствия 1</span>
-        <p><strong>Дано:</strong> прямая a и точка B, не лежащая на a.</p>
-        <p><strong>Доказать:</strong> существует единственная плоскость, проходящая через a и B.</p>
-        <p><strong>Доказательство:</strong></p>
+        <span class="block-label">🔢 Как решать показательные уравнения</span>
+        <p><strong>Главный метод:</strong> привести обе части к <strong>одному основанию</strong>. Если основания равны, то и показатели равны.</p>
+        <p style="text-align:center;"><strong>Если <span data-katex="a^{f(x)} = a^{g(x)}"></span>, то <span data-katex="f(x) = g(x)"></span></strong> (a > 0, a ≠ 1)</p>
+        <p>Алгоритм:</p>
         <ol>
-            <li>Возьмём на прямой a две произвольные точки — A и C.</li>
-            <li>Точки A, B, C не лежат на одной прямой (B не лежит на a).</li>
-            <li>По аксиоме 1 через A, B, C проходит единственная плоскость α.</li>
-            <li>Точки A и C прямой a лежат в плоскости α, значит по аксиоме 2 вся прямая a лежит в α.</li>
-            <li>Итак, плоскость α содержит и прямую a, и точку B. Единственность следует из аксиомы 1.</li>
+            <li>Представить все числа в виде степеней одного основания.</li>
+            <li>Применить свойства степеней, чтобы слева и справа было одинаковое основание.</li>
+            <li>Отбросить основание и приравнять показатели.</li>
+            <li>Решить получившееся уравнение.</li>
         </ol>
     </div>
 
+    <div class="example-box">
+        <span class="example-label">💡 Примеры</span>
+        <p><strong>1. Простейшее:</strong> <span data-katex="2^{x} = 8 \ \Rightarrow \ 2^{x} = 2^{3} \ \Rightarrow \ x = 3"></span></p>
+        <p><strong>2. С линейным показателем:</strong> <span data-katex="5^{2x-1} = 125 \ \Rightarrow \ 5^{2x-1} = 5^{3} \ \Rightarrow \ 2x-1 = 3 \ \Rightarrow \ x = 2"></span></p>
+        <p><strong>3. С вынесением за скобки:</strong> <span data-katex="3^{x+2} + 3^{x} = 90 \ \Rightarrow \ 9 \cdot 3^{x} + 3^{x} = 90 \ \Rightarrow \ 10 \cdot 3^{x} = 90 \ \Rightarrow \ 3^{x} = 9 \ \Rightarrow \ x = 2"></span></p>
+        <p><strong>4. С заменой переменной:</strong> <span data-katex="4^{x} - 6 \cdot 2^{x} + 8 = 0"></span>. Замена <span data-katex="t = 2^{x}"></span>, тогда <span data-katex="4^{x} = t^{2}"></span>. Получаем: <span data-katex="t^{2} - 6t + 8 = 0 \ \Rightarrow \ t = 2,\ t = 4 \ \Rightarrow \ x = 1,\ x = 2"></span></p>
+    </div>
+
     <div class="mistake-box">
-        <span class="example-label">⚠️ Частая ошибка на экзамене</span>
-        <p>Не путайте следствия со способами задания плоскости. Следствия 1–3 — это <strong>теоремы</strong>, их формулировки нужно знать вместе с доказательствами. А четыре способа задания плоскости — это практические приёмы.</p>
+        <span class="example-label">⚠️ Частая ошибка</span>
+        <p>Нельзя приравнивать показатели, если основания разные. Например: <span data-katex="2^{x} = 3^{x}"></span>. Здесь нельзя просто написать x = x. Нужно сначала привести к одному основанию.</p>
     </div>
 </div>
 
-<!-- 4: СЕЧЕНИЯ -->
-<div class="konspekt-card" id="s4">
-    <div class="konspekt-num">Раздел 4</div>
-    <div class="konspekt-title"><span class="card-icon">✂️</span> Сечения многогранников <span class="exam-badge">Экзамен</span></div>
+<!-- 3: ПОКАЗАТЕЛЬНЫЕ НЕРАВЕНСТВА -->
+<div class="konspekt-card" id="s3">
+    <div class="konspekt-num">Раздел 3</div>
+    <div class="konspekt-title"><span class="card-icon">⚖️</span> Показательные неравенства <span class="exam-badge">Экзамен</span></div>
 
     <div class="block">
-        <span class="block-label">📖 Определение сечения</span>
-        <p><strong>Сечение многогранника</strong> — это многоугольник, который получается при пересечении многогранника плоскостью.</p>
-        <p><strong>Главное правило:</strong></p>
-        <ul>
-            <li><strong>Вершины сечения</strong> всегда лежат на <strong>рёбрах</strong> многогранника.</li>
-            <li><strong>Стороны сечения</strong> всегда лежат на <strong>гранях</strong> многогранника.</li>
-        </ul>
-        <p>Плоскость как бы «разрезает» многогранник. Многоугольник, по которому прошёл разрез — это и есть сечение. Если многогранник выпуклый, то сечение — выпуклый многоугольник.</p>
-    </div>
-
-    <div class="img-placeholder">
-        <div class="fig-label">Рис. 5 — Сечения куба</div>
-        [Куб с разными сечениями: треугольник, четырёхугольник, пятиугольник, правильный шестиугольник]
-    </div>
-
-    <div class="block">
-        <span class="block-label">📐 Какие многоугольники могут быть сечением куба</span>
-        <p>Куб ограничен шестью гранями. Секущая плоскость пересекает не более шести граней, поэтому в сечении куба может получиться:</p>
+        <span class="block-label">📖 Главное правило</span>
+        <p>При решении показательных неравенств знак зависит от основания:</p>
         <table class="formula-table">
-            <tr><td><strong>Треугольник</strong></td><td>Плоскость пересекает три ребра, выходящие из одной вершины. Сечение — правильный треугольник, если секущая плоскость равноудалена от вершины.</td></tr>
-            <tr><td><strong>Четырёхугольник</strong></td><td>Плоскость пересекает четыре ребра. Может быть прямоугольником, квадратом, трапецией. Если плоскость параллельна ребру — получается параллелограмм.</td></tr>
-            <tr><td><strong>Пятиугольник</strong></td><td>Плоскость пересекает пять граней. Стороны сечения не параллельны друг другу.</td></tr>
-            <tr><td><strong>Шестиугольник</strong></td><td>Плоскость пересекает все шесть граней. Если плоскость перпендикулярна диагонали куба и проходит через его центр — сечение является <strong>правильным шестиугольником</strong>.</td></tr>
+            <tr><td><strong>Основание a > 1</strong></td><td>Знак неравенства <strong>сохраняется</strong>. Пример: <span data-katex="2^{x} > 2^{3} \ \Rightarrow \ x > 3"></span></td></tr>
+            <tr><td><strong>Основание 0 < a < 1</strong></td><td>Знак неравенства <strong>меняется</strong> на противоположный. Пример: <span data-katex="(\frac{1}{2})^{x} < (\frac{1}{2})^{3} \ \Rightarrow \ x > 3"></span></td></tr>
         </table>
-        <p><strong>Семиугольник</strong> в сечении куба получиться <strong>не может</strong>, так как у куба только шесть граней, а каждая сторона сечения лежит на своей грани.</p>
+        <p><strong>Почему так?</strong> При основании меньше 1 функция убывает: чем больше x, тем меньше значение. Поэтому для сохранения смысла неравенства знак нужно развернуть.</p>
+    </div>
+
+    <div class="example-box">
+        <span class="example-label">💡 Примеры</span>
+        <p><strong>1. Основание > 1 (знак не меняется):</strong></p>
+        <p><span data-katex="2^{x} > 16 \ \Rightarrow \ 2^{x} > 2^{4} \ \Rightarrow \ x > 4"></span></p>
+        <p><strong>2. Основание < 1 (знак меняется):</strong></p>
+        <p><span data-katex="\left(\frac{1}{2}\right)^{x} < \frac{1}{8} \ \Rightarrow \ \left(\frac{1}{2}\right)^{x} < \left(\frac{1}{2}\right)^{3} \ \Rightarrow \ x > 3"></span></p>
     </div>
 
     <div class="example-box">
         <span class="example-label">🏗️ Пример из строительства</span>
-        <p><strong>Задача.</strong> Деревянный брус имеет форму прямоугольного параллелепипеда. Его нужно распилить под углом. Какой формы будет спил?</p>
-        <p><strong>Ответ.</strong> Плоскость распила — это секущая плоскость. Если пилить параллельно основанию — спил имеет форму прямоугольника. Если под углом к основанию — параллелограмма. Если срезать угол — треугольника. Конкретная форма зависит от угла наклона пилы.</p>
-    </div>
-    <div class="img-placeholder">
-        <div class="fig-label">Рис. 6 — Строительный пример</div>
-        [Брус-параллелепипед с тремя распилами: параллельно основанию, под углом, срез угла]
-    </div>
-</div>
-
-<!-- 5: МЕТОД СЛЕДОВ -->
-<div class="konspekt-card" id="s5">
-    <div class="konspekt-num">Раздел 5</div>
-    <div class="konspekt-title"><span class="card-icon">🔢</span> Метод следов для построения сечений <span class="exam-badge">Экзамен</span></div>
-
-    <div class="block">
-        <span class="block-label">📖 В чём суть метода</span>
-        <p><strong>Метод следов</strong> — это алгоритм построения сечения многогранника по трём точкам, заданным на его поверхности (обычно на рёбрах). Идея: последовательно найти линии пересечения секущей плоскости с каждой гранью многогранника. Эти линии и будут сторонами сечения.</p>
-    </div>
-
-    <div class="block">
-        <span class="block-label">🔢 Пошаговый алгоритм <span class="important-badge">Выучить!</span></span>
-        <table class="formula-table">
-            <tr><td><strong>Шаг 1</strong></td><td>Отметить на чертеже три точки, через которые должна пройти секущая плоскость. Обычно они даны в условии задачи и лежат на рёбрах многогранника.</td></tr>
-            <tr><td><strong>Шаг 2</strong></td><td>Найти точки, лежащие в <strong>одной грани</strong>, и соединить их отрезком. Это сторона сечения. Если все три точки лежат в одной грани — сечение строится сразу.</td></tr>
-            <tr><td><strong>Шаг 3</strong></td><td>Для построения сторон в других гранях используют <strong>след</strong> — прямую пересечения секущей плоскости с плоскостью грани. Для этого продлевают уже построенную сторону сечения и ребро грани до их пересечения.</td></tr>
-            <tr><td><strong>Шаг 4</strong></td><td>Продолжать построение от грани к грани, пока многоугольник сечения не замкнётся.</td></tr>
-        </table>
-    </div>
-
-    <div class="img-placeholder">
-        <div class="fig-label">Рис. 7 — Построение сечения методом следов</div>
-        [Последовательность: точки на рёбрах → соединение в грани → след на соседней грани → замкнутое сечение]
-    </div>
-
-    <div class="block">
-        <span class="block-label">📐 Важное свойство (помогает проверить построение)</span>
-        <p>Если секущая плоскость пересекает <strong>параллельные грани</strong> многогранника, то линии пересечения (стороны сечения) <strong>параллельны</strong> друг другу. Это следует из теоремы: если две параллельные плоскости пересечены третьей, то линии пересечения параллельны.</p>
-    </div>
-    <div class="img-placeholder">
-        <div class="fig-label">Рис. 8 — Свойство параллельных граней</div>
-        [Две параллельные плоскости пересечены третьей → линии пересечения параллельны]
-    </div>
-
-    <div class="example-box">
-        <span class="example-label">💡 Пример рассуждения</span>
-        <p><strong>Задача.</strong> В треугольной призме ABCA₁B₁C₁ точки M, N и P лежат на рёбрах AA₁, BB₁ и CC₁ соответственно. Построить сечение плоскостью (MNP).</p>
-        <p><strong>Решение.</strong></p>
-        <ol>
-            <li>Точки M и N лежат в одной грани AA₁B₁B — соединяем их отрезком MN.</li>
-            <li>Точки N и P лежат в грани BB₁C₁C — соединяем отрезком NP.</li>
-            <li>Проверяем, лежат ли M и P в одной грани. Если да (грань AA₁C₁C) — соединяем отрезком MP. Если нет — ищем след.</li>
-            <li>Сечение построено — это треугольник MNP.</li>
-        </ol>
+        <p>Прочность бетона нарастает по закону: <span data-katex="R(t) = 100 \cdot (1 - 2^{-0{,}2t})"></span>, где t — время в сутках, R — прочность в процентах.</p>
+        <p><strong>Вопрос:</strong> через сколько суток прочность превысит 75%?</p>
+        <p><strong>Решение:</strong></p>
+        <p><span data-katex="100(1 - 2^{-0{,}2t}) > 75 \ \Rightarrow \ 1 - 2^{-0{,}2t} > 0{,}75 \ \Rightarrow \ 2^{-0{,}2t} < 0{,}25"></span></p>
+        <p><span data-katex="2^{-0{,}2t} < 2^{-2} \ \Rightarrow \ -0{,}2t < -2 \ \Rightarrow \ t > 10"></span> суток.</p>
+        <p><strong>Ответ:</strong> более 10 суток.</p>
     </div>
 
     <div class="mistake-box">
-        <span class="example-label">⚠️ Типичные ошибки при построении сечений</span>
-        <p>1. <strong>Соединяют точки, лежащие в разных гранях.</strong> Отрезок, соединяющий такие точки, не лежит на поверхности многогранника и не является стороной сечения.</p>
-        <p>2. <strong>Забывают продлить рёбра.</strong> Часто для нахождения следа нужно продлить ребро грани — мысленно выйти за пределы многогранника.</p>
-        <p>3. <strong>Не используют свойство параллельных граней.</strong> Если боковые грани параллельны, линии сечения в них параллельны — это сокращает построение.</p>
+        <span class="example-label">⚠️ Частая ошибка</span>
+        <p>Забывают менять знак неравенства при основании меньше 1. Всегда сначала смотрите на основание! Если основание меньше 1 — разворачивайте знак.</p>
     </div>
 </div>
 
 <!-- ПРОФБЛОК -->
 <div class="prof-block">
     <strong>🔧 Где пригодится строителю</strong>
-    <p>Чтение рабочих чертежей и разрезов зданий, пространственная разметка на стройплощадке, раскрой материалов под углом, понимание формы спила, проектирование нестандартных кровельных конструкций. См. практическую работу №5.</p>
+    <p>Моделирование роста прочности бетона во времени, расчёт сложных процентов при кредитовании строительства, экспоненциальные процессы в материаловедении. См. практические работы №16–18.</p>
 </div>
 
 <!-- ШПАРГАЛКА -->
@@ -375,42 +276,42 @@
     <h2>📋 Шпаргалка</h2>
     <div class="cheatsheet-grid">
         <div>
-            <h4>📜 Три аксиомы</h4>
+            <h4>🔢 Свойства степеней</h4>
             <ul>
-                <li>Через 3 точки (не на одной прямой) → единственная плоскость</li>
-                <li>2 точки прямой в плоскости → вся прямая в плоскости</li>
-                <li>2 плоскости пересекаются → по прямой</li>
+                <li><span data-katex="a^{m} \cdot a^{n} = a^{m+n}"></span></li>
+                <li><span data-katex="\frac{a^{m}}{a^{n}} = a^{m-n}"></span></li>
+                <li><span data-katex="(a^{m})^{n} = a^{mn}"></span></li>
+                <li><span data-katex="a^{0} = 1"></span></li>
+                <li><span data-katex="a^{-n} = \frac{1}{a^{n}}"></span></li>
+                <li><span data-katex="a^{\frac{m}{n}} = \sqrt[n]{a^{m}}"></span></li>
             </ul>
         </div>
         <div>
-            <h4>📐 Задание плоскости</h4>
+            <h4>📈 Функция y = aˣ</h4>
             <ul>
-                <li>3 точки не на одной прямой</li>
-                <li>Прямая + точка вне её</li>
-                <li>2 пересекающиеся прямые</li>
-                <li>2 параллельные прямые</li>
+                <li>a > 1 → растёт</li>
+                <li>0 < a < 1 → убывает</li>
+                <li>Проходит через (0; 1)</li>
+                <li>y всегда больше нуля</li>
             </ul>
         </div>
         <div>
-            <h4>✂️ Сечение</h4>
+            <h4>⚖️ Неравенства</h4>
             <ul>
-                <li>Вершины сечения — на рёбрах</li>
-                <li>Стороны сечения — на гранях</li>
-                <li>Соединять точки в одной грани</li>
-                <li>Параллельные грани → параллельные стороны сечения</li>
+                <li>a > 1: знак сохраняется</li>
+                <li>0 < a < 1: знак меняется</li>
+                <li>Сначала уравнять основания</li>
+                <li>Потом сравнить показатели</li>
             </ul>
         </div>
         <div>
-            <h4>⚠️ Нельзя</h4>
+            <h4>⚠️ Важно</h4>
             <ul>
-                <li>Через 2 скрещивающиеся прямые провести плоскость</li>
-                <li>Соединять точки из разных граней без построения следа</li>
-                <li>Получить 7-угольник в сечении куба</li>
+                <li>Основания не перемножать</li>
+                <li>Не приравнивать показатели при разных основаниях</li>
+                <li>Не забывать менять знак при a < 1</li>
             </ul>
         </div>
-    </div>
-    <div style="text-align:center; margin-top:20px;">
-        <button onclick="downloadCheatsheet()" class="btn-sm-gold no-print">📥 Скачать шпаргалку</button>
     </div>
 </div>
 
@@ -429,17 +330,7 @@
         const blob = new Blob(['<!DOCTYPE html>\n' + html], { type: 'text/html' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = 'stereometriya-konspekt.html';
-        a.click();
-        URL.revokeObjectURL(a.href);
-    }
-    function downloadCheatsheet() {
-        const cheatsheet = document.getElementById('cheatsheet');
-        const html = '<!DOCTYPE html>\n<html lang="ru"><head><meta charset="UTF-8"><title>Шпаргалка — Стереометрия | УМК</title><style>body{font-family:sans-serif;background:#fff;color:#000;padding:20px;max-width:600px;margin:0 auto;line-height:1.6}h2{text-align:center;border-bottom:2px solid #000;padding-bottom:10px}h4{margin:15px 0 5px 0}ul{padding-left:20px}li{margin-bottom:4px}</style></head><body>' + cheatsheet.innerHTML + '</body></html>';
-        const blob = new Blob([html], { type: 'text/html' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'stereometriya-shpargalka.html';
+        a.download = 'stepeni-funktsii-konspekt.html';
         a.click();
         URL.revokeObjectURL(a.href);
     }

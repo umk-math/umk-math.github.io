@@ -467,9 +467,9 @@
 <div class="cheatsheet" id="shp">
     <h2>📋 Шпаргалка «За 5 минут до экзамена»</h2>
     <div class="cheatsheet-grid">
-        <div class="col-full">
+        <div>
             <h4>🔢 Основные углы</h4>
-            <div style="display:grid; grid-template-columns:auto auto; gap:4px 12px; font-size:0.9rem; color:var(--text-muted);">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; font-size:0.9rem; color:var(--text-muted);">
                 <div><span data-katex="30^\circ = \frac{\pi}{6}"></span></div>
                 <div><span data-katex="90^\circ = \frac{\pi}{2}"></span></div>
                 <div><span data-katex="45^\circ = \frac{\pi}{4}"></span></div>
@@ -478,9 +478,9 @@
                 <div><span data-katex="360^\circ = 2\pi"></span></div>
             </div>
         </div>
-        <div class="col-full">
+        <div>
             <h4>📐 Значения функций</h4>
-            <div style="display:grid; grid-template-columns:auto auto; gap:4px 12px; font-size:0.9rem; color:var(--text-muted);">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; font-size:0.9rem; color:var(--text-muted);">
                 <div><span data-katex="\sin 30^\circ = \frac{1}{2}"></span></div>
                 <div><span data-katex="\cos 30^\circ = \frac{\sqrt{3}}{2}"></span></div>
                 <div><span data-katex="\sin 45^\circ = \frac{\sqrt{2}}{2}"></span></div>
@@ -508,15 +508,25 @@
                 <li><span data-katex="\operatorname{ctg} x = a \Rightarrow \operatorname{arcctg} a + \pi k"></span></li>
             </ul>
         </div>
-        <div class="col-full">
-            <h4>🔄 Перевод и периоды</h4>
-            <ul style="display:flex; flex-wrap:wrap; gap:8px 24px; list-style:none; padding-left:0;">
+        <div>
+            <h4>🔄 Перевод</h4>
+            <ul>
                 <li>Градусы → радианы: <span data-katex="\times \frac{\pi}{180^\circ}"></span></li>
                 <li>Радианы → градусы: <span data-katex="\times \frac{180^\circ}{\pi}"></span></li>
-                <li>Период sin/cos: <span data-katex="2\pi"></span></li>
-                <li>Период tg/ctg: <span data-katex="\pi"></span></li>
             </ul>
         </div>
+        <div>
+            <h4>⏱️ Периоды</h4>
+            <ul>
+                <li><span data-katex="\sin x,\ \cos x"></span>: <span data-katex="2\pi"></span></li>
+                <li><span data-katex="\operatorname{tg} x,\ \operatorname{ctg} x"></span>: <span data-katex="\pi"></span></li>
+            </ul>
+        </div>
+    </div>
+    <div style="text-align:center; margin-top:20px;">
+        <button onclick="downloadCheatsheet()" class="btn-sm-gold no-print">📥 Скачать шпаргалку</button>
+    </div>
+</div>
     </div>
     <div style="text-align:center; margin-top:20px;">
         <button onclick="downloadCheatsheet()" class="btn-sm-gold no-print">📥 Скачать шпаргалку</button>

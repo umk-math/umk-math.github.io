@@ -68,8 +68,17 @@
         .qr-modal-img { width: 200px; height: 200px; }
 
         .badge { display: inline-block; background: var(--gold); color: var(--bg); padding: 5px 14px; font-size: 13px; font-weight: 600; border-radius: 4px; }
-        .method-note { background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.2); padding: 22px 24px; margin-top: 15px; border-radius: 6px; }
-        .method-note ol { color: var(--text-muted); padding-left: 24px; line-height: 2.2; font-size: 15px; }
+
+        .method-timeline { display: flex; flex-direction: column; gap: 24px; }
+        .method-step { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 8px; padding: 24px; transition: all 0.3s; }
+        .method-step:hover { border-color: var(--gold); background: rgba(212,160,23,0.02); }
+        .method-step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+        .method-step-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--gold); color: var(--bg); font-weight: 700; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+        .method-step-header h3 { color: #fff; font-size: 1.15rem; margin: 0; }
+        .method-step-body p { color: var(--text-muted); font-size: 15px; margin-bottom: 8px; line-height: 1.7; }
+        .method-result { background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.2); padding: 10px 14px; border-radius: 6px; color: #86efac; font-size: 14px; margin-top: 10px; }
+        .method-tip { background: rgba(212,160,23,0.06); border: 1px solid rgba(212,160,23,0.25); padding: 16px 20px; border-radius: 8px; margin-top: 24px; color: var(--text-muted); font-size: 14px; }
+        .method-tip strong { color: var(--gold); }
 
         #backToTop { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 48px; height: 48px; border-radius: 50%; background: var(--gold); color: var(--bg); border: none; font-size: 22px; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; }
         #backToTop.show { opacity: 1; visibility: visible; }
@@ -136,14 +145,60 @@
             </div>
 
             <div class="section-card">
-                <h2>📋 Как работать с конспектами</h2>
-                <div class="method-note">
-                    <ol>
-                        <li><strong>Перед занятием:</strong> ознакомьтесь с конспектом, выделите ключевые формулы.</li>
-                        <li><strong>На занятии:</strong> используйте конспект как опорный план, дополняйте примерами.</li>
-                        <li><strong>После занятия:</strong> предложите учащимся найти профессиональную задачу по теме.</li>
-                        <li><strong>Для самостоятельной работы:</strong> используйте интерактивные модели GeoGebra и Desmos.</li>
-                    </ol>
+                <h2>📋 Как учиться по конспектам: система 4 шагов</h2>
+                <p class="section-desc">Эта методика основана на принципе «от простого к сложному». Пройдите все 4 шага — и тема будет усвоена.</p>
+
+                <div class="method-timeline">
+                    <div class="method-step">
+                        <div class="method-step-header">
+                            <div class="method-step-num">1</div>
+                            <h3>Перед занятием: предпросмотр</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>Откройте конспект по теме. <strong>Не читайте всё подряд.</strong> Пробегитесь по заголовкам разделов, посмотрите на формулы в таблицах. Это займёт 5 минут.</p>
+                            <div class="method-result">🎯 Результат: вы уже знаете структуру темы и не утонете в новом материале на занятии.</div>
+                        </div>
+                    </div>
+
+                    <div class="method-step">
+                        <div class="method-step-header">
+                            <div class="method-step-num">2</div>
+                            <h3>На занятии: активное слушание</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>Держите конспект открытым. Когда преподаватель объясняет тему — <strong>следите по конспекту</strong>. Все формулы уже перед глазами, не нужно лихорадочно записывать.</p>
+                            <p>Увидели в конспекте блок «⚠️ Частая ошибка» — обратите внимание, когда преподаватель о ней говорит. Это то, что будет на контрольной.</p>
+                            <div class="method-result">🎯 Результат: вы слушаете и понимаете, а не тратите время на переписывание формул.</div>
+                        </div>
+                    </div>
+
+                    <div class="method-step">
+                        <div class="method-step-header">
+                            <div class="method-step-num">3</div>
+                            <h3>После занятия: закрепление через профессию</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>В конце каждого конспекта есть блок <strong>«🔧 Где пригодится строителю»</strong>. Прочитайте его. Затем придумайте <strong>свою задачу</strong> по теме, связанную со стройкой.</p>
+                            <p>Пример: после темы «Производная» — «Я оптимизирую размеры фундамента, чтобы сэкономить бетон». Это работает лучше, чем решение абстрактных примеров.</p>
+                            <div class="method-result">🎯 Результат: вы связываете математику с профессией — материал запоминается в 3 раза лучше.</div>
+                        </div>
+                    </div>
+
+                    <div class="method-step">
+                        <div class="method-step-header">
+                            <div class="method-step-num">4</div>
+                            <h3>Перед экзаменом: шпаргалка и самопроверка</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>Откройте раздел <strong>«📋 Шпаргалка «За 5 минут до экзамена»»</strong> в конце конспекта. Пробегитесь по формулам. Если какую-то не помните — вернитесь в соответствующий раздел.</p>
+                            <p>Нажмите <strong>«Скачать шпаргалку»</strong> — получите компактный HTML-файл. Откройте его на телефоне по дороге на экзамен.</p>
+                            <div class="method-result">🎯 Результат: вы повторили все ключевые формулы за 5 минут и имеете шпаргалку в телефоне.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-tip">
+                    <strong>💡 Совет преподавателя:</strong> Используйте кнопки <strong>🔴 Не готов / 🟡 Повторить / 🟢 Сдам</strong> на карточках тем. Отмечайте свой прогресс честно. К экзамену все темы должны быть зелёными.
                 </div>
             </div>
 
@@ -170,7 +225,6 @@
         window.addEventListener('scroll', function() { if (window.scrollY > 300) backToTop.classList.add('show'); else backToTop.classList.remove('show'); });
         backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-        // ========== ФОРМУЛА ДНЯ ==========
         const formulas = [
             { text: 'sin²α + cos²α = 1', latex: '\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1', topic: 'Тригонометрия', link: 'theory/trigonometriya.html#tozhd' },
             { text: 'aᵐ · aⁿ = aᵐ⁺ⁿ', latex: 'a^{m} \\cdot a^{n} = a^{m+n}', topic: 'Степени', link: 'theory/stepeni-funktsii.html' },
@@ -194,7 +248,6 @@
         }
         document.getElementById('formulaDayContainer').addEventListener('click', function() { window.location.href = formula.link; });
 
-        // ========== ТЕМЫ ==========
         const topics = [
             { icon: '📐', title: 'Тригонометрия', count: '9 разделов', prof: '🔧 Кровля, геодезия', link: 'theory/trigonometriya.html', course: 1, task: 'Уклон кровли 30°. На сколько метров поднимется крыша при длине ската 10 м?', taskLink: 'theory/trigonometriya.html#def', audio: 'Тригонометрия. Основные темы: единичная окружность, синус, косинус, тангенс, котангенс, тождества, графики, уравнения, формулы приведения.' },
             { icon: '📦', title: 'Стереометрия', count: '5 разделов', prof: '🔧 Чертежи, разметка', link: 'theory/stereometriya.html', course: 1, task: 'Сколько плоскостей можно провести через три точки, не лежащие на одной прямой?', taskLink: 'theory/stereometriya.html#s2', audio: 'Стереометрия. Аксиомы стереометрии, следствия из аксиом, сечения многогранников, метод следов.' },
@@ -207,7 +260,6 @@
             { icon: '⚪', title: 'Тела вращения', count: '3 раздела', prof: '🔧 Резервуары, купола', link: 'theory/tela-vrashcheniya.html', course: 2, task: 'Колонна-цилиндр: диаметр 0,6 м, высота 6 м. Объём бетона?', taskLink: 'theory/tela-vrashcheniya.html#s2', audio: 'Тела вращения. Сфера и шар, цилиндр, конус. Формулы объёмов и площадей поверхностей.' },
         ];
 
-        // ========== ОТОБРАЖЕНИЕ КАРТОЧЕК ==========
         function renderTopics() {
             const course1 = document.getElementById('course1');
             const course2 = document.getElementById('course2');
@@ -236,7 +288,6 @@
             updateProgress();
         }
 
-        // ========== СТАТУСЫ (localStorage) ==========
         function getStatus(index) { return localStorage.getItem('topic_status_' + index) || 'not-ready'; }
         function setStatus(index, status) { localStorage.setItem('topic_status_' + index, status); }
         function cycleStatus(index) {
@@ -258,7 +309,6 @@
             document.getElementById('progressPercent').textContent = percent + '%';
         }
 
-        // ========== QR-КОД ==========
         function showQR(link) {
             const fullUrl = window.location.origin + '/' + link;
             const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(fullUrl);
@@ -270,7 +320,6 @@
             document.getElementById('qrModal').classList.remove('open');
         }
 
-        // ========== АУДИО ==========
         let currentAudio = null;
         function toggleAudio(index, btn) {
             if (currentAudio) { speechSynthesis.cancel(); currentAudio = null; }
@@ -285,7 +334,6 @@
             speechSynthesis.speak(utterance);
         }
 
-        // ========== ЗАПУСК ==========
         renderTopics();
     </script>
 </body>

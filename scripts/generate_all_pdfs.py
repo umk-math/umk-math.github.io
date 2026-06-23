@@ -113,6 +113,158 @@ def generate_latex_document(title, subtitle='', tasks=None, is_theory=False):
     latex += r'\end{document}' + '\n'
     return latex
 
+def add_pdf_buttons_to_pr():
+    """Добавляет кнопку 'Скачать PDF' во все файлы практических работ"""
+    pr_dir = os.path.join(ROOT_DIR, 'pr')
+    if not os.path.exists(pr_dir):
+        print('[!] Папка pr/ не найдена')
+        return
+    
+    script = '''<script>
+(function() {
+    var path = window.location.pathname;
+    var match = path.match(/\/(\d+)\.html$/);
+    if (match) {
+        var num = match[1];
+        var pdfUrl = 'pdf/pr_' + num + '.pdf';
+        var btn = document.createElement('a');
+        btn.href = pdfUrl;
+        btn.className = 'pdf-download-btn';
+        btn.innerHTML = '📥 Скачать PDF';
+        btn.setAttribute('download', '');
+        btn.style.cssText = 'display:inline-block;padding:10px 20px;background:#2c3e50;color:white;text-decoration:none;border-radius:5px;margin:15px 0;font-size:14px;border:1px solid #D4A017;';
+        document.body.insertBefore(btn, document.body.firstChild);
+    }
+})();
+</script>
+</body>'''
+    
+    count = 0
+    for f in sorted(os.listdir(pr_dir)):
+        if f.endswith('.html'):
+            path = os.path.join(pr_dir, f)
+            with open(path, 'r', encoding='utf-8') as fh:
+                content = fh.read()
+            
+            # Проверяем, нет ли уже кнопки
+            if 'pdf-download-btn' in content:
+                print(f'[~] Кнопка уже есть в {f}, пропускаем')
+                continue
+            
+            # Заменяем </body> на скрипт + </body>
+            if '</body>' in content:
+                content = content.replace('</body>', script)
+                with open(path, 'w', encoding='utf-8') as fh:
+                    fh.write(content)
+                count += 1
+                print(f'[OK] Кнопка PDF добавлена в {f}')
+            else:
+                print(f'[!] Не найден </body> в {f}')
+    
+    print(f'[OK] Всего обновлено файлов: {count}')
+
+def add_pdf_buttons_to_theory():
+    """Добавляет кнопку 'Скачать PDF' во все файлы конспектов"""
+    theory_dir = os.path.join(ROOT_DIR, 'theory')
+    if not os.path.exists(theory_dir):
+        print('[!] Папка theory/ не найдена')
+        return
+    
+    script = '''<script>
+(function() {
+    var path = window.location.pathname;
+    var match = path.match(/\/(ok-\d+)\.html$/);
+    if (match) {
+        var name = match[1];
+        var pdfUrl = 'pdf/theory_' + name + '.pdf';
+        var btn = document.createElement('a');
+        btn.href = pdfUrl;
+        btn.className = 'pdf-download-btn';
+        btn.innerHTML = '📥 Скачать конспект (PDF)';
+        btn.setAttribute('download', '');
+        btn.style.cssText = 'display:inline-block;padding:10px 20px;background:#2c3e50;color:white;text-decoration:none;border-radius:5px;margin:15px 0;font-size:14px;border:1px solid #D4A017;';
+        document.body.insertBefore(btn, document.body.firstChild);
+    }
+})();
+</script>
+</body>'''
+    
+    count = 0
+    if os.path.exists(theory_dir):
+        for f in sorted(os.listdir(theory_dir)):
+            if f.endswith('.html'):
+                path = os.path.join(theory_dir, f)
+                with open(path, 'r', encoding='utf-8') as fh:
+                    content = fh.read()
+                
+                if 'pdf-download-btn' in content:
+                    print(f'[~] Кнопка уже есть в {f}, пропускаем')
+                    continue
+                
+                if '</body>' in content:
+                    content = content.replace('</body>', script)
+                    with open(path, 'w', encoding='utf-8') as fh:
+                        fh.write(content)
+                    count += 1
+                    print(f'[OK] Кнопка PDF добавлена в {f}')
+                else:
+                    print(f'[!] Не найден </body> в {f}')
+    
+    print(f'[OK] Всего обновлено файлов: {count}')
+
+def add_pdf_buttons_to_kontrol():
+    """Добавляет кнопку 'Скачать PDF' в файлы контроля"""
+    kontrol_dir = os.path.join(ROOT_DIR, 'kontrol')
+    if not os.path.exists(kontrol_dir):
+        print('[!] Папка kontrol/ не найдена')
+        return
+    
+    # Входной контроль
+    vhod_path = os.path.join(kontrol_dir, 'vhodnoj.html')
+    if os.path.exists(vhod_path):
+        script = '''<script>
+(function() {
+    var btn = document.createElement('a');
+    btn.href = 'pdf/vhodnoj.pdf';
+    btn.className = 'pdf-download-btn';
+    btn.innerHTML = '📥 Скачать PDF';
+    btn.setAttribute('download', '');
+    btn.style.cssText = 'display:inline-block;padding:10px 20px;background:#2c3e50;color:white;text-decoration:none;border-radius:5px;margin:15px 0;font-size:14px;border:1px solid #D4A017;';
+    document.body.insertBefore(btn, document.body.firstChild);
+})();
+</script>
+</body>'''
+        with open(vhod_path, 'r', encoding='utf-8') as fh:
+            content = fh.read()
+        if 'pdf-download-btn' not in content and '</body>' in content:
+            content = content.replace('</body>', script)
+            with open(vhod_path, 'w', encoding='utf-8') as fh:
+                fh.write(content)
+            print('[OK] Кнопка PDF добавлена в vhodnoj.html')
+    
+    # Экзаменационные билеты
+    exam_path = os.path.join(kontrol_dir, 'final', 'bilety.html')
+    if os.path.exists(exam_path):
+        script = '''<script>
+(function() {
+    var btn = document.createElement('a');
+    btn.href = '../pdf/exam_bilety.pdf';
+    btn.className = 'pdf-download-btn';
+    btn.innerHTML = '📥 Скачать PDF';
+    btn.setAttribute('download', '');
+    btn.style.cssText = 'display:inline-block;padding:10px 20px;background:#2c3e50;color:white;text-decoration:none;border-radius:5px;margin:15px 0;font-size:14px;border:1px solid #D4A017;';
+    document.body.insertBefore(btn, document.body.firstChild);
+})();
+</script>
+</body>'''
+        with open(exam_path, 'r', encoding='utf-8') as fh:
+            content = fh.read()
+        if 'pdf-download-btn' not in content and '</body>' in content:
+            content = content.replace('</body>', script)
+            with open(exam_path, 'w', encoding='utf-8') as fh:
+                fh.write(content)
+            print('[OK] Кнопка PDF добавлена в bilety.html')
+
 def main():
     if os.path.exists(TEX_DIR):
         shutil.rmtree(TEX_DIR)
@@ -122,6 +274,12 @@ def main():
     if os.path.exists(cls_src):
         shutil.copy(cls_src, os.path.join(TEX_DIR, 'umk-matematika.cls'))
         print('[OK] umk-matematika.cls скопирован')
+
+    # ========== ДОБАВЛЯЕМ КНОПКИ PDF ==========
+    print('\n=== Добавление кнопок PDF на страницы ===')
+    add_pdf_buttons_to_pr()
+    add_pdf_buttons_to_theory()
+    add_pdf_buttons_to_kontrol()
 
     # Практические
     print('\n=== Практические работы ===')

@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -383,7 +382,8 @@
         }
 
         function showQR(link) {
-            const fullUrl = window.location.origin + '/' + link;
+            const baseUrl = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '');
+            const fullUrl = baseUrl + '/' + link;
             const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(fullUrl);
             document.getElementById('qrImage').src = qrUrl;
             document.getElementById('qrModal').classList.add('open');
@@ -449,4 +449,3 @@
     </script>
 </body>
 </html>
-```

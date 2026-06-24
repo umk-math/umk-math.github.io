@@ -68,6 +68,9 @@
         .topic-preview { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #1a1f2b; border: 1px solid var(--gold); padding: 12px 16px; border-radius: 8px; font-size: 13px; color: var(--text-muted); white-space: nowrap; z-index: 10; margin-bottom: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.6); max-width: 300px; overflow: hidden; text-overflow: ellipsis; }
         .topic-card:hover .topic-preview { display: block; }
 
+        .topic-qr { position: absolute; top: 10px; right: 10px; font-size: 16px; cursor: pointer; opacity: 0.4; transition: opacity 0.3s; background: none; border: none; color: var(--text-muted); z-index: 5; }
+        .topic-qr:hover { opacity: 1; color: var(--gold); }
+
         .modal-content { background: var(--bg-card); border: 1px solid var(--border); }
         .modal-header { border-bottom: 1px solid var(--border); }
         .modal-title { color: #fff; font-family: 'Playfair Display', serif; }
@@ -77,6 +80,12 @@
         .timer-bar { background: rgba(212,160,23,0.1); border-bottom: 1px solid var(--gold); padding: 8px 16px; color: var(--gold); font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
         .timer-bar .timer-reset { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 2px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
         .timer-bar .timer-reset:hover { background: var(--gold); color: var(--bg); }
+
+        .qr-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        .qr-modal.open { display: flex; }
+        .qr-modal-content { background: #fff; padding: 30px; border-radius: 12px; text-align: center; position: relative; }
+        .qr-modal-close { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #333; background: none; border: none; }
+        .qr-modal-img { width: 200px; height: 200px; }
 
         .badge { display: inline-block; background: var(--gold); color: var(--bg); padding: 5px 14px; font-size: 13px; font-weight: 600; border-radius: 4px; }
 
@@ -266,6 +275,14 @@
 
     <div id="modalsContainer"></div>
 
+    <div class="qr-modal" id="qrModal" onclick="closeQR(event)">
+        <div class="qr-modal-content" onclick="event.stopPropagation()">
+            <button class="qr-modal-close" onclick="closeQR()">&times;</button>
+            <img class="qr-modal-img" id="qrImage" src="" alt="QR-код">
+            <p style="margin-top:10px;color:#333;font-size:14px;">Наведите камеру телефона</p>
+        </div>
+    </div>
+
     <footer>
         <div class="container">© 2026 Станулевич А.В., Гродно, Беларусь · <a href="index.html">На главную</a></div>
     </footer>
@@ -285,7 +302,6 @@
             currentMode = mode;
             document.getElementById('modeFull').classList.toggle('active', mode === 'full');
             document.getElementById('modeNosol').classList.toggle('active', mode === 'nosol');
-            renderWorks();
         }
 
         const groups = {
@@ -314,34 +330,14 @@
         const levelNames = { f: 'Фундамент', w: 'Стены', r: 'Кровля' };
 
         const previews = {
-            1: 'Переведите 30° в радианы.',
-            2: 'Переведите 90° в радианы.',
-            3: 'Упростите выражение, используя тождество.',
-            4: 'Решите простейшее тригонометрическое уравнение.',
-            5: 'Через три точки проведите плоскость.',
-            6: 'Вычислите значение корня n-й степени.',
-            7: 'Решите иррациональное уравнение.',
-            8: 'Найдите производную степенной функции.',
-            9: 'Составьте уравнение касательной к графику.',
-            10: 'Найдите точку максимума функции.',
-            11: 'Докажите параллельность прямых.',
-            12: 'Докажите перпендикулярность прямой и плоскости.',
-            13: 'Примените теорему о трёх перпендикулярах.',
-            14: 'Найдите двугранный угол.',
-            15: 'Докажите перпендикулярность плоскостей.',
-            16: 'Вычислите значение степени с рациональным показателем.',
-            17: 'Решите показательное уравнение.',
-            18: 'Решите показательное неравенство.',
-            19: 'Найдите объём и площадь поверхности призмы.',
-            20: 'Найдите объём параллелепипеда.',
-            21: 'Найдите объём и площадь поверхности пирамиды.',
-            22: 'Найдите объём усечённой пирамиды.',
-            23: 'Вычислите логарифм по определению.',
-            24: 'Решите логарифмическое уравнение.',
-            25: 'Решите логарифмическое неравенство.',
-            26: 'Найдите площадь поверхности сферы и объём шара.',
-            27: 'Найдите объём и площадь поверхности цилиндра.',
-            28: 'Найдите объём и площадь поверхности конуса.',
+            1:'Переведите 30° в радианы.',2:'Переведите 90° в радианы.',3:'Упростите выражение, используя тождество.',4:'Решите простейшее тригонометрическое уравнение.',
+            5:'Через три точки проведите плоскость.',6:'Вычислите значение корня n-й степени.',7:'Решите иррациональное уравнение.',
+            8:'Найдите производную степенной функции.',9:'Составьте уравнение касательной к графику.',10:'Найдите точку максимума функции.',
+            11:'Докажите параллельность прямых.',12:'Докажите перпендикулярность прямой и плоскости.',13:'Примените теорему о трёх перпендикулярах.',14:'Найдите двугранный угол.',15:'Докажите перпендикулярность плоскостей.',
+            16:'Вычислите значение степени с рациональным показателем.',17:'Решите показательное уравнение.',18:'Решите показательное неравенство.',
+            19:'Найдите объём и площадь поверхности призмы.',20:'Найдите объём параллелепипеда.',21:'Найдите объём и площадь поверхности пирамиды.',22:'Найдите объём усечённой пирамиды.',
+            23:'Вычислите логарифм по определению.',24:'Решите логарифмическое уравнение.',25:'Решите логарифмическое неравенство.',
+            26:'Найдите площадь поверхности сферы и объём шара.',27:'Найдите объём и площадь поверхности цилиндра.',28:'Найдите объём и площадь поверхности конуса.',
         };
 
         function renderWorks() {
@@ -359,10 +355,11 @@
                     const card = document.createElement('div');
                     card.className = 'topic-card level-' + level;
                     card.addEventListener('click', function(e) {
-                        if (e.target.closest('.topic-status')) return;
+                        if (e.target.closest('.topic-status') || e.target.closest('.topic-qr')) return;
                         openModal(num);
                     });
                     card.innerHTML = `
+                        <button class="topic-qr" onclick="event.stopPropagation();showQR('pr/${numStr}.html${currentMode === 'nosol' ? '?nosol=1' : ''}')" title="QR-код">📱</button>
                         <div class="topic-preview">${previews[num]}</div>
                         <div class="topic-num">ПР №${num} · ${levelNames[level]}</div>
                         <div class="topic-title">${titles[num]}</div>
@@ -399,6 +396,17 @@
             updateProgress();
         }
 
+        function showQR(link) {
+            const fullUrl = window.location.origin + '/' + link;
+            const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(fullUrl);
+            document.getElementById('qrImage').src = qrUrl;
+            document.getElementById('qrModal').classList.add('open');
+        }
+        function closeQR(event) {
+            if (event && event.target !== document.getElementById('qrModal')) return;
+            document.getElementById('qrModal').classList.remove('open');
+        }
+
         const timers = {};
         function openModal(num) {
             const modal = document.getElementById('modal' + num);
@@ -411,7 +419,6 @@
                 }, { once: true });
             }
         }
-
         function startTimer(num) {
             if (timers[num]) return;
             let seconds = 0;

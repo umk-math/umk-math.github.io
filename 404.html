@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена — УМК «Математика»</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #0d1117; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', -apple-system, sans-serif; background: var(--bg); color: var(--text); display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 20px; }
+        .container { max-width: 500px; }
+        .error-code { font-family: 'Playfair Display', Georgia, serif; font-size: 8rem; color: var(--gold); line-height: 1; margin-bottom: 10px; }
+        .error-title { font-size: 1.5rem; color: #fff; margin-bottom: 15px; }
+        .error-text { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; line-height: 1.6; }
+        .btn-home { display: inline-block; background: var(--gold); color: var(--bg); padding: 12px 28px; text-decoration: none; font-weight: 600; border-radius: 6px; transition: all 0.3s; font-size: 15px; }
+        .btn-home:hover { background: #e6b422; transform: translateY(-2px); }
+        .links { margin-top: 25px; font-size: 14px; color: var(--text-muted); }
+        .links a { color: var(--gold); text-decoration: none; margin: 0 8px; }
+        .links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Страница не найдена</h1>
+        <p class="error-text">Возможно, вы ошиблись адресом, или страница была перемещена.<br>Проверьте правильность ссылки или вернитесь на главную.</p>
+        <a href="index.html" class="btn-home">🏠 На главную</a>
+        <div class="links">
+            <a href="teoreticheskij.html">Теория</a> ·
+            <a href="prakticheskij.html">Практика</a> ·
+            <a href="kontrol.html">Контроль</a>
+        </div>
+    </div>
+</body>
+</html>

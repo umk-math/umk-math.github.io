@@ -1,12 +1,9 @@
 // ==========================================
-// PIRAMID PROFESSIONAL – контроллер (исправленная версия)
+// PIRAMID PROFESSIONAL – контроллер (v7.0 – надёжный старт)
 // ==========================================
 
 class PyramidController extends BaseModelController {
     constructor(containerId) {
-        // Флаг, чтобы первый rebuild выполнил createGeometry, а не updateGeometry
-        this._needsFullRebuild = true;
-
         super(containerId, {
             sliders: [
                 { label: 'Сторона (a)', color: '#ff6b6b', key: 'a', min: 1, max: 8, step: 0.1, value: 3, defaultValue: 3, decimals: 1 },
@@ -41,40 +38,45 @@ class PyramidController extends BaseModelController {
             ]
         });
 
+        // Инициализация после super (теперь можно использовать this)
         this.displayMode = 'solid';
         this.isBlueprint = false;
-        // geometry создаётся лениво в createGeometry
-        this.geometry = null;
+        this.geometry = null; // создастся при первом createGeometry
 
-        this._setupEdgeHighlighting();
+        // UI-элементы, не зависящие от геометрии
         this._initFormulaToggle();
         this._renderFormula();
         setTimeout(() => this._animateIntro(), 100);
     }
 
+    // ---------- ГЕОМЕТРИЯ ----------
+
     createGeometry() {
         if (!this.state || this.state.a === undefined) return;
+
         // Ленивое создание геометрии при первом вызове
         if (!this.geometry) {
             this.geometry = new PyramidGeometry(this.scene, this.bumpTexture);
+            this._setupEdgeHighlighting(); // теперь цилиндры уже можно подсвечивать
         }
+
         this.geometry.build(this.state.a, this.state.h, this.displayMode);
         this.applyDisplayMode();
         this._updateEdgeHighlightMapping();
     }
 
     updateGeometry() {
-        if (!this.geometry) return;
-        if (!this.state || this.state.a === undefined) return;
+        if (!this.geometry || !this.state || this.state.a === undefined) return;
         this.geometry.update(this.state.a, this.state.h, this.displayMode);
         this.applyDisplayMode();
         this._updateEdgeHighlightMapping();
     }
 
+    // rebuild используется при движении слайдеров
     rebuild() {
-        if (this._needsFullRebuild) {
-            super.rebuild();        // вызовет createGeometry()
-            this._needsFullRebuild = false;
+        // Если геометрия ещё не создана (самый первый вызов из init), делаем полную перестройку
+        if (!this.geometry) {
+            super.rebuild(); // вызывает createGeometry
         } else {
             this.updateGeometry();
         }
@@ -87,8 +89,12 @@ class PyramidController extends BaseModelController {
         this.scene.background = new THREE.Color(
             this.isBlueprint ? 0xffffff : 0x0a0e14
         );
-        this._needsFullRebuild = true;
-        this.rebuild();
+        // Если геометрия уже есть, перестраиваем с новым режимом
+        if (this.geometry && this.state) {
+            this.geometry.build(this.state.a, this.state.h, this.displayMode);
+            this.applyDisplayMode();
+            this._updateEdgeHighlightMapping();
+        }
     }
 
     applyDisplayMode() {
@@ -109,6 +115,8 @@ class PyramidController extends BaseModelController {
         };
         this.enableEdgeHighlighting(this.edgeHighlightMapping);
     }
+
+    // ---------- ИНФОРМАЦИЯ И ФОРМУЛЫ ----------
 
     updateInfo() {
         const a = this.state.a, h = this.state.h;
@@ -164,6 +172,8 @@ class PyramidController extends BaseModelController {
             }
         });
     }
+
+    // ---------- МЕНЮ И АНИМАЦИЯ ----------
 
     _toggleMoreMenu() {
         const old = document.getElementById('pyramid-more-menu');
@@ -255,7 +265,7 @@ class PyramidController extends BaseModelController {
     }
 }
 
-// Точка входа для регистрации в threeModels
+// Регистрация модели
 threeModels.three_pyramid = function(containerId) {
     new PyramidController(containerId);
 };

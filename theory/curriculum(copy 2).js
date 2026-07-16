@@ -13,12 +13,8 @@ const CURRICULUM = {
     ],
 
     modules: [
-        // I КУРС (часы скорректированы, чтобы вместе с extraHours дать 120)
-        {
-            id: 'trig', course: 1, icon: '📐', title: 'Тригонометрия',
-            description: 'Углы, тригонометрические функции и уравнения.',
-            hours: 35, practice: true, interactive: 'Тригонометрический круг',
-            context: 'Уклоны · арки · геодезия', link: 'theory/trigonometriya.html',
+        // I КУРС
+        { id: 'trig', course: 1, icon: '📐', title: 'Тригонометрия', description: 'Углы, тригонометрические функции и уравнения.', hours: 36, practice: true, interactive: 'Тригонометрический круг', context: 'Уклоны · арки · геодезия', link: 'theory/trigonometriya.html',
             topics: [
                 ['Единичная окружность и меры углов', 'okruzhnost'],
                 ['Синус и косинус произвольного угла', 'sin-cos'],
@@ -32,11 +28,7 @@ const CURRICULUM = {
                 ['Обобщение', 'obobshenie']
             ]
         },
-        {
-            id: 'stereo', course: 1, icon: '🧊', title: 'Введение в стереометрию',
-            description: 'Пространственные фигуры, аксиомы и сечения.',
-            hours: 12, practice: true, interactive: '3D-модели',
-            context: 'Чертежи · разметка', link: 'theory/stereometriya.html',
+        { id: 'stereo', course: 1, icon: '🧊', title: 'Введение в стереометрию', description: 'Пространственные фигуры, аксиомы и сечения.', hours: 12, practice: true, interactive: '3D-модели', context: 'Чертежи · разметка', link: 'theory/stereometriya.html',
             topics: [
                 ['Многоугольники и их свойства', 'mnogougolniki'],
                 ['Пространственные фигуры и их изображения', 'prostranstvennye-figury'],
@@ -45,11 +37,7 @@ const CURRICULUM = {
                 ['Сечения многогранников', 'secheniya']
             ]
         },
-        {
-            id: 'roots', course: 1, icon: '√', title: 'Корни и степени',
-            description: 'Корни n-й степени и иррациональные уравнения.',
-            hours: 18, practice: true, interactive: 'График степенной функции',
-            context: 'Размеры · пропорции', link: 'theory/koren-n-stepeni.html',
+        { id: 'roots', course: 1, icon: '√', title: 'Корни и степени', description: 'Корни n-й степени и иррациональные уравнения.', hours: 19, practice: true, interactive: 'График степенной функции', context: 'Размеры · пропорции', link: 'theory/koren-n-stepeni.html',
             topics: [
                 ['Понятие корня n-й степени', 'ponyatie-kornya'],
                 ['Свойства корней n-й степени', 'svoistva-kornei'],
@@ -59,11 +47,7 @@ const CURRICULUM = {
                 ['Самостоятельная работа', 'samostoyatelnaya']
             ]
         },
-        {
-            id: 'parallel', course: 1, icon: '⫽', title: 'Параллельность в пространстве',
-            description: 'Взаимное расположение прямых и плоскостей.',
-            hours: 15, practice: true, interactive: '3D-визуализация',
-            context: 'Каркасное строительство', link: 'theory/parallel-perpend.html',
+        { id: 'parallel', course: 1, icon: '⫽', title: 'Параллельность в пространстве', description: 'Взаимное расположение прямых и плоскостей.', hours: 15, practice: true, interactive: '3D-визуализация', context: 'Каркасное строительство', link: 'theory/parallel-perpend.html',
             topics: [
                 ['Параллельные прямые в пространстве', 'parallelnye-pryamye'],
                 ['Скрещивающиеся прямые', 'skreshivayushiesya'],
@@ -72,11 +56,7 @@ const CURRICULUM = {
                 ['Свойства параллельных плоскостей', 'svoistva-ploskostei']
             ]
         },
-        {
-            id: 'deriv', course: 1, icon: '∫', title: 'Производная',
-            description: 'Изменение функций, касательная и исследование функций.',
-            hours: 16, practice: true, interactive: 'Касательная · интеграл',
-            context: 'Оптимизация конструкций', link: 'theory/proizvodnaya.html',
+        { id: 'deriv', course: 1, icon: '∫', title: 'Производная', description: 'Изменение функций, касательная и исследование функций.', hours: 16, practice: true, interactive: 'Касательная · интеграл', context: 'Оптимизация конструкций', link: 'theory/proizvodnaya.html',
             topics: [
                 ['Определение производной', 'opredelenie'],
                 ['Правила дифференцирования', 'pravila'],
@@ -89,11 +69,7 @@ const CURRICULUM = {
                 ['Наибольшее и наименьшее значения', 'naibolshee']
             ]
         },
-        {
-            id: 'perp', course: 1, icon: '⟂', title: 'Перпендикулярность в пространстве',
-            description: 'Перпендикулярность прямых и плоскостей.',
-            hours: 17, practice: true, interactive: '3D-модель',
-            context: 'Вертикальность стен', link: 'theory/parallel-perpend.html',
+        { id: 'perp', course: 1, icon: '⟂', title: 'Перпендикулярность в пространстве', description: 'Перпендикулярность прямых и плоскостей.', hours: 17, practice: true, interactive: '3D-модель', context: 'Вертикальность стен', link: 'theory/parallel-perpend.html',
             topics: [
                 ['Перпендикулярность прямой и плоскости', 'perp-pryamoi'],
                 ['Признак перпендикулярности', 'priznak-perp'],
@@ -104,13 +80,8 @@ const CURRICULUM = {
                 ['Перпендикулярные плоскости', 'perp-ploskosti']
             ]
         },
-
-        // II КУРС (часы скорректированы)
-        {
-            id: 'step', course: 2, icon: 'x²', title: 'Степень с рациональным показателем',
-            description: 'Рациональные показатели и преобразование выражений.',
-            hours: 12, practice: true, interactive: 'График степенной функции',
-            context: 'Прочностные расчёты', link: 'theory/stepeni-funktsii.html',
+        // II КУРС
+        { id: 'step', course: 2, icon: 'x²', title: 'Степень с рациональным показателем', description: 'Рациональные показатели и преобразование выражений.', hours: 12, practice: true, interactive: 'График степенной функции', context: 'Прочностные расчёты', link: 'theory/stepeni-funktsii.html',
             topics: [
                 ['Понятие степени с рациональным показателем', 'ponyatie'],
                 ['Свойства степеней', 'svoistva-stepenei'],
@@ -118,11 +89,7 @@ const CURRICULUM = {
                 ['Степенная функция и её график', 'grafik']
             ]
         },
-        {
-            id: 'exp', course: 2, icon: '📈', title: 'Показательная функция',
-            description: 'Показательные функции, уравнения и неравенства.',
-            hours: 17, practice: true, interactive: 'График показательной функции',
-            context: 'Рост нагрузок', link: 'theory/stepeni-funktsii.html',
+        { id: 'exp', course: 2, icon: '📈', title: 'Показательная функция', description: 'Показательные функции, уравнения и неравенства.', hours: 17, practice: true, interactive: 'График показательной функции', context: 'Рост нагрузок', link: 'theory/stepeni-funktsii.html',
             topics: [
                 ['Показательная функция и её свойства', 'svoistva'],
                 ['Показательные уравнения', 'uravneniya'],
@@ -130,11 +97,7 @@ const CURRICULUM = {
                 ['Обобщение', 'obobshenie']
             ]
         },
-        {
-            id: 'polyhedra', course: 2, icon: '📦', title: 'Многогранники и объёмы',
-            description: 'Призмы, пирамиды, площади и объёмы.',
-            hours: 28, practice: true, interactive: '3D-модели',
-            context: 'Фундаменты · кровли · опалубка', link: 'theory/mnogogranniki.html',
+        { id: 'polyhedra', course: 2, icon: '📦', title: 'Многогранники и объёмы', description: 'Призмы, пирамиды, площади и объёмы.', hours: 30, practice: true, interactive: '3D-модели', context: 'Фундаменты · кровли · опалубка', link: 'theory/mnogogranniki.html',
             topics: [
                 ['Призма', 'prizma'],
                 ['Параллелепипед', 'parallelepiped'],
@@ -145,11 +108,7 @@ const CURRICULUM = {
                 ['Обобщение', 'obobshenie']
             ]
         },
-        {
-            id: 'log', course: 2, icon: '📊', title: 'Логарифмическая функция',
-            description: 'Логарифмы, графики, уравнения и неравенства.',
-            hours: 24, practice: true, interactive: 'График логарифма',
-            context: 'Децибелы · pH', link: 'theory/logarifmy.html',
+        { id: 'log', course: 2, icon: '📊', title: 'Логарифмическая функция', description: 'Логарифмы, графики, уравнения и неравенства.', hours: 25, practice: true, interactive: 'График логарифма', context: 'Децибелы · pH', link: 'theory/logarifmy.html',
             topics: [
                 ['Понятие логарифма', 'ponyatie-logarifma'],
                 ['Основное логарифмическое тождество', 'tozhdestvo'],
@@ -160,11 +119,7 @@ const CURRICULUM = {
                 ['Обобщение', 'obobshenie']
             ]
         },
-        {
-            id: 'rot', course: 2, icon: '⚪', title: 'Тела вращения',
-            description: 'Сфера, цилиндр, конус и их характеристики.',
-            hours: 17, practice: true, interactive: '3D-модели',
-            context: 'Резервуары · купола · трубы', link: 'theory/tela-vrashcheniya.html',
+        { id: 'rot', course: 2, icon: '⚪', title: 'Тела вращения', description: 'Сфера, цилиндр, конус и их характеристики.', hours: 17, practice: true, interactive: '3D-модели', context: 'Резервуары · купола · трубы', link: 'theory/tela-vrashcheniya.html',
             topics: [
                 ['Сфера и шар', 'sfera'],
                 ['Сечение шара плоскостью', 'secenie'],
@@ -188,9 +143,8 @@ const CURRICULUM = {
             'Контрольная работа №6 · Тела вращения'
         ]
     },
-
-    extraHours: {
-        1: 7,   // контрольные + повторение I курса
-        2: 22   // контрольные + итоговое повторение II курса
-    }
+   extraHours: {
+    1: 7,   // 3 часа контрольных + 4 часа повторения (I курс)
+    2: 22   // 3 часа контрольных + 19 часов итогового повторения (II курс)
+}
 };

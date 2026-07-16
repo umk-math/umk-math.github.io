@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теоретический раздел — УМК «Математика»</title>
+    <meta name="description" content="Теоретический раздел УМК «Математика»: учебная карта курса, тематические модули, формулы, прогресс обучения и методика работы с конспектами.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📚</text></svg>">
+
+    <!-- MSF Foundation -->
+    <link rel="stylesheet" href="../src/foundation/design-system/design-tokens.css">
+    <link rel="stylesheet" href="../src/foundation/design-system/typography.css">
+    <link rel="stylesheet" href="../src/foundation/design-system/theme.css">
+    <link rel="stylesheet" href="../src/foundation/design-system/components.css">
+
+    <!-- Bootstrap (только для навигации) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+    <!-- Стили раздела -->
+    <link rel="stylesheet" href="theory.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top site-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">УМК «Математика»</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Открыть навигацию"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../normativnyj.html">Нормативный</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Теория</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../prakticheskij.html">Практика</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../kontrol.html">Контроль</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../vspomogatelnyj.html">Вспомогательный</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../interaktiv/interaktiv.html">Интерактив</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="container text-center">
+            <div class="hero-eyebrow">Теоретический раздел · УМК «Математика»</div>
+            <h1>Карта математического курса</h1>
+            <p class="hero-description">Два курса, тематические модули и учебная траектория — от базовых понятий до применения математики в профессиональной деятельности.</p>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="content-stack">
+
+                <!-- ФОРМУЛА ДНЯ -->
+                <section class="formula-card surface-card" id="formulaDayContainer" tabindex="0" role="button" aria-label="Открыть тему формулы дня">
+                    <div class="formula-label">Формула дня</div>
+                    <div class="formula-value" id="formulaDay"></div>
+                    <div class="formula-hint">Нажмите, чтобы открыть соответствующую тему</div>
+                </section>
+
+                <!-- ПРОГРЕСС -->
+                <section class="progress-card surface-card">
+                    <div class="progress-header">
+                        <div>
+                            <h2 class="progress-title">Моя учебная траектория</h2>
+                            <p class="progress-subtitle">Прогресс рассчитывается по количеству учебных часов</p>
+                        </div>
+                        <div class="progress-percent" id="progressPercent">0%</div>
+                    </div>
+                    <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
+                    <div class="progress-footer">
+                        <div class="progress-details" id="progressDetails">0 из 240 часов освоено</div>
+                        <button class="reset-button" id="resetProgressButton" type="button">Сбросить прогресс</button>
+                    </div>
+                </section>
+
+                <!-- ФИЛЬТРЫ -->
+                <div class="course-switcher" role="tablist" aria-label="Фильтр учебных модулей">
+                    <button class="course-filter active" type="button" data-filter="all" role="tab" aria-selected="true">Все модули</button>
+                    <button class="course-filter" type="button" data-filter="1" role="tab" aria-selected="false">I курс</button>
+                    <button class="course-filter" type="button" data-filter="2" role="tab" aria-selected="false">II курс</button>
+                </div>
+
+                <!-- КУРС 1 -->
+                <section class="course-section surface-card" data-course-section="1">
+                    <div class="course-heading">
+                        <div><h2>Первый курс</h2><p>Основа математического и пространственного мышления.</p></div>
+                        <div class="course-hours">120 учебных часов</div>
+                    </div>
+                    <div class="module-list" id="course1"></div>
+                    <div class="empty-state" id="emptyCourse1">В этом разделе нет модулей.</div>
+                    <div class="control-points" id="controls1"></div>
+                </section>
+
+                <!-- КУРС 2 -->
+                <section class="course-section surface-card" data-course-section="2">
+                    <div class="course-heading">
+                        <div><h2>Второй курс</h2><p>Функции, логарифмы, многогранники и тела вращения.</p></div>
+                        <div class="course-hours">120 учебных часов</div>
+                    </div>
+                    <div class="module-list" id="course2"></div>
+                    <div class="empty-state" id="emptyCourse2">В этом разделе нет модулей.</div>
+                    <div class="control-points" id="controls2"></div>
+                </section>
+
+                <!-- МЕТОДИЧЕСКИЙ БЛОК -->
+                <section class="method-section">
+                    <div class="method-heading">
+                        <h2>Как работать с конспектами</h2>
+                        <p>Четырёхэтапная система, которая помогает превратить чтение теории в прочные знания. Нажмите на шаг, чтобы увидеть подробности.</p>
+                    </div>
+                    <div class="method-step open">
+                        <div class="method-step-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="method-number">1</div>
+                            <h3>Предпросмотр</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>Перед занятием просмотрите структуру конспекта, заголовки и основные формулы. Ваша задача — заранее увидеть карту темы.</p>
+                            <div class="method-result">Результат: вы понимаете структуру нового материала.</div>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="method-number">2</div>
+                            <h3>Активное слушание</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>На занятии следите по конспекту за объяснением, обращая внимание на формулы, примеры и типичные ошибки.</p>
+                            <div class="method-result">Результат: вы слушаете и понимаете, а не просто переписываете.</div>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="method-number">3</div>
+                            <h3>Связь с профессией</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>После занятия попробуйте связать изученную тему с реальной задачей строителя: размерами, площадями, объёмами, уклонами или расчётами.</p>
+                            <div class="method-result">Результат: абстрактная математика становится практическим инструментом.</div>
+                        </div>
+                    </div>
+                    <div class="method-step">
+                        <div class="method-step-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="method-number">4</div>
+                            <h3>Самопроверка</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>Перед контрольной или экзаменом повторите ключевые формулы и проверьте себя по основным темам.</p>
+                            <div class="method-result">Результат: вы видите пробелы до проверки знаний.</div>
+                        </div>
+                    </div>
+                    <div class="method-tip">
+                        <strong>Совет преподавателя.</strong> Используйте статусы модулей честно: «Не изучено», «Повторить» и «Освоено». Ваш прогресс должен отражать реальное состояние знаний.
+                    </div>
+                    <div class="method-cta">
+                        <button class="btn-primary" onclick="document.getElementById('course1').scrollIntoView({behavior:'smooth'});">Попробовать на первом модуле</button>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer"><div class="container">© 2026 Станулевич А.В., Гродно, Беларусь · <a href="../index.html">На главную</a></div></footer>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Вернуться наверх">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="curriculum.js"></script>
+    <script src="theory.js"></script>
+</body>
+</html>

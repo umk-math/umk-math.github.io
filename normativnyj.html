@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Нормативный раздел — УМК «Математика»</title>
+
+    <!-- Platform SDK -->
+    <link rel="stylesheet" href="src/foundation/design-system/design-tokens.css">
+    <link rel="stylesheet" href="src/foundation/design-system/typography.css">
+    <link rel="stylesheet" href="src/foundation/design-system/theme.css">
+    <link rel="stylesheet" href="src/foundation/design-system/components.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --gold-hover: #e6b422; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; }
+        :root {
+            --bg: var(--msf-color-background);
+            --bg-card: var(--msf-color-card);
+            --gold: var(--msf-color-primary);
+            --gold-hover: var(--msf-color-primary-hover);
+            --text: var(--msf-color-text-primary);
+            --text-muted: var(--msf-color-text-muted);
+            --border: var(--msf-color-border);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; }
@@ -21,7 +36,10 @@
 
         .content { padding: 50px 0; }
 
-        .section-card { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 12px; padding: 28px; margin-bottom: 24px; transition: all 0.3s; }
+        .section-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold);
+            border-radius: 12px; padding: 28px; margin-bottom: 24px; transition: all 0.3s;
+        }
         .section-card:hover { border-color: #505a6b; }
         .section-card h3 { color: #fff; font-size: 1.25rem; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
         .section-card .icon { font-size: 26px; }
@@ -37,9 +55,40 @@
         .info-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); }
         .info-table td:first-child { font-weight: 500; color: var(--text); width: 40px; }
 
-        .btn-gold { display: inline-block; background: var(--gold); color: var(--bg); padding: 12px 28px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.3s; border-radius: 8px; }
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--gold);
+            color: var(--bg);
+            padding: 12px 28px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
         .btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); }
-        .btn-outline-gold { display: inline-block; border: 1.5px solid var(--gold); color: var(--gold); padding: 12px 28px; text-decoration: none; font-weight: 500; font-size: 14px; transition: all 0.3s; border-radius: 8px; }
+
+        .btn-outline-gold {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 1.5px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 28px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            background: transparent;
+            cursor: pointer;
+        }
         .btn-outline-gold:hover { background: var(--gold); color: var(--bg); }
 
         footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 24px 0; text-align: center; color: var(--text-muted); font-size: 13px; margin-top: 40px; }
@@ -86,17 +135,17 @@
             </div>
 
             <div class="section-card">
-    <h3><span class="icon">📘</span> Учебная программа</h3>
-    <p>Утверждена Постановлением Министерства образования Республики Беларусь от 29.07.2025 № 132.</p>
-    <table class="info-table">
-        <tr><td>Уровень</td><td>Базовый</td></tr>
-        <tr><td>Классы</td><td>X–XI (10–11 классы)</td></tr>
-        <tr><td>Язык обучения</td><td>Белорусский, русский</td></tr>
-    </table>
-    <p style="margin-top: 12px;">
-        <a href="https://adu.by/images/2025/08/12/Matem-10-11.pdf" target="_blank" style="color: var(--gold); text-decoration: none; font-weight: 500;">📎 Открыть учебную программу (PDF) →</a>
-    </p>
-</div>
+                <h3><span class="icon">📘</span> Учебная программа</h3>
+                <p>Утверждена Постановлением Министерства образования Республики Беларусь от 29.07.2025 № 132.</p>
+                <table class="info-table">
+                    <tr><td>Уровень</td><td>Базовый</td></tr>
+                    <tr><td>Классы</td><td>X–XI (10–11 классы)</td></tr>
+                    <tr><td>Язык обучения</td><td>Белорусский, русский</td></tr>
+                </table>
+                <p style="margin-top: 12px;">
+                    <a href="https://adu.by/images/2025/08/12/Matem-10-11.pdf" target="_blank" style="color: var(--gold); text-decoration: none; font-weight: 500;">📎 Открыть учебную программу (PDF) →</a>
+                </p>
+            </div>
 
             <div class="section-card">
                 <h3><span class="icon">📊</span> Тематический план</h3>

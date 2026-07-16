@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Интерактивный раздел — УМК «Математика строит будущее»</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1f2b'/><text y='.75em' x='50' text-anchor='middle' font-size='55' font-family='serif' font-weight='bold' fill='%23D4A017'>M</text></svg>" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+        <div class="container">
+            <a class="brand" href="index.html">УМК «Математика»</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="normativnyj.html">Нормативный</a></li>
+                    <li class="nav-item"><a class="nav-link" href="teoreticheskij.html">Теория</a></li>
+                    <li class="nav-item"><a class="nav-link" href="prakticheskij.html">Практика</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontrol.html">Контроль</a></li>
+                    <li class="nav-item"><a class="nav-link" href="vspomogatelnyj.html">Вспомогательный</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="interaktiv.html">Интерактив</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== APP LAYOUT ===== -->
+    <div class="app-layout">
+
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="section-label">Разделы</div>
+                <button class="sidebar-item active" data-tab="models"><span class="icon">📐</span> Модели <span class="badge">9</span></button>
+                <button class="sidebar-item" data-tab="calculators"><span class="icon">🧮</span> Калькуляторы <span class="badge">8</span></button>
+                <button class="sidebar-item" data-tab="trainers"><span class="icon">🎯</span> Тренажёры <span class="badge">4</span></button>
+                <button class="sidebar-item" data-tab="tests"><span class="icon">📝</span> Тесты <span class="badge">3</span></button>
+                <button class="sidebar-item" data-tab="labs"><span class="icon">🔬</span> Лаборатории <span class="badge">5</span></button>
+                <button class="sidebar-item" data-tab="achievements"><span class="icon">🏆</span> Достижения <span class="badge">5</span></button>
+            </div>
+            <div class="sidebar-section" style="border-top:1px solid var(--border);padding-top:12px;margin-top:4px;">
+                <div class="section-label">Пользователь</div>
+                <button class="sidebar-item" id="favoritesTab"><span class="icon">⭐</span> Избранное <span class="badge" id="favCount">0</span></button>
+                <button class="sidebar-item" id="teacherModeToggle"><span class="icon">👨‍🏫</span> Режим преподавателя</button>
+                <button class="sidebar-item" id="resetProgressBtn"><span class="icon">🔄</span> Сбросить прогресс</button>
+            </div>
+        </aside>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content">
+
+            <!-- ===== HERO ===== -->
+            <div class="hero-mini">
+                <h1>🧊 Интерактивный <span class="gold">раздел</span></h1>
+                <p class="subtitle">Интерактивные модели, калькуляторы, тренажёры, тесты и лаборатории</p>
+                <div class="hero-stats-inline">
+                    <div class="hero-stat"><span class="num">9</span><span class="label">моделей</span></div>
+                    <div class="hero-stat"><span class="num">8</span><span class="label">калькуляторов</span></div>
+                    <div class="hero-stat"><span class="num">4</span><span class="label">тренажёра</span></div>
+                    <div class="hero-stat"><span class="num">100%</span><span class="label">бесплатно</span></div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn-gold" onclick="document.getElementById('searchModels').focus()">🔍 Найти</button>
+                    <button class="btn-outline" onclick="randomCard()">🎲 Случайное задание</button>
+                </div>
+            </div>
+
+            <!-- ===== ПОИСК ===== -->
+            <div class="search-wrapper">
+                <input type="text" id="searchModels" placeholder="🔍 Поиск моделей, калькуляторов, тренажёров и тестов...">
+            </div>
+
+            <!-- ===== СТАТИСТИКА ===== -->
+            <div class="stats-grid">
+                <div class="stat-card"><div class="num" id="statModels">0</div><div class="label">пройдено</div></div>
+                <div class="stat-card"><div class="num" id="statAchievements">0</div><div class="label">достижений</div></div>
+                <div class="stat-card"><div class="num" id="statFavorites">0</div><div class="label">в избранном</div></div>
+                <div class="stat-card"><div class="num" id="statTests">0</div><div class="label">тестов пройдено</div></div>
+            </div>
+
+            <!-- ===== ПРОГРЕСС ===== -->
+            <div class="progress-card">
+                <div class="progress-header">
+                    <h3>📊 Ваш прогресс</h3>
+                    <span id="progressText">Пройдено 0 из 17</span>
+                </div>
+                <div class="progress-track">
+                    <div class="fill" id="mainProgress" style="width:0%;"></div>
+                </div>
+                <p class="progress-note">Изучайте модели и выполняйте задания</p>
+            </div>
+
+            <!-- ===== ВКЛАДКИ ===== -->
+
+            <!-- Модели -->
+            <div id="tabModels" class="tab-content active">
+                <h3 style="color:#fff;margin-bottom:12px;">📐 Интерактивные модели</h3>
+                <div class="models-grid" id="modelsGrid"></div>
+            </div>
+
+            <!-- Калькуляторы -->
+            <div id="tabCalculators" class="tab-content">
+                <h3 style="color:#fff;margin-bottom:12px;">🧮 Калькуляторы строителя</h3>
+                <div id="calculatorsContainer"></div>
+            </div>
+
+            <!-- Тренажёры -->
+            <div id="tabTrainers" class="tab-content">
+                <h3 style="color:#fff;margin-bottom:12px;">🎯 Тренажёры</h3>
+                <div id="trainersContainer"></div>
+            </div>
+
+            <!-- Тесты -->
+            <div id="tabTests" class="tab-content">
+                <h3 style="color:#fff;margin-bottom:12px;">📝 Мини-тесты</h3>
+                <div id="testsContainer"></div>
+            </div>
+
+            <!-- Лаборатории -->
+            <div id="tabLabs" class="tab-content">
+                <h3 style="color:#fff;margin-bottom:12px;">🔬 Лаборатории</h3>
+                <div class="models-grid" id="labsGrid"></div>
+            </div>
+
+            <!-- Достижения -->
+            <div id="tabAchievements" class="tab-content">
+                <h3 style="color:#fff;margin-bottom:12px;">🏆 Достижения</h3>
+                <div id="achievementsContainer"></div>
+            </div>
+
+            <!-- Избранное -->
+            <div id="tabFavorites" class="tab-content">
+                <h3 style="color:#fff;margin-bottom:12px;">⭐ Избранное</h3>
+                <div id="favoritesGrid" class="models-grid"></div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h2 id="modalTitle">Название</h2>
+            <p class="modal-desc" id="modalDesc">Описание</p>
+            <p class="modal-context" id="modalContext" style="color:#8b949e;font-size:13px;margin-bottom:12px;"></p>
+            <div class="modal-body" id="modalBody">
+                <div class="loader-overlay">⏳ Загрузка модели...</div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline" onclick="closeModal()" style="padding:6px 16px;font-size:12px;">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer style="background: var(--bg-card); border-top: 1px solid var(--border); padding: 14px 0; text-align: center; font-size: 12px; color: var(--text-muted);">
+        <div class="container">
+            © 2026 Станулевич Андрей Викторович, Гродно, Беларусь · <a href="index.html" style="color:var(--gold);text-decoration:none;">На главную</a>
+        </div>
+    </footer>
+
+    <button id="backToTop" style="position:fixed;bottom:16px;right:16px;z-index:999;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--bg);border:none;font-size:16px;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;box-shadow:0 4px 16px rgba(0,0,0,0.4);">▲</button>
+
+    <!-- ===== ПОДКЛЮЧЕНИЕ МОДУЛЕЙ ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Библиотеки -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- Модули -->
+    <script src="js/data.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/models/jsx/jsx-models.js"></script>
+    <script src="js/models/three/core.js"></script>
+    <script src="js/models/three/pyramid-model.js"></script>
+    <script src="js/models/three/pyramid/pyramid-professional.js"></script>
+    <script src="js/models/three/pyramid/pyramid-ui.js"></script>
+    <script src="js/models/three/parallelepiped.js"></script>
+    <script src="js/models/three/cube-section.js"></script>
+    <script src="js/calculators.js"></script>
+    <script src="js/trainers.js"></script>
+    <script src="js/tests.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>

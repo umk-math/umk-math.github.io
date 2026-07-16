@@ -1,0 +1,34 @@
+/* ==========================================
+   MSF Platform SDK — Theme System v1.0
+   ========================================== */
+
+/* Тёмная тема (по умолчанию) */
+:root,
+[data-theme="dark"] {
+  --msf-color-background: #0d1117;
+  --msf-color-surface: var(--msf-gray-900);
+  --msf-color-surface-elevated: var(--msf-gray-800);
+  --msf-color-card: var(--msf-gray-900);
+  --msf-color-overlay: rgba(0, 0, 0, 0.5);
+  --msf-color-border: var(--msf-gray-700);
+  --msf-color-divider: var(--msf-gray-700);
+
+  --msf-color-text-primary: var(--msf-gray-100);
+  --msf-color-text-secondary: var(--msf-gray-400);
+  --msf-color-text-muted: var(--msf-gray-500);
+}
+
+/* Светлая тема */
+[data-theme="light"] {
+  --msf-color-background: #ffffff;
+  --msf-color-surface: var(--msf-gray-50);
+  --msf-color-surface-elevated: #ffffff;
+  --msf-color-card: #ffffff;
+  --msf-color-overlay: rgba(0, 0, 0, 0.3);
+  --msf-color-border: var(--msf-gray-300);
+  --msf-color-divider: var(--msf-gray-300);
+
+  --msf-color-text-primary: var(--msf-gray-900);
+  --msf-color-text-secondary: var(--msf-gray-700);
+  --msf-color-text-muted: var(--msf-gray-500);
+}

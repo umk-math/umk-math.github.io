@@ -1,0 +1,90 @@
+/* ==========================================
+   MSF Platform SDK — Typography v1.0
+   ========================================== */
+
+/* Заголовки */
+h1, .msf-h1 {
+  font: var(--msf-font-h1);
+  color: var(--msf-color-text-primary);
+  margin-bottom: var(--msf-space-24);
+}
+
+h2, .msf-h2 {
+  font: var(--msf-font-h2);
+  color: var(--msf-color-text-primary);
+  margin-bottom: var(--msf-space-16);
+}
+
+h3, .msf-h3 {
+  font: var(--msf-font-h3);
+  color: var(--msf-color-text-primary);
+  margin-bottom: var(--msf-space-12);
+}
+
+h4, .msf-h4 {
+  font: var(--msf-font-h4);
+  color: var(--msf-color-text-primary);
+  margin-bottom: var(--msf-space-8);
+}
+
+/* Основной текст */
+p, .msf-body-m {
+  font: var(--msf-font-body-m);
+  color: var(--msf-color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--msf-space-16);
+}
+
+.msf-body-l {
+  font: var(--msf-font-body-l);
+  color: var(--msf-color-text-secondary);
+  line-height: 1.6;
+}
+
+.msf-body-s {
+  font: var(--msf-font-body-s);
+  color: var(--msf-color-text-muted);
+  line-height: 1.5;
+}
+
+/* Подписи и мета-информация */
+.msf-caption {
+  font: var(--msf-font-caption);
+  color: var(--msf-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.msf-overline {
+  font: var(--msf-font-overline);
+  color: var(--msf-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Код */
+code, .msf-code {
+  font: var(--msf-font-code);
+  background: var(--msf-color-surface);
+  padding: var(--msf-space-2) var(--msf-space-4);
+  border-radius: var(--msf-radius-4);
+  border: 1px solid var(--msf-color-border);
+}
+
+/* Формулы */
+.msf-formula {
+  font: var(--msf-font-formula);
+  color: var(--msf-color-primary);
+}
+
+/* Ссылки внутри текста */
+a {
+  color: var(--msf-color-primary);
+  text-decoration: none;
+  transition: color var(--msf-duration-100) var(--msf-ease-default);
+}
+
+a:hover {
+  color: var(--msf-color-primary-hover);
+  text-decoration: underline;
+}

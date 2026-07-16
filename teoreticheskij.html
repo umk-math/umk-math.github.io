@@ -4,102 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Теоретический раздел — УМК «Математика»</title>
+    <meta name="description" content="Теоретический раздел УМК «Математика»: учебная карта курса, тематические модули, формулы, прогресс обучения и методика работы с конспектами.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📚</text></svg>">
+
+    <!-- MSF Foundation -->
+    <link rel="stylesheet" href="src/foundation/design-system/design-tokens.css">
+    <link rel="stylesheet" href="src/foundation/design-system/typography.css">
+    <link rel="stylesheet" href="src/foundation/design-system/theme.css">
+    <link rel="stylesheet" href="src/foundation/design-system/components.css">
+
+    <!-- Bootstrap (только для навигации) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+    <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
     <style>
-        :root { --bg: #0d1117; --bg-card: #161b22; --gold: #D4A017; --text: #c9d1d9; --text-muted: #8b949e; --border: #30363d; --red: #ff6b6b; --yellow: #fbbf24; --green: #4ade80; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --page-bg: var(--color-background-primary, #0d1117);
+            --surface: var(--color-surface-primary, #161b22);
+            --surface-raised: var(--color-surface-secondary, #1c2128);
+            --text-primary: var(--color-text-primary, #f0f6fc);
+            --text-secondary: var(--color-text-secondary, #c9d1d9);
+            --text-muted: var(--color-text-tertiary, #8b949e);
+            --border: var(--color-border-default, #30363d);
+            --border-strong: var(--color-border-strong, #484f58);
+            --accent: var(--color-accent-primary, #d4a017);
+            --accent-soft: rgba(212, 160, 23, .12);
+            --success: var(--color-success, #4ade80);
+            --warning: var(--color-warning, #fbbf24);
+            --danger: var(--color-danger, #ff6b6b);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, .18);
+            --transition-fast: 180ms ease;
+            --transition-normal: 280ms ease;
+        }
+
+        * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Roboto', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; font-size: 16px; }
-        h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        body { margin: 0; background: var(--page-bg); color: var(--text-secondary); line-height: 1.7; }
+        a { color: inherit; }
+        button { font: inherit; }
 
-        .page-header { background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 80px 0 40px; text-align: center; }
-        .page-header h1 { color: #fff; font-size: clamp(36px, 5vw, 52px); }
-        .page-header p { color: var(--gold); margin-top: 10px; font-size: 1.1rem; }
+        .site-navbar { background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+        .site-navbar .navbar-brand { color: var(--accent); font-weight: 700; letter-spacing: -.02em; }
+        .site-navbar .nav-link { color: var(--text-muted); transition: color var(--transition-fast); }
+        .site-navbar .nav-link:hover, .site-navbar .nav-link.active { color: var(--text-primary); }
 
-        .content { padding: 60px 0; }
+        .page-hero { position: relative; overflow: hidden; padding: clamp(64px, 9vw, 120px) 0 clamp(48px, 7vw, 80px); border-bottom: 1px solid var(--border); background: radial-gradient(circle at 50% 0%, rgba(212, 160, 23, .12), transparent 55%), var(--page-bg); }
+        .page-hero::after { content: ""; position: absolute; inset: auto 0 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: .45; }
+        .hero-eyebrow { margin-bottom: 18px; color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+        .page-hero h1 { max-width: 850px; margin: 0 auto 18px; color: var(--text-primary); font-size: clamp(2.4rem, 6vw, 4.8rem); line-height: 1.05; letter-spacing: -.04em; }
+        .hero-description { max-width: 680px; margin: 0 auto; color: var(--text-muted); font-size: clamp(1rem, 2vw, 1.2rem); }
 
-        .formula-day { background: linear-gradient(135deg, rgba(212,160,23,0.12) 0%, rgba(212,160,23,0.04) 100%); border: 1px solid rgba(212,160,23,0.3); padding: 20px 28px; margin-bottom: 35px; border-radius: 10px; text-align: center; cursor: pointer; transition: all 0.3s; }
-        .formula-day:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(212,160,23,0.15); }
-        .formula-day-label { color: var(--gold); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
-        .formula-day-text { color: #fff; font-size: 1.2rem; font-weight: 500; margin-bottom: 8px; }
-        .formula-day-hint { color: var(--text-muted); font-size: 13px; font-style: italic; }
+        .page-content { padding: clamp(32px, 6vw, 72px) 0; }
+        .content-stack { display: flex; flex-direction: column; gap: 28px; }
+        .surface-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
 
-        .progress-bar-wrap { background: var(--bg-card); border: 1px solid var(--border); padding: 20px 28px; margin-bottom: 35px; border-radius: 10px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-        .progress-bar-wrap .label { color: #fff; font-size: 14px; white-space: nowrap; }
-        .progress-bar-outer { flex: 1; min-width: 200px; height: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
-        .progress-bar-inner { height: 100%; background: var(--gold); border-radius: 6px; transition: width 0.5s; width: 0%; }
-        .progress-bar-wrap .percent { color: var(--gold); font-size: 14px; font-weight: 600; white-space: nowrap; }
-        .btn-reset-progress { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; transition: all 0.3s; }
-        .btn-reset-progress:hover { border-color: var(--red); color: var(--red); }
+        .formula-card { position: relative; padding: clamp(26px, 4vw, 42px); overflow: hidden; cursor: pointer; background: linear-gradient(135deg, rgba(212, 160, 23, .13), rgba(212, 160, 23, .025)); border-color: rgba(212, 160, 23, .32); transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal); }
+        .formula-card:hover, .formula-card:focus-visible { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 14px 42px rgba(212, 160, 23, .12); outline: none; }
+        .formula-label { margin-bottom: 14px; color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+        .formula-value { min-height: 48px; color: var(--text-primary); font-size: clamp(1.35rem, 3vw, 2rem); font-weight: 600; }
+        .formula-hint { margin-top: 12px; color: var(--text-muted); font-size: .9rem; }
 
-        .section-card { background: var(--bg-card); border: 1px solid var(--border); padding: 35px; margin-bottom: 25px; border-radius: 8px; }
-        .section-card h2 { color: #fff; margin-bottom: 8px; font-size: 1.5rem; }
-        .section-desc { color: var(--text-muted); margin-bottom: 25px; font-size: 1rem; }
+        .progress-card { padding: clamp(24px, 4vw, 36px); }
+        .progress-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+        .progress-title { margin: 0; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; }
+        .progress-subtitle { margin: 5px 0 0; color: var(--text-muted); font-size: .9rem; }
+        .progress-percent { flex-shrink: 0; color: var(--accent); font-size: 1.5rem; font-weight: 700; }
+        .progress-track { width: 100%; height: 12px; overflow: hidden; background: rgba(255, 255, 255, .06); border-radius: 999px; }
+        .progress-fill { width: 0; height: 100%; background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, white)); border-radius: inherit; transition: width 700ms cubic-bezier(.22, 1, .36, 1); }
+        .progress-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; }
+        .progress-details { color: var(--text-muted); font-size: .9rem; }
+        .reset-button { padding: 7px 13px; color: var(--text-muted); background: transparent; border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: color var(--transition-fast), border-color var(--transition-fast); }
+        .reset-button:hover, .reset-button:focus-visible { color: var(--danger); border-color: var(--danger); outline: none; }
 
-        .topics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .course-switcher { display: flex; flex-wrap: wrap; gap: 8px; padding: 6px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
+        .course-filter { flex: 1 1 160px; padding: 11px 16px; color: var(--text-muted); background: transparent; border: 0; border-radius: var(--radius-sm); cursor: pointer; transition: color var(--transition-fast), background var(--transition-fast); }
+        .course-filter:hover { color: var(--text-primary); }
+        .course-filter.active { color: var(--page-bg); background: var(--accent); font-weight: 700; }
 
-        .topic-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 28px 22px; transition: all 0.3s; text-decoration: none; display: block; border-radius: 6px; position: relative; }
-        .topic-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: rgba(212,160,23,0.03); }
-        .topic-icon { font-size: 40px; margin-bottom: 14px; display: block; }
-        .topic-title { font-size: 17px; color: #fff; margin-bottom: 6px; font-weight: 600; }
-        .topic-count { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-        .topic-prof { font-size: 12px; color: var(--gold); margin-bottom: 8px; }
-        .topic-task { font-size: 12px; color: var(--text-muted); font-style: italic; margin-bottom: 10px; line-height: 1.5; }
-        .topic-status { display: inline-block; padding: 4px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; cursor: pointer; margin-right: 5px; transition: all 0.3s; border: 1px solid transparent; }
-        .topic-status.not-ready { background: rgba(255,107,107,0.1); color: var(--red); border-color: rgba(255,107,107,0.3); }
-        .topic-status.review { background: rgba(251,191,36,0.1); color: var(--yellow); border-color: rgba(251,191,36,0.3); }
-        .topic-status.ready { background: rgba(74,222,128,0.1); color: var(--green); border-color: rgba(74,222,128,0.3); }
-        .topic-qr { position: absolute; top: 10px; right: 10px; font-size: 16px; cursor: pointer; opacity: 0.5; transition: opacity 0.3s; background: none; border: none; color: var(--text-muted); }
-        .topic-qr:hover { opacity: 1; color: var(--gold); }
-        .topic-audio { position: absolute; bottom: 10px; right: 10px; font-size: 18px; cursor: pointer; opacity: 0.4; transition: opacity 0.3s; background: none; border: none; color: var(--gold); }
-        .topic-audio:hover { opacity: 1; }
-        .topic-audio.playing { opacity: 1; animation: pulse 1s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .course-section { padding: clamp(24px, 4vw, 38px); }
+        .course-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 30px; }
+        .course-heading h2 { margin: 0; color: var(--text-primary); font-size: clamp(1.45rem, 3vw, 2rem); letter-spacing: -.025em; }
+        .course-heading p { margin: 8px 0 0; color: var(--text-muted); }
+        .course-hours { flex-shrink: 0; padding: 8px 13px; color: var(--accent); background: var(--accent-soft); border: 1px solid rgba(212, 160, 23, .3); border-radius: 999px; font-size: .8rem; font-weight: 700; }
 
-        .qr-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center; }
-        .qr-modal.open { display: flex; }
-        .qr-modal-content { background: #fff; padding: 30px; border-radius: 12px; text-align: center; position: relative; }
-        .qr-modal-close { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #333; background: none; border: none; }
-        .qr-modal-img { width: 200px; height: 200px; }
+        .module-list { display: flex; flex-direction: column; gap: 14px; }
+        .module-card { overflow: hidden; background: rgba(255, 255, 255, .018); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-md); transition: transform var(--transition-normal), border-color var(--transition-normal), background var(--transition-normal); animation: fadeInUp 0.5s ease backwards; }
+        .module-card:nth-child(1) { animation-delay: 0.1s; }
+        .module-card:nth-child(2) { animation-delay: 0.15s; }
+        .module-card:nth-child(3) { animation-delay: 0.2s; }
+        .module-card:nth-child(4) { animation-delay: 0.25s; }
+        .module-card:nth-child(5) { animation-delay: 0.3s; }
+        .module-card:nth-child(6) { animation-delay: 0.35s; }
+        .module-card:nth-child(7) { animation-delay: 0.4s; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .module-card:hover { transform: translateY(-4px); border-color: var(--border-strong); }
+        .module-card.is-review { border-left-color: var(--warning); background: rgba(251,191,36,0.05); }
+        .module-card.is-ready { border-left-color: var(--success); background: rgba(74,222,128,0.05); }
+        .module-main { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 22px; cursor: pointer; }
+        .module-icon { font-size: 1.8rem; width: 42px; text-align: center; flex-shrink: 0; }
+        .module-content { min-width: 0; }
+        .module-title-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+        .module-title { margin: 0; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; }
+        .module-context { margin: 5px 0 0; color: var(--text-muted); font-size: .9rem; }
+        .module-meta { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 14px; color: var(--text-muted); font-size: .8rem; }
+        .module-meta span { display: inline-flex; align-items: center; gap: 5px; }
+        .module-progress { display: flex; align-items: center; gap: 12px; margin-top: 15px; }
+        .module-progress-track { flex: 1; min-width: 100px; height: 6px; overflow: hidden; background: rgba(255, 255, 255, .06); border-radius: 999px; }
+        .module-progress-fill { width: 0; height: 100%; background: var(--accent); border-radius: inherit; transition: width 500ms ease; }
+        .module-progress-label { flex-shrink: 0; color: var(--text-muted); font-size: .78rem; }
+        .module-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .status-button { padding: 6px 11px; border: 1px solid transparent; border-radius: 999px; cursor: pointer; font-size: .75rem; font-weight: 700; white-space: nowrap; }
+        .status-button.not-ready { color: var(--danger); background: rgba(255, 107, 107, .1); border-color: rgba(255, 107, 107, .28); }
+        .status-button.review { color: var(--warning); background: rgba(251, 191, 36, .1); border-color: rgba(251, 191, 36, .28); }
+        .status-button.ready { color: var(--success); background: rgba(74, 222, 128, .1); border-color: rgba(74, 222, 128, .28); }
 
-        .badge { display: inline-block; background: var(--gold); color: var(--bg); padding: 5px 14px; font-size: 13px; font-weight: 600; border-radius: 4px; }
+        .topics-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(212, 160, 23, 0.08);
+            border: 1px solid rgba(212, 160, 23, 0.25);
+            border-radius: var(--radius-sm);
+            color: var(--accent);
+            cursor: pointer;
+            font-size: .82rem;
+            font-weight: 500;
+            transition: background var(--transition-fast), border-color var(--transition-fast);
+            white-space: nowrap;
+        }
 
-        .method-timeline { display: flex; flex-direction: column; gap: 24px; }
-        .method-step { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 8px; padding: 24px; transition: all 0.3s; }
-        .method-step:hover { border-color: var(--gold); background: rgba(212,160,23,0.02); }
-        .method-step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
-        .method-step-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--gold); color: var(--bg); font-weight: 700; font-size: 18px; display: flex; align-items: center; justify-content: center; }
-        .method-step-header h3 { color: #fff; font-size: 1.15rem; margin: 0; }
-        .method-step-body p { color: var(--text-muted); font-size: 15px; margin-bottom: 8px; line-height: 1.7; }
-        .method-result { background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.2); padding: 10px 14px; border-radius: 6px; color: #86efac; font-size: 14px; margin-top: 10px; }
-        .method-tip { background: rgba(212,160,23,0.06); border: 1px solid rgba(212,160,23,0.25); padding: 16px 20px; border-radius: 8px; margin-top: 24px; color: var(--text-muted); font-size: 14px; }
-        .method-tip strong { color: var(--gold); }
+        .topics-toggle:hover {
+            background: rgba(212, 160, 23, 0.15);
+            border-color: var(--accent);
+            text-decoration: none;
+        }
 
-        #backToTop { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 48px; height: 48px; border-radius: 50%; background: var(--gold); color: var(--bg); border: none; font-size: 22px; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; }
-        #backToTop.show { opacity: 1; visibility: visible; }
-        #backToTop:hover { background: #e6b422; }
-        footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 30px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
-        footer a { color: var(--gold); text-decoration: none; }
+        .topics-toggle-icon {
+            font-size: .75rem;
+            transition: transform var(--transition-fast);
+        }
 
-        @media (max-width: 768px) { .topics-grid { grid-template-columns: 1fr 1fr; } .section-card { padding: 24px; } }
-        @media (max-width: 480px) { .topics-grid { grid-template-columns: 1fr; } }
+        .topics-toggle[aria-expanded="true"] .topics-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .topics-panel { display: none; padding: 0 22px 22px 82px; border-top: 1px solid var(--border); }
+        .topics-panel.open { display: block; }
+        .topic-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .05); }
+        .topic-row:last-child { border-bottom: 0; }
+        .topic-dots { display: flex; gap: 6px; margin-right: 10px; }
+        .topic-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+        .topic-dot.ready { background: var(--success); }
+        .topic-dot.review { background: var(--warning); }
+        .topic-name { color: var(--text-secondary); font-size: .9rem; flex: 1; }
+        .topic-link { flex-shrink: 0; color: var(--accent); text-decoration: none; font-size: .8rem; font-weight: 600; }
+        .topic-link:hover { text-decoration: underline; }
+
+        .control-points { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .control-points-title { margin-bottom: 14px; color: var(--text-primary); font-size: .95rem; font-weight: 700; }
+        .control-point-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+        .control-point { padding: 12px 14px; color: var(--text-muted); background: rgba(255, 255, 255, .02); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: .85rem; }
+
+        /* Методический аккордеон */
+        .method-section { padding: clamp(24px, 4vw, 38px); background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+        .method-heading { margin-bottom: 28px; }
+        .method-heading h2 { margin: 0; color: var(--text-primary); font-size: clamp(1.4rem, 3vw, 2rem); }
+        .method-heading p { max-width: 700px; margin: 10px 0 0; color: var(--text-muted); }
+        .method-step { border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; background: rgba(255,255,255,0.02); transition: background var(--transition-fast); }
+        .method-step:hover { background: rgba(255,255,255,0.04); }
+        .method-step-header { display: flex; align-items: center; gap: 12px; padding: 18px 20px; cursor: pointer; user-select: none; }
+        .method-step-header h3 { margin: 0; color: var(--text-primary); font-size: 1rem; flex: 1; }
+        .method-number { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; color: var(--page-bg); background: var(--accent); border-radius: 50%; font-weight: 800; }
+        .method-step-body { display: none; padding: 0 20px 18px 20px; color: var(--text-muted); font-size: .9rem; line-height: 1.6; }
+        .method-step.open .method-step-body { display: block; }
+        .method-result { margin-top: 16px; padding: 12px 14px; color: var(--success); background: rgba(74, 222, 128, .06); border: 1px solid rgba(74, 222, 128, .2); border-radius: var(--radius-sm); font-size: .82rem; }
+        .method-tip { margin-top: 22px; padding: 16px 18px; color: var(--text-muted); background: var(--accent-soft); border: 1px solid rgba(212, 160, 23, .25); border-radius: var(--radius-md); font-size: .9rem; }
+        .method-tip strong { color: var(--accent); }
+        .method-cta { text-align: center; margin-top: 24px; }
+        .btn-primary { display: inline-block; padding: 10px 24px; background: var(--accent); color: var(--page-bg); border: none; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer; transition: background var(--transition-fast); text-decoration: none; }
+        .btn-primary:hover { background: color-mix(in srgb, var(--accent) 80%, white); }
+
+        .empty-state { display: none; padding: 40px 20px; color: var(--text-muted); text-align: center; }
+        .empty-state.visible { display: block; }
+
+        .back-to-top { position: fixed; right: 24px; bottom: 24px; z-index: 100; display: grid; place-items: center; width: 46px; height: 46px; color: var(--page-bg); background: var(--accent); border: 0; border-radius: 50%; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity var(--transition-fast), visibility var(--transition-fast), transform var(--transition-fast); }
+        .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .site-footer { padding: 30px 0; color: var(--text-muted); border-top: 1px solid var(--border); text-align: center; font-size: .85rem; }
+        .site-footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 800px) {
+            .module-main { grid-template-columns: auto minmax(0, 1fr); }
+            .module-actions { grid-column: 2; align-items: flex-start; }
+            .topics-panel { padding-left: 22px; }
+            .method-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 560px) {
+            .course-heading, .progress-header, .progress-footer { flex-direction: column; align-items: flex-start; }
+            .course-hours { align-self: flex-start; }
+            .module-main { grid-template-columns: 1fr; }
+            .module-number { width: 38px; height: 38px; }
+            .module-actions { grid-column: auto; }
+            .topic-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+            .back-to-top { right: 16px; bottom: 16px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--bg-card); border-bottom: 1px solid var(--border);">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top site-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html" style="font-family: 'Playfair Display', serif; color: var(--gold); font-size:1.1rem;">УМК «Математика»</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="index.html">УМК «Математика»</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Открыть навигацию"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="normativnyj.html">Нормативный</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="teoreticheskij.html">Теория</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="teoreticheskij.html">Теория</a></li>
                     <li class="nav-item"><a class="nav-link" href="prakticheskij.html">Практика</a></li>
                     <li class="nav-item"><a class="nav-link" href="kontrol.html">Контроль</a></li>
                     <li class="nav-item"><a class="nav-link" href="vspomogatelnyj.html">Вспомогательный</a></li>
@@ -109,199 +235,314 @@
         </div>
     </nav>
 
-    <header class="page-header">
-        <div class="container">
-            <h1>📚 Теоретический раздел</h1>
-            <p>Библиотека опорных конспектов · 9 тем</p>
+    <header class="page-hero">
+        <div class="container text-center">
+            <div class="hero-eyebrow">Теоретический раздел · УМК «Математика»</div>
+            <h1>Карта математического курса</h1>
+            <p class="hero-description">Два курса, тематические модули и учебная траектория — от базовых понятий до применения математики в профессиональной деятельности.</p>
         </div>
     </header>
 
-    <div class="content">
+    <main class="page-content">
         <div class="container">
+            <div class="content-stack">
 
-            <div class="formula-day" id="formulaDayContainer" title="Нажмите, чтобы перейти к конспекту">
-                <div class="formula-day-label">📅 Формула дня</div>
-                <div class="formula-day-text" id="formulaDay"></div>
-                <div class="formula-day-hint">Повторите перед занятием — закрепите в памяти</div>
-            </div>
+                <!-- FORMULA OF THE DAY -->
+                <section class="formula-card surface-card" id="formulaDayContainer" tabindex="0" role="button" aria-label="Открыть тему формулы дня">
+                    <div class="formula-label">Формула дня</div>
+                    <div class="formula-value" id="formulaDay"></div>
+                    <div class="formula-hint">Нажмите, чтобы открыть соответствующую тему</div>
+                </section>
 
-            <div class="progress-bar-wrap">
-                <span class="label">📊 Готовность к экзамену:</span>
-                <div class="progress-bar-outer"><div class="progress-bar-inner" id="progressBar"></div></div>
-                <span class="percent" id="progressPercent">0%</span>
-                <button class="btn-reset-progress" onclick="resetProgress()">Сбросить</button>
-            </div>
-
-            <div class="section-card">
-                <h2>📖 Первый курс <span class="badge">5 тем</span></h2>
-                <p class="section-desc">Кликните на тему, чтобы открыть опорный конспект. Отмечайте готовность кнопками под карточкой.</p>
-                <div class="topics-grid" id="course1"></div>
-            </div>
-
-            <div class="section-card">
-                <h2>📖 Второй курс <span class="badge">4 темы</span></h2>
-                <p class="section-desc">Кликните на тему, чтобы открыть опорный конспект. Отмечайте готовность кнопками под карточкой.</p>
-                <div class="topics-grid" id="course2"></div>
-            </div>
-
-            <div class="section-card">
-                <h2>📋 Как учиться по конспектам: система 4 шагов</h2>
-                <p class="section-desc">Эта методика основана на принципе «от простого к сложному». Пройдите все 4 шага — и тема будет усвоена.</p>
-                <div class="method-timeline">
-                    <div class="method-step">
-                        <div class="method-step-header"><div class="method-step-num">1</div><h3>Перед занятием: предпросмотр</h3></div>
-                        <div class="method-step-body"><p>Откройте конспект по теме. <strong>Не читайте всё подряд.</strong> Пробегитесь по заголовкам разделов, посмотрите на формулы в таблицах. Это займёт 5 минут.</p><div class="method-result">🎯 Результат: вы уже знаете структуру темы и не утонете в новом материале на занятии.</div></div>
+                <!-- PROGRESS -->
+                <section class="progress-card surface-card">
+                    <div class="progress-header">
+                        <div>
+                            <h2 class="progress-title">Моя учебная траектория</h2>
+                            <p class="progress-subtitle">Прогресс рассчитывается по количеству учебных часов</p>
+                        </div>
+                        <div class="progress-percent" id="progressPercent">0%</div>
                     </div>
-                    <div class="method-step">
-                        <div class="method-step-header"><div class="method-step-num">2</div><h3>На занятии: активное слушание</h3></div>
-                        <div class="method-step-body"><p>Держите конспект открытым. Когда преподаватель объясняет тему — <strong>следите по конспекту</strong>. Все формулы уже перед глазами, не нужно лихорадочно записывать.</p><p>Увидели в конспекте блок «⚠️ Частая ошибка» — обратите внимание, когда преподаватель о ней говорит. Это то, что будет на контрольной.</p><div class="method-result">🎯 Результат: вы слушаете и понимаете, а не тратите время на переписывание формул.</div></div>
+                    <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
+                    <div class="progress-footer">
+                        <div class="progress-details" id="progressDetails">0 из 240 часов освоено</div>
+                        <button class="reset-button" id="resetProgressButton" type="button">Сбросить прогресс</button>
                     </div>
-                    <div class="method-step">
-                        <div class="method-step-header"><div class="method-step-num">3</div><h3>После занятия: закрепление через профессию</h3></div>
-                        <div class="method-step-body"><p>В конце каждого конспекта есть блок <strong>«🔧 Где пригодится строителю»</strong>. Прочитайте его. Затем придумайте <strong>свою задачу</strong> по теме, связанную со стройкой.</p><p>Пример: после темы «Производная» — «Я оптимизирую размеры фундамента, чтобы сэкономить бетон». Это работает лучше, чем решение абстрактных примеров.</p><div class="method-result">🎯 Результат: вы связываете математику с профессией — материал запоминается в 3 раза лучше.</div></div>
-                    </div>
-                    <div class="method-step">
-                        <div class="method-step-header"><div class="method-step-num">4</div><h3>Перед экзаменом: шпаргалка и самопроверка</h3></div>
-                        <div class="method-step-body"><p>Откройте раздел <strong>«📋 Шпаргалка «За 5 минут до экзамена»»</strong> в конце конспекта. Пробегитесь по формулам. Если какую-то не помните — вернитесь в соответствующий раздел.</p><p>Нажмите <strong>«Скачать шпаргалку»</strong> — получите компактный HTML-файл. Откройте его на телефоне по дороге на экзамен.</p><div class="method-result">🎯 Результат: вы повторили все ключевые формулы за 5 минут и имеете шпаргалку в телефоне.</div></div>
-                    </div>
+                </section>
+
+                <!-- FILTERS -->
+                <div class="course-switcher" role="tablist" aria-label="Фильтр учебных модулей">
+                    <button class="course-filter active" type="button" data-filter="all" role="tab" aria-selected="true">Все модули</button>
+                    <button class="course-filter" type="button" data-filter="1" role="tab" aria-selected="false">I курс</button>
+                    <button class="course-filter" type="button" data-filter="2" role="tab" aria-selected="false">II курс</button>
                 </div>
-                <div class="method-tip"><strong>💡 Совет преподавателя:</strong> Используйте кнопки <strong>🔴 Не готов / 🟡 Повторить / 🟢 Сдам</strong> на карточках тем. Отмечайте свой прогресс честно. К экзамену все темы должны быть зелёными.</div>
+
+                <!-- COURSE 1 -->
+                <section class="course-section surface-card" data-course-section="1">
+                    <div class="course-heading">
+                        <div><h2>Первый курс</h2><p>Основа математического и пространственного мышления.</p></div>
+                        <div class="course-hours">120 учебных часов</div>
+                    </div>
+                    <div class="module-list" id="course1"></div>
+                    <div class="empty-state" id="emptyCourse1">В этом разделе нет модулей.</div>
+                    <div class="control-points" id="controls1"></div>
+                </section>
+
+                <!-- COURSE 2 -->
+                <section class="course-section surface-card" data-course-section="2">
+                    <div class="course-heading">
+                        <div><h2>Второй курс</h2><p>Функции, логарифмы, многогранники и тела вращения.</p></div>
+                        <div class="course-hours">120 учебных часов</div>
+                    </div>
+                    <div class="module-list" id="course2"></div>
+                    <div class="empty-state" id="emptyCourse2">В этом разделе нет модулей.</div>
+                    <div class="control-points" id="controls2"></div>
+                </section>
+
+                <!-- METHOD (аккордеон) -->
+                <section class="method-section">
+                    <div class="method-heading">
+                        <h2>Как работать с конспектами</h2>
+                        <p>Четырёхэтапная система, которая помогает превратить чтение теории в прочные знания. Нажмите на шаг, чтобы увидеть подробности.</p>
+                    </div>
+
+                    <div class="method-step open">
+                        <div class="method-step-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="method-number">1</div>
+                            <h3>Предпросмотр</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>Перед занятием просмотрите структуру конспекта, заголовки и основные формулы. Ваша задача — заранее увидеть карту темы.</p>
+                            <div class="method-result">Результат: вы понимаете структуру нового материала.</div>
+                        </div>
+                    </div>
+
+                    <div class="method-step">
+                        <div class="method-step-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="method-number">2</div>
+                            <h3>Активное слушание</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>На занятии следите по конспекту за объяснением, обращая внимание на формулы, примеры и типичные ошибки.</p>
+                            <div class="method-result">Результат: вы слушаете и понимаете, а не просто переписываете.</div>
+                        </div>
+                    </div>
+
+                    <div class="method-step">
+                        <div class="method-step-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="method-number">3</div>
+                            <h3>Связь с профессией</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>После занятия попробуйте связать изученную тему с реальной задачей строителя: размерами, площадями, объёмами, уклонами или расчётами.</p>
+                            <div class="method-result">Результат: абстрактная математика становится практическим инструментом.</div>
+                        </div>
+                    </div>
+
+                    <div class="method-step">
+                        <div class="method-step-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="method-number">4</div>
+                            <h3>Самопроверка</h3>
+                        </div>
+                        <div class="method-step-body">
+                            <p>Перед контрольной или экзаменом повторите ключевые формулы и проверьте себя по основным темам.</p>
+                            <div class="method-result">Результат: вы видите пробелы до проверки знаний.</div>
+                        </div>
+                    </div>
+
+                    <div class="method-tip">
+                        <strong>Совет преподавателя.</strong> Используйте статусы модулей честно: «Не изучено», «Повторить» и «Освоено». Ваш прогресс должен отражать реальное состояние знаний.
+                    </div>
+
+                    <div class="method-cta">
+                        <button class="btn-primary" onclick="document.getElementById('course1').scrollIntoView({behavior:'smooth'});">Попробовать на первом модуле</button>
+                    </div>
+                </section>
+
             </div>
-
         </div>
-    </div>
+    </main>
 
-    <div class="qr-modal" id="qrModal" onclick="closeQR(event)">
-        <div class="qr-modal-content" onclick="event.stopPropagation()">
-            <button class="qr-modal-close" onclick="closeQR()">&times;</button>
-            <img class="qr-modal-img" id="qrImage" src="" alt="QR-код">
-            <p style="margin-top:10px;color:#333;font-size:14px;">Наведите камеру телефона</p>
-        </div>
-    </div>
-
-    <footer>
-        <div class="container">© 2026 Станулевич А.В., Гродно, Беларусь · <a href="index.html">На главную</a></div>
-    </footer>
-
-    <button id="backToTop" title="Наверх">▲</button>
+    <footer class="site-footer"><div class="container">© 2026 Станулевич А.В., Гродно, Беларусь · <a href="index.html">На главную</a></div></footer>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Вернуться наверх">↑</button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/data/curriculum.js"></script>
     <script>
-        var backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() { if (window.scrollY > 300) backToTop.classList.add('show'); else backToTop.classList.remove('show'); });
-        backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        const { modules, formulas, controlPoints } = CURRICULUM;
 
-        const formulas = [
-            { text: 'sin²α + cos²α = 1', latex: '\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1', topic: 'Тригонометрия', link: 'theory/trigonometriya.html#tozhd' },
-            { text: 'aᵐ · aⁿ = aᵐ⁺ⁿ', latex: 'a^{m} \\cdot a^{n} = a^{m+n}', topic: 'Степени', link: 'theory/stepeni-funktsii.html' },
-            { text: 'V призмы = Sₒₛₙ · H', latex: 'V = S_{\\text{осн}} \\cdot H', topic: 'Многогранники', link: 'theory/mnogogranniki.html' },
-            { text: 'f\'(x₀) = tg α', latex: 'f\'(x_{0}) = \\operatorname{tg}\\alpha', topic: 'Производная', link: 'theory/proizvodnaya.html' },
-            { text: 'logₐ(xy) = logₐx + logₐy', latex: '\\log_{a}(xy) = \\log_{a}x + \\log_{a}y', topic: 'Логарифмы', link: 'theory/logarifmy.html' },
-            { text: 'V шара = ⁴⁄₃πR³', latex: 'V = \\frac{4}{3}\\pi R^{3}', topic: 'Тела вращения', link: 'theory/tela-vrashcheniya.html' },
-            { text: '√(x²) = |x|', latex: '\\sqrt{x^{2}} = |x|', topic: 'Корни', link: 'theory/koren-n-stepeni.html' },
-            { text: 'Прямая ⊥ плоскости, если ⊥ двум прямым в ней', latex: '', topic: 'Параллельность и перпендикулярность', link: 'theory/parallel-perpend.html' },
-            { text: 'Через 3 точки → единственная плоскость', latex: '', topic: 'Стереометрия', link: 'theory/stereometriya.html' },
-        ];
-        const today = new Date();
-        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-        const formula = formulas[dayOfYear % formulas.length];
-        const container = document.getElementById('formulaDay');
-        if (formula.latex) {
-            container.innerHTML = '<span data-katex="' + formula.latex + '"></span>';
-            katex.render(formula.latex, container.querySelector('[data-katex]'), { throwOnError: false });
-        } else {
-            container.textContent = formula.text;
-        }
-        document.getElementById('formulaDayContainer').addEventListener('click', function() { window.location.href = formula.link; });
-
-        const topics = [
-            { icon: '📐', title: 'Тригонометрия', count: '9 разделов', prof: '🔧 Кровля, геодезия', link: 'theory/trigonometriya.html', course: 1, task: 'Уклон кровли 30°. На сколько метров поднимется крыша при длине ската 10 м?', audio: 'Тригонометрия. Основные темы: единичная окружность, синус, косинус, тангенс, котангенс, тождества, графики, уравнения, формулы приведения.' },
-            { icon: '📦', title: 'Стереометрия', count: '5 разделов', prof: '🔧 Чертежи, разметка', link: 'theory/stereometriya.html', course: 1, task: 'Сколько плоскостей можно провести через три точки, не лежащие на одной прямой?', audio: 'Стереометрия. Аксиомы стереометрии, следствия из аксиом, сечения многогранников, метод следов.' },
-            { icon: '√', title: 'Корень n-й степени', count: '3 раздела', prof: '🔧 Расчёты, пропорции', link: 'theory/koren-n-stepeni.html', course: 1, task: 'Площадь квадратного участка 144 м². Найдите сторону.', audio: 'Корень энной степени. Определение корня, свойства корня, иррациональные уравнения.' },
-            { icon: '⟂', title: 'Параллельность и перпендикулярность', count: '4 раздела', prof: '🔧 Вертикаль, геодезия', link: 'theory/parallel-perpend.html', course: 1, task: 'Как проверить, что столб стоит вертикально?', audio: 'Параллельность и перпендикулярность. Признаки параллельности, перпендикулярности, теорема о трёх перпендикулярах, двугранный угол.' },
-            { icon: '∫', title: 'Производная', count: '3 раздела', prof: '🔧 Оптимизация, прочность', link: 'theory/proizvodnaya.html', course: 1, task: 'Огородить участок у стены. Есть 60 м забора. Как получить максимальную площадь?', audio: 'Производная. Определение производной, таблица производных, геометрический смысл, уравнение касательной, экстремумы.' },
-            { icon: 'x²', title: 'Степени и показательные функции', count: '3 раздела', prof: '🔧 Инженерные расчёты', link: 'theory/stepeni-funktsii.html', course: 2, task: 'Прочность бетона растёт по закону R(t)=100(1−2⁻⁰·²ᵗ). Через сколько суток прочность превысит 75%?', audio: 'Степени и показательные функции. Степень с рациональным показателем, показательная функция, показательные уравнения и неравенства.' },
-            { icon: '📦', title: 'Многогранники', count: '2 раздела', prof: '🔧 Фундаменты, объёмы', link: 'theory/mnogogranniki.html', course: 2, task: 'Ленточный фундамент 30×0,6×1,2 м. Сколько кубов бетона?', audio: 'Многогранники. Призма, параллелепипед, пирамида, усечённая пирамида. Формулы объёмов и площадей поверхностей.' },
-            { icon: '📊', title: 'Логарифмы', count: '5 разделов', prof: '🔧 Звукоизоляция, шкалы', link: 'theory/logarifmy.html', course: 2, task: 'log₂8 = ? (в какую степень возвести 2, чтобы получить 8?)', audio: 'Логарифмы. Определение логарифма, свойства логарифмов, логарифмическая функция, логарифмические уравнения и неравенства.' },
-            { icon: '⚪', title: 'Тела вращения', count: '3 раздела', prof: '🔧 Резервуары, купола', link: 'theory/tela-vrashcheniya.html', course: 2, task: 'Колонна-цилиндр: диаметр 0,6 м, высота 6 м. Объём бетона?', audio: 'Тела вращения. Сфера и шар, цилиндр, конус. Формулы объёмов и площадей поверхностей.' },
-        ];
-
-        function renderTopics() {
-            const course1 = document.getElementById('course1');
-            const course2 = document.getElementById('course2');
-            course1.innerHTML = '';
-            course2.innerHTML = '';
-
-            topics.forEach((t, i) => {
-                const status = getStatus(i);
-                const card = document.createElement('a');
-                card.href = t.link;
-                card.className = 'topic-card';
-                card.style.position = 'relative';
-                card.innerHTML = `
-                    <button class="topic-qr" onclick="event.preventDefault();event.stopPropagation();showQR('${t.link}')" title="QR-код">📱</button>
-                    <span class="topic-icon">${t.icon}</span>
-                    <div class="topic-title">${t.title}</div>
-                    <div class="topic-count">${t.count}</div>
-                    <div class="topic-prof">${t.prof}</div>
-                    <div class="topic-task">💡 ${t.task}</div>
-                    <span class="topic-status ${status}" onclick="event.preventDefault();event.stopPropagation();cycleStatus(${i})" title="Нажмите для смены статуса">${status === 'not-ready' ? '🔴 Не готов' : status === 'review' ? '🟡 Повторить' : '🟢 Сдам'}</span>
-                    <button class="topic-audio" onclick="event.preventDefault();event.stopPropagation();toggleAudio(${i}, this)" title="Прослушать">🎧</button>
-                `;
-                if (t.course === 1) course1.appendChild(card);
-                else course2.appendChild(card);
-            });
+        // STATUS
+        function getModuleStatus(moduleId) { return localStorage.getItem(`module_status_${moduleId}`) || 'not-ready'; }
+        function setModuleStatus(moduleId, status) { localStorage.setItem(`module_status_${moduleId}`, status); }
+        function getTopicStatus(moduleId, topicIndex) { return localStorage.getItem(`topic_status_${moduleId}_${topicIndex}`) || 'not-ready'; }
+        function setTopicStatus(moduleId, topicIndex, status) { localStorage.setItem(`topic_status_${moduleId}_${topicIndex}`, status); }
+        function cycleModuleStatus(moduleId) {
+            const current = getModuleStatus(moduleId);
+            const next = current === 'not-ready' ? 'review' : current === 'review' ? 'ready' : 'not-ready';
+            setModuleStatus(moduleId, next);
+            renderModules();
             updateProgress();
         }
 
-        function getStatus(index) { return localStorage.getItem('topic_status_' + index) || 'not-ready'; }
-        function setStatus(index, status) { localStorage.setItem('topic_status_' + index, status); }
-        function cycleStatus(index) {
-            const current = getStatus(index);
-            const next = current === 'not-ready' ? 'review' : current === 'review' ? 'ready' : 'not-ready';
-            setStatus(index, next);
-            renderTopics();
+        // PROGRESS
+        function getModuleProgress(module) {
+            const status = getModuleStatus(module.id);
+            if (status === 'ready') return 100;
+            const completed = module.topics.filter((_, i) => getTopicStatus(module.id, i) === 'ready').length;
+            return Math.round(completed / module.topics.length * 100);
         }
-        function resetProgress() {
-            topics.forEach((_, i) => localStorage.removeItem('topic_status_' + i));
-            renderTopics();
-        }
+
         function updateProgress() {
-            const ready = topics.filter((_, i) => getStatus(i) === 'ready').length;
-            const review = topics.filter((_, i) => getStatus(i) === 'review').length;
-            const total = topics.length;
-            const percent = Math.round((ready * 100 + review * 50) / total);
-            document.getElementById('progressBar').style.width = percent + '%';
-            document.getElementById('progressPercent').textContent = percent + '%';
+            const totalHours = modules.reduce((s, m) => s + m.hours, 0) + CURRICULUM.extraHours[1] + CURRICULUM.extraHours[2];
+            const completedHours = modules.reduce((s, m) => s + m.hours * getModuleProgress(m) / 100, 0);
+            const rounded = Math.round(completedHours);
+            document.getElementById('progressBar').style.width = Math.round(completedHours / totalHours * 100) + '%';
+            document.getElementById('progressPercent').textContent = Math.round(completedHours / totalHours * 100) + '%';
+            document.getElementById('progressDetails').textContent = `${rounded} из ${totalHours} часов освоено`;
         }
 
-        function showQR(link) {
-            const baseUrl = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '');
-            const fullUrl = baseUrl + '/' + link;
-            const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(fullUrl);
-            document.getElementById('qrImage').src = qrUrl;
-            document.getElementById('qrModal').classList.add('open');
-        }
-        function closeQR(event) {
-            if (event && event.target !== document.getElementById('qrModal')) return;
-            document.getElementById('qrModal').classList.remove('open');
+        // RENDER
+        function renderModules() {
+            const c1 = document.getElementById('course1');
+            const c2 = document.getElementById('course2');
+            c1.innerHTML = ''; c2.innerHTML = '';
+            modules.forEach(mod => {
+                const status = getModuleStatus(mod.id);
+                const progress = getModuleProgress(mod);
+                const statusText = { 'not-ready': '🔴 Не изучено', 'review': '🟡 Повторить', 'ready': '🟢 Освоено' }[status];
+                const el = document.createElement('article');
+                el.className = `module-card ${status === 'ready' ? 'is-ready' : status === 'review' ? 'is-review' : ''}`;
+                el.id = `module-${mod.id}`;
+                el.innerHTML = `
+                    <div class="module-main" data-module-id="${mod.id}">
+                        <div class="module-icon">${mod.icon}</div>
+                        <div class="module-content">
+                            <div class="module-title-row"><h3 class="module-title">${mod.title}</h3></div>
+                            <p class="module-context">${mod.description}</p>
+                            <div class="module-meta">
+                                <span>⏱ ${mod.hours} ч.</span><span>📚 ${mod.topics.length} тем</span><span>🧮 Практика</span><span>🔬 ${mod.interactive}</span><span>🏗 ${mod.context}</span>
+                            </div>
+                            <div class="module-progress">
+                                <div class="module-progress-track"><div class="module-progress-fill" style="width:${progress}%"></div></div>
+                                <span class="module-progress-label">${progress}% тем</span>
+                            </div>
+                        </div>
+                        <div class="module-actions">
+                            <button class="status-button ${status}" type="button" data-status-module="${mod.id}">${statusText}</button>
+                            <button class="topics-toggle" type="button" aria-expanded="false" aria-controls="topics-${mod.id}" data-toggle-module="${mod.id}">
+                                <span>Темы</span><span class="topics-toggle-icon">↓</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="topics-panel" id="topics-${mod.id}">
+                        ${mod.topics.map(([name, anchor], i) => {
+                            const ts = getTopicStatus(mod.id, i);
+                            return `<div class="topic-row">
+                                <div class="topic-dots"><span class="topic-dot ${ts === 'ready' ? 'ready' : ts === 'review' ? 'review' : ''}"></span></div>
+                                <span class="topic-name">${name}</span>
+                                <a class="topic-link" href="${mod.link}#${anchor}">📖 Открыть тему →</a>
+                            </div>`;
+                        }).join('')}
+                    </div>`;
+                (mod.course === 1 ? c1 : c2).appendChild(el);
+            });
+            renderControlPoints();
+            bindEvents();
+            updateEmptyStates();
         }
 
-        let currentAudio = null;
-        function toggleAudio(index, btn) {
-            if (currentAudio) { speechSynthesis.cancel(); currentAudio = null; }
-            if (btn.classList.contains('playing')) { btn.classList.remove('playing'); return; }
-            document.querySelectorAll('.topic-audio').forEach(b => b.classList.remove('playing'));
-            btn.classList.add('playing');
-            const utterance = new SpeechSynthesisUtterance(topics[index].audio);
-            utterance.lang = 'ru-RU';
-            utterance.rate = 0.9;
-            utterance.onend = function() { btn.classList.remove('playing'); currentAudio = null; };
-            currentAudio = utterance;
-            speechSynthesis.speak(utterance);
+        function renderControlPoints() {
+            [1,2].forEach(course => {
+                document.getElementById(`controls${course}`).innerHTML = `
+                    <div class="control-points-title">Контрольные точки</div>
+                    <div class="control-point-list">${controlPoints[course].map(i => `<div class="control-point">📝 ${i}</div>`).join('')}</div>`;
+            });
         }
 
-        renderTopics();
+        function bindEvents() {
+            // Статус модуля
+            document.querySelectorAll('[data-status-module]').forEach(b => b.addEventListener('click', () => cycleModuleStatus(b.dataset.statusModule)));
+
+            // Кнопка "Темы"
+            document.querySelectorAll('[data-toggle-module]').forEach(b => {
+                b.addEventListener('click', (e) => {
+                    e.stopPropagation(); // чтобы не сработал клик по module-main
+                    const moduleId = b.dataset.toggleModule;
+                    const panel = document.getElementById(`topics-${moduleId}`);
+                    const open = panel.classList.toggle('open');
+                    b.setAttribute('aria-expanded', open);
+                });
+            });
+
+            // Клик по верхней части карточки (module-main) тоже открывает темы
+            document.querySelectorAll('.module-main').forEach(main => {
+                main.addEventListener('click', (e) => {
+                    // Игнорируем клики по кнопкам и ссылкам внутри
+                    if (e.target.closest('button') || e.target.closest('a')) return;
+                    // Находим ближайшую кнопку "Темы" внутри этой карточки
+                    const toggleBtn = main.parentElement.querySelector('[data-toggle-module]');
+                    if (!toggleBtn) return;
+                    const moduleId = toggleBtn.dataset.toggleModule;
+                    const panel = document.getElementById(`topics-${moduleId}`);
+                    const open = panel.classList.toggle('open');
+                    toggleBtn.setAttribute('aria-expanded', open);
+                });
+            });
+        }
+
+        function updateEmptyStates() {
+            [1,2].forEach(course => {
+                const section = document.querySelector(`[data-course-section="${course}"]`);
+                const visible = section.querySelectorAll('.module-card:not([hidden])').length;
+                document.getElementById(`emptyCourse${course}`).classList.toggle('visible', visible === 0);
+            });
+        }
+
+        // FILTERS
+        document.querySelectorAll('.course-filter').forEach(b => b.addEventListener('click', () => {
+            const filter = b.dataset.filter;
+            document.querySelectorAll('.course-filter').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
+                btn.setAttribute('aria-selected', btn.dataset.filter === filter);
+            });
+            document.querySelectorAll('[data-course-section]').forEach(section => {
+                section.style.display = (filter === 'all' || filter === section.dataset.courseSection) ? '' : 'none';
+            });
+        }));
+
+        // FORMULA OF THE DAY
+        const today = new Date();
+        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+        const formula = formulas[dayOfYear % formulas.length];
+        const formulaEl = document.getElementById('formulaDay');
+        if (formula.latex && typeof katex !== 'undefined') katex.render(formula.latex, formulaEl, { throwOnError: false });
+        else formulaEl.textContent = formula.text;
+        function openFormulaTopic() {
+            const mod = modules.find(m => m.id === formula.moduleId);
+            if (mod) window.location.href = `${mod.link}#${formula.anchor}`;
+        }
+        document.getElementById('formulaDayContainer').addEventListener('click', openFormulaTopic);
+        document.getElementById('formulaDayContainer').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFormulaTopic(); } });
+
+        // RESET
+        document.getElementById('resetProgressButton').addEventListener('click', () => {
+            if (!confirm('Сбросить весь прогресс обучения?')) return;
+            modules.forEach(mod => {
+                localStorage.removeItem(`module_status_${mod.id}`);
+                mod.topics.forEach((_, i) => localStorage.removeItem(`topic_status_${mod.id}_${i}`));
+            });
+            renderModules();
+            updateProgress();
+        });
+
+        // BACK TO TOP
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 500));
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // INIT
+        renderModules();
+        updateProgress();
     </script>
 </body>
 </html>

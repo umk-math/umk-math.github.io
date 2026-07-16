@@ -1,0 +1,279 @@
+/* ==========================================
+   Pyramid Model — Styles v2.0 (MSF Design)
+   ========================================== */
+
+.msf-pyramid-container {
+    background: #0a0e14;
+    border-radius: 18px;
+    padding: 20px;
+    color: #c9d1d9;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Блоки: контракт, кейс, предсказание, сравнение */
+.msf-learning-contract,
+.msf-professional-case,
+.msf-prediction-block,
+.msf-comparison-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #30363d;
+    border-left: 4px solid #D4A017;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: #b0b8c5;
+    line-height: 1.6;
+}
+
+.msf-learning-contract strong,
+.msf-professional-case strong,
+.msf-prediction-block strong,
+.msf-comparison-block strong {
+    color: #D4A017;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.msf-professional-case em {
+    color: #8b949e;
+    font-style: italic;
+}
+
+/* Контекст (иконки) */
+.msf-construction-context {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    font-size: 12px;
+    color: #8b949e;
+    margin-bottom: 16px;
+}
+
+.msf-construction-context span {
+    background: rgba(212, 160, 23, 0.08);
+    border: 1px solid rgba(212, 160, 23, 0.2);
+    padding: 4px 12px;
+    border-radius: 16px;
+    white-space: nowrap;
+}
+
+/* Слайдеры */
+.msf-sliders-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.msf-slider-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.msf-slider-label {
+    color: #a1b0c0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.msf-slider-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.msf-slider-input {
+    accent-color: #D4A017;
+    width: 160px;
+    height: 6px;
+    border-radius: 4px;
+    background: #242c38;
+    cursor: pointer;
+}
+
+.msf-slider-value {
+    color: #D4A017;
+    font-weight: 700;
+    font-size: 17px;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Кнопки */
+.msf-action-bar {
+    text-align: center;
+    margin: 16px 0 12px;
+}
+
+.msf-btn {
+    padding: 6px 16px;
+    background: #242c38;
+    color: #D4A017;
+    border: 1px solid #D4A017;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.msf-btn:hover {
+    background: #D4A017;
+    color: #0d1117;
+    transform: translateY(-1px);
+}
+
+.msf-btn-prediction {
+    padding: 6px 16px;
+    background: #242c38;
+    color: #D4A017;
+    border: 1px solid #D4A017;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.msf-btn-prediction:hover {
+    background: #D4A017;
+    color: #0d1117;
+}
+
+.msf-btn-prediction.correct {
+    background: #4ade80;
+    border-color: #4ade80;
+    color: #0d1117;
+}
+
+.msf-btn-prediction.wrong {
+    background: #ff6b6b;
+    border-color: #ff6b6b;
+    color: #fff;
+}
+
+/* Инфо-панель */
+.msf-info-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+.msf-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px 8px;
+    text-align: center;
+}
+
+.msf-info-item-label {
+    font-size: 11px;
+    color: #6b7a8f;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.msf-info-item-value {
+    font-size: 18px;
+    color: #D4A017;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.msf-formula-short {
+    text-align: center;
+    font-size: 17px;
+    color: #D4A017;
+    font-family: 'Times New Roman', serif;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #30363d;
+}
+
+.msf-formula-toggle {
+    font-size: 14px;
+    color: #8b949e;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: color 0.2s;
+}
+
+.msf-formula-toggle:hover {
+    color: #D4A017;
+}
+
+.msf-formula-block {
+    display: none;
+    text-align: center;
+    margin-top: 8px;
+    padding: 10px;
+    background: rgba(212, 160, 23, 0.03);
+    border-radius: 6px;
+}
+
+.msf-formula-canvas {
+    vertical-align: middle;
+}
+
+/* 3D viewer */
+.msf-viewer {
+    width: 100%;
+    height: 420px;
+    background: #0a0e14;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 12px;
+    border: 1px solid #30363d;
+}
+
+/* Выпадающее меню */
+.msf-more-menu {
+    position: absolute;
+    background: #242c38;
+    border: 1px solid #D4A017;
+    border-radius: 6px;
+    padding: 4px;
+    z-index: 999;
+    min-width: 140px;
+}
+
+.msf-more-menu button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #D4A017;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.msf-more-menu button:hover {
+    background: rgba(212, 160, 23, 0.1);
+}
+
+/* Обратная связь предсказания */
+#predictionFeedback {
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    min-height: 20px;
+}

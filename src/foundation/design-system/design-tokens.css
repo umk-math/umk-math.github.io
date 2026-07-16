@@ -1,0 +1,191 @@
+/* ==========================================
+   MSF Platform SDK — Design Tokens v1.0
+   ========================================== */
+
+/* ---------- 1. ПРИМИТИВНЫЕ ТОКЕНЫ ---------- */
+:root {
+  --msf-blue-50: #eff6ff;
+  --msf-blue-100: #dbeafe;
+  --msf-blue-500: #3b82f6;
+  --msf-blue-900: #1e3a5f;
+
+  --msf-gray-50: #f9fafb;
+  --msf-gray-100: #f3f4f6;
+  --msf-gray-400: #9ca3af;
+  --msf-gray-500: #6b7280;
+  --msf-gray-700: #374151;
+  --msf-gray-800: #1f2937;
+  --msf-gray-900: #111827;
+
+  --msf-gold-50: #fefce8;
+  --msf-gold-100: #fef9c3;
+  --msf-gold-500: #D4A017;
+  --msf-gold-700: #b8860b;
+
+  --msf-red-500: #ef4444;
+  --msf-green-500: #22c55e;
+  --msf-orange-500: #f97316;
+
+  --msf-opacity-0: 0;
+  --msf-opacity-10: 0.1;
+  --msf-opacity-25: 0.25;
+  --msf-opacity-50: 0.5;
+  --msf-opacity-75: 0.75;
+  --msf-opacity-100: 1;
+
+  --msf-space-2: 2px;
+  --msf-space-4: 4px;
+  --msf-space-8: 8px;
+  --msf-space-12: 12px;
+  --msf-space-16: 16px;
+  --msf-space-24: 24px;
+  --msf-space-32: 32px;
+  --msf-space-48: 48px;
+  --msf-space-64: 64px;
+
+  --msf-radius-2: 2px;
+  --msf-radius-4: 4px;
+  --msf-radius-8: 8px;
+  --msf-radius-12: 12px;
+  --msf-radius-full: 9999px;
+
+  --msf-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --msf-shadow-2: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --msf-shadow-3: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --msf-shadow-gold: 0 0 20px rgba(212, 160, 23, 0.2);
+
+  --msf-duration-100: 100ms;
+  --msf-duration-200: 200ms;
+  --msf-duration-300: 300ms;
+  --msf-duration-500: 500ms;
+
+  --msf-size-icon-sm: 16px;
+  --msf-size-icon-md: 24px;
+  --msf-size-icon-lg: 32px;
+  --msf-size-avatar: 40px;
+  --msf-size-touch-min: 44px;
+
+  --msf-border-1: 1px;
+  --msf-border-2: 2px;
+  --msf-border-4: 4px;
+
+  --msf-z-base: 0;
+  --msf-z-dropdown: 100;
+  --msf-z-modal: 1000;
+  --msf-z-toast: 1100;
+  --msf-z-tooltip: 1200;
+
+  --msf-blur-sm: 4px;
+  --msf-blur-md: 8px;
+  --msf-blur-lg: 12px;
+}
+
+/* ---------- 2. СЕМАНТИЧЕСКИЕ ТОКЕНЫ ---------- */
+:root {
+  --msf-color-primary: var(--msf-gold-500);
+  --msf-color-primary-hover: var(--msf-gold-700);
+  --msf-color-primary-light: var(--msf-gold-100);
+
+  --msf-color-success: var(--msf-green-500);
+  --msf-color-warning: var(--msf-orange-500);
+  --msf-color-danger: var(--msf-red-500);
+  --msf-color-info: var(--msf-blue-500);
+
+  --msf-color-background: #0d1117;
+  --msf-color-surface: var(--msf-gray-900);
+  --msf-color-surface-elevated: var(--msf-gray-800);
+  --msf-color-card: var(--msf-gray-900);
+  --msf-color-overlay: rgba(0, 0, 0, 0.5);
+  --msf-color-border: var(--msf-gray-700);
+  --msf-color-divider: var(--msf-gray-700);
+
+  --msf-color-text-primary: var(--msf-gray-100);
+  --msf-color-text-secondary: var(--msf-gray-400);
+  --msf-color-text-muted: var(--msf-gray-500);
+
+  --msf-radius-card: var(--msf-radius-12);
+  --msf-radius-button: var(--msf-radius-8);
+  --msf-shadow-card: var(--msf-shadow-2);
+  --msf-shadow-modal: var(--msf-shadow-3);
+  --msf-space-section: var(--msf-space-24);
+  --msf-space-element: var(--msf-space-16);
+}
+
+/* ---------- 3. КОМПОНЕНТНЫЕ ТОКЕНЫ ---------- */
+:root {
+  --msf-button-primary-bg: var(--msf-color-primary);
+  --msf-button-primary-hover: var(--msf-color-primary-hover);
+  --msf-button-primary-text: var(--msf-color-background);
+
+  --msf-card-bg: var(--msf-color-card);
+  --msf-card-border: var(--msf-color-border);
+  --msf-card-radius: var(--msf-radius-card);
+
+  --msf-modal-bg: var(--msf-color-surface);
+  --msf-modal-radius: var(--msf-radius-card);
+
+  --msf-input-bg: var(--msf-color-background);
+  --msf-input-border: var(--msf-color-border);
+
+  --msf-progress-fill: var(--msf-color-primary);
+}
+
+/* ---------- 4. ТИПОГРАФИКА ---------- */
+:root {
+  --msf-font-display: 700 36px 'Playfair Display', serif;
+  --msf-font-h1: 700 28px 'Playfair Display', serif;
+  --msf-font-h2: 600 22px 'Playfair Display', serif;
+  --msf-font-h3: 600 18px 'Roboto', sans-serif;
+  --msf-font-h4: 500 16px 'Roboto', sans-serif;
+  --msf-font-body-l: 400 18px 'Roboto', sans-serif;
+  --msf-font-body-m: 400 16px 'Roboto', sans-serif;
+  --msf-font-body-s: 400 13px 'Roboto', sans-serif;
+  --msf-font-caption: 500 11px 'Roboto', sans-serif;
+  --msf-font-overline: 600 10px 'Roboto', sans-serif;
+  --msf-font-code: 400 14px 'Fira Code', monospace;
+  --msf-font-formula: 400 16px 'Times New Roman', serif;
+}
+
+/* ---------- 5. БАЗОВЫЕ СТИЛИ ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: var(--msf-font-body-m);
+  background: var(--msf-color-background);
+  color: var(--msf-color-text-primary);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--msf-color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--msf-color-primary-hover);
+}
+
+/* ---------- 6. ДВИЖЕНИЕ (Motion) ---------- */
+:root {
+  --msf-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --msf-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --msf-ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

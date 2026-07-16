@@ -11,109 +11,365 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1f2b'/><text y='.75em' x='50' text-anchor='middle' font-size='55' font-family='serif' font-weight='bold' fill='%23D4A017'>M</text></svg>">
     <title>УМК «Математика строит будущее» — Станулевич А.В.</title>
     <script>history.scrollRestoration = "manual";</script>
+
+    <!-- Platform SDK -->
+    <link rel="stylesheet" href="src/foundation/design-system/design-tokens.css">
+    <link rel="stylesheet" href="src/foundation/design-system/typography.css">
+    <link rel="stylesheet" href="src/foundation/design-system/theme.css">
+    <link rel="stylesheet" href="src/foundation/design-system/components.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <style>
         :root {
-                --bg: #0d1117;
-            --bg-card: #161b22;
-            --gold: #D4A017;
-            --gold-hover: #e6b422;
-            --text: #c9d1d9;
-            --text-muted: #8b949e;
-            --border: #30363d;
+            --bg: var(--msf-color-background);
+            --bg-card: var(--msf-color-card);
+            --gold: var(--msf-color-primary);
+            --gold-hover: var(--msf-color-primary-hover);
+            --gold-glow: rgba(212, 160, 23, 0.15);
+            --text: var(--msf-color-text-primary);
+            --text-muted: var(--msf-color-text-muted);
+            --border: var(--msf-color-border);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: auto; }
-        body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Roboto', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+        }
         section { padding: 80px 0; position: relative; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+        /* ===== HERO ===== */
         .hero {
-            min-height: 100vh; display: flex; align-items: center;
-            background: radial-gradient(ellipse at 50% 30%, #1a2332 0%, var(--bg) 70%);
-            position: relative; overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(ellipse at 60% 30%, #1a2332 0%, var(--bg) 70%);
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0;
         }
-        .hero .container { position: relative; z-index: 1; width: 100%; }
-        .hero-label { font-size: 11px; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 40px; }
-        .hero-title { font-size: clamp(48px, 8vw, 88px); line-height: 1.05; margin-bottom: 20px; color: #fff; }
-        .hero-title .gold { color: var(--gold); }
-        .hero-subtitle { font-size: 18px; color: var(--text-muted); max-width: 600px; line-height: 1.7; margin-bottom: 30px; }
-        .hero-meta { display: flex; gap: 30px; font-size: 12px; color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
-        .hero-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 50px;
+            align-items: center;
+        }
+        .hero-title {
+            font-size: clamp(44px, 7vw, 76px);
+            line-height: 1.05;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .hero-title .gold {
+            color: var(--gold);
+            position: relative;
+        }
+        .hero-title .gold {
+    color: var(--gold);
+    position: relative;
+}
+        .hero-title .highlight {
+            display: inline-block;
+            animation: pulseGold 3s ease-in-out infinite;
+        }
+        @keyframes pulseGold {
+            0%, 100% { text-shadow: 0 0 20px rgba(212, 160, 23, 0.2); }
+            50% { text-shadow: 0 0 40px rgba(212, 160, 23, 0.5); }
+        }
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            max-width: 600px;
+        }
+        .hero-formula {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            background: rgba(212, 160, 23, 0.06);
+            border: 1px solid rgba(212, 160, 23, 0.15);
+            border-radius: 8px;
+            padding: 10px 18px;
+            display: inline-block;
+            max-width: 100%;
+        }
+        .hero-formula .formula-topic {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 28px;
+        }
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
 
-        .btn-gold { display: inline-block; padding: 14px 32px; background: var(--gold); color: var(--bg); text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; }
-        .btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,160,23,0.3); }
-        .btn-outline { display: inline-block; padding: 14px 32px; border: 1px solid var(--border); color: var(--text); text-decoration: none; font-weight: 500; font-size: 15px; transition: all 0.3s; }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+        .hero-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+        .hero-emblem {
+            width: 160px;
+            height: 160px;
+            flex-shrink: 0;
+        }
+        .hero-emblem svg {
+            width: 100%;
+            height: 100%;
+        }
+        .hero-principles {
+            display: flex;
+            gap: 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 20px;
+        }
+        .hero-principle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .principle-icon { font-size: 18px; }
+        .principle-text { font-weight: 500; color: var(--text); }
+        .hero-author {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.6;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+            width: 100%;
+        }
+        .hero-author strong { color: #fff; }
 
-        .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 15px; }
+        .hero-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+        }
+
+        /* ===== КАРТОЧКИ (заменены на msf-card) ===== */
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .card-icon { font-size: 34px; margin-bottom: 14px; }
+        .card-title { font-size: 18px; color: #fff; margin-bottom: 8px; font-weight: 600; }
+        .card-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; flex-grow: 1; margin-bottom: 12px; }
+        .card-link { display: inline-block; font-size: 13px; font-weight: 500; color: var(--gold); text-decoration: none; margin-top: auto; }
+
+        /* ===== С ЧЕГО НАЧАТЬ ===== */
+        .start-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .start-icon { font-size: 36px; margin-bottom: 12px; }
+
+        /* ===== БЛОК «ПОЧЕМУ ВЫБИРАЮТ» ===== */
+        .choose-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .choose-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* ===== ТЕХНОЛОГИИ — ГРУППЫ ===== */
+        .tech-groups {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .tech-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px 20px 20px;
+            transition: all 0.3s;
+        }
+        .tech-group:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        .tech-group-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .tech-group-header .group-icon {
+            font-size: 28px;
+        }
+        .tech-group-header .group-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.3px;
+        }
+        .tech-group-header .group-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-left: auto;
+            background: rgba(212,160,23,0.1);
+            padding: 2px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(212,160,23,0.2);
+        }
+        .tech-item-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .tech-item-group:last-child {
+            border-bottom: none;
+        }
+        .tech-item-group .ti-icon {
+            font-size: 22px;
+            width: 32px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .tech-item-group .ti-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #e6edf3;
+            min-width: 90px;
+        }
+        .tech-item-group .ti-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        /* ===== ИНТЕРАКТИВНЫЙ БЛОК ===== */
+        .interactive-block {
+            background: var(--bg-card); border: 1px solid var(--gold); border-radius: 8px;
+            padding: 50px; text-align: center;
+        }
+        .interactive-block h3 { color: #fff; margin-bottom: 10px; }
+        .interactive-block p { color: var(--text-muted); margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .interactive-icons { font-size: 40px; margin-bottom: 20px; display: flex; gap: 20px; justify-content: center; }
+
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 15px; }
         .section-title { font-size: clamp(30px, 5vw, 44px); margin-bottom: 30px; color: #fff; }
 
-        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 35px 28px; text-decoration: none; color: inherit; transition: all 0.35s ease; display: flex; flex-direction: column; }
-        .card:hover { border-color: var(--gold); transform: translateY(-8px); box-shadow: 0 16px 45px rgba(0,0,0,0.5); }
-        .card-icon { font-size: 36px; margin-bottom: 18px; }
-        .card-title { font-size: 18px; color: #fff; margin-bottom: 10px; font-weight: 600; }
-        .card-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; flex-grow: 1; margin-bottom: 16px; }
-        .card-link { display: inline-block; font-size: 13px; font-weight: 500; color: var(--gold); text-decoration: none; }
-        .card:hover .card-link { text-decoration: underline; }
+        .author-block {
+            background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--gold);
+            border-radius: 6px; padding: 40px;
+        }
+        .author-grid { display: grid; grid-template-columns: 180px 1fr; gap: 30px; align-items: center; }
+        .author-photo {
+            width: 180px; height: 180px; border: 1px dashed var(--border);
+            display: flex; align-items: center; justify-content: center; font-size: 13px;
+            color: var(--text-muted); text-align: center; border-radius: 50%;
+        }
+        .author-quote {
+            border-left: 3px solid var(--gold); padding-left: 20px;
+            font-style: italic; font-size: 17px; color: var(--text-muted); margin-top: 15px;
+        }
 
-        .adv-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); background: var(--bg-card); }
-        .adv-item { padding: 35px 25px; text-align: center; border-right: 1px solid var(--border); }
-        .adv-item:last-child { border-right: none; }
-        .adv-icon { font-size: 30px; margin-bottom: 15px; }
-        .adv-title { font-size: 15px; color: #fff; margin-bottom: 8px; }
-        .adv-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-
-        .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .method-card { background: var(--bg-card); border: 1px solid var(--border); padding: 30px 20px; text-align: center; text-decoration: none; color: inherit; transition: all 0.3s; display: block; }
-        .method-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-        .method-icon { font-size: 28px; margin-bottom: 15px; }
-        .method-title { font-size: 15px; color: #fff; margin-bottom: 5px; }
-        .method-text { font-size: 13px; color: var(--text-muted); }
-
-        .interactive-block { background: var(--bg-card); border: 1px solid var(--border); padding: 60px; }
-        .interactive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .interactive-grid h3 { color: #fff; margin-bottom: 15px; }
-        .interactive-grid p { color: var(--text-muted); margin-bottom: 20px; line-height: 1.7; }
-        .interactive-grid ul { list-style: none; color: var(--text-muted); }
-        .interactive-grid ul li { margin-bottom: 10px; }
-        .interactive-visual { font-size: 120px; text-align: center; opacity: 0.3; }
-
-        .author-row { display: grid; grid-template-columns: 220px 1fr; gap: 50px; align-items: center; }
-        .author-photo { width: 220px; height: 220px; border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text-muted); text-align: center; }
-        .author-quote { border-left: 3px solid var(--gold); padding-left: 20px; font-style: italic; font-size: 18px; color: var(--text-muted); margin-top: 20px; }
-
-               .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
         .footer-grid h4 { color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
         .footer-grid a { display: block; color: var(--text-muted); text-decoration: none; font-size: 13px; margin-bottom: 5px; transition: color 0.3s; }
         .footer-grid a:hover { color: var(--gold); }
         .footer-grid p { color: var(--text-muted); font-size: 13px; margin: 0; }
-        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } }
 
-        #backToTop { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 44px; height: 44px; border-radius: 50%; background: var(--gold); color: var(--bg); border: none; font-size: 20px; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; }
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px; z-index: 999;
+            width: 48px; height: 48px; border-radius: 50%; background: var(--gold);
+            color: var(--bg); border: none; font-size: 22px; cursor: pointer;
+            opacity: 0; visibility: hidden; transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
+        }
         #backToTop.show { opacity: 1; visibility: visible; }
+        #backToTop:hover { background: var(--gold-hover); }
 
-        @media (max-width: 900px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 992px) {
-            .adv-grid { grid-template-columns: 1fr 1fr; }
-            .adv-item { border-bottom: 1px solid var(--border); }
-            .method-grid { grid-template-columns: 1fr 1fr; }
-            .interactive-grid { grid-template-columns: 1fr; }
-            .author-row { grid-template-columns: 1fr; text-align: center; }
-            .author-photo { margin: 0 auto; }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .hero-subtitle { max-width: 100%; }
+            .hero-stats { justify-content: center; }
+            .hero-actions { justify-content: center; }
+            .hero-formula { display: inline-block; }
+            .hero-visual { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .hero-emblem { width: 120px; height: 120px; }
+            .hero-author { text-align: center; }
+            .choose-grid { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .start-grid { grid-template-columns: repeat(2, 1fr); }
+            .tech-groups { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .tech-groups { grid-template-columns: 1fr; }
         }
         @media (max-width: 576px) {
-            .cards-grid, .adv-grid, .method-grid { grid-template-columns: 1fr; }
+            .cards-grid, .start-grid, .choose-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 38px; }
+            .hero-stats { gap: 20px; flex-wrap: wrap; }
+            .hero-stat-num { font-size: 24px; }
+            .hero-principles { flex-wrap: wrap; justify-content: center; }
+            .hero-emblem { width: 90px; height: 90px; }
             section { padding: 60px 0; }
+            .interactive-block { padding: 30px 20px; }
+            .author-block { padding: 24px; }
+            .author-grid { grid-template-columns: 1fr; text-align: center; }
+            .author-photo { margin: 0 auto; }
+            .tech-group { padding: 18px 14px; }
+            .tech-item-group .ti-name { min-width: 70px; font-size: 13px; }
+            .tech-item-group .ti-desc { font-size: 11px; }
         }
     </style>
 </head>
@@ -121,7 +377,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--bg-card); border-bottom: 1px solid var(--border);">
         <div class="container">
-            <a class="navbar-brand" href="#" style="font-family: 'Playfair Display', serif; color: var(--gold);">УМК «Математика»</a>
+            <a class="navbar-brand" href="index.html" style="font-family: 'Playfair Display', serif; color: var(--gold); font-size:1.1rem;">УМК «Математика»</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -136,147 +392,265 @@
         </div>
     </nav>
 
+    <!-- ===== HERO ===== -->
     <header class="hero">
         <div class="container">
-            <div class="hero-label">Гродненский государственный колледж строительных технологий · Гродно</div>
-            <h1 class="hero-title">Математика<br><span class="gold">строит будущее</span></h1>
-            <p class="hero-subtitle">Интерактивный учебно-методический комплекс для учреждений среднего специального образования. Практика, расчёты, 3D-модели.</p>
-            <div class="hero-meta">
-                <span>Станулевич А.В.</span>
-                <span>2026</span>
-            </div>
-            <div class="hero-actions">
-                <a href="#sections" class="btn-gold">К разделам</a>
-                <a href="#about" class="btn-outline">Об авторе</a>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-title fade-up">
+                        Математика<br>
+                        <span class="gold highlight">строит будущее</span>
+                    </h1>
+                    <p class="hero-subtitle fade-up">
+                        Интерактивный учебно-методический комплекс для учреждений<br>
+                        среднего специального образования строительного профиля
+                    </p>
+                    <div class="hero-formula fade-up" id="heroFormula">
+                        📅 Формула дня: <span data-katex="\sin^{2}\alpha + \cos^{2}\alpha = 1"></span>
+                        <span class="formula-topic"> — «Тригонометрия»</span>
+                    </div>
+                    <div class="hero-stats fade-up">
+                        <div class="hero-stat">
+                            <span class="hero-stat-num">240</span>
+                            <span class="hero-stat-label">учебных часов</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-num">28</span>
+                            <span class="hero-stat-label">практических работ</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-num">9</span>
+                            <span class="hero-stat-label">опорных конспектов</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions fade-up">
+                        <a href="#sections" class="msf-btn msf-btn-primary msf-btn-lg">К разделам ↓</a>
+                        <a href="teoreticheskij.html" class="msf-btn msf-btn-outline msf-btn-lg">Начать учиться →</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual fade-up">
+                    <div class="hero-emblem">
+                        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="100" height="100" rx="16" fill="#161b22" stroke="#D4A017" stroke-width="4"/>
+                            <text x="60" y="78" text-anchor="middle" font-size="52" font-family="Georgia, serif" font-weight="bold" fill="#D4A017">М</text>
+                            <text x="60" y="96" text-anchor="middle" font-size="11" fill="#8b949e" letter-spacing="2">УМК</text>
+                        </svg>
+                    </div>
+                    <div class="hero-principles">
+                        <div class="hero-principle">
+                            <span class="principle-icon">📖</span>
+                            <span class="principle-text">Теория</span>
+                        </div>
+                        <div class="hero-principle">
+                            <span class="principle-icon">🔧</span>
+                            <span class="principle-text">Практика</span>
+                        </div>
+                        <div class="hero-principle">
+                            <span class="principle-icon">📝</span>
+                            <span class="principle-text">Контроль</span>
+                        </div>
+                    </div>
+                    <div class="hero-author">
+                        <span>Автор:</span>
+                        <strong>Станулевич А.В.</strong>
+                        <span>· Гродненский колледж строительных технологий</span>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="hero-line"></div>
     </header>
 
+    <!-- ===== С ЧЕГО НАЧАТЬ ===== -->
+    <section id="start">
+        <div class="container">
+            <div class="section-label fade-up">С чего начать</div>
+            <h2 class="section-title fade-up">Выберите свой путь</h2>
+            <div class="start-grid fade-up">
+                <a href="teoreticheskij.html" class="msf-card msf-card-clickable">
+                    <div class="start-icon">👨‍🎓</div>
+                    <h4>Я студент</h4>
+                    <p class="msf-body-s">Откройте конспекты. В каждом — шпаргалка, аудио и профессиональные примеры.</p>
+                </a>
+                <a href="vspomogatelnyj.html" class="msf-card msf-card-clickable">
+                    <div class="start-icon">👨‍🏫</div>
+                    <h4>Я преподаватель</h4>
+                    <p class="msf-body-s">Методические материалы, паспорт УМК, пояснительная записка, рекомендации.</p>
+                </a>
+                <a href="vspomogatelnyj.html#pasport-umk" class="msf-card msf-card-clickable">
+                    <div class="start-icon">📋</div>
+                    <h4>Я проверяющий</h4>
+                    <p class="msf-body-s">Паспорт УМК, нормативная база, отличительные особенности комплекса.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== СТРУКТУРА УМК ===== -->
     <section id="sections">
         <div class="container">
             <div class="section-label fade-up">Структура УМК</div>
             <h2 class="section-title fade-up">Разделы комплекса</h2>
             <div class="cards-grid fade-up">
-                <a href="normativnyj.html" class="card">
-                    <div class="card-icon">📋</div>
-                    <h3 class="card-title">Нормативный</h3>
-                    <p class="card-text">Программа, КТП, паспорт УМК.</p>
-                    <span class="card-link">Перейти →</span>
+                <a href="teoreticheskij.html" class="msf-card msf-card-clickable">
+                    <div class="card-icon">📚</div><h3 class="card-title">Теоретический раздел</h3><p class="card-text">9 опорных конспектов. Формула дня, прогресс-бар, QR-коды, аудио-озвучка тем.</p><span class="card-link">Перейти →</span>
                 </a>
-                <a href="teoreticheskij.html" class="card">
-                    <div class="card-icon">📖</div>
-                    <h3 class="card-title">Теоретический</h3>
-                    <p class="card-text">Конспекты, лекции, презентации.</p>
-                    <span class="card-link">Перейти →</span>
+                <a href="prakticheskij.html" class="msf-card msf-card-clickable">
+                    <div class="card-icon">🔧</div><h3 class="card-title">Практический раздел</h3><p class="card-text">28 практических работ. Трёхуровневая система, таймер, режим «Без ответов».</p><span class="card-link">Перейти →</span>
                 </a>
-                <a href="prakticheskij.html" class="card">
-                    <div class="card-icon">🔧</div>
-                    <h3 class="card-title">Практический</h3>
-                    <p class="card-text">Практические работы, задания GeoGebra.</p>
-                    <span class="card-link">Перейти →</span>
+                <a href="kontrol.html" class="msf-card msf-card-clickable">
+                    <div class="card-icon">📝</div><h3 class="card-title">Контроль знаний</h3><p class="card-text">Входной, текущий, тематический, итоговый. Шкалы перевода баллов.</p><span class="card-link">Перейти →</span>
                 </a>
-                <a href="kontrol.html" class="card">
-                    <div class="card-icon">📝</div>
-                    <h3 class="card-title">Контроль знаний</h3>
-                    <p class="card-text">КР, тесты, вопросы к экзамену.</p>
-                    <span class="card-link">Перейти →</span>
+                <a href="vspomogatelnyj.html" class="msf-card msf-card-clickable">
+                    <div class="card-icon">🧰</div><h3 class="card-title">Вспомогательный раздел</h3><p class="card-text">Паспорт УМК, пояснительная записка, методическая документация, FAQ.</p><span class="card-link">Перейти →</span>
                 </a>
-                <a href="vspomogatelnyj.html" class="card">
-                    <div class="card-icon">🧰</div>
-                    <h3 class="card-title">Вспомогательный</h3>
-                    <p class="card-text">Паспорт профилизации, литература, глоссарий.</p>
-                    <span class="card-link">Перейти →</span>
+                <a href="interaktiv.html" class="msf-card msf-card-clickable">
+                    <div class="card-icon">💻</div><h3 class="card-title">Интерактивный раздел</h3><p class="card-text">GeoGebra-модели, калькуляторы, графический тренажёр, строй-игра.</p><span class="card-link">Перейти →</span>
                 </a>
-                <a href="interaktiv.html" class="card">
-                    <div class="card-icon">💻</div>
-                    <h3 class="card-title">Интерактив</h3>
-                    <p class="card-text">GeoGebra, Desmos, 3D-модели.</p>
-                    <span class="card-link">Перейти →</span>
+                <a href="normativnyj.html" class="msf-card msf-card-clickable">
+                    <div class="card-icon">📋</div><h3 class="card-title">Нормативный раздел</h3><p class="card-text">Учебная программа, КТП, нормативные документы, приказы.</p><span class="card-link">Перейти →</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="advantages">
+    <!-- ===== ПОЧЕМУ ВЫБИРАЮТ ===== -->
+    <section id="choose">
         <div class="container">
-            <div class="section-label fade-up">Принципы</div>
-            <h2 class="section-title fade-up">Почему этот УМК</h2>
-            <div class="adv-grid fade-up">
-                <div class="adv-item"><div class="adv-icon">🔧</div><h4 class="adv-title">Практика</h4><p class="adv-text">Каждая тема привязана к профессии</p></div>
-                <div class="adv-item"><div class="adv-icon">📊</div><h4 class="adv-title">Три уровня</h4><p class="adv-text">Фундамент — Стены — Кровля</p></div>
-                <div class="adv-item"><div class="adv-icon">💻</div><h4 class="adv-title">Цифра</h4><p class="adv-text">GeoGebra и Desmos на сайте</p></div>
-                <div class="adv-item"><div class="adv-icon">📚</div><h4 class="adv-title">PDF</h4><p class="adv-text">Скачивайте и работайте</p></div>
+            <div class="section-label fade-up">Преимущества</div>
+            <h2 class="section-title fade-up">Почему выбирают этот УМК</h2>
+            <div class="choose-grid fade-up">
+                <div class="msf-card choose-item">
+                    <span class="choose-icon">🏗️</span>
+                    <h4>Привязан к профессии</h4>
+                    <p class="msf-body-s">Каждая тема — через строительные задачи.</p>
+                </div>
+                <div class="msf-card choose-item">
+                    <span class="choose-icon">📊</span>
+                    <h4>Три уровня сложности</h4>
+                    <p class="msf-body-s">«Фундамент» — «Стены» — «Кровля».</p>
+                </div>
+                <div class="msf-card choose-item">
+                    <span class="choose-icon">📱</span>
+                    <h4>QR-коды и аудио</h4>
+                    <p class="msf-body-s">Навёл телефон — открыл задание.</p>
+                </div>
+                <div class="msf-card choose-item">
+                    <span class="choose-icon">⚡</span>
+                    <h4>Цифровые инструменты</h4>
+                    <p class="msf-body-s">GeoGebra, Desmos, 3D-модели.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="methodical">
+    <!-- ===== ТЕХНОЛОГИИ ===== -->
+    <section id="tech">
         <div class="container">
-            <div class="section-label fade-up">Материалы</div>
-            <h2 class="section-title fade-up">Методические разработки</h2>
-            <div class="method-grid fade-up">
-                <a href="uroki/optimizacia.html" class="method-card"><div class="method-icon">🏆</div><h4 class="method-title">Открытый урок</h4><p class="method-text">Оптимизация конструкций</p></a>
-                <a href="meropriyatiya/stroyploshadka.html" class="method-card"><div class="method-icon">🎮</div><h4 class="method-title">Мероприятие</h4><p class="method-text">Математика на стройплощадке</p></a>
-                <a href="master-klassy/privyazka.html" class="method-card"><div class="method-icon">🎓</div><h4 class="method-title">Мастер-класс</h4><p class="method-text">Привязка к профессии</p></a>
-                <a href="rekomendacii/geogebra-desmos.html" class="method-card"><div class="method-icon">💻</div><h4 class="method-title">GeoGebra и Desmos</h4><p class="method-text">Методические рекомендации</p></a>
+            <div class="section-label fade-up">Технологии</div>
+            <h2 class="section-title fade-up">На чём построен УМК</h2>
+            <div class="tech-groups fade-up">
+
+                <div class="msf-card tech-group">
+                    <div class="tech-group-header">
+                        <span class="group-icon">🖥️</span>
+                        <span class="group-title">Фронтенд</span>
+                        <span class="group-sub">UI/UX</span>
+                    </div>
+                    <div class="tech-item-group"><span class="ti-icon">📐</span><span class="ti-name">GeoGebra</span><span class="ti-desc">3D-модели</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">📊</span><span class="ti-name">Desmos</span><span class="ti-desc">Графики</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">📝</span><span class="ti-name">KaTeX</span><span class="ti-desc">Формулы</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">🎨</span><span class="ti-name">Bootstrap 5</span><span class="ti-desc">Сетка</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">🔗</span><span class="ti-name">Font Awesome</span><span class="ti-desc">Иконки</span></div>
+                </div>
+
+                <div class="msf-card tech-group">
+                    <div class="tech-group-header">
+                        <span class="group-icon">⚙️</span>
+                        <span class="group-title">Бэкенд и инфраструктура</span>
+                        <span class="group-sub">DevOps</span>
+                    </div>
+                    <div class="tech-item-group"><span class="ti-icon">🌐</span><span class="ti-name">GitHub Pages</span><span class="ti-desc">Хостинг</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">🔄</span><span class="ti-name">GitHub Actions</span><span class="ti-desc">CI/CD</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">🐍</span><span class="ti-name">Python</span><span class="ti-desc">Скрипты</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">📄</span><span class="ti-name">LaTeX</span><span class="ti-desc">PDF</span></div>
+                </div>
+
+                <div class="msf-card tech-group">
+                    <div class="tech-group-header">
+                        <span class="group-icon">🧩</span>
+                        <span class="group-title">Функционал</span>
+                        <span class="group-sub">JS + API</span>
+                    </div>
+                    <div class="tech-item-group"><span class="ti-icon">⚡</span><span class="ti-name">Vanilla JS</span><span class="ti-desc">Таймеры, аудио</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">📱</span><span class="ti-name">QR API</span><span class="ti-desc">QR-коды</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">🔊</span><span class="ti-name">Web Speech API</span><span class="ti-desc">Озвучка</span></div>
+                    <div class="tech-item-group"><span class="ti-icon">📦</span><span class="ti-name">localStorage</span><span class="ti-desc">Прогресс</span></div>
+                </div>
+
             </div>
         </div>
     </section>
 
+    <!-- ===== ИНТЕРАКТИВНЫЙ БЛОК ===== -->
     <section id="interactive">
         <div class="container">
-            <div class="section-label fade-up">Инструменты</div>
-            <h2 class="section-title fade-up">Интерактивная математика</h2>
             <div class="interactive-block fade-up">
-                <div class="interactive-grid">
-                    <div>
-                        <h3>GeoGebra + Desmos</h3>
-                        <p>Меняйте параметры и смотрите, как это работает — прямо в браузере.</p>
-                        <ul>
-                            <li>📐 3D-модели многогранников</li>
-                            <li>📈 Графики с анимацией</li>
-                            <li>🔧 Расчёт конструкций онлайн</li>
-                        </ul>
-                        <a href="interaktiv.html" class="btn-gold" style="margin-top: 20px; display: inline-block;">Перейти к моделям →</a>
-                    </div>
-                    <div class="interactive-visual">💻</div>
-                </div>
+                <div class="interactive-icons">📐 🧊 🔺 ⚽ 🥫 🔻</div>
+                <h3>Интерактивная математика — попробуйте прямо сейчас</h3>
+                <p class="msf-body-m">3D-модели многогранников, калькуляторы строителя, графический тренажёр и игра «Построй дом». Всё работает в браузере, бесплатно и без регистрации.</p>
+                <a href="interaktiv.html" class="msf-btn msf-btn-primary msf-btn-lg">Открыть интерактивный раздел →</a>
             </div>
         </div>
     </section>
 
+    <!-- ===== АВТОР ===== -->
     <section id="about">
         <div class="container">
-            <div class="section-label fade-up">Автор</div>
+            <div class="section-label fade-up">Автор УМК</div>
             <h2 class="section-title fade-up">Станулевич Андрей Викторович</h2>
-            <div class="author-row fade-up">
-                <div class="author-photo">📷<br>Место для фото</div>
-                <div>
-                    <p style="font-size: 16px; color: var(--text-muted); line-height: 1.8;">Преподаватель математики Гродненского государственного колледжа строительных технологий. Специализация — практико-ориентированное преподавание. Разработчик УМК, автор методических рекомендаций по использованию GeoGebra и Desmos.</p>
-                    <div class="author-quote">«Учить математике — значит учить строить. Дома, мосты, будущее».</div>
+            <div class="author-block fade-up">
+                <div class="author-grid">
+                    <div class="author-photo">📷<br>Место для фото</div>
+                    <div>
+                        <p style="font-size: 16px; color: var(--text-muted); line-height: 1.8;">
+                            Здравствуйте! Меня зовут Андрей Викторович Станулевич. Я преподаватель математики в Гродненском государственном колледже строительных технологий.
+                            <br><br>
+                            Этот учебно-методический комплекс создан для вас с одной целью: показать, что математика — это язык, на котором говорит строительство. В каждом разделе вы найдёте задания, приближенные к реальным профессиональным ситуациям: расчёт материалов, работа с чертежами, вычисление углов, объёмов и прочности конструкций.
+                            <br><br>
+                            Я активно использую цифровые инструменты GeoGebra и Desmos, чтобы сделать занятия наглядными и интересными. Искренне надеюсь, что УМК поможет вам не только освоить программу, но и полюбить математику как основу вашей будущей профессии.
+                        </p>
+                        <div class="author-quote">«Строитель, который понимает математику, строит не просто стены — он строит будущее».</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <footer style="background: var(--bg-card); border-top: 1px solid var(--border); padding: 30px 0 0 0; text-align: center; font-size: 14px;">
-    <div class="container">
-        <div class="footer-grid">
-            <div><h4>Контакты</h4><a href="mailto:yukiosimidzu@gmail.com">yukiosimidzu@gmail.com</a><a href="https://ggkst.by/" target="_blank" rel="noopener">Сайт колледжа</a></div>
-            <div><h4>Ресурсы</h4><a href="https://www.geogebra.org/" target="_blank" rel="noopener">GeoGebra</a><a href="https://www.desmos.com/" target="_blank" rel="noopener">Desmos</a><a href="https://adu.by/" target="_blank" rel="noopener">adu.by</a></div>
-            <div><h4>Цитата</h4><p>«Математика — это язык, на котором инженер разговаривает с природой».</p><p style="opacity: 0.5; margin-top: 8px;">— А.Н. Крылов</p></div>
+    <!-- ===== ФУТЕР ===== -->
+    <footer style="background: var(--bg-card); border-top: 1px solid var(--border); padding: 30px 0 0 0; text-align: center; font-size: 14px;">
+        <div class="container">
+            <div class="footer-grid">
+                <div><h4>Контакты</h4><a href="mailto:yukiosimidzu@gmail.com">yukiosimidzu@gmail.com</a><a href="https://ggkst.by/" target="_blank" rel="noopener">Сайт колледжа</a></div>
+                <div><h4>Ресурсы</h4><a href="https://www.geogebra.org/" target="_blank" rel="noopener">GeoGebra</a><a href="https://www.desmos.com/" target="_blank" rel="noopener">Desmos</a><a href="https://adu.by/" target="_blank" rel="noopener">adu.by</a></div>
+                <div><h4>Цитата</h4><p>«Математика — это язык, на котором инженер разговаривает с природой».</p><p style="opacity: 0.5; margin-top: 8px;">— А.Н. Крылов</p></div>
+            </div>
+            <div style="border-top: 1px solid var(--border); margin-top: 25px; padding-top: 20px;">
+                © 2026 Станулевич Андрей Викторович, Гродно, Беларусь<br>
+                <span style="font-size:11px;color:#8b949e;line-height:1.8;">
+                    Все права защищены. Данный учебно-методический комплекс является объектом интеллектуальной собственности.<br>
+                    Полное или частичное воспроизведение, распространение, переработка без письменного разрешения автора запрещены.
+                </span>
+                <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">
+                    👁️ Просмотров: <span id="visitCounter">0</span>
+                </div>
+            </div>
         </div>
-        <div style="border-top: 1px solid var(--border); margin-top: 25px; padding-top: 20px;">
-            © 2026 Станулевич Андрей Викторович, Гродно, Беларусь<br>
-            <span style="font-size:11px;color:#8b949e;line-height:1.8;">
-                Все права защищены. Данный учебно-методический комплекс является объектом интеллектуальной собственности.<br>
-                Полное или частичное воспроизведение, распространение, переработка без письменного разрешения автора запрещены.
-            </span>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <button id="backToTop" title="Наверх">▲</button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function handleScroll() {
@@ -289,11 +663,40 @@
         window.addEventListener('scroll', handleScroll);
 
         var backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) backToTop.classList.add('show');
-            else backToTop.classList.remove('show');
-        });
+        window.addEventListener('scroll', function() { backToTop.classList.toggle('show', window.scrollY > 300); });
         backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        const formulas = [
+            { latex: '\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1', topic: 'Тригонометрия' },
+            { latex: 'a^{m} \\cdot a^{n} = a^{m+n}', topic: 'Степени' },
+            { latex: 'V = S_{\\text{осн}} \\cdot H', topic: 'Многогранники' },
+            { latex: 'f\'(x_{0}) = \\operatorname{tg}\\alpha', topic: 'Производная' },
+            { latex: '\\log_{a}(xy) = \\log_{a}x + \\log_{a}y', topic: 'Логарифмы' },
+            { latex: 'V = \\frac{4}{3}\\pi R^{3}', topic: 'Тела вращения' },
+        ];
+        const today = new Date();
+        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+        const f = formulas[dayOfYear % formulas.length];
+        const el = document.getElementById('heroFormula');
+        if (el) {
+            el.innerHTML = '📅 Формула дня: <span data-katex="' + f.latex + '"></span> <span class="formula-topic">— «' + f.topic + '»</span>';
+            katex.render(f.latex, el.querySelector('[data-katex]'), { throwOnError: false });
+        }
+
+        (function() {
+            let visits = localStorage.getItem('umk_visits');
+            if (visits === null) {
+                visits = 0;
+            } else {
+                visits = parseInt(visits, 10);
+            }
+            visits += 1;
+            localStorage.setItem('umk_visits', visits);
+            const counterEl = document.getElementById('visitCounter');
+            if (counterEl) {
+                counterEl.textContent = visits;
+            }
+        })();
     </script>
 </body>
 </html>

@@ -1,0 +1,326 @@
+/* ==========================================
+   Pyramid Model — MSF Light Theme
+   ========================================== */
+
+/* Переопределяем фон внутри контейнера пирамиды на светлый */
+.msf-pyramid-container {
+    background: #F7F8FA;
+    color: #1F2937;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    border-radius: 18px;
+}
+
+/* Карточки (контракт, кейс, предсказание, сравнение) */
+.msf-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4B5563;
+}
+
+.msf-card .card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.msf-card .card-icon {
+    font-size: 20px;
+    color: #D4A017;
+}
+
+/* Цветовые акценты */
+.msf-card-contract { border-left: 4px solid #16A34A; }
+.msf-card-case { border-left: 4px solid #B45309; }
+.msf-card-prediction { border-left: 4px solid #7C3AED; }
+.msf-card-comparison { border-left: 4px solid #2563EB; }
+
+/* Чипсы строительного контекста */
+.msf-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.msf-chip {
+    background: #FEF3C7;
+    border: 1px solid #FCD34D;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #92400E;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.msf-chip-icon {
+    font-size: 16px;
+    color: #D4A017;
+}
+
+/* Вопрос предсказания */
+.msf-prediction-question {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1F2937;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.msf-prediction-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.msf-prediction-btn {
+    padding: 6px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #D1D5DB;
+    background: #FFFFFF;
+    color: #374151;
+}
+
+.msf-prediction-btn:hover {
+    border-color: #D4A017;
+    color: #B45309;
+    background: #FFFBEB;
+}
+
+.msf-prediction-btn.correct {
+    background: #D1FAE5;
+    border-color: #6EE7B7;
+    color: #065F46;
+}
+
+.msf-prediction-btn.wrong {
+    background: #FEE2E2;
+    border-color: #FCA5A5;
+    color: #991B1B;
+}
+
+/* Сравнение */
+.msf-comparison-values {
+    background: #F9FAFB;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: #4B5563;
+}
+
+.msf-comparison-values span {
+    color: #D4A017;
+    font-weight: 600;
+}
+
+/* Слайдеры */
+.msf-sliders-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.msf-slider-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.msf-slider-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #6B7280;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.msf-slider-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.msf-slider-input {
+    accent-color: #D4A017;
+    width: 160px;
+    height: 6px;
+    border-radius: 4px;
+    background: #E5E7EB;
+    cursor: pointer;
+}
+
+.msf-slider-value {
+    color: #D4A017;
+    font-weight: 700;
+    font-size: 17px;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Кнопки управления */
+.msf-action-bar {
+    text-align: center;
+    margin: 16px 0 12px;
+}
+
+.msf-btn {
+    padding: 6px 16px;
+    background: #FFFFFF;
+    color: #D4A017;
+    border: 1px solid #D4A017;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-right: 8px;
+}
+
+.msf-btn:hover {
+    background: #D4A017;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+}
+
+.msf-btn-primary {
+    background: #D4A017;
+    color: #FFFFFF;
+}
+
+.msf-btn-primary:hover {
+    background: #B8860B;
+}
+
+/* Инфо-панель */
+.msf-info-panel {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.msf-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px 8px;
+    text-align: center;
+}
+
+.msf-info-item-label {
+    font-size: 11px;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.msf-info-item-value {
+    font-size: 18px;
+    color: #D4A017;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.msf-formula-short {
+    text-align: center;
+    font-size: 17px;
+    color: #D4A017;
+    font-family: 'Times New Roman', serif;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #E5E7EB;
+}
+
+.msf-formula-toggle {
+    font-size: 14px;
+    color: #9CA3AF;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: color 0.2s;
+}
+
+.msf-formula-toggle:hover {
+    color: #D4A017;
+}
+
+.msf-formula-block {
+    display: none;
+    text-align: center;
+    margin-top: 8px;
+    padding: 10px;
+    background: #F9FAFB;
+    border-radius: 6px;
+}
+
+.msf-formula-canvas {
+    vertical-align: middle;
+}
+
+/* 3D viewer */
+.msf-viewer {
+    width: 100%;
+    height: 420px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 12px;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Меню */
+.msf-more-menu {
+    position: absolute;
+    background: #FFFFFF;
+    border: 1px solid #D4A017;
+    border-radius: 6px;
+    padding: 4px;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 140px;
+}
+
+.msf-more-menu button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #D4A017;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.msf-more-menu button:hover {
+    background: #FEF3C7;
+}
